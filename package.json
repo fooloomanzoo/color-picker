@@ -11,10 +11,6 @@
     "polymer",
     "picker",
     "color",
-    "color",
-    "color",
-    "color",
-    "colorr",
     "range",
     "input",
     "polyfill"
@@ -23,7 +19,7 @@
   "scripts": {
     "postinstall": "bower install",
     "prepublish": "npm run build && git add . && git commit -m \"publish new version\" && git push && npm version patch",
-    "build": "bower upcolor && polymer analyze > analysis.json",
+    "build": "bower update && polymer analyze > analysis.json",
     "prestart": "polymer analyze > analysis.json",
     "start": "polymer serve",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -32,15 +28,5 @@
     "type": "git",
     "url": "git+https://github.com/fooloomanzoo/color-picker.git"
   },
-  "license": "MIT",
-  "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-minify": "^0.2.0",
-    "cheerio": "^1.0.0-rc.2",
-    "html-minifier": "^3.5.5",
-    "polymer-analyzer": "^2.2.2",
-    "polymer-bundler": "^3.0.1",
-    "uglify-js": "^3.1.1"
-  }
+  "license": "MIT"
 }
