@@ -1,0 +1,497 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="color-mixin.html">
+
+<script>
+  /**
+   * Mixin for color-element
+   *
+   * @appliesMixin ColorMixin
+   *
+   * @mixinFunction
+   * @polymer
+   */
+  const ColorElementPattern = (superClass) => class extends ColorMixin(superClass) { // eslint-disable-line no-unused-vars, no-undef
+
+    static get styleTemplate() {
+      return `
+        <style include="${this.customStyleToInclude}">
+          ${this.customStyleContent}
+        </style>
+      `;
+    }
+
+    static get customStyleToInclude() {
+      return '';
+    }
+
+    static get customStyleContent() {
+      return `
+        ${super.customStyleContent || ''}
+        :host {
+          display: inline-flex;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+          -webkit-tap-highlight-color:rgba(0,0,0,0);
+          align-items: center;
+        }
+        #color {
+          display: inline-flex;
+          flex-direction: column;
+          background: var(--color-element-background, #f0f0f0);
+        }
+        #color #picked {
+          display: inline-flex;
+          flex-direction: column;
+          margin: var(--color-element-margin) var(--color-element-margin) 0 var(--color-element-margin);
+          cursor: pointer;
+        }
+        #color #picked #selected {
+          border-top-width: 0;
+        }
+        #color #picked #current {
+          border-bottom-width: 0;
+        }
+        #color .transparency {
+          display: inline-flex;
+          flex-direction: column;
+          z-index: 1;
+          position: relative;
+        }
+        #color .transparency::after {
+          content: "";
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          z-index: -1;
+          background-image: linear-gradient(45deg, black 25%, transparent 25%, transparent 75%, black 75%, black),
+          linear-gradient(45deg, black 25%, transparent 25%, transparent 75%, black 75%, black);
+          background-size: 16px 16px;
+          background-position:0 0, 8px 8px;
+          opacity: .1;
+        }
+        #color #selectors {
+          display: inline-flex;
+          flex-direction: row;
+        }
+        #color #selectors > * {
+          margin: var(--color-element-margin) var(--color-element-margin) var(--color-element-margin) 0;
+        }
+        #color #saturation {
+          cursor: crosshair;
+          margin-left: var(--color-element-margin);
+        }
+        #color #alpha,
+        #color #hue {
+          cursor: -webkit-grab;
+          cursor: grab;
+        }
+        #color #alpha.grabbing,
+        #color #hue.grabbing {
+          cursor: -webkit-grabbing;
+          cursor: grabbing;
+        }
+      `;
+    }
+
+    static get colorTemplate() {
+      return `
+        <div id="color">
+          <div id="picked">
+            <div class="transparency">
+              <canvas id="current" class="current" hidden$="[[!showCurrentSelectedColor]]" width="240" height$="[[_computeHeightForPicked(hsv, _selectedHsv)]]" on-click="_resetColor"></canvas>
+            </div>
+            <div class="transparency">
+              <canvas id="selected" width="240" height$="[[_computeHeightForPicked(_selectedHsv, hsv, showCurrentSelectedColor)]]" on-click="_fixColor"></canvas>
+            </div>
+          </div>
+          <div id="selectors">
+            <canvas id="saturation" width="208" height="184" on-mousedown="_grabStart" on-touchstart="_grabStart"></canvas>
+            <div class="transparency">
+              <canvas id="alpha" width="16" height="184" on-mousedown="_grabStart" on-touchstart="_grabStart"></canvas>
+            </div>
+            <canvas id="hue" width="16" height="184" on-mousedown="_grabStart" on-touchstart="_grabStart"></canvas>
+          </div>
+        </div>
+      `
+    }
+
+    static get properties() {
+      return {
+        /**
+         * show the color field of the current selected color
+         * @type {boolean}
+         */
+        showCurrentSelectedColor: {
+          type: Boolean,
+          value: false
+        },
+        /**
+         * alpha value
+         * @type {number}
+         */
+        alpha: {
+          type: Number,
+          observer: '_alphaChanged'
+        },
+        /**
+         * hsv-color
+         * @type {number}
+         */
+        hsv: {
+          type: Array
+        },
+
+        _selectedHsv: {
+          type: Array
+        }
+      }
+    }
+
+    connectedCallback() {
+      super.connectedCallback();
+      if (!(Array.isArray(this.hsv) && this.hsv.length === 3)) {
+        this._onContextMenu();
+      }
+      this.root.addEventListener('contextmenu', this._onContextMenu.bind(this), false);
+    }
+
+    disconnectedCallback() {
+      super.disconnectedCallback();
+      this.root.removeEventListener('contextmenu', this._onContextMenu.bind(this), false);
+    }
+
+    _computeHeightForPicked(hsv1, hsv2, showCurrentSelectedColor) {
+      if (!showCurrentSelectedColor || (hsv1 && !hsv2)) {
+        return 64;
+      }
+      if (!hsv1 && hsv2) {
+        return 0;
+      }
+      return 32;
+    }
+    /**
+     * renderColors the current view (manually).
+     * @param {number} hsv The value of the color of the current view.
+     */
+    _drawSelector(hsv) {
+      if (!(Array.isArray(hsv) && hsv.length === 3)) {
+        return;
+      }
+
+      let context = this.$.saturation.getContext("2d");
+      let rect = this.$.saturation.getBoundingClientRect();
+
+      let width = rect.width;
+      let height = rect.height;
+
+      context.clearRect(0, 0, width, height);
+
+      let gradient = context.createLinearGradient(0, 0, width, 1);
+      gradient.addColorStop(0, 'hsl(0,100%,100%)');
+      gradient.addColorStop(1, `hsl(${hsv[0]},100%,50%)`);
+
+      context.fillStyle = gradient;
+      context.fillRect(0, 0, width, height);
+
+      gradient = context.createLinearGradient(0, 0, 1, height);
+      gradient.addColorStop(0, 'rgba(0,0,0,0)');
+      gradient.addColorStop(1, 'rgba(0,0,0,1)');
+
+      context.fillStyle = gradient;
+      context.fillRect(0, 0, width, height);
+      const x = width * hsv[1],
+       y = height * (1 - hsv[2]);
+      this._drawCircle(context, x, y);
+    }
+
+    _drawCircle(context, x, y) {
+      context.beginPath();
+      context.arc(x, y, 3, 0, 2*Math.PI);
+      context.closePath();
+      context.lineWidth = 1.5;
+      context.strokeStyle = '#fff';
+      context.stroke();
+    }
+
+    _rgbChanged(rgb) {
+      super._rgbChanged(rgb);
+
+      const hsv = this.rgbToHsv(rgb);
+
+      if (!this._arrayEqual(this.hsv, hsv)) {
+        this.set('hsv', hsv);
+      }
+      this._drawCurrentColor(rgb, this.alpha);
+    }
+
+    _drawCurrentColor(rgb, alpha) {
+      if (!(Array.isArray(rgb) && rgb.length === 3)) {
+        return;
+      }
+      alpha = (alpha === undefined) ? 1 : alpha;
+      const cssValue = this._computeCssValue(rgb, alpha);
+      const hsv = this.rgbToHsv(rgb);
+      const currentColorCanvas = this.root.querySelectorAll('canvas.current');
+
+      for (let i = 0; i < currentColorCanvas.length; i++) {
+        this._fillRect(currentColorCanvas[i], hsv, cssValue, alpha);
+      }
+
+      if (!this._selectedHsv) {
+        this._drawSelector(hsv);
+        this._drawHue(hsv);
+        this._drawAlpha(hsv, alpha);
+      }
+    }
+
+    _drawSelectedColor(hsv, alpha) {
+      if (!(Array.isArray(hsv) && hsv.length === 3)) {
+        return;
+      }
+      alpha = (alpha === undefined) ? 1 : alpha;
+      const rgb = this.hsvToRgb(hsv);
+      const cssValue = this._computeCssValue(rgb, alpha);
+      this._fillRect(this.$.selected, hsv, cssValue, alpha);
+      this._drawCurrentColor(this.rgb, this.alpha);
+    }
+
+    _fillRect(elem, hsv, cssValue, alpha) {
+      const context = elem.getContext("2d"),
+        rect = elem.getBoundingClientRect(),
+        width = rect.width,
+        height = rect.height;
+
+      context.clearRect(0, 0, width, height);
+      context.fillStyle = cssValue;
+      context.fillRect(0, 0, width, height);
+
+      if ((hsv[1] <= 0.33 && hsv[2] >= 0.66) || alpha <= 0.33) {
+        context.fillStyle = '#000';
+      } else {
+        context.fillStyle = '#fff';
+      }
+      context.textBaseline= 'middle';
+      context.textAlign= 'center';
+      context.font = `300 ${height}px inherit`;
+      context.fillText(cssValue, width/2, height/2, width);
+    }
+
+    _drawHue(hsv) {
+      let context = this.$.hue.getContext("2d");
+      let rect = this.$.hue.getBoundingClientRect();
+
+      let width = rect.width;
+      let height = rect.height;
+
+      context.clearRect(0, 0, width, height);
+
+      let gradient = context.createLinearGradient(0, 0, 1, height);
+
+      for (let step = 0; step < 360; step += 30) {
+        gradient.addColorStop(step/360, `hsl(${step},100%,50%)`);
+      }
+      gradient.addColorStop(1, `hsl(0,100%,50%)`);
+      context.fillStyle = gradient;
+      context.fillRect(0, 0, width, height);
+      if (!(Array.isArray(hsv) && hsv.length === 3)) {
+        return;
+      }
+      const y = height * hsv[0] / 360;
+      this._drawSlider(context, width, y);
+    }
+
+    _drawAlpha(hsv, alpha) {
+      if (!(Array.isArray(hsv) && hsv.length === 3)) {
+        return;
+      }
+      alpha = (alpha !== undefined && alpha >= 0 && alpha <= 1) ? alpha : (this.alpha || 1);
+      let context = this.$.alpha.getContext("2d");
+      let rect = this.$.alpha.getBoundingClientRect();
+
+      let width = rect.width;
+      let height = rect.height;
+
+      context.clearRect(0, 0, width, height);
+
+      let gradient = context.createLinearGradient(0, 0, 1, height);
+      gradient.addColorStop(0, `hsl(${hsv[0]},100%,50%)`);
+      gradient.addColorStop(1, 'rgba(0,0,0,0)');
+      context.fillStyle = gradient;
+      context.fillRect(0, 0, width, height);
+      const y = (1 - alpha) * height;
+      this._drawSlider(context, width, y);
+      this.alpha = alpha;
+    }
+
+    _drawSlider(context, width, y) {
+      context.beginPath();
+      y -= 2;
+      context.moveTo(0, y);
+      context.lineTo(width, y);
+      y += 3;
+      context.moveTo(0, y);
+      context.lineTo(width, y);
+      context.closePath();
+      context.lineWidth = 1.5;
+      context.strokeStyle = '#fff';
+      context.stroke();
+    }
+
+    _fixColor() {
+      if (this._selectedHsv) {
+        const rgb = this.hsvToRgb(this._selectedHsv);
+        if (this._arrayEqual(this.rgb, rgb) === false) {
+          this.set('rgb', rgb);
+          this._drawSelectedColor(this.hsv, this.alpha);
+          this._drawSelector(this.hsv);
+        }
+      }
+    }
+
+    _resetColor() {
+      if (!(Array.isArray(this.hsv) && this.hsv.length === 3)) {
+        return;
+      }
+      this._drawSelectedColor(this.hsv, this.alpha);
+      this._drawSelector(this.hsv);
+    }
+
+    _grabStart(e) {
+      if (!(e && e.target)) {
+        return;
+      }
+      e.target.classList.add('grabbing');
+      e.target.addEventListener('mousemove', this._select.bind(this), {capture: false, passive: true});
+      e.target.addEventListener('touchmove', this._select.bind(this), {capture: false, passive: true});
+      e.target.addEventListener('mouseup', this._grabEnd.bind(this), {capture: false, passive: true});
+      e.target.addEventListener('mouseleave', this._grabEnd.bind(this), {capture: false, passive: true});
+      e.target.addEventListener('touchend', this._grabEnd.bind(this), {capture: false, passive: true});
+      this._select(e);
+    }
+
+    _grabEnd(e) {
+      if (!(e && e.target)) {
+        return;
+      }
+      this._select(e);
+      e.target.classList.remove('grabbing');
+      e.target.removeEventListener('mousemove', this._select.bind(this), {capture: false, passive: true});
+      e.target.removeEventListener('touchmove', this._select.bind(this), {capture: false, passive: true});
+      e.target.removeEventListener('mouseup', this._grabEnd.bind(this), {capture: false, passive: true});
+      e.target.removeEventListener('mouseleave', this._grabEnd.bind(this), {capture: false, passive: true});
+      e.target.removeEventListener('touchend', this._grabEnd.bind(this), {capture: false, passive: true});
+    }
+
+    _select(e) {
+      if (!(e && e.target && e.target.classList.contains('grabbing'))) {
+        return;
+      } else if (e && e.type) {
+        e.target.removeEventListener(e.type, this._select.bind(this), {capture: false, passive: true});
+      }
+
+      const rect = e.target.getBoundingClientRect(),
+      width = rect.width,
+      height = rect.height,
+      elemLeft = rect.left,
+      elemTop = rect.top,
+      property = e.target.getAttribute('id');
+      const hsv = [];
+      for (let i = 0; i < this._selectedHsv.length; i++) {
+        hsv.push(this._selectedHsv[i] || 0);
+      }
+      let alpha = this.alpha;
+      switch (property) {
+        case 'alpha':
+          alpha = +(1 - (e.clientY - elemTop) / height).toFixed(2);
+          alpha = (alpha >= 0 && alpha <= 1) ? alpha : (this.alpha || 1);
+          break;
+        case 'saturation':
+          hsv[1] = +(((e.clientX - elemLeft) / width).toFixed(3));
+          hsv[1] = hsv[1] > 1 ? 1 : hsv[1];
+          hsv[1] = hsv[1] < 0 ? 0 : hsv[1];
+          hsv[2] = +((1 - (e.clientY - elemTop) / height).toFixed(3));
+          hsv[2] = hsv[2] > 1 ? 1 : hsv[2];
+          hsv[2] = hsv[2] < 0 ? 0 : hsv[2];
+          this._drawHue(hsv);
+          this._drawSelector(hsv);
+          this._drawSelectedColor(hsv, alpha);
+          break;
+        case 'hue':
+          hsv[0] = Math.round(360 * (e.clientY - elemTop) / height);
+          hsv[0] = hsv[0] > 360 ? 360 : hsv[0];
+          hsv[0] = hsv[0] < 0 ? 0 : hsv[0];
+          this._drawHue(hsv);
+          this._drawSelector(hsv);
+          break;
+      }
+      this.set('_selectedHsv', hsv);
+      this.alpha = alpha;
+      this._drawAlpha(hsv, alpha);
+      this._drawSelectedColor(hsv, alpha);
+    }
+
+    _alphaChanged(alpha) {
+      this._drawAlpha(this._selectedHsv || this.hsv, alpha);
+      this._drawSelectedColor(this._selectedHsv || this.hsv, alpha);
+    }
+
+    _onContextMenu(e) {
+      if (e && e.preventDefault) {
+        e.preventDefault();
+      }
+      const hsv = this.rgbToHsv(this.randomRGB());
+      this.set('_selectedHsv', hsv);
+      this._drawHue(hsv);
+      this._drawSelector(hsv);
+      this._drawAlpha(hsv, this.alpha);
+      this._drawSelectedColor(hsv, this.alpha);
+    }
+  }
+</script>
+
+<dom-module id="color-element">
+  <script>
+  /**
+  * `<color-element>` adds a color selector to your page using Polymer.
+  *
+  *   ```html
+  *     <color-element value="{{color}}"></color-element>
+  *   ```
+  *
+  * For example if you clamp on `hours`, you can round `color` and `value` to `00:00:00`. If you set `clamp="day"` you hide the day-selection.
+  *
+  * The following custom properties and mixins are also available for styling:
+  *
+  * Custom property | Description | Default
+  * ----------------|-------------|----------
+  * `--color-element-margin` | margin of the single color-element | `0px`
+  * `--color-element-background` | background-color of the color-element | `#f0f0f0`
+  *
+  * @customElement
+  * @polymer
+  *
+  * @appliesMixin ColorElementPattern
+  *
+  * @demo demo/color-picker.html
+  **/
+    class ColorElement extends ColorElementPattern(Polymer.Element) { // eslint-disable-line no-undef
+
+      static get is() {
+        return 'color-element';
+      }
+
+      static get template() {
+        return `
+          ${this.styleTemplate}
+          ${this.colorTemplate}
+        `
+      }
+
+    }
+    window.customElements.define(ColorElement.is, ColorElement);
+  </script>
+</dom-module>

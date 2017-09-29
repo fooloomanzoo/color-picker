@@ -1,0 +1,3173 @@
+{
+  "schema_version": "1.0.0",
+  "elements": [
+    {
+      "description": "`<color-element>` adds a color selector to your page using Polymer.\n\n  ```html\n    <color-element value=\"{{color}}\"></color-element>\n  ```\n\nFor example if you clamp on `hours`, you can round `color` and `value` to `00:00:00`. If you set `clamp=\"day\"` you hide the day-selection.\n\nThe following custom properties and mixins are also available for styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--color-element-margin` | margin of the single color-element | `0px`\n`--color-element-background` | background-color of the color-element | `#f0f0f0`",
+      "summary": "",
+      "path": "color-element.html",
+      "properties": [
+        {
+          "name": "rgb",
+          "type": "Array",
+          "description": "rgb-color",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "color-mixin.html",
+            "start": {
+              "line": 16,
+              "column": 10
+            },
+            "end": {
+              "line": 19,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true
+            }
+          },
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "alpha",
+          "type": "number",
+          "description": "alpha value",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 135,
+              "column": 8
+            },
+            "end": {
+              "line": 138,
+              "column": 9
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "\"_alphaChanged\""
+            }
+          },
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "cssValue",
+          "type": "string",
+          "description": "css value string",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "color-mixin.html",
+            "start": {
+              "line": 31,
+              "column": 10
+            },
+            "end": {
+              "line": 35,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "readOnly": true
+            }
+          },
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "description": "hex-color",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "color-mixin.html",
+            "start": {
+              "line": 39,
+              "column": 10
+            },
+            "end": {
+              "line": 43,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "observer": "\"_valueChanged\""
+            }
+          },
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "showCurrentSelectedColor",
+          "type": "boolean",
+          "description": "show the color field of the current selected color",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 127,
+              "column": 8
+            },
+            "end": {
+              "line": 130,
+              "column": 9
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "false",
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "hsv",
+          "type": "number",
+          "description": "hsv-color",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 143,
+              "column": 8
+            },
+            "end": {
+              "line": 145,
+              "column": 9
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_selectedHsv",
+          "type": "Array",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 147,
+              "column": 8
+            },
+            "end": {
+              "line": 149,
+              "column": 9
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "inheritedFrom": "ColorElementPattern"
+        }
+      ],
+      "methods": [
+        {
+          "name": "randomRGB",
+          "description": "generate random rgb-color",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "color-mixin.html",
+            "start": {
+              "line": 57,
+              "column": 6
+            },
+            "end": {
+              "line": 59,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "[array]",
+            "desc": "rgb-value array"
+          },
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "_valueChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "color-mixin.html",
+            "start": {
+              "line": 61,
+              "column": 6
+            },
+            "end": {
+              "line": 69,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "hex"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "_rgbChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 219,
+              "column": 4
+            },
+            "end": {
+              "line": 228,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "rgb"
+            }
+          ],
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_computeCssValue",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "color-mixin.html",
+            "start": {
+              "line": 78,
+              "column": 6
+            },
+            "end": {
+              "line": 88,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "rgb"
+            },
+            {
+              "name": "alpha"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "hexToRgb",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "color-mixin.html",
+            "start": {
+              "line": 90,
+              "column": 6
+            },
+            "end": {
+              "line": 97,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "hex"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "hsvToRgb",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "color-mixin.html",
+            "start": {
+              "line": 99,
+              "column": 6
+            },
+            "end": {
+              "line": 141,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "hsv"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "rgbToHex",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "color-mixin.html",
+            "start": {
+              "line": 143,
+              "column": 6
+            },
+            "end": {
+              "line": 154,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "rgb"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "rgbToHsv",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "color-mixin.html",
+            "start": {
+              "line": 156,
+              "column": 6
+            },
+            "end": {
+              "line": 198,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "rgb"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "_arrayEqual",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "color-mixin.html",
+            "start": {
+              "line": 200,
+              "column": 6
+            },
+            "end": {
+              "line": 212,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "a"
+            },
+            {
+              "name": "b"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "connectedCallback",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 153,
+              "column": 4
+            },
+            "end": {
+              "line": 159,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "disconnectedCallback",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 161,
+              "column": 4
+            },
+            "end": {
+              "line": 164,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_computeHeightForPicked",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 166,
+              "column": 4
+            },
+            "end": {
+              "line": 174,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "hsv1"
+            },
+            {
+              "name": "hsv2"
+            },
+            {
+              "name": "showCurrentSelectedColor"
+            }
+          ],
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_drawSelector",
+          "description": "renderColors the current view (manually).",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 179,
+              "column": 4
+            },
+            "end": {
+              "line": 208,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "hsv",
+              "type": "number",
+              "description": "The value of the color of the current view."
+            }
+          ],
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_drawCircle",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 210,
+              "column": 4
+            },
+            "end": {
+              "line": 217,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "context"
+            },
+            {
+              "name": "x"
+            },
+            {
+              "name": "y"
+            }
+          ],
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_drawCurrentColor",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 230,
+              "column": 4
+            },
+            "end": {
+              "line": 248,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "rgb"
+            },
+            {
+              "name": "alpha"
+            }
+          ],
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_drawSelectedColor",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 250,
+              "column": 4
+            },
+            "end": {
+              "line": 259,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "hsv"
+            },
+            {
+              "name": "alpha"
+            }
+          ],
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_fillRect",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 261,
+              "column": 4
+            },
+            "end": {
+              "line": 280,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "elem"
+            },
+            {
+              "name": "hsv"
+            },
+            {
+              "name": "cssValue"
+            },
+            {
+              "name": "alpha"
+            }
+          ],
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_drawHue",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 282,
+              "column": 4
+            },
+            "end": {
+              "line": 304,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "hsv"
+            }
+          ],
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_drawAlpha",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 306,
+              "column": 4
+            },
+            "end": {
+              "line": 327,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "hsv"
+            },
+            {
+              "name": "alpha"
+            }
+          ],
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_drawSlider",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 329,
+              "column": 4
+            },
+            "end": {
+              "line": 341,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "context"
+            },
+            {
+              "name": "width"
+            },
+            {
+              "name": "y"
+            }
+          ],
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_fixColor",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 343,
+              "column": 4
+            },
+            "end": {
+              "line": 352,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_resetColor",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 354,
+              "column": 4
+            },
+            "end": {
+              "line": 360,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_grabStart",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 362,
+              "column": 4
+            },
+            "end": {
+              "line": 373,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_grabEnd",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 375,
+              "column": 4
+            },
+            "end": {
+              "line": 386,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_select",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 388,
+              "column": 4
+            },
+            "end": {
+              "line": 434,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_alphaChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 436,
+              "column": 4
+            },
+            "end": {
+              "line": 439,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "alpha"
+            }
+          ],
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_onContextMenu",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 441,
+              "column": 4
+            },
+            "end": {
+              "line": 451,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "inheritedFrom": "ColorElementPattern"
+        }
+      ],
+      "staticMethods": [],
+      "demos": [
+        {
+          "url": "demo/color-picker.html",
+          "description": ""
+        }
+      ],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 480,
+          "column": 4
+        },
+        "end": {
+          "line": 493,
+          "column": 5
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "name": "ColorElement",
+      "attributes": [
+        {
+          "name": "rgb",
+          "description": "rgb-color",
+          "sourceRange": {
+            "file": "color-mixin.html",
+            "start": {
+              "line": 16,
+              "column": 10
+            },
+            "end": {
+              "line": 19,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "Array",
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "alpha",
+          "description": "alpha value",
+          "sourceRange": {
+            "start": {
+              "line": 135,
+              "column": 8
+            },
+            "end": {
+              "line": 138,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "type": "number",
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "css-value",
+          "description": "css value string",
+          "sourceRange": {
+            "file": "color-mixin.html",
+            "start": {
+              "line": 31,
+              "column": 10
+            },
+            "end": {
+              "line": 35,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "string",
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "value",
+          "description": "hex-color",
+          "sourceRange": {
+            "file": "color-mixin.html",
+            "start": {
+              "line": 39,
+              "column": 10
+            },
+            "end": {
+              "line": 43,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "string",
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "show-current-selected-color",
+          "description": "show the color field of the current selected color",
+          "sourceRange": {
+            "start": {
+              "line": 127,
+              "column": 8
+            },
+            "end": {
+              "line": 130,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "type": "boolean",
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "hsv",
+          "description": "hsv-color",
+          "sourceRange": {
+            "start": {
+              "line": 143,
+              "column": 8
+            },
+            "end": {
+              "line": 145,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "type": "number",
+          "inheritedFrom": "ColorElementPattern"
+        }
+      ],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [],
+      "tagname": "color-element",
+      "mixins": [
+        "ColorElementPattern"
+      ]
+    },
+    {
+      "description": "`color-picker` is a picker for color for **[Polymer](https://github.com/Polymer/polymer)** that can use the native input, too. If the **native** picker is choosen and is not supported, this element uses the **polyfill** datetime-picker. The `<calendar-element>` and the `<time-element>` will come in place if the native picker is not available or is not explicitly wanted. The `value` represents the selected `hex-color` and `alpha` the opacity of the color. `css-value` will give you directly the css-string.\n\n ```html\n   <color-picker value=\"{{value}}\"></color-picker>\n ```\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--color-element-margin` | margin of the single color-element | `0px`\n`--color-element-background` | background-color of the color-element | `#f0f0f0`\n   *",
+      "summary": "",
+      "path": "color-picker.html",
+      "properties": [
+        {
+          "name": "rgb",
+          "type": "Array",
+          "description": "rgb-color",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "color-mixin.html",
+            "start": {
+              "line": 16,
+              "column": 10
+            },
+            "end": {
+              "line": 19,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true
+            }
+          },
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "alpha",
+          "type": "number",
+          "description": "alpha value",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "color-element.html",
+            "start": {
+              "line": 135,
+              "column": 8
+            },
+            "end": {
+              "line": 138,
+              "column": 9
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "\"_alphaChanged\""
+            }
+          },
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "cssValue",
+          "type": "string",
+          "description": "css value string",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "color-mixin.html",
+            "start": {
+              "line": 31,
+              "column": 10
+            },
+            "end": {
+              "line": 35,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "readOnly": true
+            }
+          },
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "description": "hex-color",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "color-mixin.html",
+            "start": {
+              "line": 39,
+              "column": 10
+            },
+            "end": {
+              "line": 43,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "observer": "\"_valueChanged\""
+            }
+          },
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "showCurrentSelectedColor",
+          "type": "boolean",
+          "description": "show the color field of the current selected color",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "color-element.html",
+            "start": {
+              "line": 127,
+              "column": 8
+            },
+            "end": {
+              "line": 130,
+              "column": 9
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "false",
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "hsv",
+          "type": "number",
+          "description": "hsv-color",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "color-element.html",
+            "start": {
+              "line": 143,
+              "column": 8
+            },
+            "end": {
+              "line": 145,
+              "column": 9
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_selectedHsv",
+          "type": "Array",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "color-element.html",
+            "start": {
+              "line": 147,
+              "column": 8
+            },
+            "end": {
+              "line": 149,
+              "column": 9
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "inheritedFrom": "ColorElementPattern"
+        }
+      ],
+      "methods": [
+        {
+          "name": "randomRGB",
+          "description": "generate random rgb-color",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "color-mixin.html",
+            "start": {
+              "line": 57,
+              "column": 6
+            },
+            "end": {
+              "line": 59,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "[array]",
+            "desc": "rgb-value array"
+          },
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "_valueChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "color-mixin.html",
+            "start": {
+              "line": 61,
+              "column": 6
+            },
+            "end": {
+              "line": 69,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "hex"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "_rgbChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "color-element.html",
+            "start": {
+              "line": 219,
+              "column": 4
+            },
+            "end": {
+              "line": 228,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "rgb"
+            }
+          ],
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_computeCssValue",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "color-mixin.html",
+            "start": {
+              "line": 78,
+              "column": 6
+            },
+            "end": {
+              "line": 88,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "rgb"
+            },
+            {
+              "name": "alpha"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "hexToRgb",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "color-mixin.html",
+            "start": {
+              "line": 90,
+              "column": 6
+            },
+            "end": {
+              "line": 97,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "hex"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "hsvToRgb",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "color-mixin.html",
+            "start": {
+              "line": 99,
+              "column": 6
+            },
+            "end": {
+              "line": 141,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "hsv"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "rgbToHex",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "color-mixin.html",
+            "start": {
+              "line": 143,
+              "column": 6
+            },
+            "end": {
+              "line": 154,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "rgb"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "rgbToHsv",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "color-mixin.html",
+            "start": {
+              "line": 156,
+              "column": 6
+            },
+            "end": {
+              "line": 198,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "rgb"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "_arrayEqual",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "color-mixin.html",
+            "start": {
+              "line": 200,
+              "column": 6
+            },
+            "end": {
+              "line": 212,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "a"
+            },
+            {
+              "name": "b"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "connectedCallback",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "color-element.html",
+            "start": {
+              "line": 153,
+              "column": 4
+            },
+            "end": {
+              "line": 159,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "disconnectedCallback",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "color-element.html",
+            "start": {
+              "line": 161,
+              "column": 4
+            },
+            "end": {
+              "line": 164,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_computeHeightForPicked",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "color-element.html",
+            "start": {
+              "line": 166,
+              "column": 4
+            },
+            "end": {
+              "line": 174,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "hsv1"
+            },
+            {
+              "name": "hsv2"
+            },
+            {
+              "name": "showCurrentSelectedColor"
+            }
+          ],
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_drawSelector",
+          "description": "renderColors the current view (manually).",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "color-element.html",
+            "start": {
+              "line": 179,
+              "column": 4
+            },
+            "end": {
+              "line": 208,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "hsv",
+              "type": "number",
+              "description": "The value of the color of the current view."
+            }
+          ],
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_drawCircle",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "color-element.html",
+            "start": {
+              "line": 210,
+              "column": 4
+            },
+            "end": {
+              "line": 217,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "context"
+            },
+            {
+              "name": "x"
+            },
+            {
+              "name": "y"
+            }
+          ],
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_drawCurrentColor",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "color-element.html",
+            "start": {
+              "line": 230,
+              "column": 4
+            },
+            "end": {
+              "line": 248,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "rgb"
+            },
+            {
+              "name": "alpha"
+            }
+          ],
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_drawSelectedColor",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "color-element.html",
+            "start": {
+              "line": 250,
+              "column": 4
+            },
+            "end": {
+              "line": 259,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "hsv"
+            },
+            {
+              "name": "alpha"
+            }
+          ],
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_fillRect",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "color-element.html",
+            "start": {
+              "line": 261,
+              "column": 4
+            },
+            "end": {
+              "line": 280,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "elem"
+            },
+            {
+              "name": "hsv"
+            },
+            {
+              "name": "cssValue"
+            },
+            {
+              "name": "alpha"
+            }
+          ],
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_drawHue",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "color-element.html",
+            "start": {
+              "line": 282,
+              "column": 4
+            },
+            "end": {
+              "line": 304,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "hsv"
+            }
+          ],
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_drawAlpha",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "color-element.html",
+            "start": {
+              "line": 306,
+              "column": 4
+            },
+            "end": {
+              "line": 327,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "hsv"
+            },
+            {
+              "name": "alpha"
+            }
+          ],
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_drawSlider",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "color-element.html",
+            "start": {
+              "line": 329,
+              "column": 4
+            },
+            "end": {
+              "line": 341,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "context"
+            },
+            {
+              "name": "width"
+            },
+            {
+              "name": "y"
+            }
+          ],
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_fixColor",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "color-element.html",
+            "start": {
+              "line": 343,
+              "column": 4
+            },
+            "end": {
+              "line": 352,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_resetColor",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "color-element.html",
+            "start": {
+              "line": 354,
+              "column": 4
+            },
+            "end": {
+              "line": 360,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_grabStart",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "color-element.html",
+            "start": {
+              "line": 362,
+              "column": 4
+            },
+            "end": {
+              "line": 373,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_grabEnd",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "color-element.html",
+            "start": {
+              "line": 375,
+              "column": 4
+            },
+            "end": {
+              "line": 386,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_select",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "color-element.html",
+            "start": {
+              "line": 388,
+              "column": 4
+            },
+            "end": {
+              "line": 434,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_alphaChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "color-element.html",
+            "start": {
+              "line": 436,
+              "column": 4
+            },
+            "end": {
+              "line": 439,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "alpha"
+            }
+          ],
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_onContextMenu",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "color-element.html",
+            "start": {
+              "line": 441,
+              "column": 4
+            },
+            "end": {
+              "line": 451,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "inheritedFrom": "ColorElementPattern"
+        }
+      ],
+      "staticMethods": [],
+      "demos": [
+        {
+          "url": "demo/color-picker.html",
+          "description": ""
+        }
+      ],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 32,
+          "column": 4
+        },
+        "end": {
+          "line": 157,
+          "column": 5
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "name": "colorPicker",
+      "attributes": [
+        {
+          "name": "rgb",
+          "description": "rgb-color",
+          "sourceRange": {
+            "file": "color-mixin.html",
+            "start": {
+              "line": 16,
+              "column": 10
+            },
+            "end": {
+              "line": 19,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "Array",
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "alpha",
+          "description": "alpha value",
+          "sourceRange": {
+            "file": "color-element.html",
+            "start": {
+              "line": 135,
+              "column": 8
+            },
+            "end": {
+              "line": 138,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "type": "number",
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "css-value",
+          "description": "css value string",
+          "sourceRange": {
+            "file": "color-mixin.html",
+            "start": {
+              "line": 31,
+              "column": 10
+            },
+            "end": {
+              "line": 35,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "string",
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "value",
+          "description": "hex-color",
+          "sourceRange": {
+            "file": "color-mixin.html",
+            "start": {
+              "line": 39,
+              "column": 10
+            },
+            "end": {
+              "line": 43,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "string",
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "show-current-selected-color",
+          "description": "show the color field of the current selected color",
+          "sourceRange": {
+            "file": "color-element.html",
+            "start": {
+              "line": 127,
+              "column": 8
+            },
+            "end": {
+              "line": 130,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "type": "boolean",
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "hsv",
+          "description": "hsv-color",
+          "sourceRange": {
+            "file": "color-element.html",
+            "start": {
+              "line": 143,
+              "column": 8
+            },
+            "end": {
+              "line": 145,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "type": "number",
+          "inheritedFrom": "ColorElementPattern"
+        }
+      ],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [],
+      "tagname": "color-picker",
+      "mixins": [
+        "ColorElementPattern",
+        "colorPickerMixin",
+        "PolyfillPickerPattern"
+      ]
+    }
+  ],
+  "mixins": [
+    {
+      "description": "Mixin that provides color-properties",
+      "summary": "",
+      "path": "color-mixin.html",
+      "properties": [
+        {
+          "name": "rgb",
+          "type": "Array",
+          "description": "rgb-color",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 16,
+              "column": 10
+            },
+            "end": {
+              "line": 19,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true
+            }
+          }
+        },
+        {
+          "name": "alpha",
+          "type": "number",
+          "description": "alpha-value",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 23,
+              "column": 10
+            },
+            "end": {
+              "line": 27,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true
+            }
+          },
+          "defaultValue": "1"
+        },
+        {
+          "name": "cssValue",
+          "type": "string",
+          "description": "css value string",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 31,
+              "column": 10
+            },
+            "end": {
+              "line": 35,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "readOnly": true
+            }
+          }
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "description": "hex-color",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 39,
+              "column": 10
+            },
+            "end": {
+              "line": 43,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "observer": "\"_valueChanged\""
+            }
+          }
+        }
+      ],
+      "methods": [
+        {
+          "name": "randomRGB",
+          "description": "generate random rgb-color",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 57,
+              "column": 6
+            },
+            "end": {
+              "line": 59,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "[array]",
+            "desc": "rgb-value array"
+          }
+        },
+        {
+          "name": "_valueChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 61,
+              "column": 6
+            },
+            "end": {
+              "line": 69,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "hex"
+            }
+          ]
+        },
+        {
+          "name": "_rgbChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 71,
+              "column": 6
+            },
+            "end": {
+              "line": 76,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "rgb"
+            }
+          ]
+        },
+        {
+          "name": "_computeCssValue",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 78,
+              "column": 6
+            },
+            "end": {
+              "line": 88,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "rgb"
+            },
+            {
+              "name": "alpha"
+            }
+          ]
+        },
+        {
+          "name": "hexToRgb",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 90,
+              "column": 6
+            },
+            "end": {
+              "line": 97,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "hex"
+            }
+          ]
+        },
+        {
+          "name": "hsvToRgb",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 99,
+              "column": 6
+            },
+            "end": {
+              "line": 141,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "hsv"
+            }
+          ]
+        },
+        {
+          "name": "rgbToHex",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 143,
+              "column": 6
+            },
+            "end": {
+              "line": 154,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "rgb"
+            }
+          ]
+        },
+        {
+          "name": "rgbToHsv",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 156,
+              "column": 6
+            },
+            "end": {
+              "line": 198,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "rgb"
+            }
+          ]
+        },
+        {
+          "name": "_arrayEqual",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 200,
+              "column": 6
+            },
+            "end": {
+              "line": 212,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "a"
+            },
+            {
+              "name": "b"
+            }
+          ]
+        }
+      ],
+      "staticMethods": [],
+      "demos": [],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 7,
+          "column": 2
+        },
+        "end": {
+          "line": 214,
+          "column": 3
+        }
+      },
+      "privacy": "public",
+      "name": "ColorMixin",
+      "attributes": [
+        {
+          "name": "rgb",
+          "description": "rgb-color",
+          "sourceRange": {
+            "start": {
+              "line": 16,
+              "column": 10
+            },
+            "end": {
+              "line": 19,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "Array"
+        },
+        {
+          "name": "alpha",
+          "description": "alpha-value",
+          "sourceRange": {
+            "start": {
+              "line": 23,
+              "column": 10
+            },
+            "end": {
+              "line": 27,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "number"
+        },
+        {
+          "name": "css-value",
+          "description": "css value string",
+          "sourceRange": {
+            "start": {
+              "line": 31,
+              "column": 10
+            },
+            "end": {
+              "line": 35,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "description": "hex-color",
+          "sourceRange": {
+            "start": {
+              "line": 39,
+              "column": 10
+            },
+            "end": {
+              "line": 43,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": []
+    },
+    {
+      "description": "Mixin for color-element",
+      "summary": "",
+      "path": "color-element.html",
+      "properties": [
+        {
+          "name": "rgb",
+          "type": "Array",
+          "description": "rgb-color",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "color-mixin.html",
+            "start": {
+              "line": 16,
+              "column": 10
+            },
+            "end": {
+              "line": 19,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true
+            }
+          },
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "alpha",
+          "type": "number",
+          "description": "alpha value",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 135,
+              "column": 8
+            },
+            "end": {
+              "line": 138,
+              "column": 9
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "\"_alphaChanged\""
+            }
+          }
+        },
+        {
+          "name": "cssValue",
+          "type": "string",
+          "description": "css value string",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "color-mixin.html",
+            "start": {
+              "line": 31,
+              "column": 10
+            },
+            "end": {
+              "line": 35,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "readOnly": true
+            }
+          },
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "description": "hex-color",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "color-mixin.html",
+            "start": {
+              "line": 39,
+              "column": 10
+            },
+            "end": {
+              "line": 43,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "observer": "\"_valueChanged\""
+            }
+          },
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "showCurrentSelectedColor",
+          "type": "boolean",
+          "description": "show the color field of the current selected color",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 127,
+              "column": 8
+            },
+            "end": {
+              "line": 130,
+              "column": 9
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "false"
+        },
+        {
+          "name": "hsv",
+          "type": "number",
+          "description": "hsv-color",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 143,
+              "column": 8
+            },
+            "end": {
+              "line": 145,
+              "column": 9
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          }
+        },
+        {
+          "name": "_selectedHsv",
+          "type": "Array",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 147,
+              "column": 8
+            },
+            "end": {
+              "line": 149,
+              "column": 9
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          }
+        }
+      ],
+      "methods": [
+        {
+          "name": "randomRGB",
+          "description": "generate random rgb-color",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "color-mixin.html",
+            "start": {
+              "line": 57,
+              "column": 6
+            },
+            "end": {
+              "line": 59,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "[array]",
+            "desc": "rgb-value array"
+          },
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "_valueChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "color-mixin.html",
+            "start": {
+              "line": 61,
+              "column": 6
+            },
+            "end": {
+              "line": 69,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "hex"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "_rgbChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 219,
+              "column": 4
+            },
+            "end": {
+              "line": 228,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "rgb"
+            }
+          ]
+        },
+        {
+          "name": "_computeCssValue",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "color-mixin.html",
+            "start": {
+              "line": 78,
+              "column": 6
+            },
+            "end": {
+              "line": 88,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "rgb"
+            },
+            {
+              "name": "alpha"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "hexToRgb",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "color-mixin.html",
+            "start": {
+              "line": 90,
+              "column": 6
+            },
+            "end": {
+              "line": 97,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "hex"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "hsvToRgb",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "color-mixin.html",
+            "start": {
+              "line": 99,
+              "column": 6
+            },
+            "end": {
+              "line": 141,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "hsv"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "rgbToHex",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "color-mixin.html",
+            "start": {
+              "line": 143,
+              "column": 6
+            },
+            "end": {
+              "line": 154,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "rgb"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "rgbToHsv",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "color-mixin.html",
+            "start": {
+              "line": 156,
+              "column": 6
+            },
+            "end": {
+              "line": 198,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "rgb"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "_arrayEqual",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "color-mixin.html",
+            "start": {
+              "line": 200,
+              "column": 6
+            },
+            "end": {
+              "line": 212,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "a"
+            },
+            {
+              "name": "b"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "connectedCallback",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 153,
+              "column": 4
+            },
+            "end": {
+              "line": 159,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "disconnectedCallback",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 161,
+              "column": 4
+            },
+            "end": {
+              "line": 164,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "_computeHeightForPicked",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 166,
+              "column": 4
+            },
+            "end": {
+              "line": 174,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "hsv1"
+            },
+            {
+              "name": "hsv2"
+            },
+            {
+              "name": "showCurrentSelectedColor"
+            }
+          ]
+        },
+        {
+          "name": "_drawSelector",
+          "description": "renderColors the current view (manually).",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 179,
+              "column": 4
+            },
+            "end": {
+              "line": 208,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "hsv",
+              "type": "number",
+              "description": "The value of the color of the current view."
+            }
+          ]
+        },
+        {
+          "name": "_drawCircle",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 210,
+              "column": 4
+            },
+            "end": {
+              "line": 217,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "context"
+            },
+            {
+              "name": "x"
+            },
+            {
+              "name": "y"
+            }
+          ]
+        },
+        {
+          "name": "_drawCurrentColor",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 230,
+              "column": 4
+            },
+            "end": {
+              "line": 248,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "rgb"
+            },
+            {
+              "name": "alpha"
+            }
+          ]
+        },
+        {
+          "name": "_drawSelectedColor",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 250,
+              "column": 4
+            },
+            "end": {
+              "line": 259,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "hsv"
+            },
+            {
+              "name": "alpha"
+            }
+          ]
+        },
+        {
+          "name": "_fillRect",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 261,
+              "column": 4
+            },
+            "end": {
+              "line": 280,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "elem"
+            },
+            {
+              "name": "hsv"
+            },
+            {
+              "name": "cssValue"
+            },
+            {
+              "name": "alpha"
+            }
+          ]
+        },
+        {
+          "name": "_drawHue",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 282,
+              "column": 4
+            },
+            "end": {
+              "line": 304,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "hsv"
+            }
+          ]
+        },
+        {
+          "name": "_drawAlpha",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 306,
+              "column": 4
+            },
+            "end": {
+              "line": 327,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "hsv"
+            },
+            {
+              "name": "alpha"
+            }
+          ]
+        },
+        {
+          "name": "_drawSlider",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 329,
+              "column": 4
+            },
+            "end": {
+              "line": 341,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "context"
+            },
+            {
+              "name": "width"
+            },
+            {
+              "name": "y"
+            }
+          ]
+        },
+        {
+          "name": "_fixColor",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 343,
+              "column": 4
+            },
+            "end": {
+              "line": 352,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "_resetColor",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 354,
+              "column": 4
+            },
+            "end": {
+              "line": 360,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "_grabStart",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 362,
+              "column": 4
+            },
+            "end": {
+              "line": 373,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ]
+        },
+        {
+          "name": "_grabEnd",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 375,
+              "column": 4
+            },
+            "end": {
+              "line": 386,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ]
+        },
+        {
+          "name": "_select",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 388,
+              "column": 4
+            },
+            "end": {
+              "line": 434,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ]
+        },
+        {
+          "name": "_alphaChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 436,
+              "column": 4
+            },
+            "end": {
+              "line": 439,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "alpha"
+            }
+          ]
+        },
+        {
+          "name": "_onContextMenu",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 441,
+              "column": 4
+            },
+            "end": {
+              "line": 451,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ]
+        }
+      ],
+      "staticMethods": [],
+      "demos": [],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 12,
+          "column": 2
+        },
+        "end": {
+          "line": 452,
+          "column": 3
+        }
+      },
+      "privacy": "public",
+      "name": "ColorElementPattern",
+      "attributes": [
+        {
+          "name": "rgb",
+          "description": "rgb-color",
+          "sourceRange": {
+            "file": "color-mixin.html",
+            "start": {
+              "line": 16,
+              "column": 10
+            },
+            "end": {
+              "line": 19,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "Array",
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "alpha",
+          "description": "alpha value",
+          "sourceRange": {
+            "start": {
+              "line": 135,
+              "column": 8
+            },
+            "end": {
+              "line": 138,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "type": "number"
+        },
+        {
+          "name": "css-value",
+          "description": "css value string",
+          "sourceRange": {
+            "file": "color-mixin.html",
+            "start": {
+              "line": 31,
+              "column": 10
+            },
+            "end": {
+              "line": 35,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "string",
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "value",
+          "description": "hex-color",
+          "sourceRange": {
+            "file": "color-mixin.html",
+            "start": {
+              "line": 39,
+              "column": 10
+            },
+            "end": {
+              "line": 43,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "string",
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "show-current-selected-color",
+          "description": "show the color field of the current selected color",
+          "sourceRange": {
+            "start": {
+              "line": 127,
+              "column": 8
+            },
+            "end": {
+              "line": 130,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "type": "boolean"
+        },
+        {
+          "name": "hsv",
+          "description": "hsv-color",
+          "sourceRange": {
+            "start": {
+              "line": 143,
+              "column": 8
+            },
+            "end": {
+              "line": 145,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "type": "number"
+        }
+      ],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [],
+      "mixins": [
+        "ColorMixin"
+      ]
+    }
+  ]
+}

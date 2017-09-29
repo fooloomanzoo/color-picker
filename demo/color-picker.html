@@ -1,0 +1,84 @@
+
+<!doctype html>
+<html>
+  <head>
+    <title>color-picker demo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+
+    <link rel="import" href="../color-picker.html">
+    <custom-style>
+      <style is="custom-style" include="demo-pages-shared-styles">
+        .result {
+          margin: 0.75em;
+          padding: 0.5em;
+          line-height: 1.5;
+        }
+      </style>
+    </custom-style>
+  </head>
+
+  <body>
+
+    <div class="vertical-section-container centered">
+      <h3>Create a standalone color-element</h3>
+      <demo-snippet>
+        <template>
+          <dom-bind>
+            <template is="dom-bind">
+              <color-element value="{{value}}" css-value="{{cssValue}}" alpha="{{alpha}}"></color-element>
+              <div class="vertical-section-container result">
+                <div><code>hex</code>: <b>[[value]]</b></div>
+                <div><code>alpha</code>: <b>[[alpha]]</b></div>
+                <div><code>css-value</code>: <b>[[cssValue]]</b></div>
+              </div>
+            </template>
+          </dom-bind>
+        </template>
+      </demo-snippet>
+    </div>
+
+    <div class="vertical-section-container centered">
+      <h3>Create a polyfill color-picker, if available</h3>
+      <demo-snippet>
+        <template>
+          <dom-bind>
+            <template is="dom-bind">
+              <color-picker value="{{value}}" css-value="{{cssValue}}" alpha="{{alpha}}" position="bottom"></color-picker>
+              <div class="vertical-section-container result">
+                <div><code>hex</code>: <b>[[value]]</b></div>
+                <div><code>alpha</code>: <b>[[alpha]]</b></div>
+                <div><code>css-value</code>: <b>[[cssValue]]</b></div>
+              </div>
+            </template>
+          </dom-bind>
+        </template>
+      </demo-snippet>
+    </div>
+
+    <div class="vertical-section-container centered">
+      <h3>Create a native color-picker, if available</h3>
+      <demo-snippet>
+        <template>
+          <dom-bind>
+            <template is="dom-bind">
+              <color-picker native value="{{value}}" css-value="{{cssValue}}" alpha="{{alpha}}" position="bottom"></color-picker>
+              <div class="vertical-section-container result">
+                <div><code>hex</code>: <b>[[value]]</b></div>
+                <div><code>alpha</code>: <b>[[alpha]]</b></div>
+                <div><code>css-value</code>: <b>[[cssValue]]</b></div>
+              </div>
+            </template>
+          </dom-bind>
+        </template>
+      </demo-snippet>
+    </div>
+
+
+  </body>
+
+</html>

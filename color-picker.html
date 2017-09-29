@@ -1,0 +1,162 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../input-picker-pattern/input-picker-pattern.html">
+<link rel="import" href="../input-picker-pattern/dropdown-style.html">
+<link rel="import" href="../input-picker-pattern/input-picker-shared-style.html">
+
+<link rel="import" href="../number-input/number-input.html">
+
+<link rel="import" href="color-element.html">
+
+<dom-module id="color-picker">
+  <script>
+  /**
+   *  `color-picker` is a picker for color for **[Polymer](https://github.com/Polymer/polymer)** that can use the native input, too. If the **native** picker is choosen and is not supported, this element uses the **polyfill** datetime-picker. The `<calendar-element>` and the `<time-element>` will come in place if the native picker is not available or is not explicitly wanted. The `value` represents the selected `hex-color` and `alpha` the opacity of the color. `css-value` will give you directly the css-string.
+   *
+   *  ```html
+   *    <color-picker value="{{value}}"></color-picker>
+   *  ```
+   *
+   * Custom property | Description | Default
+   * ----------------|-------------|----------
+   * `--color-element-margin` | margin of the single color-element | `0px`
+   * `--color-element-background` | background-color of the color-element | `#f0f0f0`
+   *    *
+   *  @polymer
+   *  @customElement
+   *
+   *  @appliesMixin ColorElementPattern
+   *  @appliesMixin colorPickerMixin
+   *  @appliesMixin PolyfillPickerPattern
+   *
+   *  @demo demo/color-picker.html
+   **/
+    class colorPicker extends InputPickerPattern(ColorElementPattern(Polymer.Element)) { // eslint-disable-line no-undef
+
+      static get is() {
+        return 'color-picker';
+      }
+
+      static get expectedNativeInputType() {
+        return 'color';
+      }
+
+      static get nativeInputBinding() {
+        return 'value';
+      }
+
+      static get customStyleToInclude() {
+        return `dropdown-style input-picker-shared-style`;
+      }
+
+      static get customStyleContent() {
+        return `
+          ${super.customStyleContent || ''}
+          :host {
+            --input-selected-background: #ddd;
+            --input-selected-color: #111;
+            --input-background: #252525;
+            --input-color: #f1f1f1;
+          }
+          input[type="color"].native {
+            height: 1.5em;
+            width: 2em;
+            padding: 0.5em;
+            box-sizing: content-box;
+            cursor: pointer;
+            margin: 0;
+            @apply --color-input;
+          }
+          input[type="color"].native::-webkit-color-swatch-wrapper {
+            padding: 0;
+          }
+          input[type="color"].native::-webkit-color-swatch {
+            border-radius: 4px;
+          }
+          .value {
+            margin: 0 0.5em;
+          }
+          [hidden] {
+            display: none !important;
+          }
+          number-input.alpha {
+            --number-input: {
+              @apply --input-style;
+            };
+            --number-input-focus: {
+              @apply --input-focus;
+            };
+          }
+          .polyfill {
+            @apply --input-style;
+          }
+          .polyfill:focus,
+          .polyfill:hover {
+            @apply --input-focus;
+          }
+          input.native {
+            @apply --input-style;
+          }
+          #picker {
+            @apply --input-element;
+            @apply --input-picker;
+            overflow: hidden;
+            padding: 0;
+          }
+          .alpha {
+            font-size: 0.6em;
+            margin-left: 6px;
+            font-style: italic;
+            height: 100%;
+          }
+          .replacement {
+            border-radius: inherit;
+            border: thin solid #bbb;
+            display: inline-flex;
+            overflow: hidden;
+          }
+        `;
+      }
+
+      /**
+       * template for native input element
+       * @type {string}
+       */
+      static get _nativeInputTemplate() {
+        return `
+          ${super._nativeInputTemplate}
+          <number-input class="alpha" hidden$="[[!native]]" value="{{alpha}}" min="0" max="1" step="0.01" saturate></number-input>
+        `;
+      }
+      
+      /**
+       * template for control buttons
+       * @type {string}
+       */
+      static get _buttonTemplate() {
+        return `
+          ${super._buttonTemplate || ''}
+          <svg class="icon button close" hidden$="[[!opened]]" viewBox="0 0 24 24" on-click="close"><g><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></g></svg>
+        `;
+      }
+
+      static get replacementInputTemplate() {
+        return `
+          <div class="transparency replacement">
+            <canvas class="current" width="100" height="24"></canvas>
+          </div>
+          <number-input class="alpha" value="{{alpha}}" min="0" max="1" step="0.01" saturate></number-input>
+        `;
+      }
+
+      static get pickerTemplate() {
+        return `
+          <div id="picker" class="dropdown">
+            ${this.colorTemplate}
+          </div>
+        `;
+      }
+    }
+
+    window.customElements.define(colorPicker.is, colorPicker);
+  </script>
+</dom-module>
