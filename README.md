@@ -40,7 +40,7 @@ Examples:
 <custom-element-demo height="300">
   <template>
     <script src="../webcomponentsjs/webcomponents-lite.js"></script>
-    <link rel="import" href="color-picker.html">
+    <link rel="import" href="color-element.html">
     <style>
       html {
         font-family: 'Source Sans Pro', sans-serif;
@@ -57,7 +57,7 @@ Examples:
 -->
 
 ```html
-<color-picker value="{{color}}" css-value="{{cssValue}}"></color-picker>
+<color-element value="{{color}}" css-value="{{cssValue}}"></color-element>
 <p>value: [[color]]</p>
 <p>css-value: [[cssValue]]</p>
 ```
@@ -86,7 +86,7 @@ Examples:
 -->
 
 ```html
-<color-element value="{{color}}"></color-element>
+<color-picker value="{{color}}"></color-picker>
 ```
 
 #### Use the polyfill or the native picker
