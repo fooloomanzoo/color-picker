@@ -57,7 +57,7 @@ Examples:
 -->
 
 ```html
-<color-element value="{{color}}" css-value="{{cssValue}}"></color-element>
+<color-picker value="{{color}}" css-value="{{cssValue}}"></color-picker>
 <p>value: [[color]]</p>
 <p>css-value: [[cssValue]]</p>
 ```
