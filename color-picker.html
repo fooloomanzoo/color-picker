@@ -30,7 +30,7 @@
    *
    *  @demo demo/color-picker.html
    **/
-    class colorPicker extends InputPickerPattern(ColorElementPattern(Polymer.Element)) { // eslint-disable-line no-undef
+    class ColorPicker extends InputPickerPattern(ColorElementPattern(Polymer.Element)) { // eslint-disable-line no-undef
 
       static get is() {
         return 'color-picker';
@@ -156,6 +156,6 @@
       }
     }
 
-    window.customElements.define(colorPicker.is, colorPicker);
+    window.customElements.define(ColorPicker.is, ColorPicker);
   </script>
 </dom-module>

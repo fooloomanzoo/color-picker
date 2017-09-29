@@ -40,7 +40,7 @@ Examples:
 <custom-element-demo height="300">
   <template>
     <script src="../webcomponentsjs/webcomponents-lite.js"></script>
-    <link rel="import" href="color-element.html">
+    <link rel="import" href="color-picker.html">
     <style>
       html {
         font-family: 'Source Sans Pro', sans-serif;
@@ -57,16 +57,17 @@ Examples:
 -->
 
 ```html
-<color-element value="{{color}}" css-value="{{cssValue}}"></color-element>
-<p>value: [[color]]</p>
-<p>css-value: [[cssValue]]</p>
+  <color-element value="{{value}}" css-value="{{cssValue}}" alpha="{{alpha}}"></color-element>
+  <div>hex: <b>[[value]]</div>
+  <div>alpha: <b>[[alpha]]</div>
+  <div>css-value: <b>[[cssValue]]</div>
 ```
 
 #### Stand-alone color-picker
 
 <!--
 ```
-<custom-element-demo height="100">
+<custom-element-demo height="300">
   <template>
     <script src="../webcomponentsjs/webcomponents-lite.js"></script>
     <link rel="import" href="color-picker.html">
