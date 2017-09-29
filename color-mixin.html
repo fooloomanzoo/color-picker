@@ -84,7 +84,6 @@
           this.alpha = 1;
           return;
         }
-        console.log((alpha == 1) ? `${this.rgbToHex(rgb)}` : `rgba(${rgb.join(',')},${alpha})`);
         return (alpha === 1) ? `${this.rgbToHex(rgb)}` : `rgba(${rgb.join(',')},${alpha})`;
       }
 
