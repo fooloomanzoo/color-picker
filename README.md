@@ -7,7 +7,7 @@ _[Demo and API docs](https://fooloomanzoo.github.io/color-picker/components/colo
 
 ### What is it for?
 
-`color-picker` is a picker for color for **[Polymer](https://github.com/Polymer/polymer)** that can use the **native** input, too. the approach is the same like in [&lt;datetime-picker&gt;](https://fooloomanzoo.github.io/datetime-picker/components/datetime-picker/). If the **native** picker is choosen and is not supported, this element use the **polyfill** color-picker. The `<color-element>` will come in place if the native picker is not available or is not explicitly wanted.  The `value` represents the selected `hex-color` and `alpha` the opacity of the color. `css-value` will give you directly the css-string.
+`color-picker` is a picker for color for **[Polymer](https://github.com/Polymer/polymer)** that can use the **native** input, too. It has the same approach like in [&lt;datetime-picker&gt;](https://fooloomanzoo.github.io/datetime-picker/components/datetime-picker/). If the **native** picker is choosen and is not supported, this element use the **polyfill** color-picker. The `<color-element>` will come in place if the native picker is not available or is not explicitly wanted.  The `value` represents the selected `hex-color` and `alpha` the opacity of the color. `css-value` will give you directly the css-string.
 
 ### Motivation
 
