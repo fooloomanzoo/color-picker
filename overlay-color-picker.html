@@ -1,0 +1,36 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../input-picker-pattern/overlay-picker-mixin.html">
+
+<link rel="import" href="color-picker.html">
+
+<dom-module id="overlay-color-picker">
+  <script>
+  /**
+   *  `<overlay-color-picker>` extends `color-picker` in an overlay.
+   *
+   *  ```html
+   *    <overlay-color-picker value="{{value}}"></overlay-color-picker>
+   *  ```
+   *
+   * Custom property | Description | Default
+   * ----------------|-------------|----------
+   * `--color-element-margin` | margin of the single color-element | `0px`
+   * `--color-element-background` | background-color of the color-element | `#f0f0f0`
+   *    *
+   *  @polymer
+   *  @customElement
+   *
+   *  @appliesMixin OverlayPickerMixin
+   *  @appliesMixin ColorPicker
+   *
+   *  @demo demo/color-picker.html
+   **/
+    class OverlayColorPicker extends OverlayPickerMixin(ColorPicker) { // eslint-disable-line no-undef
+
+      static get is() {
+        return 'overlay-color-picker';
+      }
+    }
+    window.customElements.define(OverlayColorPicker.is, OverlayColorPicker);
+  </script>
+</dom-module>
