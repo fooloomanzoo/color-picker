@@ -1,0 +1,169 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../property-mixins/color-mixin.html">
+
+<script>
+  /**
+   * Mixin for color-badge
+   *
+   * @appliesMixin ColorMixin
+   *
+   * @mixinFunction
+   * @polymer
+   */
+  const ColorBadgePattern = (superClass) => class extends ColorMixin(superClass) { // eslint-disable-line no-unused-vars, no-undef
+
+    static get styleTemplate() {
+      return `
+        <style include="${this.customStyleToInclude}">
+          ${this.customStyleContent}
+        </style>
+      `;
+    }
+
+    static get customStyleToInclude() {
+      return '';
+    }
+
+    static get customStyleContent() {
+      return `
+        ${super.customStyleContent || ''}
+        :host {
+          display: inline-flex;
+          --transparency-pattern: {
+            background-image: linear-gradient(45deg, black 25%, transparent 25%, transparent 75%, black 75%, black),
+            linear-gradient(45deg, black 25%, transparent 25%, transparent 75%, black 75%, black);
+            background-size: 16px 16px;
+            background-position:0 0, 8px 8px;
+            opacity: .1;
+          };
+        }
+        .content {
+          display: inline-flex;
+          z-index: 0;
+          position: relative;
+        }
+        :host(:not([hide-transparency-pattern])) .transparency::before {
+          content: "";
+          position: absolute;
+          top: 0; right: 0; bottom: 0; left: 0;
+          z-index: -1;
+          pointer-events: none;
+          @apply --transparency-pattern;
+        }
+        .content > ::slotted(*) {
+          position: absolute;
+          z-index: 1;
+          top: 50%; left: 50%;
+          transform: translate(-50%, -50%);
+        }
+      `;
+    }
+
+    static get colorBadgeTemplate() {
+      return `
+        <div class="content transparency">
+          <canvas class="badge" width$="[[width]]" height$="[[height]]"></canvas>
+          <slot></slot>
+        </div>
+      `
+    }
+
+    static get properties() {
+      return {
+        /**
+         * width of the badge in pixels
+         * @type {number}
+         */
+        width: {
+          type: Number,
+          value: 24
+        },
+        /**
+         * height of the badge in pixels
+         * @type {number}
+         */
+        height: {
+          type: Number,
+          value: 96
+        },
+        /**
+         * height of the badge in pixels
+         * @type {number}
+         */
+        hideTransparencyPattern: {
+          type: Boolean,
+          reflectToAttribute: true
+        }
+      }
+    }
+
+    static get observers() {
+      return [
+        '_drawBadge(cssValue)'
+      ];
+    }
+
+    _drawBadge(cssValue, selector) {
+      if (cssValue === undefined) return;
+      const currentColorCanvas = this.root.querySelectorAll('canvas.badge');
+      for (let i = 0; i < currentColorCanvas.length; i++) {
+        this._fillRect(currentColorCanvas[i], cssValue);
+      }
+    }
+
+    _fillRect(elem, cssValue) {
+      const context = elem.getContext("2d");
+
+      context.clearRect(0, 0, this.width, this.height);
+      context.fillStyle = cssValue;
+      context.fillRect(0, 0, this.width, this.height);
+    }
+  }
+</script>
+
+<dom-module id="color-badge">
+  <script>
+  /**
+  * `<color-badge>` is a badge that displays a color as a rectangle with a specified height and width.
+  * The transparency of the color will be displayed. It can slot elements and they are automatically centered.
+  *
+  *   ```html
+  *     <color-badge height="24" width="96" value="[[color]]">
+  *       <span>[[color]]</span>
+  *     </color-badge>
+  *   ```
+  *
+  * Custom property | Description | Default
+  * ----------------|-------------|----------
+  * `--transparency-pattern` | margin of the single color-picker | `{
+    background-image: linear-gradient(45deg, black 25%, transparent 25%, transparent 75%, black 75%, black),
+    linear-gradient(45deg, black 25%, transparent 25%, transparent 75%, black 75%, black);
+    background-size: 16px 16px;
+    background-position:0 0, 8px 8px;
+    opacity: .1;
+  }`
+  *
+  * @customElement
+  * @polymer
+  *
+  * @appliesMixin ColorBadgePattern
+  *
+  * @demo demo/standalone.html
+  **/
+    class ColorBadge extends ColorBadgePattern(Polymer.Element) { // eslint-disable-line no-undef
+
+      static get is() {
+        return 'color-badge';
+      }
+
+      static get template() {
+        return `
+          ${this.styleTemplate}
+          ${this.colorBadgeTemplate}
+        `
+      }
+
+    }
+    window.customElements.define(ColorBadge.is, ColorBadge);
+  </script>
+</dom-module>

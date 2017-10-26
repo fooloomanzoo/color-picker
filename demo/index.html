@@ -10,7 +10,7 @@
     <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
     <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
 
-    <link rel="import" href="../color-element.html">
+    <link rel="import" href="../color-selector.html">
     <link rel="import" href="../color-picker.html">
     <custom-style>
       <style is="custom-style" include="demo-pages-shared-styles">
@@ -26,12 +26,12 @@
   <body>
 
     <div class="vertical-section-container centered">
-      <h3>Create a standalone color-element</h3>
+      <h3>Create a standalone color-selector</h3>
       <demo-snippet>
         <template>
           <dom-bind>
             <template is="dom-bind">
-              <color-element show-current-selected-color value="{{value}}" css-value="{{cssValue}}" alpha="{{alpha}}"></color-element>
+              <color-selector show-current-selected-color value="{{value}}" css-value="{{cssValue}}" alpha="{{alpha}}"></color-selector>
               <div class="vertical-section-container result">
                 <div><code>hex</code>: <b>[[value]]</b></div>
                 <div><code>alpha</code>: <b>[[alpha]]</b></div>

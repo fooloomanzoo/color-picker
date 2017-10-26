@@ -5,7 +5,7 @@
 
 <link rel="import" href="../number-input/number-input.html">
 
-<link rel="import" href="color-element.html">
+<link rel="import" href="color-selector.html">
 
 <dom-module id="color-picker">
   <script>
@@ -18,20 +18,19 @@
    *
    * Custom property | Description | Default
    * ----------------|-------------|----------
-   * `--input-margin` | margin of the single color-element | `0px`
-   * `--input-background` | background-color of the color-element | `#f0f0f0`
-   * `--input-color` | color of the color-element | `#f0f0f0`
-   *    *
+   * `--input-margin` | margin of the single color-picker | `0px`
+   * `--input-background` | background-color of the color-picker | `#f0f0f0`
+   * `--input-color` | color of the color-picker | `#f0f0f0`
+   *
    *  @polymer
    *  @customElement
    *
-   *  @appliesMixin ColorElementPattern
-   *  @appliesMixin colorPickerMixin
-   *  @appliesMixin PolyfillPickerPattern
+   *  @appliesMixin ColorSelectorPattern
+   *  @appliesMixin InputPickerPattern
    *
-   *  @demo demo/color-picker.html
+   *  @demo demo/index.html
    **/
-    class ColorPicker extends InputPickerPattern(ColorElementPattern(Polymer.Element)) { // eslint-disable-line no-undef
+    class ColorPicker extends InputPickerPattern(ColorSelectorPattern(Polymer.Element)) { // eslint-disable-line no-undef
 
       static get is() {
         return 'color-picker';
@@ -59,9 +58,8 @@
             --input-color: #f1f1f1;
           }
           input[type="color"].native {
-            height: 1.5em;
-            width: 2em;
-            padding: 0.5em;
+            height: 24px;
+            width: 100px;
             box-sizing: content-box;
             cursor: pointer;
             margin: 0;
@@ -136,7 +134,10 @@
        */
       static get _nativeInputTemplate() {
         return `
-          ${super._nativeInputTemplate}
+          <div>
+            ${super._nativeInputTemplate}
+            <div class="current" contenteditable spellcheck="false" on-input="_currentColorInputChanged"></div>
+          </div>
           <number-input class="alpha" hidden$="[[!native]]" value="{{alpha}}" min="0" max="1" step="0.01" saturate></number-input>
         `;
       }
@@ -148,7 +149,7 @@
       static get _buttonTemplate() {
         return `
           <svg class="icon button random" viewBox="0 0 24 24" on-click="random"><g><path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></g></svg>
-          <svg class="icon button close" viewBox="0 0 24 24" on-click="_fixColor"><g><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></g></svg>
+          ${super._buttonTemplate || ''}
         `;
       }
 
@@ -170,6 +171,26 @@
             <div>
           </div>
         `;
+      }
+
+      static get properties() {
+        return {
+          /**
+           * height of the color-badge
+           * @type {number}
+           */
+          badgeHeight: {
+            type: Number
+          },
+
+          /**
+           * width of the color-badge
+           * @type {number}
+           */
+          badgeWidth: {
+            type: Number
+          }
+        }
       }
 
     }
