@@ -183,6 +183,12 @@
       }
     }
 
+    static get observers() {
+      return [
+        '_hsvChanged(hsv)'
+      ]
+    }
+
     connectedCallback() {
       super.connectedCallback();
       if (!(Array.isArray(this.hsv) && this.hsv.length === 3)) {
@@ -194,6 +200,21 @@
     disconnectedCallback() {
       super.disconnectedCallback();
       this.root.removeEventListener('contextmenu', this._onContextMenu.bind(this), false);
+    }
+
+    _hsvChanged(hsv) {
+      if (!(Array.isArray(hsv) && hsv.every(e => {
+          return !isNaN(e);
+        }))) {
+        return;
+      }
+      const rgb = this.hsvToRgb(hsv);
+      const eq = this._arrayEqual(this.rgb, rgb);
+      if (eq === false) {
+        this.set('rgb', rgb);
+      } else if (eq === null && this.rgb !== undefined) {
+        this.set('hsv', this.rgbToHsv(this.rgb));
+      }
     }
 
     _computeHeightForPicked(hsv1, hsv2, showCurrentSelectedColor) {
@@ -509,6 +530,95 @@
       }
       this.random()
     }
+
+
+    hsvToRgb(hsv) {
+      if (!(Array.isArray(hsv) && hsv.length === 3)) {
+        return;
+      }
+
+      let h = hsv[0],
+        s = hsv[1],
+        v = hsv[2];
+
+      h /= 60; // 0 to 5
+
+      // Achromatic grayscale
+      if (s === 0) {
+        return [Math.round(v * 255), Math.round(v * 255), Math.round(v * 255)];
+      }
+
+      const _i = Math.floor(h);
+      const _f = h - _i;
+      const _p = v * (1 - s);
+      const _q = v * (1 - s * _f);
+      const _t = v * (1 - s * (1 - _f));
+
+      const _result = (() => {
+        switch (_i) {
+          case 0:
+            return [v, _t, _p];
+          case 1:
+            return [_q, v, _p];
+          case 2:
+            return [_p, v, _t];
+          case 3:
+            return [_p, _q, v];
+          case 4:
+            return [_t, _p, v];
+          case 5:
+            return [v, _p, _q];
+          default:
+            return [v, _t, _p];
+        }
+      })();
+
+      return [Math.round(_result[0] * 255), Math.round(_result[1] * 255), Math.round(_result[2] * 255)];
+    }
+    rgbToHsv(rgb) {
+      if (!(Array.isArray(rgb) && rgb.length === 3)) {
+        return;
+      }
+
+      let r = rgb[0],
+        g = rgb[1],
+        b = rgb[2];
+
+      let h = 0;
+      let s = 0;
+      let v = 0;
+
+      if (r == null || g == null || b == null || isNaN(r) || isNaN(g) || isNaN(b)) {
+        return;
+      }
+      if (r < 0 || g < 0 || b < 0 || r > 255 || g > 255 || b > 255) {
+        return;
+      }
+
+      r = r / 255;
+      g = g / 255;
+      b = b / 255;
+
+      const minRGB = Math.min(r, Math.min(g, b));
+      const maxRGB = Math.max(r, Math.max(g, b));
+
+      // Black-gray-white
+      if (minRGB === maxRGB) {
+        v = minRGB;
+        return [0, 0, v];
+      }
+
+      // Colors other than black-gray-white:
+      const d = r === minRGB ? g - b : b === minRGB ? r - g : b - r;
+      h = r === minRGB ? 3 : b === minRGB ? 1 : 5;
+
+      h = 60 * (h - d / (maxRGB - minRGB));
+      s = (maxRGB - minRGB) / maxRGB;
+      v = maxRGB;
+
+      return [h, s, v];
+    }
+
   }
 </script>
 

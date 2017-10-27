@@ -31,19 +31,21 @@
         <template>
           <dom-bind>
             <template is="dom-bind">
-              <color-badge height="24" width="96" hex="[[color]]" alpha="{{alpha}}" value="{{value}}" >
-                <span>[[value]]</span>
+              <color-badge height="24" width="172" value="{{color}}" alpha="{{alpha}}">
+                <span style="font-size:0.8em;">[[color]]</span>
               </color-badge>
               <div class="vertical-section-container result">
                 <p>
                   <span>color </span>
-                  <select value="{{color::change}}">
+                  <input list="colors" value="{{color::input}}">
+                  <datalist id="colors">
                     <option value=""></option>
                     <option value="#72a13f">#72a13f</option>
                     <option value="#39c27f">#39c27f</option>
-                    <option value="#e95463">#e95463</option>
-                    <option value="#eba580">#eba580</option>
-                  </select>
+                    <option value="rgb(96, 12, 235)">rgb(96,12,235)</option>
+                    <option value="rgba(181, 187, 7, 0.66)">rgba(181,187,7,0.66)</option>
+                    <option value="rgba(#276f0c, 0.75)">rgba(#276f0c,0.75)</option>
+                  </datalist>
                 </p>
                 <p>
                   <span>alpha </span><input type="range" min="0" max="1" step="0.01" value="{{alpha::input}}">
@@ -54,7 +56,7 @@
         </template>
       </demo-snippet>
     </div>
-
+<!--
     <div class="vertical-section-container centered">
       <h3>Create a standalone color-selector</h3>
       <demo-snippet>
@@ -71,7 +73,7 @@
           </dom-bind>
         </template>
       </demo-snippet>
-    </div>
+    </div> -->
 
   </body>
 

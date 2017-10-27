@@ -99,15 +99,15 @@
 
     static get observers() {
       return [
-        '_drawBadge(cssValue)'
-      ];
+        '_drawBadge(value)'
+      ]
     }
 
-    _drawBadge(cssValue, selector) {
-      if (cssValue === undefined) return;
-      const currentColorCanvas = this.root.querySelectorAll('canvas.badge');
+    _drawBadge(value, selector) {
+      if (value === undefined) return;
+      const currentColorCanvas = this.root.querySelectorAll('canvas' + (selector || '.badge'));
       for (let i = 0; i < currentColorCanvas.length; i++) {
-        this._fillRect(currentColorCanvas[i], cssValue);
+        this._fillRect(currentColorCanvas[i], value);
       }
     }
 
