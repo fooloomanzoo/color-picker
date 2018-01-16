@@ -14,17 +14,18 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 22,
+              "line": 23,
               "column": 10
             },
             "end": {
-              "line": 25,
+              "line": 27,
               "column": 11
             }
           },
           "metadata": {
             "polymer": {
-              "notify": true
+              "notify": true,
+              "observer": "\"_hexChanged\""
             }
           },
           "inheritedFrom": "ColorMixin"
@@ -37,11 +38,11 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 29,
+              "line": 31,
               "column": 10
             },
             "end": {
-              "line": 33,
+              "line": 34,
               "column": 11
             }
           },
@@ -50,7 +51,6 @@
               "notify": true
             }
           },
-          "defaultValue": "1",
           "inheritedFrom": "ColorMixin"
         },
         {
@@ -61,7 +61,7 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 37,
+              "line": 38,
               "column": 10
             },
             "end": {
@@ -74,7 +74,6 @@
               "notify": true
             }
           },
-          "defaultValue": "1",
           "inheritedFrom": "ColorMixin"
         },
         {
@@ -89,7 +88,7 @@
               "column": 10
             },
             "end": {
-              "line": 49,
+              "line": 48,
               "column": 11
             }
           },
@@ -98,7 +97,75 @@
               "notify": true
             }
           },
-          "defaultValue": "1",
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "h",
+          "type": "number",
+          "description": "hue",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 52,
+              "column": 10
+            },
+            "end": {
+              "line": 55,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true
+            }
+          },
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "s",
+          "type": "number",
+          "description": "saturation (hsl)",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 59,
+              "column": 10
+            },
+            "end": {
+              "line": 62,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true
+            }
+          },
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "l",
+          "type": "number",
+          "description": "lightness",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 66,
+              "column": 10
+            },
+            "end": {
+              "line": 69,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true
+            }
+          },
           "inheritedFrom": "ColorMixin"
         },
         {
@@ -124,6 +191,78 @@
           "inheritedFrom": "ColorSelectorPattern"
         },
         {
+          "name": "_hasAlpha",
+          "type": "boolean",
+          "description": "alpha-value",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 82,
+              "column": 10
+            },
+            "end": {
+              "line": 85,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": true
+            }
+          },
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "alphaMode",
+          "type": "boolean",
+          "description": "if true, value has alpha",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 89,
+              "column": 10
+            },
+            "end": {
+              "line": 93,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "observer": "\"_alphaModeChanged\""
+            }
+          },
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "format",
+          "type": "string",
+          "description": "format of the value (possible values: 'rgb', 'hex', 'hsl', 'hsv')",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 97,
+              "column": 10
+            },
+            "end": {
+              "line": 102,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "observer": "\"_formatChanged\""
+            }
+          },
+          "defaultValue": "\"hex\"",
+          "inheritedFrom": "ColorMixin"
+        },
+        {
           "name": "value",
           "type": "string",
           "description": "hex-color",
@@ -131,11 +270,11 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 61,
+              "line": 106,
               "column": 10
             },
             "end": {
-              "line": 65,
+              "line": 110,
               "column": 11
             }
           },
@@ -211,17 +350,111 @@
       ],
       "methods": [
         {
+          "name": "_computeHasAlpha",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 122,
+              "column": 6
+            },
+            "end": {
+              "line": 124,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "alpha"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "_alphaChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 500,
+              "column": 4
+            },
+            "end": {
+              "line": 503,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "alpha"
+            }
+          ],
+          "inheritedFrom": "ColorSelectorPattern"
+        },
+        {
+          "name": "_alphaModeChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 149,
+              "column": 6
+            },
+            "end": {
+              "line": 153,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "alphaMode"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "_formatChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 155,
+              "column": 6
+            },
+            "end": {
+              "line": 170,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "format"
+            },
+            {
+              "name": "oldFormat"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
           "name": "_valueChanged",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 76,
+              "line": 172,
               "column": 6
             },
             "end": {
-              "line": 134,
+              "line": 212,
               "column": 7
             }
           },
@@ -237,17 +470,36 @@
           "inheritedFrom": "ColorMixin"
         },
         {
+          "name": "_setValue",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 214,
+              "column": 6
+            },
+            "end": {
+              "line": 215,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
           "name": "_hexChanged",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 136,
+              "line": 217,
               "column": 6
             },
             "end": {
-              "line": 164,
+              "line": 243,
               "column": 7
             }
           },
@@ -255,9 +507,6 @@
           "params": [
             {
               "name": "hex"
-            },
-            {
-              "name": "alpha"
             }
           ],
           "inheritedFrom": "ColorMixin"
@@ -285,25 +534,54 @@
           "inheritedFrom": "ColorSelectorPattern"
         },
         {
+          "name": "_hslChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 253,
+              "column": 6
+            },
+            "end": {
+              "line": 259,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "h"
+            },
+            {
+              "name": "s"
+            },
+            {
+              "name": "l"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
           "name": "_randomRGB",
           "description": "generate random rgb-color",
           "privacy": "protected",
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 197,
+              "line": 265,
               "column": 6
             },
             "end": {
-              "line": 199,
+              "line": 267,
               "column": 7
             }
           },
           "metadata": {},
           "params": [],
           "return": {
-            "type": "[array]",
-            "desc": "rgb-value array"
+            "type": "object",
+            "desc": "rgb-value object"
           },
           "inheritedFrom": "ColorMixin"
         },
@@ -332,11 +610,11 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 210,
+              "line": 274,
               "column": 6
             },
             "end": {
-              "line": 220,
+              "line": 284,
               "column": 7
             }
           },
@@ -355,11 +633,121 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 222,
+              "line": 286,
               "column": 6
             },
             "end": {
-              "line": 237,
+              "line": 288,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "r"
+            },
+            {
+              "name": "g"
+            },
+            {
+              "name": "b"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "_componentToHex",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 290,
+              "column": 6
+            },
+            "end": {
+              "line": 297,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "component"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "hslToRgb",
+          "description": "falsch: siehe https://www.rapidtables.com/convert/color/hsl-to-rgb.html",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 300,
+              "column": 6
+            },
+            "end": {
+              "line": 314,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "h"
+            },
+            {
+              "name": "s"
+            },
+            {
+              "name": "l"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "hueToComponent",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 316,
+              "column": 6
+            },
+            "end": {
+              "line": 323,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "t1"
+            },
+            {
+              "name": "t2"
+            },
+            {
+              "name": "hue"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "rgbToHsl",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 325,
+              "column": 6
+            },
+            "end": {
+              "line": 350,
               "column": 7
             }
           },
@@ -812,28 +1200,6 @@
           "inheritedFrom": "ColorSelectorPattern"
         },
         {
-          "name": "_alphaChanged",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 500,
-              "column": 4
-            },
-            "end": {
-              "line": 503,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "alpha"
-            }
-          ],
-          "inheritedFrom": "ColorSelectorPattern"
-        },
-        {
           "name": "_onContextMenu",
           "description": "",
           "privacy": "protected",
@@ -884,11 +1250,11 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 22,
+              "line": 23,
               "column": 10
             },
             "end": {
-              "line": 25,
+              "line": 27,
               "column": 11
             }
           },
@@ -902,11 +1268,11 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 29,
+              "line": 31,
               "column": 10
             },
             "end": {
-              "line": 33,
+              "line": 34,
               "column": 11
             }
           },
@@ -920,7 +1286,7 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 37,
+              "line": 38,
               "column": 10
             },
             "end": {
@@ -942,7 +1308,61 @@
               "column": 10
             },
             "end": {
-              "line": 49,
+              "line": 48,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "number",
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "h",
+          "description": "hue",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 52,
+              "column": 10
+            },
+            "end": {
+              "line": 55,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "number",
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "s",
+          "description": "saturation (hsl)",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 59,
+              "column": 10
+            },
+            "end": {
+              "line": 62,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "number",
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "l",
+          "description": "lightness",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 66,
+              "column": 10
+            },
+            "end": {
+              "line": 69,
               "column": 11
             }
           },
@@ -968,16 +1388,52 @@
           "inheritedFrom": "ColorSelectorPattern"
         },
         {
+          "name": "alpha-mode",
+          "description": "if true, value has alpha",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 89,
+              "column": 10
+            },
+            "end": {
+              "line": 93,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "boolean",
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "format",
+          "description": "format of the value (possible values: 'rgb', 'hex', 'hsl', 'hsv')",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 97,
+              "column": 10
+            },
+            "end": {
+              "line": 102,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "string",
+          "inheritedFrom": "ColorMixin"
+        },
+        {
           "name": "value",
           "description": "hex-color",
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 61,
+              "line": 106,
               "column": 10
             },
             "end": {
-              "line": 65,
+              "line": 110,
               "column": 11
             }
           },
@@ -1044,17 +1500,18 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 22,
+              "line": 23,
               "column": 10
             },
             "end": {
-              "line": 25,
+              "line": 27,
               "column": 11
             }
           },
           "metadata": {
             "polymer": {
-              "notify": true
+              "notify": true,
+              "observer": "\"_hexChanged\""
             }
           },
           "inheritedFrom": "ColorMixin"
@@ -1067,11 +1524,11 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 29,
+              "line": 31,
               "column": 10
             },
             "end": {
-              "line": 33,
+              "line": 34,
               "column": 11
             }
           },
@@ -1080,7 +1537,6 @@
               "notify": true
             }
           },
-          "defaultValue": "1",
           "inheritedFrom": "ColorMixin"
         },
         {
@@ -1091,7 +1547,7 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 37,
+              "line": 38,
               "column": 10
             },
             "end": {
@@ -1104,7 +1560,6 @@
               "notify": true
             }
           },
-          "defaultValue": "1",
           "inheritedFrom": "ColorMixin"
         },
         {
@@ -1119,7 +1574,7 @@
               "column": 10
             },
             "end": {
-              "line": 49,
+              "line": 48,
               "column": 11
             }
           },
@@ -1128,7 +1583,75 @@
               "notify": true
             }
           },
-          "defaultValue": "1",
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "h",
+          "type": "number",
+          "description": "hue",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 52,
+              "column": 10
+            },
+            "end": {
+              "line": 55,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true
+            }
+          },
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "s",
+          "type": "number",
+          "description": "saturation (hsl)",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 59,
+              "column": 10
+            },
+            "end": {
+              "line": 62,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true
+            }
+          },
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "l",
+          "type": "number",
+          "description": "lightness",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 66,
+              "column": 10
+            },
+            "end": {
+              "line": 69,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true
+            }
+          },
           "inheritedFrom": "ColorMixin"
         },
         {
@@ -1154,6 +1677,78 @@
           "inheritedFrom": "ColorSelectorPattern"
         },
         {
+          "name": "_hasAlpha",
+          "type": "boolean",
+          "description": "alpha-value",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 82,
+              "column": 10
+            },
+            "end": {
+              "line": 85,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": true
+            }
+          },
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "alphaMode",
+          "type": "boolean",
+          "description": "if true, value has alpha",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 89,
+              "column": 10
+            },
+            "end": {
+              "line": 93,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "observer": "\"_alphaModeChanged\""
+            }
+          },
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "format",
+          "type": "string",
+          "description": "format of the value (possible values: 'rgb', 'hex', 'hsl', 'hsv')",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 97,
+              "column": 10
+            },
+            "end": {
+              "line": 102,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "observer": "\"_formatChanged\""
+            }
+          },
+          "defaultValue": "\"hex\"",
+          "inheritedFrom": "ColorMixin"
+        },
+        {
           "name": "value",
           "type": "string",
           "description": "hex-color",
@@ -1161,11 +1756,11 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 61,
+              "line": 106,
               "column": 10
             },
             "end": {
-              "line": 65,
+              "line": 110,
               "column": 11
             }
           },
@@ -1241,17 +1836,111 @@
       ],
       "methods": [
         {
+          "name": "_computeHasAlpha",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 122,
+              "column": 6
+            },
+            "end": {
+              "line": 124,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "alpha"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "_alphaChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 521,
+              "column": 4
+            },
+            "end": {
+              "line": 524,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "alpha"
+            }
+          ],
+          "inheritedFrom": "ColorSelectorPattern"
+        },
+        {
+          "name": "_alphaModeChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 149,
+              "column": 6
+            },
+            "end": {
+              "line": 153,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "alphaMode"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "_formatChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 155,
+              "column": 6
+            },
+            "end": {
+              "line": 170,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "format"
+            },
+            {
+              "name": "oldFormat"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
           "name": "_valueChanged",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 76,
+              "line": 172,
               "column": 6
             },
             "end": {
-              "line": 134,
+              "line": 212,
               "column": 7
             }
           },
@@ -1267,17 +1956,36 @@
           "inheritedFrom": "ColorMixin"
         },
         {
+          "name": "_setValue",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 214,
+              "column": 6
+            },
+            "end": {
+              "line": 215,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
           "name": "_hexChanged",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 136,
+              "line": 217,
               "column": 6
             },
             "end": {
-              "line": 164,
+              "line": 243,
               "column": 7
             }
           },
@@ -1285,9 +1993,6 @@
           "params": [
             {
               "name": "hex"
-            },
-            {
-              "name": "alpha"
             }
           ],
           "inheritedFrom": "ColorMixin"
@@ -1315,25 +2020,54 @@
           "inheritedFrom": "ColorSelectorPattern"
         },
         {
+          "name": "_hslChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 253,
+              "column": 6
+            },
+            "end": {
+              "line": 259,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "h"
+            },
+            {
+              "name": "s"
+            },
+            {
+              "name": "l"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
           "name": "_randomRGB",
           "description": "generate random rgb-color",
           "privacy": "protected",
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 197,
+              "line": 265,
               "column": 6
             },
             "end": {
-              "line": 199,
+              "line": 267,
               "column": 7
             }
           },
           "metadata": {},
           "params": [],
           "return": {
-            "type": "[array]",
-            "desc": "rgb-value array"
+            "type": "object",
+            "desc": "rgb-value object"
           },
           "inheritedFrom": "ColorMixin"
         },
@@ -1362,11 +2096,11 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 210,
+              "line": 274,
               "column": 6
             },
             "end": {
-              "line": 220,
+              "line": 284,
               "column": 7
             }
           },
@@ -1385,11 +2119,121 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 222,
+              "line": 286,
               "column": 6
             },
             "end": {
-              "line": 237,
+              "line": 288,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "r"
+            },
+            {
+              "name": "g"
+            },
+            {
+              "name": "b"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "_componentToHex",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 290,
+              "column": 6
+            },
+            "end": {
+              "line": 297,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "component"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "hslToRgb",
+          "description": "falsch: siehe https://www.rapidtables.com/convert/color/hsl-to-rgb.html",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 300,
+              "column": 6
+            },
+            "end": {
+              "line": 314,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "h"
+            },
+            {
+              "name": "s"
+            },
+            {
+              "name": "l"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "hueToComponent",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 316,
+              "column": 6
+            },
+            "end": {
+              "line": 323,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "t1"
+            },
+            {
+              "name": "t2"
+            },
+            {
+              "name": "hue"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "rgbToHsl",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 325,
+              "column": 6
+            },
+            "end": {
+              "line": 350,
               "column": 7
             }
           },
@@ -1864,28 +2708,6 @@
           "inheritedFrom": "ColorSelectorPattern"
         },
         {
-          "name": "_alphaChanged",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 521,
-              "column": 4
-            },
-            "end": {
-              "line": 524,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "alpha"
-            }
-          ],
-          "inheritedFrom": "ColorSelectorPattern"
-        },
-        {
           "name": "_onContextMenu",
           "description": "",
           "privacy": "protected",
@@ -1980,11 +2802,11 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 22,
+              "line": 23,
               "column": 10
             },
             "end": {
-              "line": 25,
+              "line": 27,
               "column": 11
             }
           },
@@ -1998,11 +2820,11 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 29,
+              "line": 31,
               "column": 10
             },
             "end": {
-              "line": 33,
+              "line": 34,
               "column": 11
             }
           },
@@ -2016,7 +2838,7 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 37,
+              "line": 38,
               "column": 10
             },
             "end": {
@@ -2038,7 +2860,61 @@
               "column": 10
             },
             "end": {
-              "line": 49,
+              "line": 48,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "number",
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "h",
+          "description": "hue",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 52,
+              "column": 10
+            },
+            "end": {
+              "line": 55,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "number",
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "s",
+          "description": "saturation (hsl)",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 59,
+              "column": 10
+            },
+            "end": {
+              "line": 62,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "number",
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "l",
+          "description": "lightness",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 66,
+              "column": 10
+            },
+            "end": {
+              "line": 69,
               "column": 11
             }
           },
@@ -2064,16 +2940,52 @@
           "inheritedFrom": "ColorSelectorPattern"
         },
         {
+          "name": "alpha-mode",
+          "description": "if true, value has alpha",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 89,
+              "column": 10
+            },
+            "end": {
+              "line": 93,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "boolean",
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "format",
+          "description": "format of the value (possible values: 'rgb', 'hex', 'hsl', 'hsv')",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 97,
+              "column": 10
+            },
+            "end": {
+              "line": 102,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "string",
+          "inheritedFrom": "ColorMixin"
+        },
+        {
           "name": "value",
           "description": "hex-color",
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 61,
+              "line": 106,
               "column": 10
             },
             "end": {
-              "line": 65,
+              "line": 110,
               "column": 11
             }
           },
@@ -2140,17 +3052,18 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 22,
+              "line": 23,
               "column": 10
             },
             "end": {
-              "line": 25,
+              "line": 27,
               "column": 11
             }
           },
           "metadata": {
             "polymer": {
-              "notify": true
+              "notify": true,
+              "observer": "\"_hexChanged\""
             }
           },
           "inheritedFrom": "ColorMixin"
@@ -2163,11 +3076,11 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 29,
+              "line": 31,
               "column": 10
             },
             "end": {
-              "line": 33,
+              "line": 34,
               "column": 11
             }
           },
@@ -2176,7 +3089,6 @@
               "notify": true
             }
           },
-          "defaultValue": "1",
           "inheritedFrom": "ColorMixin"
         },
         {
@@ -2187,7 +3099,7 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 37,
+              "line": 38,
               "column": 10
             },
             "end": {
@@ -2200,7 +3112,6 @@
               "notify": true
             }
           },
-          "defaultValue": "1",
           "inheritedFrom": "ColorMixin"
         },
         {
@@ -2215,7 +3126,7 @@
               "column": 10
             },
             "end": {
-              "line": 49,
+              "line": 48,
               "column": 11
             }
           },
@@ -2224,7 +3135,75 @@
               "notify": true
             }
           },
-          "defaultValue": "1",
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "h",
+          "type": "number",
+          "description": "hue",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 52,
+              "column": 10
+            },
+            "end": {
+              "line": 55,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true
+            }
+          },
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "s",
+          "type": "number",
+          "description": "saturation (hsl)",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 59,
+              "column": 10
+            },
+            "end": {
+              "line": 62,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true
+            }
+          },
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "l",
+          "type": "number",
+          "description": "lightness",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 66,
+              "column": 10
+            },
+            "end": {
+              "line": 69,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true
+            }
+          },
           "inheritedFrom": "ColorMixin"
         },
         {
@@ -2251,6 +3230,78 @@
           "inheritedFrom": "ColorSelectorPattern"
         },
         {
+          "name": "_hasAlpha",
+          "type": "boolean",
+          "description": "alpha-value",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 82,
+              "column": 10
+            },
+            "end": {
+              "line": 85,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": true
+            }
+          },
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "alphaMode",
+          "type": "boolean",
+          "description": "if true, value has alpha",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 89,
+              "column": 10
+            },
+            "end": {
+              "line": 93,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "observer": "\"_alphaModeChanged\""
+            }
+          },
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "format",
+          "type": "string",
+          "description": "format of the value (possible values: 'rgb', 'hex', 'hsl', 'hsv')",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 97,
+              "column": 10
+            },
+            "end": {
+              "line": 102,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "observer": "\"_formatChanged\""
+            }
+          },
+          "defaultValue": "\"hex\"",
+          "inheritedFrom": "ColorMixin"
+        },
+        {
           "name": "value",
           "type": "string",
           "description": "hex-color",
@@ -2258,11 +3309,11 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 61,
+              "line": 106,
               "column": 10
             },
             "end": {
-              "line": 65,
+              "line": 110,
               "column": 11
             }
           },
@@ -2534,17 +3585,112 @@
       ],
       "methods": [
         {
+          "name": "_computeHasAlpha",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 122,
+              "column": 6
+            },
+            "end": {
+              "line": 124,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "alpha"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "_alphaChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "color-selector.html",
+            "start": {
+              "line": 521,
+              "column": 4
+            },
+            "end": {
+              "line": 524,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "alpha"
+            }
+          ],
+          "inheritedFrom": "ColorSelectorPattern"
+        },
+        {
+          "name": "_alphaModeChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 149,
+              "column": 6
+            },
+            "end": {
+              "line": 153,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "alphaMode"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "_formatChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 155,
+              "column": 6
+            },
+            "end": {
+              "line": 170,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "format"
+            },
+            {
+              "name": "oldFormat"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
           "name": "_valueChanged",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 76,
+              "line": 172,
               "column": 6
             },
             "end": {
-              "line": 134,
+              "line": 212,
               "column": 7
             }
           },
@@ -2560,17 +3706,36 @@
           "inheritedFrom": "ColorMixin"
         },
         {
+          "name": "_setValue",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 214,
+              "column": 6
+            },
+            "end": {
+              "line": 215,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
           "name": "_hexChanged",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 136,
+              "line": 217,
               "column": 6
             },
             "end": {
-              "line": 164,
+              "line": 243,
               "column": 7
             }
           },
@@ -2578,9 +3743,6 @@
           "params": [
             {
               "name": "hex"
-            },
-            {
-              "name": "alpha"
             }
           ],
           "inheritedFrom": "ColorMixin"
@@ -2609,25 +3771,54 @@
           "inheritedFrom": "ColorSelectorPattern"
         },
         {
+          "name": "_hslChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 253,
+              "column": 6
+            },
+            "end": {
+              "line": 259,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "h"
+            },
+            {
+              "name": "s"
+            },
+            {
+              "name": "l"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
           "name": "_randomRGB",
           "description": "generate random rgb-color",
           "privacy": "protected",
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 197,
+              "line": 265,
               "column": 6
             },
             "end": {
-              "line": 199,
+              "line": 267,
               "column": 7
             }
           },
           "metadata": {},
           "params": [],
           "return": {
-            "type": "[array]",
-            "desc": "rgb-value array"
+            "type": "object",
+            "desc": "rgb-value object"
           },
           "inheritedFrom": "ColorMixin"
         },
@@ -2657,11 +3848,11 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 210,
+              "line": 274,
               "column": 6
             },
             "end": {
-              "line": 220,
+              "line": 284,
               "column": 7
             }
           },
@@ -2680,11 +3871,121 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 222,
+              "line": 286,
               "column": 6
             },
             "end": {
-              "line": 237,
+              "line": 288,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "r"
+            },
+            {
+              "name": "g"
+            },
+            {
+              "name": "b"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "_componentToHex",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 290,
+              "column": 6
+            },
+            "end": {
+              "line": 297,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "component"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "hslToRgb",
+          "description": "falsch: siehe https://www.rapidtables.com/convert/color/hsl-to-rgb.html",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 300,
+              "column": 6
+            },
+            "end": {
+              "line": 314,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "h"
+            },
+            {
+              "name": "s"
+            },
+            {
+              "name": "l"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "hueToComponent",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 316,
+              "column": 6
+            },
+            "end": {
+              "line": 323,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "t1"
+            },
+            {
+              "name": "t2"
+            },
+            {
+              "name": "hue"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "rgbToHsl",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 325,
+              "column": 6
+            },
+            "end": {
+              "line": 350,
               "column": 7
             }
           },
@@ -3185,29 +4486,6 @@
           "inheritedFrom": "ColorSelectorPattern"
         },
         {
-          "name": "_alphaChanged",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "color-selector.html",
-            "start": {
-              "line": 521,
-              "column": 4
-            },
-            "end": {
-              "line": 524,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "alpha"
-            }
-          ],
-          "inheritedFrom": "ColorSelectorPattern"
-        },
-        {
           "name": "_onContextMenu",
           "description": "",
           "privacy": "protected",
@@ -3424,11 +4702,11 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 22,
+              "line": 23,
               "column": 10
             },
             "end": {
-              "line": 25,
+              "line": 27,
               "column": 11
             }
           },
@@ -3442,11 +4720,11 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 29,
+              "line": 31,
               "column": 10
             },
             "end": {
-              "line": 33,
+              "line": 34,
               "column": 11
             }
           },
@@ -3460,7 +4738,7 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 37,
+              "line": 38,
               "column": 10
             },
             "end": {
@@ -3482,7 +4760,61 @@
               "column": 10
             },
             "end": {
-              "line": 49,
+              "line": 48,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "number",
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "h",
+          "description": "hue",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 52,
+              "column": 10
+            },
+            "end": {
+              "line": 55,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "number",
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "s",
+          "description": "saturation (hsl)",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 59,
+              "column": 10
+            },
+            "end": {
+              "line": 62,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "number",
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "l",
+          "description": "lightness",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 66,
+              "column": 10
+            },
+            "end": {
+              "line": 69,
               "column": 11
             }
           },
@@ -3509,16 +4841,52 @@
           "inheritedFrom": "ColorSelectorPattern"
         },
         {
+          "name": "alpha-mode",
+          "description": "if true, value has alpha",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 89,
+              "column": 10
+            },
+            "end": {
+              "line": 93,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "boolean",
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "format",
+          "description": "format of the value (possible values: 'rgb', 'hex', 'hsl', 'hsv')",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 97,
+              "column": 10
+            },
+            "end": {
+              "line": 102,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "string",
+          "inheritedFrom": "ColorMixin"
+        },
+        {
           "name": "value",
           "description": "hex-color",
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 61,
+              "line": 106,
               "column": 10
             },
             "end": {
-              "line": 65,
+              "line": 110,
               "column": 11
             }
           },
@@ -3855,17 +5223,18 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 22,
+              "line": 23,
               "column": 10
             },
             "end": {
-              "line": 25,
+              "line": 27,
               "column": 11
             }
           },
           "metadata": {
             "polymer": {
-              "notify": true
+              "notify": true,
+              "observer": "\"_hexChanged\""
             }
           },
           "inheritedFrom": "ColorMixin"
@@ -3878,11 +5247,11 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 29,
+              "line": 31,
               "column": 10
             },
             "end": {
-              "line": 33,
+              "line": 34,
               "column": 11
             }
           },
@@ -3891,7 +5260,6 @@
               "notify": true
             }
           },
-          "defaultValue": "1",
           "inheritedFrom": "ColorMixin"
         },
         {
@@ -3902,7 +5270,7 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 37,
+              "line": 38,
               "column": 10
             },
             "end": {
@@ -3915,7 +5283,6 @@
               "notify": true
             }
           },
-          "defaultValue": "1",
           "inheritedFrom": "ColorMixin"
         },
         {
@@ -3930,7 +5297,7 @@
               "column": 10
             },
             "end": {
-              "line": 49,
+              "line": 48,
               "column": 11
             }
           },
@@ -3939,7 +5306,75 @@
               "notify": true
             }
           },
-          "defaultValue": "1",
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "h",
+          "type": "number",
+          "description": "hue",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 52,
+              "column": 10
+            },
+            "end": {
+              "line": 55,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true
+            }
+          },
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "s",
+          "type": "number",
+          "description": "saturation (hsl)",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 59,
+              "column": 10
+            },
+            "end": {
+              "line": 62,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true
+            }
+          },
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "l",
+          "type": "number",
+          "description": "lightness",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 66,
+              "column": 10
+            },
+            "end": {
+              "line": 69,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true
+            }
+          },
           "inheritedFrom": "ColorMixin"
         },
         {
@@ -3966,6 +5401,78 @@
           "inheritedFrom": "ColorSelectorPattern"
         },
         {
+          "name": "_hasAlpha",
+          "type": "boolean",
+          "description": "alpha-value",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 82,
+              "column": 10
+            },
+            "end": {
+              "line": 85,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": true
+            }
+          },
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "alphaMode",
+          "type": "boolean",
+          "description": "if true, value has alpha",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 89,
+              "column": 10
+            },
+            "end": {
+              "line": 93,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "observer": "\"_alphaModeChanged\""
+            }
+          },
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "format",
+          "type": "string",
+          "description": "format of the value (possible values: 'rgb', 'hex', 'hsl', 'hsv')",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 97,
+              "column": 10
+            },
+            "end": {
+              "line": 102,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "observer": "\"_formatChanged\""
+            }
+          },
+          "defaultValue": "\"hex\"",
+          "inheritedFrom": "ColorMixin"
+        },
+        {
           "name": "value",
           "type": "string",
           "description": "hex-color",
@@ -3973,11 +5480,11 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 61,
+              "line": 106,
               "column": 10
             },
             "end": {
-              "line": 65,
+              "line": 110,
               "column": 11
             }
           },
@@ -4253,17 +5760,112 @@
       ],
       "methods": [
         {
+          "name": "_computeHasAlpha",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 122,
+              "column": 6
+            },
+            "end": {
+              "line": 124,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "alpha"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "_alphaChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "color-selector.html",
+            "start": {
+              "line": 521,
+              "column": 4
+            },
+            "end": {
+              "line": 524,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "alpha"
+            }
+          ],
+          "inheritedFrom": "ColorSelectorPattern"
+        },
+        {
+          "name": "_alphaModeChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 149,
+              "column": 6
+            },
+            "end": {
+              "line": 153,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "alphaMode"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "_formatChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 155,
+              "column": 6
+            },
+            "end": {
+              "line": 170,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "format"
+            },
+            {
+              "name": "oldFormat"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
           "name": "_valueChanged",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 76,
+              "line": 172,
               "column": 6
             },
             "end": {
-              "line": 134,
+              "line": 212,
               "column": 7
             }
           },
@@ -4279,17 +5881,36 @@
           "inheritedFrom": "ColorMixin"
         },
         {
+          "name": "_setValue",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 214,
+              "column": 6
+            },
+            "end": {
+              "line": 215,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
           "name": "_hexChanged",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 136,
+              "line": 217,
               "column": 6
             },
             "end": {
-              "line": 164,
+              "line": 243,
               "column": 7
             }
           },
@@ -4297,9 +5918,6 @@
           "params": [
             {
               "name": "hex"
-            },
-            {
-              "name": "alpha"
             }
           ],
           "inheritedFrom": "ColorMixin"
@@ -4328,25 +5946,54 @@
           "inheritedFrom": "ColorSelectorPattern"
         },
         {
+          "name": "_hslChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 253,
+              "column": 6
+            },
+            "end": {
+              "line": 259,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "h"
+            },
+            {
+              "name": "s"
+            },
+            {
+              "name": "l"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
           "name": "_randomRGB",
           "description": "generate random rgb-color",
           "privacy": "protected",
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 197,
+              "line": 265,
               "column": 6
             },
             "end": {
-              "line": 199,
+              "line": 267,
               "column": 7
             }
           },
           "metadata": {},
           "params": [],
           "return": {
-            "type": "[array]",
-            "desc": "rgb-value array"
+            "type": "object",
+            "desc": "rgb-value object"
           },
           "inheritedFrom": "ColorMixin"
         },
@@ -4376,11 +6023,11 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 210,
+              "line": 274,
               "column": 6
             },
             "end": {
-              "line": 220,
+              "line": 284,
               "column": 7
             }
           },
@@ -4399,11 +6046,121 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 222,
+              "line": 286,
               "column": 6
             },
             "end": {
-              "line": 237,
+              "line": 288,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "r"
+            },
+            {
+              "name": "g"
+            },
+            {
+              "name": "b"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "_componentToHex",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 290,
+              "column": 6
+            },
+            "end": {
+              "line": 297,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "component"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "hslToRgb",
+          "description": "falsch: siehe https://www.rapidtables.com/convert/color/hsl-to-rgb.html",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 300,
+              "column": 6
+            },
+            "end": {
+              "line": 314,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "h"
+            },
+            {
+              "name": "s"
+            },
+            {
+              "name": "l"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "hueToComponent",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 316,
+              "column": 6
+            },
+            "end": {
+              "line": 323,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "t1"
+            },
+            {
+              "name": "t2"
+            },
+            {
+              "name": "hue"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "rgbToHsl",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 325,
+              "column": 6
+            },
+            "end": {
+              "line": 350,
               "column": 7
             }
           },
@@ -4904,29 +6661,6 @@
           "inheritedFrom": "ColorSelectorPattern"
         },
         {
-          "name": "_alphaChanged",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "color-selector.html",
-            "start": {
-              "line": 521,
-              "column": 4
-            },
-            "end": {
-              "line": 524,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "alpha"
-            }
-          ],
-          "inheritedFrom": "ColorSelectorPattern"
-        },
-        {
           "name": "_onContextMenu",
           "description": "",
           "privacy": "protected",
@@ -5233,11 +6967,11 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 22,
+              "line": 23,
               "column": 10
             },
             "end": {
-              "line": 25,
+              "line": 27,
               "column": 11
             }
           },
@@ -5251,11 +6985,11 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 29,
+              "line": 31,
               "column": 10
             },
             "end": {
-              "line": 33,
+              "line": 34,
               "column": 11
             }
           },
@@ -5269,7 +7003,7 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 37,
+              "line": 38,
               "column": 10
             },
             "end": {
@@ -5291,7 +7025,61 @@
               "column": 10
             },
             "end": {
-              "line": 49,
+              "line": 48,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "number",
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "h",
+          "description": "hue",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 52,
+              "column": 10
+            },
+            "end": {
+              "line": 55,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "number",
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "s",
+          "description": "saturation (hsl)",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 59,
+              "column": 10
+            },
+            "end": {
+              "line": 62,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "number",
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "l",
+          "description": "lightness",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 66,
+              "column": 10
+            },
+            "end": {
+              "line": 69,
               "column": 11
             }
           },
@@ -5318,16 +7106,52 @@
           "inheritedFrom": "ColorSelectorPattern"
         },
         {
+          "name": "alpha-mode",
+          "description": "if true, value has alpha",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 89,
+              "column": 10
+            },
+            "end": {
+              "line": 93,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "boolean",
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "format",
+          "description": "format of the value (possible values: 'rgb', 'hex', 'hsl', 'hsv')",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 97,
+              "column": 10
+            },
+            "end": {
+              "line": 102,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "string",
+          "inheritedFrom": "ColorMixin"
+        },
+        {
           "name": "value",
           "description": "hex-color",
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 61,
+              "line": 106,
               "column": 10
             },
             "end": {
-              "line": 65,
+              "line": 110,
               "column": 11
             }
           },
@@ -5559,17 +7383,18 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 22,
+              "line": 23,
               "column": 10
             },
             "end": {
-              "line": 25,
+              "line": 27,
               "column": 11
             }
           },
           "metadata": {
             "polymer": {
-              "notify": true
+              "notify": true,
+              "observer": "\"_hexChanged\""
             }
           },
           "inheritedFrom": "ColorMixin"
@@ -5582,11 +7407,11 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 29,
+              "line": 31,
               "column": 10
             },
             "end": {
-              "line": 33,
+              "line": 34,
               "column": 11
             }
           },
@@ -5595,7 +7420,6 @@
               "notify": true
             }
           },
-          "defaultValue": "1",
           "inheritedFrom": "ColorMixin"
         },
         {
@@ -5606,7 +7430,7 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 37,
+              "line": 38,
               "column": 10
             },
             "end": {
@@ -5619,7 +7443,6 @@
               "notify": true
             }
           },
-          "defaultValue": "1",
           "inheritedFrom": "ColorMixin"
         },
         {
@@ -5634,40 +7457,181 @@
               "column": 10
             },
             "end": {
-              "line": 49,
+              "line": 48,
               "column": 11
             }
           },
           "metadata": {
             "polymer": {
               "notify": true
+            }
+          },
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "h",
+          "type": "number",
+          "description": "hue",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 52,
+              "column": 10
+            },
+            "end": {
+              "line": 55,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true
+            }
+          },
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "s",
+          "type": "number",
+          "description": "saturation (hsl)",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 59,
+              "column": 10
+            },
+            "end": {
+              "line": 62,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true
+            }
+          },
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "l",
+          "type": "number",
+          "description": "lightness",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 66,
+              "column": 10
+            },
+            "end": {
+              "line": 69,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true
+            }
+          },
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "alpha",
+          "type": "number",
+          "description": "Alpha",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 73,
+              "column": 10
+            },
+            "end": {
+              "line": 78,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "observer": "\"_alphaChanged\""
             }
           },
           "defaultValue": "1",
           "inheritedFrom": "ColorMixin"
         },
         {
-          "name": "alpha",
-          "type": "number",
+          "name": "_hasAlpha",
+          "type": "boolean",
           "description": "alpha-value",
-          "privacy": "public",
+          "privacy": "protected",
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 53,
+              "line": 82,
               "column": 10
             },
             "end": {
-              "line": 57,
+              "line": 85,
               "column": 11
             }
           },
           "metadata": {
             "polymer": {
-              "notify": true
+              "readOnly": true
             }
           },
-          "defaultValue": "1",
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "alphaMode",
+          "type": "boolean",
+          "description": "if true, value has alpha",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 89,
+              "column": 10
+            },
+            "end": {
+              "line": 93,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "observer": "\"_alphaModeChanged\""
+            }
+          },
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "format",
+          "type": "string",
+          "description": "format of the value (possible values: 'rgb', 'hex', 'hsl', 'hsv')",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 97,
+              "column": 10
+            },
+            "end": {
+              "line": 102,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "observer": "\"_formatChanged\""
+            }
+          },
+          "defaultValue": "\"hex\"",
           "inheritedFrom": "ColorMixin"
         },
         {
@@ -5678,11 +7642,11 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 61,
+              "line": 106,
               "column": 10
             },
             "end": {
-              "line": 65,
+              "line": 110,
               "column": 11
             }
           },
@@ -5759,17 +7723,115 @@
       ],
       "methods": [
         {
+          "name": "_computeHasAlpha",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 122,
+              "column": 6
+            },
+            "end": {
+              "line": 124,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "alpha"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "_alphaChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 126,
+              "column": 6
+            },
+            "end": {
+              "line": 147,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "alpha"
+            },
+            {
+              "name": "oldAlpha"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "_alphaModeChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 149,
+              "column": 6
+            },
+            "end": {
+              "line": 153,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "alphaMode"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "_formatChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 155,
+              "column": 6
+            },
+            "end": {
+              "line": 170,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "format"
+            },
+            {
+              "name": "oldFormat"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
           "name": "_valueChanged",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 76,
+              "line": 172,
               "column": 6
             },
             "end": {
-              "line": 134,
+              "line": 212,
               "column": 7
             }
           },
@@ -5785,17 +7847,36 @@
           "inheritedFrom": "ColorMixin"
         },
         {
+          "name": "_setValue",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 214,
+              "column": 6
+            },
+            "end": {
+              "line": 215,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
           "name": "_hexChanged",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 136,
+              "line": 217,
               "column": 6
             },
             "end": {
-              "line": 164,
+              "line": 243,
               "column": 7
             }
           },
@@ -5803,9 +7884,6 @@
           "params": [
             {
               "name": "hex"
-            },
-            {
-              "name": "alpha"
             }
           ],
           "inheritedFrom": "ColorMixin"
@@ -5817,11 +7895,11 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 166,
+              "line": 245,
               "column": 6
             },
             "end": {
-              "line": 191,
+              "line": 251,
               "column": 7
             }
           },
@@ -5835,9 +7913,35 @@
             },
             {
               "name": "b"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "_hslChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 253,
+              "column": 6
+            },
+            "end": {
+              "line": 259,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "h"
             },
             {
-              "name": "alpha"
+              "name": "s"
+            },
+            {
+              "name": "l"
             }
           ],
           "inheritedFrom": "ColorMixin"
@@ -5849,19 +7953,19 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 197,
+              "line": 265,
               "column": 6
             },
             "end": {
-              "line": 199,
+              "line": 267,
               "column": 7
             }
           },
           "metadata": {},
           "params": [],
           "return": {
-            "type": "[array]",
-            "desc": "rgb-value array"
+            "type": "object",
+            "desc": "rgb-value object"
           },
           "inheritedFrom": "ColorMixin"
         },
@@ -5872,11 +7976,11 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 201,
+              "line": 269,
               "column": 6
             },
             "end": {
-              "line": 208,
+              "line": 272,
               "column": 7
             }
           },
@@ -5891,11 +7995,11 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 210,
+              "line": 274,
               "column": 6
             },
             "end": {
-              "line": 220,
+              "line": 284,
               "column": 7
             }
           },
@@ -5914,11 +8018,121 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 222,
+              "line": 286,
               "column": 6
             },
             "end": {
-              "line": 237,
+              "line": 288,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "r"
+            },
+            {
+              "name": "g"
+            },
+            {
+              "name": "b"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "_componentToHex",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 290,
+              "column": 6
+            },
+            "end": {
+              "line": 297,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "component"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "hslToRgb",
+          "description": "falsch: siehe https://www.rapidtables.com/convert/color/hsl-to-rgb.html",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 300,
+              "column": 6
+            },
+            "end": {
+              "line": 314,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "h"
+            },
+            {
+              "name": "s"
+            },
+            {
+              "name": "l"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "hueToComponent",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 316,
+              "column": 6
+            },
+            "end": {
+              "line": 323,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "t1"
+            },
+            {
+              "name": "t2"
+            },
+            {
+              "name": "hue"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "rgbToHsl",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 325,
+              "column": 6
+            },
+            "end": {
+              "line": 350,
               "column": 7
             }
           },
@@ -5946,7 +8160,7 @@
               "column": 4
             },
             "end": {
-              "line": 111,
+              "line": 120,
               "column": 5
             }
           },
@@ -5967,11 +8181,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 113,
+              "line": 122,
               "column": 4
             },
             "end": {
-              "line": 119,
+              "line": 129,
               "column": 5
             }
           },
@@ -5981,7 +8195,7 @@
               "name": "elem"
             },
             {
-              "name": "cssValue"
+              "name": "value"
             }
           ],
           "inheritedFrom": "ColorBadgePattern"
@@ -5997,11 +8211,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 152,
+          "line": 162,
           "column": 4
         },
         "end": {
-          "line": 165,
+          "line": 175,
           "column": 5
         }
       },
@@ -6015,11 +8229,11 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 22,
+              "line": 23,
               "column": 10
             },
             "end": {
-              "line": 25,
+              "line": 27,
               "column": 11
             }
           },
@@ -6033,11 +8247,11 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 29,
+              "line": 31,
               "column": 10
             },
             "end": {
-              "line": 33,
+              "line": 34,
               "column": 11
             }
           },
@@ -6051,7 +8265,7 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 37,
+              "line": 38,
               "column": 10
             },
             "end": {
@@ -6073,7 +8287,61 @@
               "column": 10
             },
             "end": {
-              "line": 49,
+              "line": 48,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "number",
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "h",
+          "description": "hue",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 52,
+              "column": 10
+            },
+            "end": {
+              "line": 55,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "number",
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "s",
+          "description": "saturation (hsl)",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 59,
+              "column": 10
+            },
+            "end": {
+              "line": 62,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "number",
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "l",
+          "description": "lightness",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 66,
+              "column": 10
+            },
+            "end": {
+              "line": 69,
               "column": 11
             }
           },
@@ -6083,15 +8351,15 @@
         },
         {
           "name": "alpha",
-          "description": "alpha-value",
+          "description": "Alpha",
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 53,
+              "line": 73,
               "column": 10
             },
             "end": {
-              "line": 57,
+              "line": 78,
               "column": 11
             }
           },
@@ -6100,16 +8368,52 @@
           "inheritedFrom": "ColorMixin"
         },
         {
+          "name": "alpha-mode",
+          "description": "if true, value has alpha",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 89,
+              "column": 10
+            },
+            "end": {
+              "line": 93,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "boolean",
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "format",
+          "description": "format of the value (possible values: 'rgb', 'hex', 'hsl', 'hsv')",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 97,
+              "column": 10
+            },
+            "end": {
+              "line": 102,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "string",
+          "inheritedFrom": "ColorMixin"
+        },
+        {
           "name": "value",
           "description": "hex-color",
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 61,
+              "line": 106,
               "column": 10
             },
             "end": {
-              "line": 65,
+              "line": 110,
               "column": 11
             }
           },
@@ -6195,17 +8499,18 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 22,
+              "line": 23,
               "column": 10
             },
             "end": {
-              "line": 25,
+              "line": 27,
               "column": 11
             }
           },
           "metadata": {
             "polymer": {
-              "notify": true
+              "notify": true,
+              "observer": "\"_hexChanged\""
             }
           },
           "inheritedFrom": "ColorMixin"
@@ -6218,11 +8523,11 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 29,
+              "line": 31,
               "column": 10
             },
             "end": {
-              "line": 33,
+              "line": 34,
               "column": 11
             }
           },
@@ -6231,7 +8536,6 @@
               "notify": true
             }
           },
-          "defaultValue": "1",
           "inheritedFrom": "ColorMixin"
         },
         {
@@ -6242,7 +8546,7 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 37,
+              "line": 38,
               "column": 10
             },
             "end": {
@@ -6255,7 +8559,6 @@
               "notify": true
             }
           },
-          "defaultValue": "1",
           "inheritedFrom": "ColorMixin"
         },
         {
@@ -6270,7 +8573,7 @@
               "column": 10
             },
             "end": {
-              "line": 49,
+              "line": 48,
               "column": 11
             }
           },
@@ -6279,7 +8582,75 @@
               "notify": true
             }
           },
-          "defaultValue": "1",
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "h",
+          "type": "number",
+          "description": "hue",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 52,
+              "column": 10
+            },
+            "end": {
+              "line": 55,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true
+            }
+          },
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "s",
+          "type": "number",
+          "description": "saturation (hsl)",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 59,
+              "column": 10
+            },
+            "end": {
+              "line": 62,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true
+            }
+          },
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "l",
+          "type": "number",
+          "description": "lightness",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 66,
+              "column": 10
+            },
+            "end": {
+              "line": 69,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true
+            }
+          },
           "inheritedFrom": "ColorMixin"
         },
         {
@@ -6304,6 +8675,78 @@
           }
         },
         {
+          "name": "_hasAlpha",
+          "type": "boolean",
+          "description": "alpha-value",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 82,
+              "column": 10
+            },
+            "end": {
+              "line": 85,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": true
+            }
+          },
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "alphaMode",
+          "type": "boolean",
+          "description": "if true, value has alpha",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 89,
+              "column": 10
+            },
+            "end": {
+              "line": 93,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "observer": "\"_alphaModeChanged\""
+            }
+          },
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "format",
+          "type": "string",
+          "description": "format of the value (possible values: 'rgb', 'hex', 'hsl', 'hsv')",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 97,
+              "column": 10
+            },
+            "end": {
+              "line": 102,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "observer": "\"_formatChanged\""
+            }
+          },
+          "defaultValue": "\"hex\"",
+          "inheritedFrom": "ColorMixin"
+        },
+        {
           "name": "value",
           "type": "string",
           "description": "hex-color",
@@ -6311,11 +8754,11 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 61,
+              "line": 106,
               "column": 10
             },
             "end": {
-              "line": 65,
+              "line": 110,
               "column": 11
             }
           },
@@ -6388,17 +8831,110 @@
       ],
       "methods": [
         {
+          "name": "_computeHasAlpha",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 122,
+              "column": 6
+            },
+            "end": {
+              "line": 124,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "alpha"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "_alphaChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 500,
+              "column": 4
+            },
+            "end": {
+              "line": 503,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "alpha"
+            }
+          ]
+        },
+        {
+          "name": "_alphaModeChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 149,
+              "column": 6
+            },
+            "end": {
+              "line": 153,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "alphaMode"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "_formatChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 155,
+              "column": 6
+            },
+            "end": {
+              "line": 170,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "format"
+            },
+            {
+              "name": "oldFormat"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
           "name": "_valueChanged",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 76,
+              "line": 172,
               "column": 6
             },
             "end": {
-              "line": 134,
+              "line": 212,
               "column": 7
             }
           },
@@ -6414,17 +8950,36 @@
           "inheritedFrom": "ColorMixin"
         },
         {
+          "name": "_setValue",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 214,
+              "column": 6
+            },
+            "end": {
+              "line": 215,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
           "name": "_hexChanged",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 136,
+              "line": 217,
               "column": 6
             },
             "end": {
-              "line": 164,
+              "line": 243,
               "column": 7
             }
           },
@@ -6432,9 +8987,6 @@
           "params": [
             {
               "name": "hex"
-            },
-            {
-              "name": "alpha"
             }
           ],
           "inheritedFrom": "ColorMixin"
@@ -6461,25 +9013,54 @@
           ]
         },
         {
+          "name": "_hslChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 253,
+              "column": 6
+            },
+            "end": {
+              "line": 259,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "h"
+            },
+            {
+              "name": "s"
+            },
+            {
+              "name": "l"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
           "name": "_randomRGB",
           "description": "generate random rgb-color",
           "privacy": "protected",
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 197,
+              "line": 265,
               "column": 6
             },
             "end": {
-              "line": 199,
+              "line": 267,
               "column": 7
             }
           },
           "metadata": {},
           "params": [],
           "return": {
-            "type": "[array]",
-            "desc": "rgb-value array"
+            "type": "object",
+            "desc": "rgb-value object"
           },
           "inheritedFrom": "ColorMixin"
         },
@@ -6507,11 +9088,11 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 210,
+              "line": 274,
               "column": 6
             },
             "end": {
-              "line": 220,
+              "line": 284,
               "column": 7
             }
           },
@@ -6530,11 +9111,121 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 222,
+              "line": 286,
               "column": 6
             },
             "end": {
-              "line": 237,
+              "line": 288,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "r"
+            },
+            {
+              "name": "g"
+            },
+            {
+              "name": "b"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "_componentToHex",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 290,
+              "column": 6
+            },
+            "end": {
+              "line": 297,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "component"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "hslToRgb",
+          "description": "falsch: siehe https://www.rapidtables.com/convert/color/hsl-to-rgb.html",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 300,
+              "column": 6
+            },
+            "end": {
+              "line": 314,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "h"
+            },
+            {
+              "name": "s"
+            },
+            {
+              "name": "l"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "hueToComponent",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 316,
+              "column": 6
+            },
+            "end": {
+              "line": 323,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "t1"
+            },
+            {
+              "name": "t2"
+            },
+            {
+              "name": "hue"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "rgbToHsl",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 325,
+              "column": 6
+            },
+            "end": {
+              "line": 350,
               "column": 7
             }
           },
@@ -6968,27 +9659,6 @@
           ]
         },
         {
-          "name": "_alphaChanged",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 500,
-              "column": 4
-            },
-            "end": {
-              "line": 503,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "alpha"
-            }
-          ]
-        },
-        {
           "name": "_onContextMenu",
           "description": "",
           "privacy": "protected",
@@ -7032,11 +9702,11 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 22,
+              "line": 23,
               "column": 10
             },
             "end": {
-              "line": 25,
+              "line": 27,
               "column": 11
             }
           },
@@ -7050,11 +9720,11 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 29,
+              "line": 31,
               "column": 10
             },
             "end": {
-              "line": 33,
+              "line": 34,
               "column": 11
             }
           },
@@ -7068,7 +9738,7 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 37,
+              "line": 38,
               "column": 10
             },
             "end": {
@@ -7090,7 +9760,61 @@
               "column": 10
             },
             "end": {
-              "line": 49,
+              "line": 48,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "number",
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "h",
+          "description": "hue",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 52,
+              "column": 10
+            },
+            "end": {
+              "line": 55,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "number",
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "s",
+          "description": "saturation (hsl)",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 59,
+              "column": 10
+            },
+            "end": {
+              "line": 62,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "number",
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "l",
+          "description": "lightness",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 66,
+              "column": 10
+            },
+            "end": {
+              "line": 69,
               "column": 11
             }
           },
@@ -7115,16 +9839,52 @@
           "type": "number"
         },
         {
+          "name": "alpha-mode",
+          "description": "if true, value has alpha",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 89,
+              "column": 10
+            },
+            "end": {
+              "line": 93,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "boolean",
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "format",
+          "description": "format of the value (possible values: 'rgb', 'hex', 'hsl', 'hsv')",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 97,
+              "column": 10
+            },
+            "end": {
+              "line": 102,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "string",
+          "inheritedFrom": "ColorMixin"
+        },
+        {
           "name": "value",
           "description": "hex-color",
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 61,
+              "line": 106,
               "column": 10
             },
             "end": {
-              "line": 65,
+              "line": 110,
               "column": 11
             }
           },
@@ -7188,17 +9948,18 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 22,
+              "line": 23,
               "column": 10
             },
             "end": {
-              "line": 25,
+              "line": 27,
               "column": 11
             }
           },
           "metadata": {
             "polymer": {
-              "notify": true
+              "notify": true,
+              "observer": "\"_hexChanged\""
             }
           },
           "inheritedFrom": "ColorMixin"
@@ -7211,11 +9972,11 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 29,
+              "line": 31,
               "column": 10
             },
             "end": {
-              "line": 33,
+              "line": 34,
               "column": 11
             }
           },
@@ -7224,7 +9985,6 @@
               "notify": true
             }
           },
-          "defaultValue": "1",
           "inheritedFrom": "ColorMixin"
         },
         {
@@ -7235,7 +9995,7 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 37,
+              "line": 38,
               "column": 10
             },
             "end": {
@@ -7248,7 +10008,6 @@
               "notify": true
             }
           },
-          "defaultValue": "1",
           "inheritedFrom": "ColorMixin"
         },
         {
@@ -7263,7 +10022,7 @@
               "column": 10
             },
             "end": {
-              "line": 49,
+              "line": 48,
               "column": 11
             }
           },
@@ -7272,7 +10031,75 @@
               "notify": true
             }
           },
-          "defaultValue": "1",
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "h",
+          "type": "number",
+          "description": "hue",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 52,
+              "column": 10
+            },
+            "end": {
+              "line": 55,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true
+            }
+          },
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "s",
+          "type": "number",
+          "description": "saturation (hsl)",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 59,
+              "column": 10
+            },
+            "end": {
+              "line": 62,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true
+            }
+          },
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "l",
+          "type": "number",
+          "description": "lightness",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 66,
+              "column": 10
+            },
+            "end": {
+              "line": 69,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true
+            }
+          },
           "inheritedFrom": "ColorMixin"
         },
         {
@@ -7297,6 +10124,78 @@
           }
         },
         {
+          "name": "_hasAlpha",
+          "type": "boolean",
+          "description": "alpha-value",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 82,
+              "column": 10
+            },
+            "end": {
+              "line": 85,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": true
+            }
+          },
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "alphaMode",
+          "type": "boolean",
+          "description": "if true, value has alpha",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 89,
+              "column": 10
+            },
+            "end": {
+              "line": 93,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "observer": "\"_alphaModeChanged\""
+            }
+          },
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "format",
+          "type": "string",
+          "description": "format of the value (possible values: 'rgb', 'hex', 'hsl', 'hsv')",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 97,
+              "column": 10
+            },
+            "end": {
+              "line": 102,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "observer": "\"_formatChanged\""
+            }
+          },
+          "defaultValue": "\"hex\"",
+          "inheritedFrom": "ColorMixin"
+        },
+        {
           "name": "value",
           "type": "string",
           "description": "hex-color",
@@ -7304,11 +10203,11 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 61,
+              "line": 106,
               "column": 10
             },
             "end": {
-              "line": 65,
+              "line": 110,
               "column": 11
             }
           },
@@ -7381,17 +10280,110 @@
       ],
       "methods": [
         {
+          "name": "_computeHasAlpha",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 122,
+              "column": 6
+            },
+            "end": {
+              "line": 124,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "alpha"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "_alphaChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 521,
+              "column": 4
+            },
+            "end": {
+              "line": 524,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "alpha"
+            }
+          ]
+        },
+        {
+          "name": "_alphaModeChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 149,
+              "column": 6
+            },
+            "end": {
+              "line": 153,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "alphaMode"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "_formatChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 155,
+              "column": 6
+            },
+            "end": {
+              "line": 170,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "format"
+            },
+            {
+              "name": "oldFormat"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
           "name": "_valueChanged",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 76,
+              "line": 172,
               "column": 6
             },
             "end": {
-              "line": 134,
+              "line": 212,
               "column": 7
             }
           },
@@ -7407,17 +10399,36 @@
           "inheritedFrom": "ColorMixin"
         },
         {
+          "name": "_setValue",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 214,
+              "column": 6
+            },
+            "end": {
+              "line": 215,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
           "name": "_hexChanged",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 136,
+              "line": 217,
               "column": 6
             },
             "end": {
-              "line": 164,
+              "line": 243,
               "column": 7
             }
           },
@@ -7425,9 +10436,6 @@
           "params": [
             {
               "name": "hex"
-            },
-            {
-              "name": "alpha"
             }
           ],
           "inheritedFrom": "ColorMixin"
@@ -7454,25 +10462,54 @@
           ]
         },
         {
+          "name": "_hslChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 253,
+              "column": 6
+            },
+            "end": {
+              "line": 259,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "h"
+            },
+            {
+              "name": "s"
+            },
+            {
+              "name": "l"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
           "name": "_randomRGB",
           "description": "generate random rgb-color",
           "privacy": "protected",
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 197,
+              "line": 265,
               "column": 6
             },
             "end": {
-              "line": 199,
+              "line": 267,
               "column": 7
             }
           },
           "metadata": {},
           "params": [],
           "return": {
-            "type": "[array]",
-            "desc": "rgb-value array"
+            "type": "object",
+            "desc": "rgb-value object"
           },
           "inheritedFrom": "ColorMixin"
         },
@@ -7500,11 +10537,11 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 210,
+              "line": 274,
               "column": 6
             },
             "end": {
-              "line": 220,
+              "line": 284,
               "column": 7
             }
           },
@@ -7523,11 +10560,121 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 222,
+              "line": 286,
               "column": 6
             },
             "end": {
-              "line": 237,
+              "line": 288,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "r"
+            },
+            {
+              "name": "g"
+            },
+            {
+              "name": "b"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "_componentToHex",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 290,
+              "column": 6
+            },
+            "end": {
+              "line": 297,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "component"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "hslToRgb",
+          "description": "falsch: siehe https://www.rapidtables.com/convert/color/hsl-to-rgb.html",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 300,
+              "column": 6
+            },
+            "end": {
+              "line": 314,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "h"
+            },
+            {
+              "name": "s"
+            },
+            {
+              "name": "l"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "hueToComponent",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 316,
+              "column": 6
+            },
+            "end": {
+              "line": 323,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "t1"
+            },
+            {
+              "name": "t2"
+            },
+            {
+              "name": "hue"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "rgbToHsl",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 325,
+              "column": 6
+            },
+            "end": {
+              "line": 350,
               "column": 7
             }
           },
@@ -7982,27 +11129,6 @@
           ]
         },
         {
-          "name": "_alphaChanged",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 521,
-              "column": 4
-            },
-            "end": {
-              "line": 524,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "alpha"
-            }
-          ]
-        },
-        {
           "name": "_onContextMenu",
           "description": "",
           "privacy": "protected",
@@ -8088,11 +11214,11 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 22,
+              "line": 23,
               "column": 10
             },
             "end": {
-              "line": 25,
+              "line": 27,
               "column": 11
             }
           },
@@ -8106,11 +11232,11 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 29,
+              "line": 31,
               "column": 10
             },
             "end": {
-              "line": 33,
+              "line": 34,
               "column": 11
             }
           },
@@ -8124,7 +11250,7 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 37,
+              "line": 38,
               "column": 10
             },
             "end": {
@@ -8146,7 +11272,61 @@
               "column": 10
             },
             "end": {
-              "line": 49,
+              "line": 48,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "number",
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "h",
+          "description": "hue",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 52,
+              "column": 10
+            },
+            "end": {
+              "line": 55,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "number",
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "s",
+          "description": "saturation (hsl)",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 59,
+              "column": 10
+            },
+            "end": {
+              "line": 62,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "number",
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "l",
+          "description": "lightness",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 66,
+              "column": 10
+            },
+            "end": {
+              "line": 69,
               "column": 11
             }
           },
@@ -8171,16 +11351,52 @@
           "type": "number"
         },
         {
+          "name": "alpha-mode",
+          "description": "if true, value has alpha",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 89,
+              "column": 10
+            },
+            "end": {
+              "line": 93,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "boolean",
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "format",
+          "description": "format of the value (possible values: 'rgb', 'hex', 'hsl', 'hsv')",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 97,
+              "column": 10
+            },
+            "end": {
+              "line": 102,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "string",
+          "inheritedFrom": "ColorMixin"
+        },
+        {
           "name": "value",
           "description": "hex-color",
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 61,
+              "line": 106,
               "column": 10
             },
             "end": {
-              "line": 65,
+              "line": 110,
               "column": 11
             }
           },
@@ -8244,17 +11460,18 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 22,
+              "line": 23,
               "column": 10
             },
             "end": {
-              "line": 25,
+              "line": 27,
               "column": 11
             }
           },
           "metadata": {
             "polymer": {
-              "notify": true
+              "notify": true,
+              "observer": "\"_hexChanged\""
             }
           },
           "inheritedFrom": "ColorMixin"
@@ -8267,11 +11484,11 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 29,
+              "line": 31,
               "column": 10
             },
             "end": {
-              "line": 33,
+              "line": 34,
               "column": 11
             }
           },
@@ -8280,7 +11497,6 @@
               "notify": true
             }
           },
-          "defaultValue": "1",
           "inheritedFrom": "ColorMixin"
         },
         {
@@ -8291,7 +11507,7 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 37,
+              "line": 38,
               "column": 10
             },
             "end": {
@@ -8304,7 +11520,6 @@
               "notify": true
             }
           },
-          "defaultValue": "1",
           "inheritedFrom": "ColorMixin"
         },
         {
@@ -8319,40 +11534,181 @@
               "column": 10
             },
             "end": {
-              "line": 49,
+              "line": 48,
               "column": 11
             }
           },
           "metadata": {
             "polymer": {
               "notify": true
+            }
+          },
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "h",
+          "type": "number",
+          "description": "hue",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 52,
+              "column": 10
+            },
+            "end": {
+              "line": 55,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true
+            }
+          },
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "s",
+          "type": "number",
+          "description": "saturation (hsl)",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 59,
+              "column": 10
+            },
+            "end": {
+              "line": 62,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true
+            }
+          },
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "l",
+          "type": "number",
+          "description": "lightness",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 66,
+              "column": 10
+            },
+            "end": {
+              "line": 69,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true
+            }
+          },
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "alpha",
+          "type": "number",
+          "description": "Alpha",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 73,
+              "column": 10
+            },
+            "end": {
+              "line": 78,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "observer": "\"_alphaChanged\""
             }
           },
           "defaultValue": "1",
           "inheritedFrom": "ColorMixin"
         },
         {
-          "name": "alpha",
-          "type": "number",
+          "name": "_hasAlpha",
+          "type": "boolean",
           "description": "alpha-value",
-          "privacy": "public",
+          "privacy": "protected",
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 53,
+              "line": 82,
               "column": 10
             },
             "end": {
-              "line": 57,
+              "line": 85,
               "column": 11
             }
           },
           "metadata": {
             "polymer": {
-              "notify": true
+              "readOnly": true
             }
           },
-          "defaultValue": "1",
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "alphaMode",
+          "type": "boolean",
+          "description": "if true, value has alpha",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 89,
+              "column": 10
+            },
+            "end": {
+              "line": 93,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "observer": "\"_alphaModeChanged\""
+            }
+          },
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "format",
+          "type": "string",
+          "description": "format of the value (possible values: 'rgb', 'hex', 'hsl', 'hsv')",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 97,
+              "column": 10
+            },
+            "end": {
+              "line": 102,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "observer": "\"_formatChanged\""
+            }
+          },
+          "defaultValue": "\"hex\"",
           "inheritedFrom": "ColorMixin"
         },
         {
@@ -8363,11 +11719,11 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 61,
+              "line": 106,
               "column": 10
             },
             "end": {
-              "line": 65,
+              "line": 110,
               "column": 11
             }
           },
@@ -8441,17 +11797,115 @@
       ],
       "methods": [
         {
+          "name": "_computeHasAlpha",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 122,
+              "column": 6
+            },
+            "end": {
+              "line": 124,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "alpha"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "_alphaChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 126,
+              "column": 6
+            },
+            "end": {
+              "line": 147,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "alpha"
+            },
+            {
+              "name": "oldAlpha"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "_alphaModeChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 149,
+              "column": 6
+            },
+            "end": {
+              "line": 153,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "alphaMode"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "_formatChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 155,
+              "column": 6
+            },
+            "end": {
+              "line": 170,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "format"
+            },
+            {
+              "name": "oldFormat"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
           "name": "_valueChanged",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 76,
+              "line": 172,
               "column": 6
             },
             "end": {
-              "line": 134,
+              "line": 212,
               "column": 7
             }
           },
@@ -8467,17 +11921,36 @@
           "inheritedFrom": "ColorMixin"
         },
         {
+          "name": "_setValue",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 214,
+              "column": 6
+            },
+            "end": {
+              "line": 215,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
           "name": "_hexChanged",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 136,
+              "line": 217,
               "column": 6
             },
             "end": {
-              "line": 164,
+              "line": 243,
               "column": 7
             }
           },
@@ -8485,9 +11958,6 @@
           "params": [
             {
               "name": "hex"
-            },
-            {
-              "name": "alpha"
             }
           ],
           "inheritedFrom": "ColorMixin"
@@ -8499,11 +11969,11 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 166,
+              "line": 245,
               "column": 6
             },
             "end": {
-              "line": 191,
+              "line": 251,
               "column": 7
             }
           },
@@ -8517,9 +11987,35 @@
             },
             {
               "name": "b"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "_hslChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 253,
+              "column": 6
+            },
+            "end": {
+              "line": 259,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "h"
             },
             {
-              "name": "alpha"
+              "name": "s"
+            },
+            {
+              "name": "l"
             }
           ],
           "inheritedFrom": "ColorMixin"
@@ -8531,19 +12027,19 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 197,
+              "line": 265,
               "column": 6
             },
             "end": {
-              "line": 199,
+              "line": 267,
               "column": 7
             }
           },
           "metadata": {},
           "params": [],
           "return": {
-            "type": "[array]",
-            "desc": "rgb-value array"
+            "type": "object",
+            "desc": "rgb-value object"
           },
           "inheritedFrom": "ColorMixin"
         },
@@ -8554,11 +12050,11 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 201,
+              "line": 269,
               "column": 6
             },
             "end": {
-              "line": 208,
+              "line": 272,
               "column": 7
             }
           },
@@ -8573,11 +12069,11 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 210,
+              "line": 274,
               "column": 6
             },
             "end": {
-              "line": 220,
+              "line": 284,
               "column": 7
             }
           },
@@ -8596,11 +12092,121 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 222,
+              "line": 286,
               "column": 6
             },
             "end": {
-              "line": 237,
+              "line": 288,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "r"
+            },
+            {
+              "name": "g"
+            },
+            {
+              "name": "b"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "_componentToHex",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 290,
+              "column": 6
+            },
+            "end": {
+              "line": 297,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "component"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "hslToRgb",
+          "description": "falsch: siehe https://www.rapidtables.com/convert/color/hsl-to-rgb.html",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 300,
+              "column": 6
+            },
+            "end": {
+              "line": 314,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "h"
+            },
+            {
+              "name": "s"
+            },
+            {
+              "name": "l"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "hueToComponent",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 316,
+              "column": 6
+            },
+            "end": {
+              "line": 323,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "t1"
+            },
+            {
+              "name": "t2"
+            },
+            {
+              "name": "hue"
+            }
+          ],
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "rgbToHsl",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 325,
+              "column": 6
+            },
+            "end": {
+              "line": 350,
               "column": 7
             }
           },
@@ -8628,7 +12234,7 @@
               "column": 4
             },
             "end": {
-              "line": 111,
+              "line": 120,
               "column": 5
             }
           },
@@ -8648,11 +12254,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 113,
+              "line": 122,
               "column": 4
             },
             "end": {
-              "line": 119,
+              "line": 129,
               "column": 5
             }
           },
@@ -8662,7 +12268,7 @@
               "name": "elem"
             },
             {
-              "name": "cssValue"
+              "name": "value"
             }
           ]
         }
@@ -8676,7 +12282,7 @@
           "column": 2
         },
         "end": {
-          "line": 120,
+          "line": 130,
           "column": 3
         }
       },
@@ -8689,11 +12295,11 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 22,
+              "line": 23,
               "column": 10
             },
             "end": {
-              "line": 25,
+              "line": 27,
               "column": 11
             }
           },
@@ -8707,11 +12313,11 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 29,
+              "line": 31,
               "column": 10
             },
             "end": {
-              "line": 33,
+              "line": 34,
               "column": 11
             }
           },
@@ -8725,7 +12331,7 @@
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 37,
+              "line": 38,
               "column": 10
             },
             "end": {
@@ -8747,7 +12353,61 @@
               "column": 10
             },
             "end": {
-              "line": 49,
+              "line": 48,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "number",
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "h",
+          "description": "hue",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 52,
+              "column": 10
+            },
+            "end": {
+              "line": 55,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "number",
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "s",
+          "description": "saturation (hsl)",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 59,
+              "column": 10
+            },
+            "end": {
+              "line": 62,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "number",
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "l",
+          "description": "lightness",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 66,
+              "column": 10
+            },
+            "end": {
+              "line": 69,
               "column": 11
             }
           },
@@ -8757,15 +12417,15 @@
         },
         {
           "name": "alpha",
-          "description": "alpha-value",
+          "description": "Alpha",
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 53,
+              "line": 73,
               "column": 10
             },
             "end": {
-              "line": 57,
+              "line": 78,
               "column": 11
             }
           },
@@ -8774,16 +12434,52 @@
           "inheritedFrom": "ColorMixin"
         },
         {
+          "name": "alpha-mode",
+          "description": "if true, value has alpha",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 89,
+              "column": 10
+            },
+            "end": {
+              "line": 93,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "boolean",
+          "inheritedFrom": "ColorMixin"
+        },
+        {
+          "name": "format",
+          "description": "format of the value (possible values: 'rgb', 'hex', 'hsl', 'hsv')",
+          "sourceRange": {
+            "file": "bower_components\\property-mixins\\color-mixin.html",
+            "start": {
+              "line": 97,
+              "column": 10
+            },
+            "end": {
+              "line": 102,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "string",
+          "inheritedFrom": "ColorMixin"
+        },
+        {
           "name": "value",
           "description": "hex-color",
           "sourceRange": {
             "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
-              "line": 61,
+              "line": 106,
               "column": 10
             },
             "end": {
-              "line": 65,
+              "line": 110,
               "column": 11
             }
           },

@@ -1,0 +1,402 @@
+<script>
+  /**
+   * Mixin that provides web-color-properties. Its value converts automatically beetween different formats (hex, rgb and hsl) and provides an alpha-value.
+   *
+   * @mixinFunction
+   * @polymer
+   */
+  const ColorMixin = (superClass) => { // eslint-disable-line no-unused-vars no-undef
+
+    return class extends superClass {
+
+      constructor() {
+        super();
+        this._validateHex = /^\s*(?:(#(?:[a-f0-9]{6}|[a-f0-9]{3}))|rgba\(\s*(#(?:[a-f0-9]{6}|[a-f0-9]{3}))\s*,\s*(1|0|0?\.\d*|1\.0*)\s*\))\s*$/;
+        this._validateRgb = /^\s*rgb(a)?\(\s*(25[0-5]|2[0-4]\d|1\d{1,2}|\d\d?)\s*,\s*(25[0-5]|2[0-4]\d|1\d{1,2}|\d\d?)\s*,\s*(25[0-5]|2[0-4]\d|1\d{1,2}|\d\d?)(?:\s*,\s*(1|0|0?\.\d*|1\.0*))?\s*\)\s*$/;
+        this._validateHsl = /^\s*hsl(a)?\(\s*(-?\d+(?:\.\d*)?)\s*,\s*((?:1|0|0?\.\d*|1\.0*)|(?:(?:100(?:\.0*)?|[1-9]?[0-9](?:\.\d*)?)%))\s*,\s*((?:1|0|0?\.\d*|1\.0*)|(?:(?:100(?:\.0*)?|[1-9]?[0-9](?:\.\d*)?)%))(?:\s*,\s*(1|0|0?\.\d*|1\.0*))?\s*\)\s*$/;
+        this._validatePercent = /(100(?:\.0*)?|[1-9]?[0-9](?:\.\d*)?)%/;
+        this._validFormats = ['rgb', 'hex', 'hsl'];
+      }
+
+      static get properties() {
+        return {
+          /**
+           * Hex-color
+           */
+          hex: {
+            type: String,
+            notify: true,
+            observer: '_hexChanged'
+          },
+          /**
+           * Red
+           */
+          r: {
+            type: Number,
+            notify: true
+          },
+          /**
+           * Green
+           */
+          g: {
+            type: Number,
+            notify: true
+          },
+          /**
+           * Blue
+           */
+          b: {
+            type: Number,
+            notify: true
+          },
+          /**
+           * Hue
+           */
+          h: {
+            type: Number,
+            notify: true
+          },
+          /**
+           * Saturation (hsl)
+           */
+          s: {
+            type: Number,
+            notify: true
+          },
+          /**
+           * Lightness
+           */
+          l: {
+            type: Number,
+            notify: true
+          },
+          /**
+           * Alpha
+           */
+          alpha: {
+            type: Number,
+            notify: true,
+            value: 1,
+            observer: '_alphaChanged'
+          },
+          /**
+           * is true, when alpha is not 1
+           */
+          _hasAlpha: {
+            type: Boolean,
+            computed: '_computeHasAlpha(alpha)'
+          },
+          /**
+           * if true, value has alpha
+           */
+          alphaMode: {
+            type: Boolean,
+            notify: true,
+            observer: '_alphaModeChanged'
+          },
+          /**
+           * Precision of hsl-values, if the format is 'hsl' (for saturation and lightness it is applied according to their percentage value)
+           */
+          hslPrecision: {
+            type: Number,
+            value: 2
+          },
+          /**
+           * format of the value (possible values: 'rgb', 'hex', 'hsl')
+           */
+          format: {
+            type: String,
+            notify: true,
+            value: 'hex',
+            observer: '_formatChanged'
+          },
+          /**
+           * hex-color
+           */
+          value: {
+            type: String,
+            notify: true,
+            observer: '_valueChanged'
+          }
+        }
+      }
+
+      static get observers() {
+        return [
+          '_rgbChanged(r, g, b)',
+          '_hslChanged(h, s, l)',
+          '_hexChanged(hex)'
+        ];
+      }
+
+      _computeHasAlpha(alpha) {
+        return alpha !== 1;
+      }
+
+      _alphaModeChanged(alphaMode) {
+        if (alphaMode !== true) {
+          this.alpha = 1;
+        }
+      }
+
+      _formatChanged(format, oldFormat) {
+        if (format === undefined) {
+          return;
+        }
+        if (this._validFormats.indexOf(format) === -1) {
+          if (oldFormat && this._validFormats.indexOf(oldFormat) !== -1) {
+            this.format = oldFormat;
+            return;
+          }
+          this.format = 'hex';
+          return;
+        }
+        if (this.value !== undefined) {
+          this._debouncedSetValue();
+        }
+      }
+
+      _valueChanged(value, oldValue) {
+        if (value === undefined) return;
+
+        let toSet = {}, match;
+        // input-format detection
+        if (match = this._validateHex.exec(value)) {;
+          if (match[1] !== undefined) { // no alpha
+            toSet.hex = match[1];
+            toSet.alpha = 1;
+            toSet.alphaMode = false;
+          } else { // with alpha
+            toSet.hex = match[2];
+            toSet.alpha = +match[3];
+            toSet.alphaMode = true;
+          }
+        } else if (match = this._validateRgb.exec(value)) {
+          if (match[1] === undefined) { // no alpha
+            toSet.alpha = 1;
+            toSet.alphaMode = false;
+          } else { // with alpha
+            toSet.alpha = +match[5];
+            toSet.alphaMode = true;
+          }
+          toSet.r = +match[2];
+          toSet.g = +match[3];
+          toSet.b = +match[4];
+        } else if (match = this._validateHsl.exec(value)) {
+          if (match[1] === undefined) { // no alpha
+            toSet.alpha = 1;
+            toSet.alphaMode = false;
+          } else { // with alpha
+            toSet.alpha = +match[5];
+            toSet.alphaMode = true;
+          }
+          toSet.h = +match[2];
+          let matchPercent;
+          if (matchPercent = this._validatePercent.exec(match[3])) { // s in percentage value
+            toSet.s = +matchPercent[1] * 0.01;
+          } else {
+            toSet.s = +match[3];
+          }
+          if (matchPercent = this._validatePercent.exec(match[4])) { // l in percentage value
+            toSet.l = +matchPercent[1] * 0.01;
+          } else {
+            toSet.l = +match[4];
+          }
+        } else if (oldValue !== undefined) {
+          this._valueChanged(oldValue);
+          return;
+        }
+        this.setProperties(toSet);
+      }
+
+      _debouncedSetValue() {
+        if (this._activeSetValueJob) {
+          window.cancelAnimationFrame(this._activeSetValueJob);
+        }
+        this._activeSetValueJob = window.requestAnimationFrame(this._setValue.bind(this))
+      }
+
+      _setValue() {
+        switch (this.format) {
+          case 'hex':
+            if (this.alpha === 1 && this.hex !== undefined) {
+              this.value = this.hex;
+            } else if (this.r !== undefined && this.g !== undefined && this.b !== undefined) {
+              this.value = `rgba(${Math.round(this.r)},${Math.round(this.g)},${Math.round(this.b)},${this.alpha || 1})`;
+            }
+            break;
+          case 'rgb':
+            if (this.r !== undefined && this.g !== undefined && this.b !== undefined) {
+              if (this.alphaMode === true) {
+                this.value = `rgba(${Math.round(this.r)},${Math.round(this.g)},${Math.round(this.b)},${this.alpha || 1})`;
+              } else {
+                this.value = `rgb(${Math.round(this.r)},${Math.round(this.g)},${Math.round(this.b)})`;
+              }
+            }
+            break;
+          case 'hsl':
+            if (this.h !== undefined && this.s !== undefined && this.l !== undefined) {
+              if (this.alphaMode === true) {
+                this.value = `hsla(${+this.h.toFixed(this.hslPrecision || 0)},${+(this.s*100).toFixed(this.hslPrecision || 0)}%,${+(this.l*100).toFixed(this.hslPrecision || 0)}%,${this.alpha || 1})`;
+              } else {
+                this.value = `hsl(${+this.h.toFixed(this.hslPrecision || 0)},${+(this.s*100).toFixed(this.hslPrecision || 0)}%,${+(this.l*100).toFixed(this.hslPrecision || 0)}%)`;
+              }
+            }
+            break;
+        }
+      }
+
+      _alphaChanged(alpha, oldAlpha) {
+        if (isNaN(alpha)) {
+          this.alpha = 1;
+          return;
+        }
+        if (alpha > 1) {
+          if (oldAlpha !== undefined) {
+            this.alpha = oldAlpha;
+            return;
+          }
+          this.alpha = 1;
+          return;
+        }
+        if (alpha < 0) {
+          if (oldAlpha !== undefined) {
+            this.alpha = oldAlpha;
+            return;
+          }
+          this.alpha = 0;
+          return;
+        }
+        if (alpha !== 1) {
+          this.alphaMode = true;
+        }
+        this._debouncedSetValue();
+      }
+
+      _hexChanged(hex) {
+        if (hex === undefined) {
+          return;
+        }
+        const rgb = this.hexToRgb(hex),
+          hsl = this.rgbToHsl(rgb.r, rgb.g, rgb.b);
+        this.setProperties( Object.assign({}, rgb, hsl));
+
+        this._debouncedSetValue();
+      }
+
+      _rgbChanged(r, g, b) {
+        if (r === undefined || g === undefined || b === undefined) {
+          return;
+        }
+        const toSet = Object.assign({}, this.rgbToHsl(r, g, b), {hex: this.rgbToHex(r, g, b) });
+        this.setProperties( toSet );
+        this._debouncedSetValue();
+      }
+
+      _hslChanged(h, s, l) {
+        if (h === undefined || s === undefined || l === undefined) {
+          return;
+        }
+        const rgb = this.hslToRgb(h, s, l);
+        this.setProperties( Object.assign({}, rgb, {hex: this.rgbToHex(rgb.r, rgb.g, rgb.b) }));
+
+        this._debouncedSetValue();
+      }
+
+      /**
+       * generate random rgb-color
+       * @return {object} rgb-value object
+       */
+      _randomRGB() {
+        return {r: Math.round(255 * Math.random()), g: Math.round(255 * Math.random()),b: Math.round(255 * Math.random())};
+      }
+
+      random() {
+        const rgb = this._randomRGB();
+        this.setProperties(rgb);
+      }
+
+      hexToRgb(hex) {
+        if (hex === undefined) {
+          return;
+        }
+        hex = hex.replace(/[#\s]/g, '');
+        if (hex.length === 3) {
+          hex = hex.replace(/(.)(.)(.)/, "$1$1$2$2$3$3");
+        }
+
+        return {r: parseInt(hex.substr(0, 2), 16), g: parseInt(hex.substr(2, 2), 16), b: parseInt(hex.substr(4, 2), 16)};
+      }
+
+      rgbToHex(r, g, b) {
+        if (r === undefined || g === undefined || b === undefined) {
+          return;
+        }
+        return '#' + this._componentToHex(Math.round(r)) + this._componentToHex(Math.round(g)) + this._componentToHex(Math.round(b));
+      }
+
+      _componentToHex(component) {
+        const _hex = component.toString(16);
+        if (_hex.length === 1) {
+          return `0${_hex}`;
+        } else {
+          return _hex.slice(0, 2);
+        }
+      }
+
+      hslToRgb(h, s, l) {
+        if (h === undefined || s === undefined || l === undefined) {
+          return;
+        }
+        const t2 = ((l <= 0.5) ? l * (s + 1) : l + s - (l * s)) * 255,
+          t1 = l * 2 * 255 - t2;
+        return {
+          r: Math.round(this.hueToComponent(t1, t2, h + 120)),
+          g: Math.round(this.hueToComponent(t1, t2, h)),
+          b: Math.round(this.hueToComponent(t1, t2, h - 120))
+        };
+      }
+
+      hueToComponent(t1, t2, h) {
+        if (h < 0) h += 360;
+        if (h >= 360) h -= 360;
+        if (h < 60) return (((t2 - t1) * h) / 60 + t1);
+        else if (h < 180) return t2;
+        else if (h < 240) return (((t2 - t1) * (240 - h)) / 60 + t1);
+        else return t1;
+      }
+
+      rgbToHsl(r, g, b) {
+        if (r === undefined || g === undefined || b === undefined) {
+          return;
+        }
+        const max = Math.max(r, g, b),
+          min = Math.min(r, g, b);
+
+        const l = (max + min) / 2; // not-normalized lightness (for precision)
+        const _c = max - min; // not-normalized chroma (for precision)
+
+        if (_c === 0) {
+          l /= 255;
+          return [0, 0, l];
+        }
+
+        const s = _c / (255 - Math.abs(2*l - 255));
+        let h;
+        switch (max) {
+            case r: h = (((((g - b) * 60) / _c) % 360) + 360) % 360; break; // symmetric modulo required(?)
+            case g: h = (((b - r) * 60) / _c) + 120; break;
+            case b: h = (((r - g) * 60) / _c) + 240; break;
+        }
+        l /= 255;
+        return {
+          h: h,
+          s: s,
+          l: l
+        };
+      }
+    }
+  }
+
+  window.ColorMixin = ColorMixin;
+</script>

@@ -31,7 +31,13 @@
         <template>
           <dom-bind>
             <template is="dom-bind">
-              <color-badge height="24" width="172" value="{{color}}" alpha="{{alpha}}">
+              <style>
+                .custom {
+                  border-radius: 16px;
+                  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.3);
+                }
+              </style>
+              <color-badge class="custom" height="48" width="172" value="{{color}}" alpha="{{alpha}}" h="66" format="{{format}}">
                 <span style="font-size:0.8em;">[[color]]</span>
               </color-badge>
               <div class="vertical-section-container result">
@@ -42,13 +48,24 @@
                     <option value=""></option>
                     <option value="#72a13f">#72a13f</option>
                     <option value="#39c27f">#39c27f</option>
-                    <option value="rgb(96, 12, 235)">rgb(96,12,235)</option>
-                    <option value="rgba(181, 187, 7, 0.66)">rgba(181,187,7,0.66)</option>
-                    <option value="rgba(#276f0c, 0.75)">rgba(#276f0c,0.75)</option>
+                    <option value="rgb(96,12,235)">rgb(96,12,235)</option>
+                    <option value="rgba(181,187,7,0.66)">rgba(181,187,7,0.66)</option>
+                    <option value="rgba(#276f0c,0.75)">rgba(#276f0c,0.75)</option>
+                    <option value="hsl(244,0.55,0.75)">hsl(244,0.55,0.75)</option>
+                    <option value="hsla(144,0.25,0.35,0.22)">hsla(144,0.25,0.35,0.22)</option>
+                    <option value="hsla(44,75.4%,55%,0.9)">hsla(44,75.4%,55%,0.9)</option>
                   </datalist>
                 </p>
                 <p>
                   <span>alpha </span><input type="range" min="0" max="1" step="0.01" value="{{alpha::input}}">
+                </p>
+                <p>
+                  <span>format </span>
+                  <select id="formats" value="{{format::change}}">
+                    <option value="hex">hex</option>
+                    <option value="rgb">rgb</option>
+                    <option value="hsl">hsl</option>
+                  </datalist>
                 </p>
               </div>
             </template>

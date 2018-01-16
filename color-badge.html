@@ -1,5 +1,5 @@
 <link rel="import" href="../polymer/polymer-element.html">
-<link rel="import" href="../property-mixins/color-mixin.html">
+<link rel="import" href="color-mixin.html">
 
 <script>
   /**
@@ -29,6 +29,7 @@
         ${super.customStyleContent || ''}
         :host {
           display: inline-flex;
+          overflow: hidden;
           --transparency-pattern: {
             background-image: linear-gradient(45deg, black 25%, transparent 25%, transparent 75%, black 75%, black),
             linear-gradient(45deg, black 25%, transparent 25%, transparent 75%, black 75%, black);
@@ -97,24 +98,17 @@
       }
     }
 
-    static get observers() {
-      return [
-        '_drawBadge(value)'
-      ]
+    _valueChanged(value, oldValue) {
+      super._valueChanged(value, oldValue);
+      if (value !== undefined) {
+        this._drawBadge(value);
+      }
     }
 
     _drawBadge(value, selector) {
       if (value === undefined) return;
       const currentColorCanvas = this.root.querySelectorAll('canvas' + (selector || '.badge'));
-      const test = this._regExpRGBA.exec(value);
-      if (test !== null && test[4]) {
-        if (test[5]) {
-          const rgb = this.hexToRgb(test[4]);
-          value = 'rgba(' + rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ',' +  test[5] + ')'
-        } else {
-          value = test[4];
-        }
-      }
+
       for (let i = 0; i < currentColorCanvas.length; i++) {
         this._fillRect(currentColorCanvas[i], value);
       }
@@ -123,7 +117,7 @@
     _fillRect(elem, value) {
       const context = elem.getContext("2d");
 
-      console.log(value);
+      console.log('_fillRect', value);
       context.clearRect(0, 0, this.width, this.height);
       context.fillStyle = value;
       context.fillRect(0, 0, this.width, this.height);
