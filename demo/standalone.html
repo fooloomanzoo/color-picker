@@ -9,8 +9,9 @@
 
     <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
     <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+    <link rel="import" href="../../number-input/number-input.html">
 
-    <link rel="import" href="../color-selector.html">
+    <link rel="import" href="../color-input.html">
     <link rel="import" href="../color-badge.html">
     <custom-style>
       <style is="custom-style" include="demo-pages-shared-styles">
@@ -37,7 +38,7 @@
                   box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.3);
                 }
               </style>
-              <color-badge class="custom" height="48" width="172" value="{{color}}" alpha="{{alpha}}" h="66" format="{{format}}">
+              <color-badge class="custom" height="48" width="172" value="{{color}}" alpha="{{alpha}}" r="66" format="{{format}}">
                 <span style="font-size:0.8em;">[[color]]</span>
               </color-badge>
               <div class="vertical-section-container result">
@@ -57,7 +58,8 @@
                   </datalist>
                 </p>
                 <p>
-                  <span>alpha </span><input type="range" min="0" max="1" step="0.01" value="{{alpha::input}}">
+                  <span>alpha </span><input type="range" min="0" max="1" step="0.01" value="{{alpha::change}}">
+                  <number-input min="0" max="1" step="0.01" value="{{alpha}}"></number-input>
                 </p>
                 <p>
                   <span>format </span>
@@ -65,7 +67,7 @@
                     <option value="hex">hex</option>
                     <option value="rgb">rgb</option>
                     <option value="hsl">hsl</option>
-                  </datalist>
+                  </select>
                 </p>
               </div>
             </template>
@@ -73,24 +75,63 @@
         </template>
       </demo-snippet>
     </div>
-<!--
+
     <div class="vertical-section-container centered">
-      <h3>Create a standalone color-selector</h3>
+      <h3>Create a color-input</h3>
       <demo-snippet>
         <template>
           <dom-bind>
             <template is="dom-bind">
-              <color-selector show-current-selected-color value="{{value}}" css-value="{{cssValue}}" alpha="{{alpha}}"></color-selector>
+              <style>
+                .custom {
+                  border-radius: 16px;
+                  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.3);
+                }
+              </style>
+              <color-input class="input" value="{{color}}" alpha="{{alpha}}" r="{{r}}" g="{{g}}" b="{{b}}" h="{{h}}" s="{{s}}" l="{{l}}" format="{{format}}"></color-input>
               <div class="vertical-section-container result">
-                <div><code>hex</code>: <b>[[value]]</b></div>
-                <div><code>alpha</code>: <b>[[alpha]]</b></div>
-                <div><code>css-value</code>: <b>[[cssValue]]</b></div>
+                <p>
+                  <span>color </span>
+                  <input list="colors" value="{{color::input}}">
+                  <datalist id="colors">
+                    <option value=""></option>
+                    <option value="#72a13f">#72a13f</option>
+                    <option value="#39c27f">#39c27f</option>
+                    <option value="rgb(96,12,235)">rgb(96,12,235)</option>
+                    <option value="rgba(181,187,7,0.66)">rgba(181,187,7,0.66)</option>
+                    <option value="rgba(#276f0c,0.75)">rgba(#276f0c,0.75)</option>
+                    <option value="hsl(244,0.55,0.75)">hsl(244,0.55,0.75)</option>
+                    <option value="hsla(144,0.25,0.35,0.22)">hsla(144,0.25,0.35,0.22)</option>
+                    <option value="hsla(44,75.4%,55%,0.9)">hsla(44,75.4%,55%,0.9)</option>
+                  </datalist>
+                </p>
+                <p>
+                  <span>alpha </span><input type="range" min="0" max="1" step="0.01" value="{{alpha::change}}">
+                  <number-input min="0" max="1" step="0.01" value="{{alpha}}"></number-input>
+                </p>
+                <p>
+                  <span>format </span>
+                  <select id="formats" value="{{format::change}}">
+                    <option value="hex">hex</option>
+                    <option value="rgb">rgb</option>
+                    <option value="hsl">hsl</option>
+                  </select>
+                </p>
+                <p>
+                  <span>results </span>
+                  <p><span>red: </span>[[r]]</p>
+                  <p><span>green: </span>[[g]]</p>
+                  <p><span>blue: </span>[[b]]</p>
+                  <p><span>hue: </span>[[h]]</p>
+                  <p><span>saturation: </span>[[s]]</p>
+                  <p><span>lightness: </span>[[l]]</p>
+                </p>
               </div>
             </template>
           </dom-bind>
         </template>
       </demo-snippet>
-    </div> -->
+    </div>
 
   </body>
 

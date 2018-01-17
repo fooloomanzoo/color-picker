@@ -11,7 +11,7 @@
 
       constructor() {
         super();
-        this._validateHex = /^\s*(?:(#(?:[a-f0-9]{6}|[a-f0-9]{3}))|rgba\(\s*(#(?:[a-f0-9]{6}|[a-f0-9]{3}))\s*,\s*(1|0|0?\.\d*|1\.0*)\s*\))\s*$/;
+        this._validateHex = /^\s*(?:(#(?:[A-Fa-f0-9]{6}|[A-Fa-f0-9]{3}))|rgba\(\s*(#(?:[A-Fa-f0-9]{6}|[A-Fa-f0-9]{3}))\s*,\s*(1|0|0?\.\d*|1\.0*)\s*\))\s*$/;
         this._validateRgb = /^\s*rgb(a)?\(\s*(25[0-5]|2[0-4]\d|1\d{1,2}|\d\d?)\s*,\s*(25[0-5]|2[0-4]\d|1\d{1,2}|\d\d?)\s*,\s*(25[0-5]|2[0-4]\d|1\d{1,2}|\d\d?)(?:\s*,\s*(1|0|0?\.\d*|1\.0*))?\s*\)\s*$/;
         this._validateHsl = /^\s*hsl(a)?\(\s*(-?\d+(?:\.\d*)?)\s*,\s*((?:1|0|0?\.\d*|1\.0*)|(?:(?:100(?:\.0*)?|[1-9]?[0-9](?:\.\d*)?)%))\s*,\s*((?:1|0|0?\.\d*|1\.0*)|(?:(?:100(?:\.0*)?|[1-9]?[0-9](?:\.\d*)?)%))(?:\s*,\s*(1|0|0?\.\d*|1\.0*))?\s*\)\s*$/;
         this._validatePercent = /(100(?:\.0*)?|[1-9]?[0-9](?:\.\d*)?)%/;
@@ -124,9 +124,22 @@
       static get observers() {
         return [
           '_rgbChanged(r, g, b)',
-          '_hslChanged(h, s, l)',
-          '_hexChanged(hex)'
+          '_hslChanged(h, s, l)'
         ];
+      }
+
+      connectedCallback() {
+        super.connectedCallback();
+        // create a random color, if value or hex is not set
+        if (this.value === undefined && this.hex === undefined) {
+          if (this.h !== undefined || this.s !== undefined || this.l !== undefined) {
+            const hsl = this.randomHsl();
+            this.setProperties({h: this.h || hsl.h, s: this.s || hsl.s, l: this.l || hsl.l});
+          } else {
+            const rgb = this.randomRgb();
+            this.setProperties({r: this.r || rgb.r, g: this.g || rgb.b, b: this.b || rgb.b});
+          }
+        }
       }
 
       _computeHasAlpha(alpha) {
@@ -218,17 +231,10 @@
 
       _setValue() {
         switch (this.format) {
-          case 'hex':
-            if (this.alpha === 1 && this.hex !== undefined) {
-              this.value = this.hex;
-            } else if (this.r !== undefined && this.g !== undefined && this.b !== undefined) {
-              this.value = `rgba(${Math.round(this.r)},${Math.round(this.g)},${Math.round(this.b)},${this.alpha || 1})`;
-            }
-            break;
           case 'rgb':
             if (this.r !== undefined && this.g !== undefined && this.b !== undefined) {
               if (this.alphaMode === true) {
-                this.value = `rgba(${Math.round(this.r)},${Math.round(this.g)},${Math.round(this.b)},${this.alpha || 1})`;
+                this.value = `rgba(${Math.round(this.r)},${Math.round(this.g)},${Math.round(this.b)},${this.alpha === undefined ? 0 : this.alpha})`;
               } else {
                 this.value = `rgb(${Math.round(this.r)},${Math.round(this.g)},${Math.round(this.b)})`;
               }
@@ -237,12 +243,19 @@
           case 'hsl':
             if (this.h !== undefined && this.s !== undefined && this.l !== undefined) {
               if (this.alphaMode === true) {
-                this.value = `hsla(${+this.h.toFixed(this.hslPrecision || 0)},${+(this.s*100).toFixed(this.hslPrecision || 0)}%,${+(this.l*100).toFixed(this.hslPrecision || 0)}%,${this.alpha || 1})`;
+                this.value = `hsla(${+this.h.toFixed(this.hslPrecision || 0)},${+(this.s*100).toFixed(this.hslPrecision || 0)}%,${+(this.l*100).toFixed(this.hslPrecision || 0)}%,${this.alpha === undefined ? 0 : this.alpha})`;
               } else {
                 this.value = `hsl(${+this.h.toFixed(this.hslPrecision || 0)},${+(this.s*100).toFixed(this.hslPrecision || 0)}%,${+(this.l*100).toFixed(this.hslPrecision || 0)}%)`;
               }
             }
             break;
+          case 'hex':
+          default:
+            if (this.alpha === 1 && this.hex !== undefined) {
+              this.value = this.hex;
+            } else if (this.r !== undefined && this.g !== undefined && this.b !== undefined) {
+              this.value = `rgba(${Math.round(this.r)},${Math.round(this.g)},${Math.round(this.b)},${this.alpha === undefined ? 0 : this.alpha})`;
+            }
         }
       }
 
@@ -304,16 +317,26 @@
       }
 
       /**
+       * generate random color
+       */
+      random() {
+        this.setProperties(this.randomRgb());
+      }
+
+      /**
        * generate random rgb-color
        * @return {object} rgb-value object
        */
-      _randomRGB() {
-        return {r: Math.round(255 * Math.random()), g: Math.round(255 * Math.random()),b: Math.round(255 * Math.random())};
+      randomRgb() {
+        return {r: Math.round(255 * Math.random()), g: Math.round(255 * Math.random()), b: Math.round(255 * Math.random())};
       }
 
-      random() {
-        const rgb = this._randomRGB();
-        this.setProperties(rgb);
+      /**
+       * generate random hsl-color
+       * @return {object} rgb-value object
+       */
+      randomHsl() {
+        return {h: Math.round(359 * Math.random()), s: Math.random(), l: Math.random()};
       }
 
       hexToRgb(hex) {
@@ -377,8 +400,7 @@
         const _c = max - min; // not-normalized chroma (for precision)
 
         if (_c === 0) {
-          l /= 255;
-          return [0, 0, l];
+          return [0, 0, l/255];
         }
 
         const s = _c / (255 - Math.abs(2*l - 255));
@@ -388,11 +410,10 @@
             case g: h = (((b - r) * 60) / _c) + 120; break;
             case b: h = (((r - g) * 60) / _c) + 240; break;
         }
-        l /= 255;
         return {
           h: h,
           s: s,
-          l: l
+          l: l/255
         };
       }
     }

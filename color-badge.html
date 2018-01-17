@@ -1,4 +1,4 @@
-<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="color-mixin.html">
 
 <script>
@@ -29,43 +29,51 @@
         ${super.customStyleContent || ''}
         :host {
           display: inline-flex;
-          overflow: hidden;
-          --transparency-pattern: {
-            background-image: linear-gradient(45deg, black 25%, transparent 25%, transparent 75%, black 75%, black),
-            linear-gradient(45deg, black 25%, transparent 25%, transparent 75%, black 75%, black);
-            background-size: 16px 16px;
-            background-position:0 0, 8px 8px;
-            opacity: .1;
-          };
-        }
-        .content {
-          display: inline-flex;
-          z-index: 0;
           position: relative;
+          padding: 0 !important;
+          overflow: hidden;
+          box-sizing: content-box;
         }
-        :host(:not([hide-transparency-pattern])) .transparency::before {
-          content: "";
+        #colorBadge {
+          display: inline-flex;
+          box-sizing: content-box;
+        }
+        :host(:not([hide-transparency-pattern])) #colorBadge > .transparency {
           position: absolute;
           top: 0; right: 0; bottom: 0; left: 0;
-          z-index: -1;
+          min-height: 100%;
+          min-width: 100%;
           pointer-events: none;
+          background-image: linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%, #000),
+          linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%, #000);
+          background-size: 16px 16px;
+          background-position:0 0, 8px 8px;
+          background-repeat: repeat;
+          opacity: .1;
           @apply --transparency-pattern;
         }
-        .content > ::slotted(*) {
+        #colorBadge > .slot {
           position: absolute;
-          z-index: 1;
           top: 50%; left: 50%;
           transform: translate(-50%, -50%);
+          @apply --color-badge-slot;
         }
       `;
     }
 
     static get colorBadgeTemplate() {
       return `
-        <div class="content transparency">
-          <canvas class="badge" width$="[[width]]" height$="[[height]]"></canvas>
-          <slot></slot>
+        <div id="colorBadge">
+          <div class="transparency"></div>
+          <canvas id="badge" width$="[[width]]" height="[[height]]"></canvas>
+          ${this.colorBadgeSlotTemplate || ''}
         </div>
+      `
+    }
+
+    static get colorBadgeSlotTemplate() {
+      return `
+        <div class="slot"><slot></slot></div>
       `
     }
 
@@ -77,7 +85,7 @@
          */
         width: {
           type: Number,
-          value: 24
+          value: 96
         },
         /**
          * height of the badge in pixels
@@ -85,7 +93,7 @@
          */
         height: {
           type: Number,
-          value: 96
+          value: 24
         },
         /**
          * height of the badge in pixels
@@ -98,29 +106,30 @@
       }
     }
 
+    static get observers() {
+      return [
+        '_computeStyle(width, height)'
+      ];
+    }
+
+    _computeStyle(width, height) {
+      this.style.minWidth = `${width}px`;
+      this.style.minHeight = `${height}px`;
+    }
+
     _valueChanged(value, oldValue) {
       super._valueChanged(value, oldValue);
-      if (value !== undefined) {
-        this._drawBadge(value);
-      }
-    }
-
-    _drawBadge(value, selector) {
       if (value === undefined) return;
-      const currentColorCanvas = this.root.querySelectorAll('canvas' + (selector || '.badge'));
-
-      for (let i = 0; i < currentColorCanvas.length; i++) {
-        this._fillRect(currentColorCanvas[i], value);
+      if (!this._context) {
+        this._context = this.$.badge.getContext("2d");
       }
+      this._drawBadge(value);
     }
 
-    _fillRect(elem, value) {
-      const context = elem.getContext("2d");
-
-      console.log('_fillRect', value);
-      context.clearRect(0, 0, this.width, this.height);
-      context.fillStyle = value;
-      context.fillRect(0, 0, this.width, this.height);
+    _drawBadge(value) {
+      this._context.clearRect(0, 0, this.width, this.height);
+      this._context.fillStyle = value;
+      this._context.fillRect(0, 0, this.width, this.height);
     }
   }
 </script>
@@ -129,7 +138,7 @@
   <script>
   /**
   * `<color-badge>` is a badge that displays a color as a rectangle with a specified height and width.
-  * The transparency of the color will be displayed. It can slot elements and they are automatically centered.
+  * The transparency of the color will be displayed. It can slot elements and they are automatically centered. Because of using a canvas to draw the color, it needs to be explicitly sized via the width- and height-attribute.
   *
   *   ```html
   *     <color-badge height="24" width="96" value="[[color]]">
@@ -140,8 +149,8 @@
   * Custom property | Description | Default
   * ----------------|-------------|----------
   * `--transparency-pattern` | margin of the single color-picker | `{
-    background-image: linear-gradient(45deg, black 25%, transparent 25%, transparent 75%, black 75%, black),
-    linear-gradient(45deg, black 25%, transparent 25%, transparent 75%, black 75%, black);
+    background-image: linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%, #000),
+    linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%, #000);
     background-size: 16px 16px;
     background-position:0 0, 8px 8px;
     opacity: .1;

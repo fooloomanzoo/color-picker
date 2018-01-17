@@ -24,6 +24,7 @@
     "iron-overlay-behavior": "PolymerElements/iron-overlay-behavior",
     "input-picker-pattern": "fooloomanzoo/input-picker-pattern",
     "number-input": "fooloomanzoo/number-input",
+    "text-input": "fooloomanzoo/text-input",
     "property-mixins": "fooloomanzoo/property-mixins"
   },
   "devDependencies": {
