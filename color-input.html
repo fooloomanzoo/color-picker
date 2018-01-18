@@ -29,6 +29,9 @@
     static get customStyleContent() {
       return `
         ${super.customStyleContent || ''}
+        :host {
+          --color-badge-border-radius: 8px;
+        }
         #colorInput {
           display: inline-flex;
           flex-direction: row;
@@ -36,6 +39,25 @@
         }
         #colorBadge {
           position: relative;
+        }
+        #valueInput {
+          margin-left: 4px;
+          --text-input-allign: center;
+          --text-input: {
+            border-bottom-width: thin;
+            transition: background-color 250ms ease-in-out;
+            @apply --text-input;
+          };
+          --text-input-focus: {
+            border-color: #555;
+            border-style: solid;
+            background: rgba(0, 0, 0, 0.1);
+          };
+          --text-input-invalid: {
+            background: rgba(255, 0, 0, 0.2);
+            border-color: #999;
+            border-style: dashed;
+          };
         }
       `;
     }
@@ -45,20 +67,7 @@
         ${super.colorInputTemplate || ''}
         <div id="colorInput" on-contextmenu="random">
           ${this.colorBadgeTemplate || ''}
-          <template is="dom-if" if="[[_computeIsInFormat('hex', format)]]" restamp>
-            <text-input id="hex" value="{{hex}}" required pattern="^#(?:[A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$" size="7" maxlength="7" minlength="4"></text-input>
-          </template>
-          <template is="dom-if" if="[[_computeIsInFormat('rgb', format)]]" restamp>
-            <number-input id="r" value="{{r}}" step="1" min="0" max="255"></number-input>
-            <number-input id="g" value="{{g}}" step="1" min="0" max="255"></number-input>
-            <number-input id="b" value="{{b}}" step="1" min="0" max="255"></number-input>
-          </template>
-          <template is="dom-if" if="[[_computeIsInFormat('hsl', format)]]" restamp>
-            <number-input id="h" value="{{h}}" step="1" min="0" max="360"></number-input>
-            <number-input id="s" value="{{s}}" in-percent step="0.01" min="0" max="1"></number-input>
-            <number-input id="l" value="{{l}}" in-percent step="0.01" min="0" max="1"></number-input>
-          </template>
-          <number-input id="alpha" value="{{alpha}}" no-clamp step="0.01" min="0" max="1"></number-input>
+          <text-input id="valueInput" value="{{value}}" pattern="[[_computeFormatPattern(format)]]" minlength="4"></text-input>
         </div>
       `
     }
@@ -67,8 +76,35 @@
       return '';
     }
 
-    _computeIsInFormat(expectedFormat, format) {
-      return expectedFormat === format;
+    static get properties() {
+      return {
+        /**
+         * width of the badge in pixels
+         * @type {number}
+         */
+        width: {
+          type: Number,
+          value: 32
+        },
+        /**
+         * height of the badge in pixels
+         * @type {number}
+         */
+        height: {
+          type: Number,
+          value: 32
+        }
+      }
+    }
+
+    _computeFormatPattern(format) {
+      switch (format) {
+        case 'hsl':
+          return this._validateHsl.toString().slice(1,-1);
+          break;
+        default:
+          return '^(?:' + this._validateRgb.toString().slice(2,-2) + '|' + this._validateHex.toString().slice(2,-2) + ')$';
+      }
     }
 
   }

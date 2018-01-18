@@ -26,7 +26,7 @@
 
   <body>
 
-    <div class="vertical-section-container centered">
+    <!-- <div class="vertical-section-container centered">
       <h3>Create a color-badge</h3>
       <demo-snippet>
         <template>
@@ -34,11 +34,11 @@
             <template is="dom-bind">
               <style>
                 .custom {
-                  border-radius: 16px;
+                  --color-badge-border-radius: 16px;
                   box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.3);
                 }
               </style>
-              <color-badge class="custom" height="48" width="172" value="{{color}}" alpha="{{alpha}}" r="66" format="{{format}}">
+              <color-badge class="custom" height="48" width="172" value="{{color}}" alpha="{{alpha}}" format="{{format}}">
                 <span style="font-size:0.8em;">[[color]]</span>
               </color-badge>
               <div class="vertical-section-container result">
@@ -56,12 +56,10 @@
                     <option value="hsla(144,0.25,0.35,0.22)">hsla(144,0.25,0.35,0.22)</option>
                     <option value="hsla(44,75.4%,55%,0.9)">hsla(44,75.4%,55%,0.9)</option>
                   </datalist>
-                </p>
-                <p>
+                <br>
                   <span>alpha </span><input type="range" min="0" max="1" step="0.01" value="{{alpha::change}}">
                   <number-input min="0" max="1" step="0.01" value="{{alpha}}"></number-input>
-                </p>
-                <p>
+                <br>
                   <span>format </span>
                   <select id="formats" value="{{format::change}}">
                     <option value="hex">hex</option>
@@ -74,7 +72,7 @@
           </dom-bind>
         </template>
       </demo-snippet>
-    </div>
+    </div> -->
 
     <div class="vertical-section-container centered">
       <h3>Create a color-input</h3>
@@ -104,27 +102,23 @@
                     <option value="hsla(144,0.25,0.35,0.22)">hsla(144,0.25,0.35,0.22)</option>
                     <option value="hsla(44,75.4%,55%,0.9)">hsla(44,75.4%,55%,0.9)</option>
                   </datalist>
-                </p>
-                <p>
+                  <br>
                   <span>alpha </span><input type="range" min="0" max="1" step="0.01" value="{{alpha::change}}">
                   <number-input min="0" max="1" step="0.01" value="{{alpha}}"></number-input>
-                </p>
-                <p>
+                  <br>
                   <span>format </span>
                   <select id="formats" value="{{format::change}}">
                     <option value="hex">hex</option>
                     <option value="rgb">rgb</option>
                     <option value="hsl">hsl</option>
                   </select>
-                </p>
-                <p>
-                  <span>results </span>
-                  <p><span>red: </span>[[r]]</p>
-                  <p><span>green: </span>[[g]]</p>
-                  <p><span>blue: </span>[[b]]</p>
-                  <p><span>hue: </span>[[h]]</p>
-                  <p><span>saturation: </span>[[s]]</p>
-                  <p><span>lightness: </span>[[l]]</p>
+                  <h4>Results</h4>
+                  <span>red: [[r]]</span>
+                  <span>green: [[g]]</span>
+                  <span>blue: [[b]]</span>
+                  <span>hue: [[h]]</span>
+                  <span>saturation: [[s]]</span>
+                  <span>lightness: [[l]]</span>
                 </p>
               </div>
             </template>

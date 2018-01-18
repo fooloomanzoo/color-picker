@@ -11,10 +11,6 @@
 
       constructor() {
         super();
-        this._validateHex = /^\s*(?:(#(?:[A-Fa-f0-9]{6}|[A-Fa-f0-9]{3}))|rgba\(\s*(#(?:[A-Fa-f0-9]{6}|[A-Fa-f0-9]{3}))\s*,\s*(1|0|0?\.\d*|1\.0*)\s*\))\s*$/;
-        this._validateRgb = /^\s*rgb(a)?\(\s*(25[0-5]|2[0-4]\d|1\d{1,2}|\d\d?)\s*,\s*(25[0-5]|2[0-4]\d|1\d{1,2}|\d\d?)\s*,\s*(25[0-5]|2[0-4]\d|1\d{1,2}|\d\d?)(?:\s*,\s*(1|0|0?\.\d*|1\.0*))?\s*\)\s*$/;
-        this._validateHsl = /^\s*hsl(a)?\(\s*(-?\d+(?:\.\d*)?)\s*,\s*((?:1|0|0?\.\d*|1\.0*)|(?:(?:100(?:\.0*)?|[1-9]?[0-9](?:\.\d*)?)%))\s*,\s*((?:1|0|0?\.\d*|1\.0*)|(?:(?:100(?:\.0*)?|[1-9]?[0-9](?:\.\d*)?)%))(?:\s*,\s*(1|0|0?\.\d*|1\.0*))?\s*\)\s*$/;
-        this._validatePercent = /(100(?:\.0*)?|[1-9]?[0-9](?:\.\d*)?)%/;
         this._validFormats = ['rgb', 'hex', 'hsl'];
       }
 
@@ -79,13 +75,7 @@
             value: 1,
             observer: '_alphaChanged'
           },
-          /**
-           * is true, when alpha is not 1
-           */
-          _hasAlpha: {
-            type: Boolean,
-            computed: '_computeHasAlpha(alpha)'
-          },
+
           /**
            * if true, value has alpha
            */
@@ -116,8 +106,34 @@
           value: {
             type: String,
             notify: true,
+            reflectToAttribute: true,
             observer: '_valueChanged'
+          },
+
+          _validateHex: {
+            type: RegExp,
+            readOnly: true,
+            value: /^\s*(?:(#(?:[A-Fa-f0-9]{6}|[A-Fa-f0-9]{3}))|rgba\(\s*(#(?:[A-Fa-f0-9]{6}|[A-Fa-f0-9]{3}))\s*,\s*(-?\d*(?:\.(?:\d*)?)?)\s*\))\s*$/
+          },
+
+          _validateRgb: {
+            type: RegExp,
+            readOnly: true,
+            value: /^\s*rgb(a)?\(\s*(-?\d+)\s*,\s*(-?\d+)\s*,\s*(-?\d+)(?:\s*,\s*(-?\d*(?:\.(?:\d*)?)?))?\s*\)\s*$/
+          },
+
+          _validateHsl: {
+            type: RegExp,
+            readOnly: true,
+            value: /^\s*hsl(a)?\(\s*(-?\d+(?:\.\d*)?)\s*,\s*(-?\d*(?:\.(?:\d*)?)?%?)\s*,\s*(-?\d*(?:\.(?:\d*)?)?%?)(?:\s*,\s*(-?\d*(?:\.(?:\d*)?)?))?\s*\)\s*$/
+          },
+
+          _validatePercent: {
+            type: RegExp,
+            readOnly: true,
+            value: /(-?\d*(?:\.(?:\d*)?)?)%/
           }
+
         }
       }
 
@@ -134,16 +150,20 @@
         if (this.value === undefined && this.hex === undefined) {
           if (this.h !== undefined || this.s !== undefined || this.l !== undefined) {
             const hsl = this.randomHsl();
-            this.setProperties({h: this.h || hsl.h, s: this.s || hsl.s, l: this.l || hsl.l});
+            this.setProperties({
+              h: this.h || hsl.h,
+              s: this.s || hsl.s,
+              l: this.l || hsl.l
+            });
           } else {
             const rgb = this.randomRgb();
-            this.setProperties({r: this.r || rgb.r, g: this.g || rgb.b, b: this.b || rgb.b});
+            this.setProperties({
+              r: this.r || rgb.r,
+              g: this.g || rgb.g,
+              b: this.b || rgb.b
+            });
           }
         }
-      }
-
-      _computeHasAlpha(alpha) {
-        return alpha !== 1;
       }
 
       _alphaModeChanged(alphaMode) {
@@ -164,60 +184,69 @@
           this.format = 'hex';
           return;
         }
-        if (this.value !== undefined) {
-          this._debouncedSetValue();
-        }
+        this._debouncedSetValue();
       }
 
       _valueChanged(value, oldValue) {
         if (value === undefined) return;
 
-        let toSet = {}, match;
+        let toSet = {},
+          match;
         // input-format detection
-        if (match = this._validateHex.exec(value)) {;
-          if (match[1] !== undefined) { // no alpha
-            toSet.hex = match[1];
-            toSet.alpha = 1;
-            toSet.alphaMode = false;
-          } else { // with alpha
-            toSet.hex = match[2];
-            toSet.alpha = +match[3];
-            toSet.alphaMode = true;
-          }
-        } else if (match = this._validateRgb.exec(value)) {
-          if (match[1] === undefined) { // no alpha
-            toSet.alpha = 1;
-            toSet.alphaMode = false;
-          } else { // with alpha
-            toSet.alpha = +match[5];
-            toSet.alphaMode = true;
-          }
-          toSet.r = +match[2];
-          toSet.g = +match[3];
-          toSet.b = +match[4];
-        } else if (match = this._validateHsl.exec(value)) {
-          if (match[1] === undefined) { // no alpha
-            toSet.alpha = 1;
-            toSet.alphaMode = false;
-          } else { // with alpha
-            toSet.alpha = +match[5];
-            toSet.alphaMode = true;
-          }
-          toSet.h = +match[2];
-          let matchPercent;
-          if (matchPercent = this._validatePercent.exec(match[3])) { // s in percentage value
-            toSet.s = +matchPercent[1] * 0.01;
-          } else {
-            toSet.s = +match[3];
-          }
-          if (matchPercent = this._validatePercent.exec(match[4])) { // l in percentage value
-            toSet.l = +matchPercent[1] * 0.01;
-          } else {
-            toSet.l = +match[4];
-          }
-        } else if (oldValue !== undefined) {
+        switch (this.format) {
+          case 'hsl':
+            if (match = value.match(this._validateHsl)) {
+              if (match[1] === undefined) { // no alpha
+                toSet.alpha = 1;
+                toSet.alphaMode = false;
+              } else { // with alpha
+                toSet.alpha = this._normalizedClamp(+match[5]);
+                toSet.alphaMode = true;
+              }
+              toSet.h = this._mathMod(+match[2], 360);
+              let matchPercent;
+              if (matchPercent = match[3].match(this._validatePercent)) { // s in percentage value
+                toSet.s = this._normalizedClamp(+matchPercent[1] * 0.01);
+              } else {
+                toSet.s = this._normalizedClamp(+match[3]);
+              }
+              if (matchPercent = match[4].match(this._validatePercent)) { // l in percentage value
+                toSet.l = this._normalizedClamp(+matchPercent[1] * 0.01);
+              } else {
+                toSet.l = this._normalizedClamp(+match[4]);
+              }
+            }
+            break;
+          case 'hex': // falls through
+            if (match = value.match(this._validateHex)) {
+              if (match[1] !== undefined) { // no alpha
+                toSet.hex = match[1];
+                toSet.alpha = 1;
+                toSet.alphaMode = false;
+              } else { // with alpha
+                toSet.hex = match[2];
+                toSet.alpha = this._normalizedClamp(+match[3]);
+                toSet.alphaMode = true;
+              }
+              break;
+            }
+          case 'rgb': // falls through
+          default:
+            if (match = value.match(this._validateRgb)) {
+              if (match[1] === undefined) { // no alpha
+                toSet.alpha = 1;
+                toSet.alphaMode = false;
+              } else { // with alpha
+                toSet.alpha = this._normalizedClamp(+match[5]);
+                toSet.alphaMode = true;
+              }
+              toSet.r = this._mathMod(+match[2], 256);
+              toSet.g = this._mathMod(+match[3], 256);
+              toSet.b = this._mathMod(+match[4], 256);
+            }
+        }
+        if (!match && oldValue !== undefined) {
           this._valueChanged(oldValue);
-          return;
         }
         this.setProperties(toSet);
       }
@@ -231,21 +260,21 @@
 
       _setValue() {
         switch (this.format) {
-          case 'rgb':
-            if (this.r !== undefined && this.g !== undefined && this.b !== undefined) {
-              if (this.alphaMode === true) {
-                this.value = `rgba(${Math.round(this.r)},${Math.round(this.g)},${Math.round(this.b)},${this.alpha === undefined ? 0 : this.alpha})`;
-              } else {
-                this.value = `rgb(${Math.round(this.r)},${Math.round(this.g)},${Math.round(this.b)})`;
-              }
-            }
-            break;
           case 'hsl':
             if (this.h !== undefined && this.s !== undefined && this.l !== undefined) {
               if (this.alphaMode === true) {
                 this.value = `hsla(${+this.h.toFixed(this.hslPrecision || 0)},${+(this.s*100).toFixed(this.hslPrecision || 0)}%,${+(this.l*100).toFixed(this.hslPrecision || 0)}%,${this.alpha === undefined ? 0 : this.alpha})`;
               } else {
                 this.value = `hsl(${+this.h.toFixed(this.hslPrecision || 0)},${+(this.s*100).toFixed(this.hslPrecision || 0)}%,${+(this.l*100).toFixed(this.hslPrecision || 0)}%)`;
+              }
+            }
+            break;
+          case 'rgb':
+            if (this.r !== undefined && this.g !== undefined && this.b !== undefined) {
+              if (this.alphaMode === true) {
+                this.value = `rgba(${Math.round(this.r)},${Math.round(this.g)},${Math.round(this.b)},${this.alpha === undefined ? 0 : this.alpha})`;
+              } else {
+                this.value = `rgb(${Math.round(this.r)},${Math.round(this.g)},${Math.round(this.b)})`;
               }
             }
             break;
@@ -290,10 +319,18 @@
         if (hex === undefined) {
           return;
         }
-        const rgb = this.hexToRgb(hex),
-          hsl = this.rgbToHsl(rgb.r, rgb.g, rgb.b);
-        this.setProperties( Object.assign({}, rgb, hsl));
-
+        let toSet = {};
+        const rgb = this.hexToRgb(hex);
+        if (rgb.r !== Math.round(this.r)) {
+          toSet.r = rgb.r;
+        }
+        if (rgb.g !== Math.round(this.g)) {
+          toSet.g = rgb.g;
+        }
+        if (rgb.b !== Math.round(this.b)) {
+          toSet.b = rgb.b;
+        }
+        this.setProperties(toSet);
         this._debouncedSetValue();
       }
 
@@ -301,8 +338,20 @@
         if (r === undefined || g === undefined || b === undefined) {
           return;
         }
-        const toSet = Object.assign({}, this.rgbToHsl(r, g, b), {hex: this.rgbToHex(r, g, b) });
-        this.setProperties( toSet );
+        r = this._mathMod(r, 256);
+        g = this._mathMod(g, 256);
+        b = this._mathMod(b, 256);
+        let toSet = {};
+        // avoid multiple conversion to hsl by checking if the current hsl-values convert to the same rgb-values
+        const rgbFromCurrentHsl = this.hslToRgb(this.h, this.s, this.l) || {};
+        if (r !== rgbFromCurrentHsl.r || g !== rgbFromCurrentHsl.g || b !== rgbFromCurrentHsl.b) {
+          toSet = this.rgbToHsl(r, g, b);
+        }
+        const hex = this.rgbToHex(r, g, b);
+        if (hex !== this.hex) {
+          toSet.hex = hex;
+        }
+        this.setProperties(toSet);
         this._debouncedSetValue();
       }
 
@@ -310,9 +359,21 @@
         if (h === undefined || s === undefined || l === undefined) {
           return;
         }
+        h = this._mathMod(h, 360);
+        s = this._normalizedClamp(s);
+        l = this._normalizedClamp(l);
+        let toSet = {};
         const rgb = this.hslToRgb(h, s, l);
-        this.setProperties( Object.assign({}, rgb, {hex: this.rgbToHex(rgb.r, rgb.g, rgb.b) }));
-
+        if (rgb.r !== this.r) {
+          toSet.r = rgb.r;
+        }
+        if (rgb.g !== this.g) {
+          toSet.g = rgb.g;
+        }
+        if (rgb.b !== this.b) {
+          toSet.b = rgb.b;
+        }
+        this.setProperties(toSet);
         this._debouncedSetValue();
       }
 
@@ -328,7 +389,11 @@
        * @return {object} rgb-value object
        */
       randomRgb() {
-        return {r: Math.round(255 * Math.random()), g: Math.round(255 * Math.random()), b: Math.round(255 * Math.random())};
+        return {
+          r: Math.round(255 * Math.random()),
+          g: Math.round(255 * Math.random()),
+          b: Math.round(255 * Math.random())
+        };
       }
 
       /**
@@ -336,7 +401,11 @@
        * @return {object} rgb-value object
        */
       randomHsl() {
-        return {h: Math.round(359 * Math.random()), s: Math.random(), l: Math.random()};
+        return {
+          h: Math.round(359 * Math.random()),
+          s: Math.random(),
+          l: Math.random()
+        };
       }
 
       hexToRgb(hex) {
@@ -348,7 +417,11 @@
           hex = hex.replace(/(.)(.)(.)/, "$1$1$2$2$3$3");
         }
 
-        return {r: parseInt(hex.substr(0, 2), 16), g: parseInt(hex.substr(2, 2), 16), b: parseInt(hex.substr(4, 2), 16)};
+        return {
+          r: parseInt(hex.substr(0, 2), 16),
+          g: parseInt(hex.substr(2, 2), 16),
+          b: parseInt(hex.substr(4, 2), 16)
+        };
       }
 
       rgbToHex(r, g, b) {
@@ -367,7 +440,7 @@
         }
       }
 
-      hslToRgb(h, s, l) {
+      hslToRgb(h, s, l) { // not rounded yet
         if (h === undefined || s === undefined || l === undefined) {
           return;
         }
@@ -396,25 +469,39 @@
         const max = Math.max(r, g, b),
           min = Math.min(r, g, b);
 
-        const l = (max + min) / 2; // not-normalized lightness (for precision)
+        const l = (max + min) / (2 * 255);
         const _c = max - min; // not-normalized chroma (for precision)
 
         if (_c === 0) {
-          return [0, 0, l/255];
+          return [0, 0, l];
         }
 
-        const s = _c / (255 - Math.abs(2*l - 255));
+        const s = _c / (255 - Math.abs(max + min - 255));
         let h;
         switch (max) {
-            case r: h = (((((g - b) * 60) / _c) % 360) + 360) % 360; break; // symmetric modulo required(?)
-            case g: h = (((b - r) * 60) / _c) + 120; break;
-            case b: h = (((r - g) * 60) / _c) + 240; break;
+          case r:
+            h = ((g - b) * 60) / _c;
+            break;
+          case g:
+            h = (((b - r) * 60) / _c) + 120;
+            break;
+          case b:
+            h = (((r - g) * 60) / _c) + 240;
+            break;
         }
         return {
           h: h,
           s: s,
-          l: l/255
+          l: l
         };
+      }
+
+      _mathMod(dividend, divisor) {
+        return ((dividend % divisor) + divisor) % divisor;
+      }
+
+      _normalizedClamp(n) {
+        return n > 1 ? 1 : n < 0 ? 0 : n;
       }
     }
   }

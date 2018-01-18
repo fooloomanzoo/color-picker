@@ -31,18 +31,18 @@
           display: inline-flex;
           position: relative;
           padding: 0 !important;
-          overflow: hidden;
           box-sizing: content-box;
         }
         #colorBadge {
           display: inline-flex;
           box-sizing: content-box;
+          overflow: hidden;
+          z-index: auto;
+          border-radius: var(--color-badge-border-radius, 0px);
         }
         :host(:not([hide-transparency-pattern])) #colorBadge > .transparency {
           position: absolute;
           top: 0; right: 0; bottom: 0; left: 0;
-          min-height: 100%;
-          min-width: 100%;
           pointer-events: none;
           background-image: linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%, #000),
           linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%, #000);
@@ -51,12 +51,17 @@
           background-repeat: repeat;
           opacity: .1;
           @apply --transparency-pattern;
+          z-index: 0;
+        }
+        #colorBadge > #badge {
+          z-index: 1;
         }
         #colorBadge > .slot {
           position: absolute;
           top: 50%; left: 50%;
           transform: translate(-50%, -50%);
           @apply --color-badge-slot;
+          z-index: 2;
         }
       `;
     }
@@ -120,7 +125,7 @@
     _valueChanged(value, oldValue) {
       super._valueChanged(value, oldValue);
       if (value === undefined) return;
-      if (!this._context) {
+      if (this._context === undefined) {
         this._context = this.$.badge.getContext("2d");
       }
       this._drawBadge(value);
