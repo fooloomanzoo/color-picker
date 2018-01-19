@@ -1,28 +1,17 @@
 <link rel="import" href="../polymer/polymer-element.html">
-<link rel="import" href="color-mixin.html">
+<link rel="import" href="../color-input/color-badge.html">
+<link rel="import" href="../text-input/text-input.html">
 
 <script>
   /**
    * Mixin for color-element
    *
-   * @appliesMixin ColorMixin
+   * @appliesMixin ColorBadgeMixin
    *
    * @mixinFunction
    * @polymer
    */
-  const ColorElementPattern = (superClass) => class extends ColorMixin(superClass) { // eslint-disable-line no-unused-vars, no-undef
-
-    static get styleTemplate() {
-      return `
-        <style include="${this.customStyleToInclude}">
-          ${this.customStyleContent}
-        </style>
-      `;
-    }
-
-    static get customStyleToInclude() {
-      return '';
-    }
+  const ColorElementPattern = (superClass) => class extends ColorInputPattern(superClass) { // eslint-disable-line no-unused-vars, no-undef
 
     static get customStyleContent() {
       return `
@@ -36,30 +25,30 @@
           -webkit-tap-highlight-color:rgba(0,0,0,0);
           align-items: center;
         }
-        #color {
+        #colorElement {
           display: inline-flex;
           flex-direction: column;
           background: var(--color-element-background, #f0f0f0);
         }
-        #color #picked {
+        #colorElement #picked {
           display: inline-flex;
           flex-direction: column;
           margin: var(--color-element-margin) var(--color-element-margin) 0 var(--color-element-margin);
           cursor: pointer;
         }
-        #color #picked #selected {
+        #colorElement #picked #selected {
           border-top-width: 0;
         }
-        #color #picked #current {
+        #colorElement #picked #current {
           border-bottom-width: 0;
         }
-        #color .transparency {
+        #colorElement .transparency {
           display: inline-flex;
           flex-direction: column;
           z-index: 1;
           position: relative;
         }
-        #color .transparency::after {
+        #colorElement .transparency::after {
           content: "";
           position: absolute;
           top: 0;
@@ -73,56 +62,33 @@
           background-position:0 0, 8px 8px;
           opacity: .1;
         }
-        #color #selectors {
+        #colorElement #selectors {
           display: inline-flex;
           flex-direction: row;
         }
-        #color #selectors > * {
+        #colorElement #selectors > * {
           margin: var(--color-element-margin) var(--color-element-margin) var(--color-element-margin) 0;
         }
-        #color #saturation {
+        #colorElement #saturation {
           cursor: crosshair;
           margin-left: var(--color-element-margin);
         }
-        #color #alpha,
-        #color #hue {
+        #colorElement #alpha,
+        #colorElement #hue {
           cursor: -webkit-grab;
           cursor: grab;
         }
-        #color #alpha.grabbing,
-        #color #hue.grabbing {
+        #colorElement #alpha.grabbing,
+        #colorElement #hue.grabbing {
           cursor: -webkit-grabbing;
           cursor: grabbing;
-        }
-        #color [contenteditable] {
-          position: absolute;
-          font-size: 11px;
-          font-weight: 600;
-          outline: none;
-          top: 50%; left: 50%;
-          transform: translate(-50%, -50%);
-          transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1), opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
-          opacity: 0.66;
-        }
-        #color:hover [contenteditable] {
-          opacity: 1;
         }
       `;
     }
 
-    static get colorTemplate() {
+    static get colorElementTemplate() {
       return `
-        <div id="color">
-          <div id="picked">
-            <div class="transparency">
-              <canvas id="current" class="current" hidden$="[[!showCurrentSelectedColor]]" width="240" height$="[[_computeHeightForPicked(hsv, _selectedHsv, showCurrentSelectedColor)]]" on-click="_resetColor"></canvas>
-              <div class="current" contenteditable spellcheck="false" on-input="_currentColorInputChanged"></div>
-            </div>
-            <div class="transparency">
-              <canvas id="selected" width="240" height$="[[_computeHeightForPicked(_selectedHsv, hsv, showCurrentSelectedColor)]]" on-click="_fixColor"></canvas>
-              <div id="selectedColorInput" contenteditable spellcheck="false" on-input="_selectedColorInputChanged"></div>
-            </div>
-          </div>
+        <div id="colorElement">
           <div id="selectors">
             <canvas id="saturation" width="208" height="184" on-mousedown="_grabStart" on-touchstart="_grabStart"></canvas>
             <div class="transparency">
@@ -130,12 +96,37 @@
             </div>
             <canvas id="hue" width="16" height="184" on-mousedown="_grabStart" on-touchstart="_grabStart"></canvas>
           </div>
+          ${super.colorBadgeTemplate}
+        </div>
+      `
+    }
+
+    static get colorBadgeSlotTemplate() {
+      return `
+        <div class="slot">
+          <text-input id="valueInput" value="{{value}}" pattern="[[_computeFormatPattern(format)]]" minlength="4"></text-input>
         </div>
       `
     }
 
     static get properties() {
       return {
+        /**
+         * width of the badge in pixels
+         * @type {number}
+         */
+        width: {
+          type: Number,
+          value: 96
+        },
+        /**
+         * height of the badge in pixels
+         * @type {number}
+         */
+        height: {
+          type: Number,
+          value: 24
+        },
         /**
          * show the color field of the current selected color
          * @type {boolean}
@@ -166,27 +157,8 @@
       }
     }
 
-    connectedCallback() {
-      super.connectedCallback();
-      if (!(Array.isArray(this.hsv) && this.hsv.length === 3)) {
-        this._onContextMenu();
-      }
-      this.root.addEventListener('contextmenu', this._onContextMenu.bind(this), false);
-    }
-
-    disconnectedCallback() {
-      super.disconnectedCallback();
-      this.root.removeEventListener('contextmenu', this._onContextMenu.bind(this), false);
-    }
-
-    _computeHeightForPicked(hsv1, hsv2, showCurrentSelectedColor) {
-      if (!showCurrentSelectedColor || (hsv1 && !hsv2)) {
-        return 64;
-      }
-      if (!hsv1 && hsv2) {
-        return 0;
-      }
-      return 32;
+    static get colorInputTemplate() {
+      return '';
     }
     /**
      * renderColors the current view (manually).
@@ -530,7 +502,7 @@
       static get template() {
         return `
           ${this.styleTemplate}
-          ${this.colorTemplate}
+          ${this.colorElementTemplate}
         `
       }
 
