@@ -1,28 +1,17 @@
 <link rel="import" href="../polymer/polymer-element.html">
-<link rel="import" href="color-mixin.html">
+<link rel="import" href="../color-input/color-input.html">
+<link rel="import" href="../property-mixins/color-mixin.html">
 
 <script>
   /**
    * Mixin for color-element
    *
-   * @appliesMixin ColorMixin
+   * @appliesMixin ColorInputPattern
    *
    * @mixinFunction
    * @polymer
    */
-  const ColorElementPattern = (superClass) => class extends ColorMixin(superClass) { // eslint-disable-line no-unused-vars, no-undef
-
-    static get styleTemplate() {
-      return `
-        <style include="${this.customStyleToInclude}">
-          ${this.customStyleContent}
-        </style>
-      `;
-    }
-
-    static get customStyleToInclude() {
-      return '';
-    }
+  const ColorElementPattern = (superClass) => class extends ColorInputPattern(superClass) { // eslint-disable-line no-unused-vars, no-undef
 
     static get customStyleContent() {
       return `
@@ -35,94 +24,40 @@
           user-select: none;
           -webkit-tap-highlight-color:rgba(0,0,0,0);
           align-items: center;
+          vertical-allign: unset;
         }
-        #color {
+        #colorElement {
           display: inline-flex;
           flex-direction: column;
           background: var(--color-element-background, #f0f0f0);
         }
-        #color #picked {
-          display: inline-flex;
-          flex-direction: column;
-          margin: var(--color-element-margin) var(--color-element-margin) 0 var(--color-element-margin);
-          cursor: pointer;
-        }
-        #color #picked #selected {
-          border-top-width: 0;
-        }
-        #color #picked #current {
-          border-bottom-width: 0;
-        }
-        #color .transparency {
-          display: inline-flex;
-          flex-direction: column;
-          z-index: 1;
-          position: relative;
-        }
-        #color .transparency::after {
-          content: "";
-          position: absolute;
-          top: 0;
-          right: 0;
-          bottom: 0;
-          left: 0;
-          z-index: -1;
-          background-image: linear-gradient(45deg, black 25%, transparent 25%, transparent 75%, black 75%, black),
-          linear-gradient(45deg, black 25%, transparent 25%, transparent 75%, black 75%, black);
-          background-size: 16px 16px;
-          background-position:0 0, 8px 8px;
-          opacity: .1;
-        }
-        #color #selectors {
+        #colorElement #selectors {
           display: inline-flex;
           flex-direction: row;
         }
-        #color #selectors > * {
+        #colorElement #selectors > * {
           margin: var(--color-element-margin) var(--color-element-margin) var(--color-element-margin) 0;
         }
-        #color #saturation {
+        #colorElement #saturation {
           cursor: crosshair;
           margin-left: var(--color-element-margin);
         }
-        #color #alpha,
-        #color #hue {
+        #colorElement #alpha,
+        #colorElement #hue {
           cursor: -webkit-grab;
           cursor: grab;
         }
-        #color #alpha.grabbing,
-        #color #hue.grabbing {
+        #colorElement #alpha.grabbing,
+        #colorElement #hue.grabbing {
           cursor: -webkit-grabbing;
           cursor: grabbing;
-        }
-        #color [contenteditable] {
-          position: absolute;
-          font-size: 11px;
-          font-weight: 600;
-          outline: none;
-          top: 50%; left: 50%;
-          transform: translate(-50%, -50%);
-          transition: color 500ms cubic-bezier(0.4, 0, 0.2, 1), opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
-          opacity: 0.66;
-        }
-        #color:hover [contenteditable] {
-          opacity: 1;
         }
       `;
     }
 
-    static get colorTemplate() {
+    static get colorElementTemplate() {
       return `
-        <div id="color">
-          <div id="picked">
-            <div class="transparency">
-              <canvas id="current" class="current" hidden$="[[!showCurrentSelectedColor]]" width="240" height$="[[_computeHeightForPicked(hsv, _selectedHsv, showCurrentSelectedColor)]]" on-click="_resetColor"></canvas>
-              <div class="current" contenteditable spellcheck="false" on-input="_currentColorInputChanged"></div>
-            </div>
-            <div class="transparency">
-              <canvas id="selected" width="240" height$="[[_computeHeightForPicked(_selectedHsv, hsv, showCurrentSelectedColor)]]" on-click="_fixColor"></canvas>
-              <div id="selectedColorInput" contenteditable spellcheck="false" on-input="_selectedColorInputChanged"></div>
-            </div>
-          </div>
+        <div id="colorElement">
           <div id="selectors">
             <canvas id="saturation" width="208" height="184" on-mousedown="_grabStart" on-touchstart="_grabStart"></canvas>
             <div class="transparency">
@@ -130,47 +65,27 @@
             </div>
             <canvas id="hue" width="16" height="184" on-mousedown="_grabStart" on-touchstart="_grabStart"></canvas>
           </div>
+          <div id="lower">
+            ${this._buttonTemplate}
+          </div>
         </div>
       `
     }
 
-    static get properties() {
-      return {
-        /**
-         * show the color field of the current selected color
-         * @type {boolean}
-         */
-        showCurrentSelectedColor: {
-          type: Boolean,
-          value: false
-        },
-        /**
-         * alpha value
-         * @type {number}
-         */
-        alpha: {
-          type: Number,
-          observer: '_alphaChanged'
-        },
-        /**
-         * hsv-color
-         * @type {number}
-         */
-        hsv: {
-          type: Array
-        },
-
-        _selectedHsv: {
-          type: Array
-        }
-      }
+    static get _buttonTemplate() {
+      return `
+        ${super._buttonTemplate || ''}
+        <select id="formats" value="{{format::change}}">
+          <option value="hex">hex</option>
+          <option value="rgb">rgb</option>
+          <option value="hsl">hsl</option>
+        </select>
+        ${this.colorInputTemplate}
+      `
     }
 
     connectedCallback() {
       super.connectedCallback();
-      if (!(Array.isArray(this.hsv) && this.hsv.length === 3)) {
-        this._onContextMenu();
-      }
       this.root.addEventListener('contextmenu', this._onContextMenu.bind(this), false);
     }
 
@@ -293,25 +208,6 @@
       context.clearRect(0, 0, width, height);
       context.fillStyle = cssValue;
       context.fillRect(0, 0, width, height);
-    }
-
-    _selectedColorInputChanged(e) {
-      console.log(e, e.target);
-
-    }
-
-    _currentColorInputChanged(e) {
-      console.log(e, e.target);
-    }
-
-    _cssToRgbA(css) {
-      if (css.match(/^#((?:)[0-9a-f]{3}){1,2}$/i)) { // hex
-        return {rgb: this.hexToRgb(css), alpha: 1};
-      } else if (css.match(/^rgb/i)) {
-        if (css.match(/^rgb\(\s*(?:(?:\d{1,2}|1\d\d|2(?:[0-4]\d|5[0-5]))\s*,?){3}\)$/i)) {
-
-        }
-      }
     }
 
     _drawHue(hsv) {
@@ -521,7 +417,7 @@
       static get template() {
         return `
           ${this.styleTemplate}
-          ${this.colorTemplate}
+          ${this.colorElementTemplate}
         `
       }
 
