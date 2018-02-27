@@ -31,11 +31,19 @@
         <template>
           <dom-bind>
             <template is="dom-bind">
-              <color-element show-current-selected-color value="{{value}}" css-value="{{cssValue}}" alpha="{{alpha}}"></color-element>
+              <color-element value="{{value}}" hex="[[hex]]" alpha="{{alpha}}" format="{{format}}"></color-element>
               <div class="vertical-section-container result">
-                <div><code>hex</code>: <b>[[value]]</b></div>
+                <div>
+                  <span>format </span>
+                  <select id="formats" value="{{format::change}}">
+                    <option value="rgb">rgb</option>
+                    <option value="hex">hex</option>
+                    <option value="hsl">hsl</option>
+                  </select>
+                </div>
+                <div><code>hex</code>: <b>[[hex]]</b></div>
                 <div><code>alpha</code>: <b>[[alpha]]</b></div>
-                <div><code>css-value</code>: <b>[[cssValue]]</b></div>
+                <div><code>value</code>: <b>[[value]]</b></div>
               </div>
             </template>
           </dom-bind>
@@ -69,6 +77,12 @@
             <template is="dom-bind">
               <color-picker native value="{{value}}" css-value="{{cssValue}}" alpha="{{alpha}}" position="bottom"></color-picker>
               <div class="vertical-section-container result">
+                <span>format </span>
+                <select id="formats" value="{{format::change}}">
+                  <option value="rgb">rgb</option>
+                  <option value="hex">hex</option>
+                  <option value="hsl">hsl</option>
+                </select><br>
                 <div><code>hex</code>: <b>[[value]]</b></div>
                 <div><code>alpha</code>: <b>[[alpha]]</b></div>
                 <div><code>css-value</code>: <b>[[cssValue]]</b></div>

@@ -1,42 +1,75 @@
 <link rel="import" href="../polymer/polymer-element.html">
-<link rel="import" href="../color-input/color-badge.html">
+
+<link rel="import" href="../input-picker-pattern/input-shared-style.html">
+<link rel="import" href="../input-picker-pattern/switch-container-mixin.html">
+
+<link rel="import" href="../color-input/color-input.html">
+<link rel="import" href="../color-input/color-text-input.html">
+<link rel="import" href="../number-input/number-input.html">
+<link rel="import" href="../number-input/integer-input.html">
 <link rel="import" href="../text-input/text-input.html">
 
 <script>
   /**
    * Mixin for color-element
    *
-   * @appliesMixin ColorBadgePattern
+   * @appliesMixin ColorInputPattern
+   * @appliesMixin SwitchContainerMixin
    *
    * @mixinFunction
    * @polymer
    */
-  const ColorElementPattern = superClass => class extends ColorBadgePattern(superClass) { // eslint-disable-line no-unused-vars, no-undef
+  const ColorElementPattern = superClass => class extends ColorInputPattern(SwitchContainerMixin(superClass)) { // eslint-disable-line no-unused-vars, no-undef
+
+    static get customStyleToInclude() {
+      return 'input-shared-style';
+    }
 
     static get customStyleContent() {
       return `
         ${super.customStyleContent || ''}
-        :host {
+        #colorElement {
           display: inline-flex;
+          flex-direction: column;
+          align-items: center;
           -webkit-user-select: none;
           -moz-user-select: none;
           -ms-user-select: none;
           user-select: none;
           -webkit-tap-highlight-color:rgba(0,0,0,0);
-          align-items: center;
           vertical-allign: unset;
+          background: var(--input-background);
+          color: var(--input-color);
+          padding: 4px;
+          @apply --input-picker;
+          @apply --color-element;
         }
-        #colorElement {
-          display: inline-flex;
-          flex-direction: column;
-          background: var(--color-element-background, #f0f0f0);
-        }
-        #colorElement #selectors {
+        #colorElement .selectors {
           display: inline-flex;
           flex-direction: row;
         }
-        #colorElement #selectors > * {
+        #colorElement .selectors > * {
+          position: relative;
           margin: var(--color-element-margin) var(--color-element-margin) var(--color-element-margin) 0;
+        }
+        #colorElement .selectors .selector {
+          position: absolute;
+          top: 0; left: 0;
+          box-sizing: border-box;
+          border: thin solid currentColor;
+          padding: 3px;
+        }
+        #colorElement .selectors .selector:focus {
+          outline: none;
+          border-color: var(--input-focus-color);
+          background: var(--input-focus-background);
+        }
+        #colorElement .selectors #pin {
+          border-radius: 50%;
+        }
+        #colorElement .selectors .slider {
+          width: 100%;
+          border-radius: 2px;
         }
         #colorElement #saturation {
           cursor: crosshair;
@@ -52,9 +85,53 @@
           cursor: -webkit-grabbing;
           cursor: grabbing;
         }
-        #lower {
+        #colorElement .lower {
           display: inline-flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          align-self: stretch;
+          overflow: hidden;
+        }
+        #colorElement .lower > * {
+          display: inline-flex;
+          flex-direction: row;
+          position: relative;
+          border-radius: 0 !important;
+          box-shadow: none !important;
+          padding: 0 !important;
+        }
+        #colorElement #switches {
+          align-self: stretch;
           align-items: center;
+          flex: 1 0 1px;
+        }
+        #colorElement #formats {
+          align-self: stretch;
+        }
+        #colorElement text-input {
+          margin-left: 0.4em;
+          align-self: stretch;
+        }
+        #colorElement .field {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+        #colorElement .field > .icon {
+          padding-top: 4px;
+          padding-bottom: 4px;
+        }
+        #colorElement #buttons {
+          align-items: flex-end;
+          align-self: flex-end;
+          flex: 0 0 1px;
+        }
+        #colorElement #tip {
+          position: absolute;
+          top: 0; left: 0;
+        }
+        #colorElement #badge {
+          border-radius: 50%;
         }
       `;
     }
@@ -62,15 +139,16 @@
     static get colorElementTemplate() {
       return `
         <div id="colorElement">
-          <div id="selectors">
-            <canvas id="saturation" width="208" height="184" on-mousedown="_grabStart" on-touchstart="_grabStart"></canvas>
-            <div class="transparency">
-              <canvas id="alpha" width="16" height="184" on-mousedown="_grabStart" on-touchstart="_grabStart"></canvas>
-            </div>
-            <canvas id="hue" width="16" height="184" on-mousedown="_grabStart" on-touchstart="_grabStart"></canvas>
-          </div>
-          <div id="lower">
+          <div class="selectors">
             ${this.colorBadgeTemplate}
+          </div>
+          <div class="lower">
+            <div id="switches">
+              ${this.colorInputTemplate}
+            </div>
+            <div id="buttons">
+              ${this._buttonTemplate}
+            <div>
           </div>
         </div>
       `
@@ -78,23 +156,135 @@
 
     static get colorBadgeTemplate() {
       return `
-        ${super.colorBadgeTemplate}
+        <div id="tip">
+          ${super.colorBadgeTemplate}
+        </div>
+        <div>
+          <canvas id="saturation" width="208" height="184" on-mousedown="_grabStart" on-touchstart="_grabStart"></canvas>
+          <div class="selector" id="pin" tabindex="0"></div>
+        </div>
+        <div class="transparency">
+          <canvas id="alpha" width="16" height="184" on-mousedown="_grabStart" on-touchstart="_grabStart"></canvas>
+          <div class="selector slider" id="alphaSlider" tabindex="0"></div>
+        </div>
+        <div>
+          <canvas id="hue" width="16" height="184" on-mousedown="_grabStart" on-touchstart="_grabStart"></canvas>
+          <div class="selector slider" id="hueSlider" tabindex="0"></div>
+        </div>
+      `;
+    }
+
+    static get colorInputTemplate() {
+      return `
+        <template is="dom-if" if="[[_equals(format, 'hex')]]" restamp>
+          <text-input id="valueInput" default="{{default}}" value="{{value}}" pattern="[[_hexPatternString]]" placeholder="#000" minlength="7"></text-input>
+        </template>
+        <template is="dom-if" if="[[_equals(format, 'rgb')]]" restamp>
+          <label>r:</label>
+          <div class="field">
+            <button class="icon switch" prop="r" step="1">${this._iconStepUpTemplate}</button>
+            <integer-input title="red" placeholder="0" value="{{r}}" min="0" max="255" minlength="3"></integer-input>
+            <button class="icon switch" prop="r" step="-1">${this._iconStepDownTemplate}</button>
+          </div>
+          <label>g:</label>
+          <div class="field">
+            <button class="icon switch" prop="g" step="1">${this._iconStepUpTemplate}</button>
+            <integer-input title="green" placeholder="0" value="{{g}}" min="0" max="255" minlength="3"></integer-input>
+            <button class="icon switch" prop="g" step="-1">${this._iconStepDownTemplate}</button>
+          </div>
+          <label>b:</label>
+          <div class="field">
+            <button class="icon switch" prop="b" step="1">${this._iconStepUpTemplate}</button>
+            <integer-input title="blue" placeholder="0" value="{{b}}" min="0" max="255" minlength="3"></integer-input>
+            <button class="icon switch" prop="b" step="-1">${this._iconStepDownTemplate}</button>
+          </div>
+          <label>a:</label>
+          <div class="field">
+            <button class="icon switch" prop="alpha" step="0.01">${this._iconStepUpTemplate}</button>
+            <number-input title="alpha" value="{{alpha}}" default="1" min="0" max="1" saturate no-clamp placeholder="1.00" start-at="1" step="0.01" minlength="3.5"></number-input>
+            <button class="icon switch" prop="alpha" step="-0.01">${this._iconStepDownTemplate}</button>
+          </div>
+        </template>
+        <template is="dom-if" if="[[_equals(format, 'hsl')]]" restamp>
+          <label>h:</label>
+          <div class="field">
+            <button class="icon switch" prop="h" step="1">${this._iconStepUpTemplate}</button>
+            <number-input title="hue" placeholder="0" min="0" max="359" minlength="3" step="[[_hslStep]]" value="{{h}}"></number-input>
+            <button class="icon switch" prop="h" step="-1">${this._iconStepDownTemplate}</button>
+          </div>
+          <label>s:</label>
+          <div class="field">
+            <button class="icon switch" prop="s" step="0.01">${this._iconStepUpTemplate}</button>
+            <number-input title="saturation" placeholder="100\u202F%" minlength="2.5" in-percent saturate min="0" max="1" step="[[_hslPercentStep]]" start-at="1" value="{{s}}"></number-input>
+            <button class="icon switch" prop="s" step="-0.01">${this._iconStepDownTemplate}</button>
+          </div>
+          <label>l:</label>
+          <div class="field">
+            <button class="icon switch" prop="l" step="0.01">${this._iconStepUpTemplate}</button>
+            <number-input title="lightness" placeholder="100\u202F%" minlength="2.5" in-percent saturate min="0" max="1" step="[[_hslPercentStep]]" start-at="0.5" value="{{l}}"></number-input>
+            <button class="icon switch" prop="l" step="-0.01">${this._iconStepDownTemplate}</button>
+          </div>
+          <label>a:</label>
+          <div class="field">
+            <button class="icon switch" prop="alpha" step="0.01">${this._iconStepUpTemplate}</button>
+            <number-input title="alpha" value="{{alpha}}" default="1" min="0" max="1" saturate no-clamp placeholder="1.00" start-at="1" step="0.01" minlength="3.5"></number-input>
+            <button class="icon switch" prop="alpha" step="-0.01">${this._iconStepDownTemplate}</button>
+          </div>
+        </template>
       `
-
     }
 
-    static get colorBadgeSlotTemplate() {
-      return ''
+    /**
+     * template for control buttons
+     * @type {string}
+     */
+    static get _buttonTemplate() {
+      return `
+        <select id="formats" value="{{format::change}}">
+          <option value="rgb">rgb</option>
+          <option value="hex">hex</option>
+          <option value="hsl">hsl</option>
+        </select>
+        <button class="icon random" on-click="random"><svg viewBox="0 0 24 24"><g><path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></g></svg></button>
+        ${super._buttonTemplate || ''}
+      `;
     }
 
-    connectedCallback() {
-      super.connectedCallback();
-      this.addEventListener('contextmenu', this._onContextMenu.bind(this), false);
+    static get properties() {
+      return {
+        /**
+         * width of the badge in pixels
+         * @type {number}
+         */
+        width: {
+          type: Number,
+          value: 24
+        },
+        /**
+         * height of the badge in pixels
+         * @type {number}
+         */
+        height: {
+          type: Number,
+          value: 24
+        },
+      };
     }
 
-    disconnectedCallback() {
-      super.disconnectedCallback();
-      this.removeEventListener('contextmenu', this._onContextMenu.bind(this), false);
+    static get observers() {
+      return [
+
+      ];
+    }
+
+    _drawBadge(value) {
+      super._drawBadge(value);
+      // if (this._context === undefined) {
+      //   this._context = this.$.badge.getContext("2d");
+      // }
+      // this._context.clearRect(0, 0, this.width, this.height);
+      // this._context.fillStyle = value || 'rgba(0,0,0,0)';
+      // this._context.fillRect(0, 0, this.width, this.height);
     }
 
     /**
