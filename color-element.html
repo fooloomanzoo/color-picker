@@ -31,13 +31,12 @@
         #colorElement {
           display: inline-flex;
           flex-direction: column;
-          align-items: center;
+          flex-wrap: wrap;
           -webkit-user-select: none;
           -moz-user-select: none;
           -ms-user-select: none;
           user-select: none;
           -webkit-tap-highlight-color:rgba(0,0,0,0);
-          vertical-allign: unset;
           background: var(--input-background);
           color: var(--input-color);
           padding: 4px;
@@ -54,20 +53,24 @@
         }
         #colorElement .selectors .selector {
           position: absolute;
-          top: 0; left: 0;
           box-sizing: border-box;
           border: thin solid currentColor;
-          padding: 3px;
         }
         #colorElement .selectors .selector:focus {
           outline: none;
-          border-color: var(--input-focus-color);
-          background: var(--input-focus-background);
+          color: var(--input-focus-background);
+          background: var(--input-focus-color);
         }
-        #colorElement .selectors #pin {
+        #colorElement .selectors .pin {
+          top: -3px;
+          left: -3px;
+          padding: 3px;
           border-radius: 50%;
         }
         #colorElement .selectors .slider {
+          top: -2px;
+          left: 0;
+          padding: 2px;
           width: 100%;
           border-radius: 2px;
         }
@@ -90,7 +93,7 @@
           flex-direction: row;
           flex-wrap: wrap;
           align-self: stretch;
-          overflow: hidden;
+          width: 100%;
         }
         #colorElement .lower > * {
           display: inline-flex;
@@ -101,15 +104,17 @@
           padding: 0 !important;
         }
         #colorElement #switches {
+          display: inline-flex;
+          flex-direction: row;
+          position: relative;
           align-self: stretch;
           align-items: center;
           flex: 1 0 1px;
         }
-        #colorElement #formats {
-          align-self: stretch;
+        #colorElement #switches label {
+          margin-left: 0.2em;
         }
-        #colorElement text-input {
-          margin-left: 0.4em;
+        #colorElement #formats {
           align-self: stretch;
         }
         #colorElement .field {
@@ -122,16 +127,28 @@
           padding-bottom: 4px;
         }
         #colorElement #buttons {
+          display: inline-flex;
+          flex-direction: row;
+          position: relative;
           align-items: flex-end;
           align-self: flex-end;
           flex: 0 0 1px;
         }
-        #colorElement #tip {
-          position: absolute;
-          top: 0; left: 0;
+        #colorElement #badgeContainer {
+          @apply --input-icon;
+          background: #fff;
+          height: auto;
+          width: auto;
+          padding: 0;
+          margin-right: 0.4em;
+          display: inline-flex;
+          box-sizing: content-box;
+        }
+        #colorElement #colorBadge {
         }
         #colorElement #badge {
-          border-radius: 50%;
+          height: 32px;
+          width: 32px;
         }
       `;
     }
@@ -142,40 +159,40 @@
           <div class="selectors">
             ${this.colorBadgeTemplate}
           </div>
-          <div class="lower">
+
             <div id="switches">
               ${this.colorInputTemplate}
             </div>
             <div id="buttons">
               ${this._buttonTemplate}
             <div>
-          </div>
+
         </div>
       `
     }
 
     static get colorBadgeTemplate() {
       return `
-        <div id="tip">
-          ${super.colorBadgeTemplate}
-        </div>
         <div>
           <canvas id="saturation" width="208" height="184" on-mousedown="_grabStart" on-touchstart="_grabStart"></canvas>
-          <div class="selector" id="pin" tabindex="0"></div>
+          <div id="colorPin" class="selector pin" tabindex="0"></div>
         </div>
         <div class="transparency">
           <canvas id="alpha" width="16" height="184" on-mousedown="_grabStart" on-touchstart="_grabStart"></canvas>
-          <div class="selector slider" id="alphaSlider" tabindex="0"></div>
+          <div id="alphaSlider" class="selector slider" tabindex="0"></div>
         </div>
         <div>
           <canvas id="hue" width="16" height="184" on-mousedown="_grabStart" on-touchstart="_grabStart"></canvas>
-          <div class="selector slider" id="hueSlider" tabindex="0"></div>
+          <div id="hueSlider" class="selector slider" tabindex="0"></div>
         </div>
       `;
     }
 
     static get colorInputTemplate() {
       return `
+        <div id="badgeContainer">
+          ${super.colorBadgeTemplate}
+        </div>
         <template is="dom-if" if="[[_equals(format, 'hex')]]" restamp>
           <text-input id="valueInput" default="{{default}}" value="{{value}}" pattern="[[_hexPatternString]]" placeholder="#000" minlength="7"></text-input>
         </template>
