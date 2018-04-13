@@ -1,46 +1,37 @@
 <link rel="import" href="../polymer/polymer-element.html">
 
-<link rel="import" href="../input-picker-pattern/input-shared-style.html">
-<link rel="import" href="../input-picker-pattern/switch-container-mixin.html">
+<link rel="import" href="../input-picker-pattern/input-picker-shared-style.html">
 
-<link rel="import" href="../color-input/color-input.html">
-<link rel="import" href="../color-input/color-text-input.html">
-<link rel="import" href="../number-input/number-input.html">
-<link rel="import" href="../number-input/integer-input.html">
-<link rel="import" href="../text-input/text-input.html">
+<link rel="import" href="../color-input/color-badge.html">
 
 <script>
   /**
    * Mixin for color-element
    *
-   * @appliesMixin ColorInputPattern
-   * @appliesMixin SwitchContainerMixin
+   * @appliesMixin ColorBadgePattern
    *
    * @mixinFunction
    * @polymer
    */
-  const ColorElementPattern = superClass => class extends ColorInputPattern(SwitchContainerMixin(superClass)) { // eslint-disable-line no-unused-vars, no-undef
+  const ColorElementPattern = superClass => class extends ColorBadgePattern(superClass) { // eslint-disable-line no-unused-vars, no-undef
 
-    static get customStyleToInclude() {
-      return 'input-shared-style';
+    static get styleToInclude() {
+      return `${super.styleToInclude || '' } input-picker-shared-style`;
     }
 
-    static get customStyleContent() {
+    static get styleTemplate() {
       return `
-        ${super.customStyleContent || ''}
+        ${super.styleTemplate || ''}
         #colorElement {
-          display: inline-flex;
-          flex-direction: column;
-          flex-wrap: wrap;
-          -webkit-user-select: none;
-          -moz-user-select: none;
-          -ms-user-select: none;
-          user-select: none;
-          -webkit-tap-highlight-color:rgba(0,0,0,0);
-          background: var(--input-background);
-          color: var(--input-color);
-          padding: 4px;
+          color: var(--input-picker-color);
+          background-color: var(--input-picker-background);
+          border-radius: var(--input-picker-border-radius);
+          padding: var(--input-picker-padding);
           @apply --input-picker;
+          display: -ms-inline-flexbox;
+          display: -webkit-inline-flex;
+          display: inline-flex;
+          flex-flow: column nowrap;
           @apply --color-element;
         }
         #colorElement .selectors {
@@ -49,17 +40,38 @@
         }
         #colorElement .selectors > * {
           position: relative;
-          margin: var(--color-element-margin) var(--color-element-margin) var(--color-element-margin) 0;
+          margin-left: var(--input-picker-padding);
+          height: var(--color-badge-height, 184px);
+          width: var(--color-slider-width, 16px);
+        }
+        #colorElement #colorBadge {
+          margin-left: 0;
+          border-radius: 0;
+          cursor: crosshair;
+          background: transparent;
+          box-shadow: none;
+          width: var(--color-badge-width, 184px)
+        }
+        #colorElement .selectors > * {
+          cursor: crosshair;
         }
         #colorElement .selectors .selector {
           position: absolute;
           box-sizing: border-box;
           border: thin solid currentColor;
+          cursor: var(--color-selector-cursor, pointer);
+        }
+        #colorElement .selectors canvas {
+          pointer-events: all;
         }
         #colorElement .selectors .selector:focus {
           outline: none;
-          color: var(--input-focus-background);
-          background: var(--input-focus-color);
+          color: var(--inner-input-focus-background);
+          background: var(--inner-input-focus-color);
+        }
+        #colorElement .selectors .selector.grabbing {
+          cursor: -webkit-grabbing;
+          cursor: grabbing;
         }
         #colorElement .selectors .pin {
           top: -3px;
@@ -74,81 +86,17 @@
           width: 100%;
           border-radius: 2px;
         }
-        #colorElement #saturation {
-          cursor: crosshair;
-          margin-left: var(--color-element-margin);
-        }
-        #colorElement #alpha,
-        #colorElement #hue {
-          cursor: -webkit-grab;
-          cursor: grab;
-        }
-        #colorElement #alpha.grabbing,
-        #colorElement #hue.grabbing {
-          cursor: -webkit-grabbing;
-          cursor: grabbing;
-        }
-        #colorElement .lower {
-          display: inline-flex;
-          flex-direction: row;
-          flex-wrap: wrap;
-          align-self: stretch;
-          width: 100%;
-        }
-        #colorElement .lower > * {
-          display: inline-flex;
-          flex-direction: row;
-          position: relative;
-          border-radius: 0 !important;
-          box-shadow: none !important;
-          padding: 0 !important;
-        }
-        #colorElement #switches {
-          display: inline-flex;
-          flex-direction: row;
-          position: relative;
-          align-self: stretch;
-          align-items: center;
-          flex: 1 0 1px;
-        }
-        #colorElement #switches label {
-          margin-left: 0.2em;
-        }
-        #colorElement #formats {
-          align-self: stretch;
-        }
-        #colorElement .field {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-        }
-        #colorElement .field > .icon {
-          padding-top: 4px;
-          padding-bottom: 4px;
-        }
         #colorElement #buttons {
           display: inline-flex;
           flex-direction: row;
           position: relative;
           align-items: flex-end;
-          align-self: flex-end;
-          flex: 0 0 1px;
+          align-self: stretch;
+          flex: 0 0 auto;
+          margin-top: var(--input-picker-padding);
         }
-        #colorElement #badgeContainer {
-          @apply --input-icon;
-          background: #fff;
-          height: auto;
-          width: auto;
-          padding: 0;
-          margin-right: 0.4em;
-          display: inline-flex;
-          box-sizing: content-box;
-        }
-        #colorElement #colorBadge {
-        }
-        #colorElement #badge {
-          height: 32px;
-          width: 32px;
+        #colorElement #buttons #formats {
+          align-self: stretch;
         }
       `;
     }
@@ -158,277 +106,173 @@
         <div id="colorElement">
           <div class="selectors">
             ${this.colorBadgeTemplate}
-          </div>
-
-            <div id="switches">
-              ${this.colorInputTemplate}
+            <div id="alphaBadge" class="transparency" style="background:#fff;">
+              <canvas id="alpha" prop="alpha" width="[[_sliderwidth]]" height="[[_badgeheight]]" on-click="_select" on-drop="_select"></canvas>
+              <button id="alphaSlider" prop="alpha" class="selector slider" hidden$="[[!_valueIsSet]]" draggable="true" on-drag="_select" on-dragend="_select"></button>
             </div>
-            <div id="buttons">
-              ${this._buttonTemplate}
-            <div>
-
+            <div id="hueBadge">
+              <canvas id="hue" prop="hue" width="[[_sliderwidth]]" height="[[_badgeheight]]" on-click="_select" on-drop="_select"></canvas>
+              <button id="hueSlider" prop="hue" class="selector slider" hidden$="[[!_valueIsSet]]" draggable="true" on-drag="_select" on-dragend="_select"></button>
+            </div>
+          </div>
+          <div id="buttons">
+            ${this.buttonTemplate}
+          <div>
         </div>
       `
     }
 
     static get colorBadgeTemplate() {
       return `
-        <div>
-          <canvas id="saturation" width="208" height="184" on-mousedown="_grabStart" on-touchstart="_grabStart"></canvas>
-          <div id="colorPin" class="selector pin" tabindex="0"></div>
-        </div>
-        <div class="transparency">
-          <canvas id="alpha" width="16" height="184" on-mousedown="_grabStart" on-touchstart="_grabStart"></canvas>
-          <div id="alphaSlider" class="selector slider" tabindex="0"></div>
-        </div>
-        <div>
-          <canvas id="hue" width="16" height="184" on-mousedown="_grabStart" on-touchstart="_grabStart"></canvas>
-          <div id="hueSlider" class="selector slider" tabindex="0"></div>
+        <div id="colorBadge">
+          <canvas id="badge" width$="[[_badgewidth]]" height$="[[_badgeheight]]" on-click="_select" on-drop="_select"></canvas>
+          <button id="colorPin" class="selector pin" hidden$="[[!_valueIsSet]]" draggable="true" on-drag="_select" on-dragend="_select"></button>
         </div>
       `;
-    }
-
-    static get colorInputTemplate() {
-      return `
-        <div id="badgeContainer">
-          ${super.colorBadgeTemplate}
-        </div>
-        <template is="dom-if" if="[[_equals(format, 'hex')]]" restamp>
-          <text-input id="valueInput" default="{{default}}" value="{{value}}" pattern="[[_hexPatternString]]" placeholder="#000" minlength="7"></text-input>
-        </template>
-        <template is="dom-if" if="[[_equals(format, 'rgb')]]" restamp>
-          <label>r:</label>
-          <div class="field">
-            <button class="icon switch" prop="r" step="1">${this._iconStepUpTemplate}</button>
-            <integer-input title="red" placeholder="0" value="{{r}}" min="0" max="255" minlength="3"></integer-input>
-            <button class="icon switch" prop="r" step="-1">${this._iconStepDownTemplate}</button>
-          </div>
-          <label>g:</label>
-          <div class="field">
-            <button class="icon switch" prop="g" step="1">${this._iconStepUpTemplate}</button>
-            <integer-input title="green" placeholder="0" value="{{g}}" min="0" max="255" minlength="3"></integer-input>
-            <button class="icon switch" prop="g" step="-1">${this._iconStepDownTemplate}</button>
-          </div>
-          <label>b:</label>
-          <div class="field">
-            <button class="icon switch" prop="b" step="1">${this._iconStepUpTemplate}</button>
-            <integer-input title="blue" placeholder="0" value="{{b}}" min="0" max="255" minlength="3"></integer-input>
-            <button class="icon switch" prop="b" step="-1">${this._iconStepDownTemplate}</button>
-          </div>
-          <label>a:</label>
-          <div class="field">
-            <button class="icon switch" prop="alpha" step="0.01">${this._iconStepUpTemplate}</button>
-            <number-input title="alpha" value="{{alpha}}" default="1" min="0" max="1" saturate no-clamp placeholder="1.00" start-at="1" step="0.01" minlength="3.5"></number-input>
-            <button class="icon switch" prop="alpha" step="-0.01">${this._iconStepDownTemplate}</button>
-          </div>
-        </template>
-        <template is="dom-if" if="[[_equals(format, 'hsl')]]" restamp>
-          <label>h:</label>
-          <div class="field">
-            <button class="icon switch" prop="h" step="1">${this._iconStepUpTemplate}</button>
-            <number-input title="hue" placeholder="0" min="0" max="359" minlength="3" step="[[_hslStep]]" value="{{h}}"></number-input>
-            <button class="icon switch" prop="h" step="-1">${this._iconStepDownTemplate}</button>
-          </div>
-          <label>s:</label>
-          <div class="field">
-            <button class="icon switch" prop="s" step="0.01">${this._iconStepUpTemplate}</button>
-            <number-input title="saturation" placeholder="100\u202F%" minlength="2.5" in-percent saturate min="0" max="1" step="[[_hslPercentStep]]" start-at="1" value="{{s}}"></number-input>
-            <button class="icon switch" prop="s" step="-0.01">${this._iconStepDownTemplate}</button>
-          </div>
-          <label>l:</label>
-          <div class="field">
-            <button class="icon switch" prop="l" step="0.01">${this._iconStepUpTemplate}</button>
-            <number-input title="lightness" placeholder="100\u202F%" minlength="2.5" in-percent saturate min="0" max="1" step="[[_hslPercentStep]]" start-at="0.5" value="{{l}}"></number-input>
-            <button class="icon switch" prop="l" step="-0.01">${this._iconStepDownTemplate}</button>
-          </div>
-          <label>a:</label>
-          <div class="field">
-            <button class="icon switch" prop="alpha" step="0.01">${this._iconStepUpTemplate}</button>
-            <number-input title="alpha" value="{{alpha}}" default="1" min="0" max="1" saturate no-clamp placeholder="1.00" start-at="1" step="0.01" minlength="3.5"></number-input>
-            <button class="icon switch" prop="alpha" step="-0.01">${this._iconStepDownTemplate}</button>
-          </div>
-        </template>
-      `
     }
 
     /**
      * template for control buttons
      * @type {string}
      */
-    static get _buttonTemplate() {
+    static get buttonTemplate() {
       return `
-        <select id="formats" value="{{format::change}}">
-          <option value="rgb">rgb</option>
-          <option value="hex">hex</option>
-          <option value="hsl">hsl</option>
-        </select>
+        <div style="flex:1;"></div>
         <button class="icon random" on-click="random"><svg viewBox="0 0 24 24"><g><path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></g></svg></button>
-        ${super._buttonTemplate || ''}
+        ${super.buttonTemplate || ''}
       `;
-    }
-
-    static get properties() {
-      return {
-        /**
-         * width of the badge in pixels
-         * @type {number}
-         */
-        width: {
-          type: Number,
-          value: 24
-        },
-        /**
-         * height of the badge in pixels
-         * @type {number}
-         */
-        height: {
-          type: Number,
-          value: 24
-        },
-      };
     }
 
     static get observers() {
       return [
-
+        '_drawHue(_sliderwidth, _badgeheight)',
+        '_drawAlpha(h, _sliderwidth, _badgeheight)',
+        '_moveColorPin(s, l, _badgewidth, _badgeheight, hex)',
+        '_moveAlphaSlider(alpha, _badgeheight)',
+        '_moveHueSlider(h, _badgeheight)',
+        '_drawColorBadge(h, s, l, _badgewidth, _badgeheight)',
       ];
     }
 
-    _drawBadge(value) {
-      super._drawBadge(value);
-      // if (this._context === undefined) {
-      //   this._context = this.$.badge.getContext("2d");
-      // }
-      // this._context.clearRect(0, 0, this.width, this.height);
-      // this._context.fillStyle = value || 'rgba(0,0,0,0)';
-      // this._context.fillRect(0, 0, this.width, this.height);
+    connectedCallback() {
+      super.connectedCallback();
+      this._select = this._select.bind(this);
+      this._grabEnd = this._grabEnd.bind(this);
+      if (this.colorString === undefined) {
+        if (this.default) {
+          this.colorString = this.default;
+        } else {
+          this.random();
+        }
+      }
     }
 
-    /**
-     * renderColors the current view (manually).
-     */
-    _drawSelector(h, s, l) {
-      let context = this.$.saturation.getContext("2d");
-      let rect = this.$.saturation.getBoundingClientRect();
+    _resizeBadge() {
+      super._resizeBadge();
+      const box = this.$.alphaBadge.getBoundingClientRect();
+      this._sliderwidth = Math.round(box.width);
+    }
 
-      let width = rect.width;
-      let height = rect.height;
+    _drawBadge() {
+    }
 
-      context.clearRect(0, 0, width, height);
+    _drawColorBadge(h, s, l, width, height) {
+      if (h === undefined || s === undefined || l === undefined) {
+        return;
+      }
+      if (width === undefined || height === undefined) {
+        setTimeout( () => {
+          this._resizeBadge();
+        }, 0);
+        return;
+      }
+      if (this._context === undefined) {
+        this._context = this.$.badge.getContext("2d");
+      }
+      this._resizeBadge();
+      this._context.clearRect(0, 0, width, height);
 
-      let gradient = context.createLinearGradient(0, 0, width, 1);
+      let gradient = this._context.createLinearGradient(0, 0, width, 1);
       gradient.addColorStop(0, 'hsl(0,100%,100%)');
       gradient.addColorStop(1, `hsl(${h},100%,50%)`);
 
-      context.fillStyle = gradient;
-      context.fillRect(0, 0, width, height);
+      this._context.fillStyle = gradient;
+      this._context.fillRect(0, 0, width, height);
 
-      gradient = context.createLinearGradient(0, 0, 1, height);
+      gradient = this._context.createLinearGradient(0, 0, 1, height);
       gradient.addColorStop(0, 'rgba(0,0,0,0)');
       gradient.addColorStop(1, 'rgba(0,0,0,1)');
 
-      context.fillStyle = gradient;
-      context.fillRect(0, 0, width, height);
-      const x = width * s,
-       y = height * (1 - l);
-      this._drawCircle(context, x, y);
+      this._context.fillStyle = gradient;
+      this._context.fillRect(0, 0, width, height);
     }
 
-    _drawCircle(context, x, y) {
-      context.beginPath();
-      context.arc(x, y, 3, 0, 2*Math.PI);
-      context.closePath();
-      context.lineWidth = 1.5;
-      context.strokeStyle = '#fff';
-      context.stroke();
+    _drawAlpha(h, width, height) {
+      if (h === undefined) {
+        return;
+      }
+      if (width === undefined || height === undefined) {
+        setTimeout( () => {
+          this._resizeBadge();
+        }, 0);
+        return;
+      }
+      if (this._alphacontext === undefined) {
+        this._alphacontext = this.$.alpha.getContext("2d");
+      }
+
+      this._alphacontext.clearRect(0, 0, width, height);
+
+      let gradient = this._alphacontext.createLinearGradient(0, 0, 1, height);
+      gradient.addColorStop(0, `hsl(${h},100%,50%)`);
+      gradient.addColorStop(1, 'rgba(0,0,0,0)');
+      this._alphacontext.fillStyle = gradient;
+      this._alphacontext.fillRect(0, 0, width, height);
     }
 
-    _fillRect(elem, value) {
-      const context = elem.getContext("2d"),
-        rect = elem.getBoundingClientRect(),
-        width = rect.width,
-        height = rect.height;
-
-      context.clearRect(0, 0, width, height);
-      context.fillStyle = value;
-      context.fillRect(0, 0, width, height);
+    _drawSelector(element, x, y, hex) {
+      element.style.transform = `translate(${Math.round(x || 0)}px,${Math.round(y || 0)}px)`;
+      if (hex !== undefined) {
+        element.style.background = hex;
+      }
     }
 
-    _drawHue(h, s, l) {
-      let context = this.$.hue.getContext("2d");
-      let rect = this.$.hue.getBoundingClientRect();
+    _moveHueSlider(h, height) {
+      if (h === undefined || height === undefined) {
+        return;
+      }
+      this._drawSelector(this.$.hueSlider, 0, height * (h || 0) / 360);
+    }
 
-      let width = rect.width;
-      let height = rect.height;
+    _moveAlphaSlider(alpha, height) {
+      if (alpha === undefined || height === undefined) {
+        return;
+      }
+      this._drawSelector(this.$.alphaSlider, 0, (1 - alpha) * height);
+    }
 
-      context.clearRect(0, 0, width, height);
+    _moveColorPin(s, l, width, height, hex) {
+      if (s === undefined || l === undefined || width === undefined || height === undefined || hex === undefined) {
+        return;
+      }
+      this._drawSelector(this.$.colorPin, width * s, height * (1 - l), hex);
+    }
 
-      let gradient = context.createLinearGradient(0, 0, 1, height);
+    _drawHue(width, height) {
+      if (this._huecontext === undefined) {
+        this._huecontext = this.$.hue.getContext("2d");
+      }
+
+      this._huecontext.clearRect(0, 0, width, height);
+
+      let gradient = this._huecontext.createLinearGradient(0, 0, 1, height);
 
       for (let step = 0; step < 360; step += 30) {
         gradient.addColorStop(step/360, `hsl(${step},100%,50%)`);
       }
       gradient.addColorStop(1, `hsl(0,100%,50%)`);
-      context.fillStyle = gradient;
-      context.fillRect(0, 0, width, height);
-
-      const y = height * h / 360;
-      this._drawSlider(context, width, y);
-    }
-
-    _drawAlpha(h, alpha) {
-
-      let context = this.$.alpha.getContext("2d");
-      let rect = this.$.alpha.getBoundingClientRect();
-
-      let width = rect.width;
-      let height = rect.height;
-
-      context.clearRect(0, 0, width, height);
-
-      let gradient = context.createLinearGradient(0, 0, 1, height);
-      gradient.addColorStop(0, `hsl(${h},100%,50%)`);
-      gradient.addColorStop(1, 'rgba(0,0,0,0)');
-      context.fillStyle = gradient;
-      context.fillRect(0, 0, width, height);
-      const y = (1 - alpha) * height;
-      this._drawSlider(context, width, y);
-      this.alpha = alpha;
-    }
-
-    _drawSlider(context, width, y) {
-      context.beginPath();
-      y -= 2;
-      context.moveTo(0, y);
-      context.lineTo(width, y);
-      y += 3;
-      context.moveTo(0, y);
-      context.lineTo(width, y);
-      context.closePath();
-      context.lineWidth = 1.5;
-      context.strokeStyle = '#fff';
-      context.stroke();
-    }
-
-    _fixColor() {
-      console.log('_fixColor', this._selectedHsv);
-      if (this._selectedHsv) {
-        const rgb = this.hsvToRgb(this._selectedHsv);
-        if (this._arrayEqual(this.rgb, rgb) === false) {
-          this.set('rgb', rgb);
-          this._drawSelectedColor(this.hsv, this.alpha);
-          this._drawSaturation(this.hsv);
-        }
-        this.close();
-      }
-    }
-
-    _resetColor() {
-      if (!(Array.isArray(this.hsv) && this.hsv.length === 3)) {
-        return;
-      }
-      this._drawSelectedColor(this.hsv, this.alpha);
-      this._drawSaturation(this.hsv);
+      this._huecontext.fillStyle = gradient;
+      this._huecontext.fillRect(0, 0, width, height);
     }
 
     _grabStart(e) {
@@ -436,11 +280,11 @@
         return;
       }
       e.target.classList.add('grabbing');
-      e.target.addEventListener('mousemove', this._select.bind(this), {capture: false, passive: true});
-      e.target.addEventListener('touchmove', this._select.bind(this), {capture: false, passive: true});
-      e.target.addEventListener('mouseup', this._grabEnd.bind(this), {capture: false, passive: true});
-      e.target.addEventListener('mouseleave', this._grabEnd.bind(this), {capture: false, passive: true});
-      e.target.addEventListener('touchend', this._grabEnd.bind(this), {capture: false, passive: true});
+      e.target.addEventListener('mousemove', this._select, {capture: false, passive: true});
+      e.target.addEventListener('touchmove', this._select, {capture: false, passive: true});
+      e.target.addEventListener('mouseup', this._grabEnd, {capture: false, passive: true});
+      e.target.addEventListener('mouseleave', this._grabEnd, {capture: false, passive: true});
+      e.target.addEventListener('touchend', this._grabEnd, {capture: false, passive: true});
       this._select(e);
     }
 
@@ -450,64 +294,69 @@
       }
       this._select(e);
       e.target.classList.remove('grabbing');
-      e.target.removeEventListener('mousemove', this._select.bind(this), {capture: false, passive: true});
-      e.target.removeEventListener('touchmove', this._select.bind(this), {capture: false, passive: true});
-      e.target.removeEventListener('mouseup', this._grabEnd.bind(this), {capture: false, passive: true});
-      e.target.removeEventListener('mouseleave', this._grabEnd.bind(this), {capture: false, passive: true});
-      e.target.removeEventListener('touchend', this._grabEnd.bind(this), {capture: false, passive: true});
+      e.target.removeEventListener('mousemove', this._select, {capture: false, passive: true});
+      e.target.removeEventListener('touchmove', this._select, {capture: false, passive: true});
+      e.target.removeEventListener('mouseup', this._grabEnd, {capture: false, passive: true});
+      e.target.removeEventListener('mouseleave', this._grabEnd, {capture: false, passive: true});
+      e.target.removeEventListener('touchend', this._grabEnd, {capture: false, passive: true});
     }
 
     _select(e) {
-      if (!(e && e.target && e.target.classList.contains('grabbing'))) {
-        return;
-      } else if (e && e.type) {
-        e.target.removeEventListener(e.type, this._select.bind(this), {capture: false, passive: true});
+      // if (!(e && e.target && e.target.classList.contains('grabbing'))) {
+      //   return;
+      // } else if (e && e.type) {
+      //   e.target.removeEventListener(e.type, this._select, {capture: false, passive: true});
+      // }
+      console.log(e);
+      let property = e.target.getAttribute('prop');
+      if (!property) {
+        if (e.path) {
+          for (let i = 0; i < e.path.length; i++) {
+            if (e.path[i].classList && e.path[i].classList.contains('slider')) {
+              property = e.path[i].getAttribute('prop');
+              break;
+            }
+          }
+        } else if (e.target && e.target.classList && e.target.classList.contains('slider')) {
+          property = e.target.getAttribute('prop');
+        }
       }
 
-      const rect = e.target.getBoundingClientRect(),
-      width = rect.width,
-      height = rect.height,
-      elemLeft = rect.left,
-      elemTop = rect.top,
-      property = e.target.getAttribute('id');
-      const hsv = [];
-      for (let i = 0; i < this._selectedHsv.length; i++) {
-        hsv.push(this._selectedHsv[i] || 0);
-      }
-      let alpha = this.alpha;
+      let rect, s, l, h, alpha;
       switch (property) {
         case 'alpha':
-          alpha = +(1 - (e.clientY - elemTop) / height).toFixed(2);
-          alpha = (alpha >= 0 && alpha <= 1) ? alpha : (this.alpha || 1);
-          break;
-        case 'saturation':
-          s = +(((e.clientX - elemLeft) / width).toFixed(3));
-          s = s > 1 ? 1 : s;
-          s = s < 0 ? 0 : s;
-          l = +((1 - (e.clientY - elemTop) / height).toFixed(3));
-          l = l > 1 ? 1 : l;
-          l = l < 0 ? 0 : l;
-          this._drawHue(h, s, l);
-          this._drawSelector(h, s, l);
-          break;
+          rect = this.$.alpha.getBoundingClientRect();
+          alpha = (1 - Math.round(100*(e.clientY - rect.top) / rect.height)/100);
+          if (alpha <= 1 && alpha >= 0) {
+            this.alpha = alpha;
+          }
+          return;
         case 'hue':
-          h = Math.round(360 * (e.clientY - elemTop) / height);
-          h = h > 360 ? 360 : h;
-          h = h < 0 ? 0 : h;
-          this._drawHue(h, s, l);
-          this._drawSelector(h, s, l);
-          break;
+          rect = this.$.hue.getBoundingClientRect();
+          h = Math.round(360 * (e.clientY - rect.top) / rect.height);
+          console.log(h);
+          if (h <= 360 && h >= 0) {
+            this.h = h;
+          }
+          return;
+        default:
+          console.log(property);
+          rect = this.$.badge.getBoundingClientRect();
+          s = +((e.clientX - rect.left) / rect.width).toFixed((this.hslPrecision || 0) + 2);
+          l = +(1 - (e.clientY - rect.top) / rect.height).toFixed((this.hslPrecision || 0) + 2);
+          if (s <= 1 && s >= 0 && l <= 1 && l >= 0) {
+            this.setProperties({
+              h: this.h,
+              s: s,
+              l: l
+            });
+          } else if (s <= 1 && s >= 0) {
+            this.s = s;
+          } else if (l <= 1 && l >= 0) {
+            this.l = l;
+          }
+          return;
       }
-      this.set('_selectedHsv', hsv);
-      this.alpha = alpha;
-      this._drawAlpha(h, alpha);
-    }
-
-    _onContextMenu(e) {
-      if (e && e.preventDefault) {
-        e.preventDefault();
-      }
-      this.random()
     }
   }
 </script>
@@ -525,11 +374,6 @@
   *
   * The following custom properties and mixins are also available for styling:
   *
-  * Custom property | Description | Default
-  * ----------------|-------------|----------
-  * `--color-element-margin` | margin of the single color-element | `0px`
-  * `--color-element-background` | background-color of the color-element | `#f0f0f0`
-  *
   * @customElement
   * @polymer
   *
@@ -545,9 +389,33 @@
 
       static get template() {
         return `
-          ${this.styleTemplate}
+          <style include="${this.styleToInclude}">
+            ${this.styleTemplate}
+          </style>
           ${this.colorElementTemplate}
-        `
+        `;
+      }
+
+      static get properties() {
+        return {
+          /**
+           * is true when the value is not undefined
+           */
+          _valueIsSet: {
+            type: Boolean,
+            value: false
+          }
+        };
+      }
+
+      static get observers() {
+        return [
+          '_computeValueIsSet(colorString)'
+        ];
+      }
+
+      _computeValueIsSet(value) {
+        this._valueIsSet = value !== undefined;
       }
 
     }

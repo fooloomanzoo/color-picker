@@ -31,11 +31,12 @@
         <template>
           <dom-bind>
             <template is="dom-bind">
-              <color-element value="{{value}}" hex="[[hex]]" alpha="{{alpha}}" format="{{format}}"></color-element>
+              <color-element color-string="{{value}}" hex="{{hex}}" alpha="{{alpha}}" format="{{format}}"></color-element>
               <div class="vertical-section-container result">
                 <div>
                   <span>format </span>
                   <select id="formats" value="{{format::change}}">
+                    <option value="text">text</option>
                     <option value="rgb">rgb</option>
                     <option value="hex">hex</option>
                     <option value="hsl">hsl</option>
@@ -51,7 +52,7 @@
       </demo-snippet>
     </div>
 
-    <div class="vertical-section-container centered">
+    <!-- <div class="vertical-section-container centered">
       <h3>Create a polyfill color-picker, if available</h3>
       <demo-snippet>
         <template>
@@ -91,7 +92,7 @@
           </dom-bind>
         </template>
       </demo-snippet>
-    </div>
+    </div> -->
 
 
   </body>

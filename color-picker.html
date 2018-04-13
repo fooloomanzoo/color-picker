@@ -151,6 +151,18 @@
         `;
       }
 
+      static get buttonTemplate() {
+        return `
+          <select id="formats" value="{{format::change}}">
+            <option value="text">text</option>
+            <option value="rgb">rgb</option>
+            <option value="hex">hex</option>
+            <option value="hsl">hsl</option>
+          </select>
+          ${super.buttonTemplate || ''}
+        `;
+      }
+
       static get pickerTemplate() {
         return `
           <div id="picker" class="dropdown">
