@@ -15,8 +15,6 @@ Internally it tests the browser, if **native** input-types `color` is supported.
 
 It might be useful for you to use, if you like to keep the native approach of Browsers like in Chrome for Desktop or Mobile, you like to have a different look or you would like to have a guaranteed working **color-picker**.
 
-```
-
 ### How?
 
 The **[component page](https://fooloomanzoo.github.io/color-picker/components/color-picker/)** explains, which of the attributes you can use and how. You can see there a **[demo](https://fooloomanzoo.github.io/color-picker/components/color-picker/#/elements/color-picker/demos/demo/color-picker.html)**, too.
