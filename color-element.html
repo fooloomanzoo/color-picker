@@ -1,5 +1,7 @@
 <link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../polymer/lib/mixins/gesture-event-listeners.html">
 
+<link rel="import" href="../property-mixins/range-mixin.html">
 <link rel="import" href="../input-picker-pattern/input-picker-shared-style.html">
 
 <link rel="import" href="../color-input/color-badge.html">
@@ -8,16 +10,10 @@
   /**
    * Mixin for color-element
    *
-   * @appliesMixin ColorBadgePattern
-   *
    * @mixinFunction
    * @polymer
    */
-  const ColorElementPattern = superClass => class extends ColorBadgePattern(superClass) { // eslint-disable-line no-unused-vars, no-undef
-
-    static get styleToInclude() {
-      return `${super.styleToInclude || '' } input-picker-shared-style`;
-    }
+  const ColorElementPattern = superClass => class extends superClass { // eslint-disable-line no-unused-vars, no-undef
 
     static get styleTemplate() {
       return `
@@ -25,7 +21,7 @@
         #colorElement {
           color: var(--input-picker-color);
           background-color: var(--input-picker-background);
-          border-radius: var(--input-picker-border-radius);
+          border-radius: var(--color-element-badge-radius, var(--input-picker-border-radius, 6px));
           padding: var(--input-picker-padding);
           @apply --input-picker;
           display: -ms-inline-flexbox;
@@ -37,54 +33,71 @@
         #colorElement .selectors {
           display: inline-flex;
           flex-direction: row;
+          position: relative;
+          box-sizing: content-box;
         }
         #colorElement .selectors > * {
           position: relative;
           margin-left: var(--input-picker-padding);
-          height: var(--color-badge-height, 184px);
+          height: var(--color-element-height, 184px);
           width: var(--color-slider-width, 16px);
+          background: transparent;
+          cursor: pointer;
+          box-sizing: content-box;
         }
-        #colorElement #colorBadge {
+        #colorElement .selectors > :first-child,
+        #colorElement .selectors > :first-child canvas {
+          border-radius: var(--color-element-badge-radius, var(--input-picker-border-radius, 6px)) 0px 0px 0px !important;
+        }
+        #colorElement .selectors > :last-child,
+        #colorElement .selectors > :last-child canvas {
+          border-radius: 0px var(--color-element-badge-radius, var(--input-picker-border-radius, 6px)) 0px 0px !important;
+        }
+        #colorElement .badge {
           margin-left: 0;
-          border-radius: 0;
-          cursor: crosshair;
           background: transparent;
           box-shadow: none;
-          width: var(--color-badge-width, 184px)
-        }
-        #colorElement .selectors > * {
           cursor: crosshair;
+          width: var(--color-element-width, 184px);
         }
-        #colorElement .selectors .selector {
+        #colorElement .selector {
           position: absolute;
           box-sizing: border-box;
           border: thin solid currentColor;
           cursor: var(--color-selector-cursor, pointer);
+          pointer-events: none;
+          transition-property: background-color;
+          transition-duration: var(--input-transition-duration, 250ms);
+          transition-timing-function: var(--input-transition-timing-function, cubic-bezier(0.6, 1, 0.2, 1));
+          mix-blend-mode: exclusion;
         }
-        #colorElement .selectors canvas {
+        #colorElement canvas {
           pointer-events: all;
-        }
-        #colorElement .selectors .selector:focus {
-          outline: none;
-          color: var(--inner-input-focus-background);
-          background: var(--inner-input-focus-color);
-        }
-        #colorElement .selectors .selector.grabbing {
-          cursor: -webkit-grabbing;
-          cursor: grabbing;
-        }
-        #colorElement .selectors .pin {
-          top: -3px;
-          left: -3px;
-          padding: 3px;
-          border-radius: 50%;
-        }
-        #colorElement .selectors .slider {
-          top: -2px;
+          position: absolute;
+          top: 0;
           left: 0;
-          padding: 2px;
+        }
+        #colorElement .slider {
+          top: 0;
+          left: 0;
+          padding: var(--color-slider-padding, 2px);
           width: 100%;
           border-radius: 2px;
+          transform: translateY(-50%);
+        }
+        #colorElement .pin {
+          top: 0;
+          left: 0;
+          padding: var(--color-pin-radius, 3px);
+          border-radius: 50%;
+          transform: translate(-50%, -50%);
+          transition-property: opacity, background-color;
+        }
+        canvas.active ~ .pin {
+          background-color: rgba(0,0,0,0.25);
+        }
+        #colorElement #alphaBadge {
+          background: #fff;
         }
         #colorElement #buttons {
           display: inline-flex;
@@ -98,6 +111,24 @@
         #colorElement #buttons #formats {
           align-self: stretch;
         }
+        canvas.active:hover ~ .pin {
+          opacity: 0;
+        }
+        #colorElement .pin:focus {
+          mix-blend-mode: normal;
+        }
+        canvas.active ~ .pin:focus {
+          background: transparent;
+        }
+        #alpha.active,
+        #hue.active {
+          cursor: none;
+        }
+        @media (pointer:coarse) {
+          canvas.active ~ .pin {
+            opacity: 1;
+          }
+        }
       `;
     }
 
@@ -105,14 +136,17 @@
       return `
         <div id="colorElement">
           <div class="selectors">
-            ${this.colorBadgeTemplate}
-            <div id="alphaBadge" class="transparency" style="background:#fff;">
-              <canvas id="alpha" prop="alpha" width="[[_sliderwidth]]" height="[[_badgeheight]]" on-click="_select" on-drop="_select"></canvas>
-              <button id="alphaSlider" prop="alpha" class="selector slider" hidden$="[[!_valueIsSet]]" draggable="true" on-drag="_select" on-dragend="_select"></button>
+            <div id="saturationBadge" class="badge">
+              <canvas id="saturation" prop="color" width$="[[_saturationwidth]]" height$="[[_saturationheight]]" on-track="_onTrack" on-down="_onDown" on-tap="_onTap"></canvas>
+              <button id="colorPin" prop="color" hidden$=[[!_valueIsSet]] class="selector pin" on-focus="_onFocusButton" on-keydown="_onKeyDown"></button>
             </div>
-            <div id="hueBadge">
-              <canvas id="hue" prop="hue" width="[[_sliderwidth]]" height="[[_badgeheight]]" on-click="_select" on-drop="_select"></canvas>
-              <button id="hueSlider" prop="hue" class="selector slider" hidden$="[[!_valueIsSet]]" draggable="true" on-drag="_select" on-dragend="_select"></button>
+            <div id="alphaBadge" class="transparency">
+              <canvas id="alpha" prop="alpha" width$="[[_sliderwidth]]" height$="[[_saturationheight]]" on-track="_onTrack" on-down="_onDown" on-tap="_onTap"></canvas>
+              <button id="alphaSlider" class="selector slider" prop="alpha" on-focus="_onFocusButton" on-keydown="_onKeyDown"></button>
+            </div>
+            <div>
+              <canvas id="hue" prop="hue" width$="[[_sliderwidth]]" height$="[[_saturationheight]]" on-track="_onTrack" on-down="_onDown" on-tap="_onTap"></canvas>
+              <button id="hueSlider" class="selector slider" prop="hue" on-focus="_onFocusButton" on-keydown="_onKeyDown"></button>
             </div>
           </div>
           <div id="buttons">
@@ -120,15 +154,6 @@
           <div>
         </div>
       `
-    }
-
-    static get colorBadgeTemplate() {
-      return `
-        <div id="colorBadge">
-          <canvas id="badge" width$="[[_badgewidth]]" height$="[[_badgeheight]]" on-click="_select" on-drop="_select"></canvas>
-          <button id="colorPin" class="selector pin" hidden$="[[!_valueIsSet]]" draggable="true" on-drag="_select" on-dragend="_select"></button>
-        </div>
-      `;
     }
 
     /**
@@ -143,21 +168,25 @@
       `;
     }
 
+    static get properties() {
+      return {
+        _sliderwidth: Number,
+
+        _saturationheight: Number,
+
+        _saturationwidth: Number
+      };
+    }
+
     static get observers() {
       return [
-        '_drawHue(_sliderwidth, _badgeheight)',
-        '_drawAlpha(h, _sliderwidth, _badgeheight)',
-        '_moveColorPin(s, l, _badgewidth, _badgeheight, hex)',
-        '_moveAlphaSlider(alpha, _badgeheight)',
-        '_moveHueSlider(h, _badgeheight)',
-        '_drawColorBadge(h, s, l, _badgewidth, _badgeheight)',
+        '_drawHue(_sliderwidth, _saturationheight)',
+        '_drawAlpha(h, _sliderwidth, _saturationheight)'
       ];
     }
 
     connectedCallback() {
       super.connectedCallback();
-      this._select = this._select.bind(this);
-      this._grabEnd = this._grabEnd.bind(this);
       if (this.colorString === undefined) {
         if (this.default) {
           this.colorString = this.default;
@@ -169,48 +198,58 @@
 
     _resizeBadge() {
       super._resizeBadge();
-      const box = this.$.alphaBadge.getBoundingClientRect();
-      this._sliderwidth = Math.round(box.width);
+      const slider = this.$.alphaBadge.getBoundingClientRect();
+      const sliderwidth = Math.round(slider.width);
+      const saturation = this.$.saturationBadge.getBoundingClientRect();
+
+      this.setProperties({
+        _saturationwidth: Math.round(saturation.width),
+        _saturationheight: Math.round(saturation.height),
+        _sliderwidth: sliderwidth
+      });
     }
 
-    _drawBadge() {
-    }
+    _drawBadge(value) {
+      super._drawBadge(value);
 
-    _drawColorBadge(h, s, l, width, height) {
-      if (h === undefined || s === undefined || l === undefined) {
-        return;
+      if (this._saturationcontext === undefined) {
+        this._saturationcontext = this.$.saturation.getContext("2d");
       }
-      if (width === undefined || height === undefined) {
-        setTimeout( () => {
-          this._resizeBadge();
-        }, 0);
-        return;
-      }
-      if (this._context === undefined) {
-        this._context = this.$.badge.getContext("2d");
-      }
-      this._resizeBadge();
-      this._context.clearRect(0, 0, width, height);
+      const width = this._saturationwidth,
+        height = this._saturationheight;
 
-      let gradient = this._context.createLinearGradient(0, 0, width, 1);
+      this._saturationcontext.clearRect(0, 0, width, height);
+
+      let gradient = this._saturationcontext.createLinearGradient(0, 0, width, 1);
       gradient.addColorStop(0, 'hsl(0,100%,100%)');
-      gradient.addColorStop(1, `hsl(${h},100%,50%)`);
+      gradient.addColorStop(1, `hsl(${Math.round(this.h || 0)},100%,50%)`);
 
-      this._context.fillStyle = gradient;
-      this._context.fillRect(0, 0, width, height);
+      this._saturationcontext.fillStyle = gradient;
+      this._saturationcontext.fillRect(0, 0, width, height);
 
-      gradient = this._context.createLinearGradient(0, 0, 1, height);
+      gradient = this._saturationcontext.createLinearGradient(0, 0, 1, height);
       gradient.addColorStop(0, 'rgba(0,0,0,0)');
       gradient.addColorStop(1, 'rgba(0,0,0,1)');
 
-      this._context.fillStyle = gradient;
-      this._context.fillRect(0, 0, width, height);
+      this._saturationcontext.fillStyle = gradient;
+      this._saturationcontext.fillRect(0, 0, width, height);
+
+      this._drawSelector(this.$.alphaSlider, 0, (1 - (this.alpha || 0)) * height);
+      this._drawSelector(this.$.hueSlider, 0, height * (this.h || 0) / 360);
+
+      const c = this.s * (this.l < .5 ? this.l : 1 - this.l),
+        s = ((2 * c) / (this.l + c)) || 0,
+        v = 1 - (this.l + c);
+
+      this._drawSelector(this.$.colorPin, width * s, height * v);
+    }
+
+    _drawSelector(element, x, y) {
+      element.style.left = `${Math.round(x || 0)}px`;
+      element.style.top = `${Math.round(y || 0)}px`;
     }
 
     _drawAlpha(h, width, height) {
-      if (h === undefined) {
-        return;
-      }
       if (width === undefined || height === undefined) {
         setTimeout( () => {
           this._resizeBadge();
@@ -224,41 +263,19 @@
       this._alphacontext.clearRect(0, 0, width, height);
 
       let gradient = this._alphacontext.createLinearGradient(0, 0, 1, height);
-      gradient.addColorStop(0, `hsl(${h},100%,50%)`);
+      gradient.addColorStop(0, `hsla(${Math.round(h || 0)}, 100%, 50%, 1)`);
       gradient.addColorStop(1, 'rgba(0,0,0,0)');
       this._alphacontext.fillStyle = gradient;
       this._alphacontext.fillRect(0, 0, width, height);
     }
 
-    _drawSelector(element, x, y, hex) {
-      element.style.transform = `translate(${Math.round(x || 0)}px,${Math.round(y || 0)}px)`;
-      if (hex !== undefined) {
-        element.style.background = hex;
-      }
-    }
-
-    _moveHueSlider(h, height) {
-      if (h === undefined || height === undefined) {
-        return;
-      }
-      this._drawSelector(this.$.hueSlider, 0, height * (h || 0) / 360);
-    }
-
-    _moveAlphaSlider(alpha, height) {
-      if (alpha === undefined || height === undefined) {
-        return;
-      }
-      this._drawSelector(this.$.alphaSlider, 0, (1 - alpha) * height);
-    }
-
-    _moveColorPin(s, l, width, height, hex) {
-      if (s === undefined || l === undefined || width === undefined || height === undefined || hex === undefined) {
-        return;
-      }
-      this._drawSelector(this.$.colorPin, width * s, height * (1 - l), hex);
-    }
-
     _drawHue(width, height) {
+      if (width === undefined || height === undefined) {
+        setTimeout( () => {
+          this._resizeBadge();
+        }, 0);
+        return;
+      }
       if (this._huecontext === undefined) {
         this._huecontext = this.$.hue.getContext("2d");
       }
@@ -275,90 +292,192 @@
       this._huecontext.fillRect(0, 0, width, height);
     }
 
-    _grabStart(e) {
-      if (!(e && e.target)) {
-        return;
-      }
-      e.target.classList.add('grabbing');
-      e.target.addEventListener('mousemove', this._select, {capture: false, passive: true});
-      e.target.addEventListener('touchmove', this._select, {capture: false, passive: true});
-      e.target.addEventListener('mouseup', this._grabEnd, {capture: false, passive: true});
-      e.target.addEventListener('mouseleave', this._grabEnd, {capture: false, passive: true});
-      e.target.addEventListener('touchend', this._grabEnd, {capture: false, passive: true});
-      this._select(e);
-    }
-
-    _grabEnd(e) {
-      if (!(e && e.target)) {
-        return;
-      }
-      this._select(e);
-      e.target.classList.remove('grabbing');
-      e.target.removeEventListener('mousemove', this._select, {capture: false, passive: true});
-      e.target.removeEventListener('touchmove', this._select, {capture: false, passive: true});
-      e.target.removeEventListener('mouseup', this._grabEnd, {capture: false, passive: true});
-      e.target.removeEventListener('mouseleave', this._grabEnd, {capture: false, passive: true});
-      e.target.removeEventListener('touchend', this._grabEnd, {capture: false, passive: true});
-    }
-
-    _select(e) {
-      // if (!(e && e.target && e.target.classList.contains('grabbing'))) {
-      //   return;
-      // } else if (e && e.type) {
-      //   e.target.removeEventListener(e.type, this._select, {capture: false, passive: true});
-      // }
-      console.log(e);
-      let property = e.target.getAttribute('prop');
-      if (!property) {
-        if (e.path) {
-          for (let i = 0; i < e.path.length; i++) {
-            if (e.path[i].classList && e.path[i].classList.contains('slider')) {
-              property = e.path[i].getAttribute('prop');
-              break;
-            }
+    _checkSelectorForProperty(e, id) {
+      if (e.target.hasAttribute('prop')) {
+        return e.target.getAttribute('prop');
+      } else if (id && this.$[id] && this.$[id].hasAttribute('prop')) {
+        return this.$[id].getAttribute('prop');
+      } else if (e.path) {
+        for (let i = 0; i < e.path.length; i++) {
+          if (e.path[i] && e.path[i].hasAttribute && e.path[i].hasAttribute('prop')) {
+            return e.path[i].getAttribute('prop');
           }
-        } else if (e.target && e.target.classList && e.target.classList.contains('slider')) {
-          property = e.target.getAttribute('prop');
+        }
+      }
+    }
+
+    _getActiveCanvas() {
+      switch (this._activeProperty) {
+        case 'alpha':
+          this._activeSelectionCanvas = this.$.alpha;
+          break;
+        case 'hue':
+          this._activeSelectionCanvas = this.$.hue;
+          break;
+        default:
+          this._activeSelectionCanvas = this.$.saturation;
+      }
+      this._activeSelectionRect = this._activeSelectionCanvas.getBoundingClientRect();
+      this._activeSelectionCanvas.classList.add('active');
+    }
+
+    _onTrack(e) {
+      if (!this._activeProperty) {
+        this._activeProperty = this._checkSelectorForProperty(e);
+      }
+      if (!this._activeSelectionCanvas) {
+        this._getActiveCanvas();
+      }
+      const rect = this._activeSelectionRect;
+      let s, c, h, v, offsetX = e.detail.x || e.clientX, offsetY = e.detail.y || e.clientY;
+      switch (this._activeProperty) {
+        case 'alpha':
+          offsetY -= rect.top;
+          if (offsetY > rect.height) {
+            offsetY = rect.height;
+          } else if (offsetY < 0) {
+            offsetY = 0;
+          }
+          this.alpha = +this._normalizedClamp((rect.height - offsetY) / rect.height).toFixed(2);
+          this._drawSelector(this.$.alphaSlider, 0, offsetY);
+          break;
+        case 'hue':
+          offsetY -= rect.top;
+          if (offsetY > rect.height) {
+            offsetY = rect.height;
+          } else if (offsetY < 0) {
+            offsetY = 0;
+          }
+          h = Math.round(360 * offsetY / rect.height);
+          this.h = this._mathMod(h, 360);
+          this._drawSelector(this.$.hueSlider, 0, offsetY);
+          break;
+        default:
+          offsetX -= rect.left;
+          if (offsetX > rect.width) {
+            offsetX = rect.width;
+          } else if (offsetX < 0) {
+            offsetX = 0;
+          }
+
+          offsetY -= rect.top;
+          if (offsetY > rect.height) {
+            offsetY = rect.height;
+          } else if (offsetY < 0) {
+            offsetY = 0;
+          }
+
+          s = offsetX / rect.width;
+          v = 1 - offsetY / rect.height;
+          c = (2 - s) * v;
+
+          this.setProperties({
+            h: this.h || 0,
+            s: c === 0 ? 0 : +(s * v / (c < 1 ? c : 2 - c)).toFixed(2),
+            l: +(c/2).toFixed(2)
+          });
+
+          setTimeout(() => {
+            this._drawSelector(this.$.colorPin, offsetX, offsetY);
+          }, 0);
+        }
+        if (e.detail.state && e.detail.state === 'end') {
+          this._onSelectEnd();
         }
       }
 
-      let rect, s, l, h, alpha;
-      switch (property) {
-        case 'alpha':
-          rect = this.$.alpha.getBoundingClientRect();
-          alpha = (1 - Math.round(100*(e.clientY - rect.top) / rect.height)/100);
-          if (alpha <= 1 && alpha >= 0) {
-            this.alpha = alpha;
+      _onDown(e) {
+        this._onSelectEnd(e);
+        this._onTrack(e);
+      }
+
+      _onTap(e) {
+        this._onSelectEnd(e);
+        this._onTrack(e);
+        switch (this._activeProperty) {
+          case 'alpha':
+            this.$.alphaSlider.focus();
+            break;
+          case 'hue':
+            this.$.hueSlider.focus();
+            break;
+          case 'color':
+            this.$.colorPin.focus();
+        }
+        if (this._activeSelectionCanvas) {
+          this._activeSelectionCanvas.classList.remove('active');
+        }
+        this._activeSelectionCanvas = null;
+        this._activeSelectionRect = null;
+      }
+
+      _onFocusButton(e) {
+        this._activeProperty = this._checkSelectorForProperty(e, e.target.id);
+      }
+
+      _onKeyDown(e) {
+        if (this._activeProperty) {
+          let switched, ev;
+          switch (this._activeProperty) {
+            case 'alpha':
+              if (e.keyCode === 38) { // up
+                this.alpha = window._numberUtilities._safeMult(Math.round(this.alpha*100 + 1), 0.01); switched = true;
+              } else if (e.keyCode === 40) { // down
+                this.alpha = window._numberUtilities._safeMult(Math.round(this.alpha*100 - 1), 0.01); switched = true;
+              }
+              break;
+            case 'hue':
+              if (e.keyCode === 38) { // up
+                this.h = Math.round(this.h - 1); switched = true;
+              } else if (e.keyCode === 40) { // down
+                this.h = Math.round(this.h + 1); switched = true;
+              }
+              break;
+            default:
+              if (!this._activeSelectionRect) {
+                this._activeSelectionRect = this.$.saturation.getBoundingClientRect();
+                this._activeSelectionCanvas = this.$.saturation;
+              }
+              ev = {
+                detail: this.$.colorPin.getBoundingClientRect()
+              };
+
+              ev.detail.x = ev.detail.x + ev.detail.width / 2;
+              ev.detail.y = ev.detail.y + ev.detail.height / 2;
+              if (e.keyCode === 38) { // up
+                ev.detail.y -= (Math.round(this._activeSelectionRect.height / 100) || 1);
+              } else if (e.keyCode === 40) { // down
+                ev.detail.y += (Math.round(this._activeSelectionRect.height / 100) || 1);
+              } else if (e.keyCode === 37) { // left
+                ev.detail.x -= (Math.round(this._activeSelectionRect.width / 100) || 1);
+              } else if (e.keyCode === 39) { // right
+                ev.detail.x += (Math.round(this._activeSelectionRect.width / 100) || 1);
+              } else {
+                return;
+              }
+              this._onTrack(ev);
+              switched = true;
           }
-          return;
-        case 'hue':
-          rect = this.$.hue.getBoundingClientRect();
-          h = Math.round(360 * (e.clientY - rect.top) / rect.height);
-          console.log(h);
-          if (h <= 360 && h >= 0) {
-            this.h = h;
+          if (switched) {
+            e && e.stopPropagation && e.stopPropagation();
+            e && e.preventDefault && e.preventDefault();
           }
-          return;
-        default:
-          console.log(property);
-          rect = this.$.badge.getBoundingClientRect();
-          s = +((e.clientX - rect.left) / rect.width).toFixed((this.hslPrecision || 0) + 2);
-          l = +(1 - (e.clientY - rect.top) / rect.height).toFixed((this.hslPrecision || 0) + 2);
-          if (s <= 1 && s >= 0 && l <= 1 && l >= 0) {
-            this.setProperties({
-              h: this.h,
-              s: s,
-              l: l
-            });
-          } else if (s <= 1 && s >= 0) {
-            this.s = s;
-          } else if (l <= 1 && l >= 0) {
-            this.l = l;
-          }
-          return;
+        } else if (this.keyCode === 27) {
+          document.activeElement.blur();
+          this._onSelectEnd();
+        }
+      }
+
+      _onSelectEnd() {
+        if (this._activeSelectionCanvas) {
+          this._activeSelectionCanvas.classList.remove('active');
+        }
+        this._activeSelectionCanvas = null;
+        this._activeSelectionRect = null;
+        this._activeProperty = null;
       }
     }
-  }
+    window.ColorElementPattern = ColorElementPattern;
 </script>
 
 <dom-module id="color-element">
@@ -369,22 +488,36 @@
   *   ```html
   *     <color-element value="{{color}}"></color-element>
   *   ```
+  * Custom property | Description | Default
+  * ----------------|-------------|----------
+  * `--transparency-pattern` | background pattern for the transparency layer | linear-gradient(45deg, rgba(0,0,0,0.15) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.15) 75%, rgba(0,0,0,0.15)), linear-gradient(45deg, rgba(0,0,0,0.15) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.15) 75%, rgba(0,0,0,0.15)))
+  * `--transparency-pattern-size` | size transparency pattern | 12px
+  * `--color-element-badge-radius` | border-radius of the badge | --input-picker-border-radius, 6px
+  * `--color-element-height` | height of the selector badge and the alpha- and the hue-slider| 184px
+  * `--color-element-width` | width of the selector badge | 184px
+  * `--color-slider-width` | width of the alpha- and the hue-slider | 16px
+  * `--color-slider-padding` | padding of the alpha- and the hue-slider | 2px
+  * `--color-pin-radius` | radius of the color pin | 3px
+  * `--color-element` | mixin applied to the color element | {}
   *
-  * For example if you clamp on `hours`, you can round `color` and `value` to `00:00:00`. If you set `clamp="day"` you hide the day-selection.
-  *
-  * The following custom properties and mixins are also available for styling:
+  *  Have a look at [input-picker-pattern#input-shared-style](https://github.com/fooloomanzoo/input-picker-pattern#input-shared-style) to see the used style-properties.
   *
   * @customElement
   * @polymer
   *
   * @appliesMixin ColorElementPattern
+  * @appliesMixin ColorBadgePattern
   *
   * @demo demo/color-picker.html
   **/
-    class ColorElement extends ColorElementPattern(Polymer.Element) { // eslint-disable-line no-undef
+    class ColorElement extends Polymer.GestureEventListeners(ColorElementPattern(ColorBadgePattern(Polymer.Element))) { // eslint-disable-line no-undef
 
       static get is() {
         return 'color-element';
+      }
+
+      static get styleToInclude() {
+        return `${super.styleToInclude || '' } input-picker-shared-style`;
       }
 
       static get template() {
@@ -394,28 +527,6 @@
           </style>
           ${this.colorElementTemplate}
         `;
-      }
-
-      static get properties() {
-        return {
-          /**
-           * is true when the value is not undefined
-           */
-          _valueIsSet: {
-            type: Boolean,
-            value: false
-          }
-        };
-      }
-
-      static get observers() {
-        return [
-          '_computeValueIsSet(colorString)'
-        ];
-      }
-
-      _computeValueIsSet(value) {
-        this._valueIsSet = value !== undefined;
       }
 
     }

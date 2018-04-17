@@ -7,7 +7,7 @@ _[Demo and API docs](https://fooloomanzoo.github.io/color-picker/components/colo
 
 ### What is it for?
 
-`color-picker` is a picker for color for **[Polymer](https://github.com/Polymer/polymer)** that can use the **native** input, too. It has the same approach like in [&lt;datetime-picker&gt;](https://fooloomanzoo.github.io/datetime-picker/components/datetime-picker/). If the **native** picker is choosen and is not supported, this element use the **polyfill** color-picker. The `<color-element>` will come in place if the native picker is not available or is not explicitly wanted.  The `value` represents the selected `hex-color` and `alpha` the opacity of the color. `css-value` will give you directly the css-string.
+`color-picker` is a picker for color for **[Polymer](https://github.com/Polymer/polymer)** that can use the **native** input, too. It has the same approach like in [&lt;datetime-picker&gt;](https://fooloomanzoo.github.io/datetime-picker/components/datetime-picker/). If the **native** picker is choosen and is not supported, this element use the **polyfill** color-picker. The `<color-element>` will come in place if the native picker is not available or is not explicitly wanted.  The `value` and `color-string` will give you directly the css-string in the selected format.
 
 ### Motivation
 
@@ -15,16 +15,6 @@ Internally it tests the browser, if **native** input-types `color` is supported.
 
 It might be useful for you to use, if you like to keep the native approach of Browsers like in Chrome for Desktop or Mobile, you like to have a different look or you would like to have a guaranteed working **color-picker**.
 
-Another use case could be for example, if you want on *mobile devices* use the native picker, when supported, and on *desktop devices* this polyfill.
-
-```html
-  <color-picker native="[[isMobile]]"></color-picker>
-  ...
-    isMobile() {
-      const ua = window.navigator.userAgent;
-      return (/[mM]obi/i.test(ua) || /[tT]ablet/i.test(ua) || /[aA]ndroid/i.test(ua));
-    }
-  ...
 ```
 
 ### How?
@@ -33,7 +23,7 @@ The **[component page](https://fooloomanzoo.github.io/color-picker/components/co
 
 Examples:
 
-#### Stand-alone color
+#### Stand-alone color-element
 
 <!--
 ```
@@ -57,10 +47,16 @@ Examples:
 -->
 
 ```html
-  <color-element value="{{value}}" css-value="{{cssValue}}" alpha="{{alpha}}"></color-element>
-  <div>hex: <b>[[value]]</div>
-  <div>alpha: <b>[[alpha]]</div>
-  <div>css-value: <b>[[cssValue]]</div>
+  <color-element color-string="{{colorString}}" alpha="{{alpha}}" format="[[format]]"></color-element><br>
+  <p><select id="formats" value="{{format::change}}">
+    <option value="auto">auto</option>
+    <option value="rgb">rgb</option>
+    <option value="hex">hex</option>
+    <option value="hsl">hsl</option>
+  </select></p>  
+  <p>hex: <b>[[value]]</p>
+  <p>alpha: <b>[[alpha]]</p>
+  <p>color-string: <b>[[colorString]]</p>
 ```
 
 #### Stand-alone color-picker
@@ -87,11 +83,17 @@ Examples:
 -->
 
 ```html
-<color-picker value="{{color}}"></color-picker>
+<color-picker r="{{r}}" g="{{g}}" b="{{b}}" default="green"></color-picker>
+<p>r: [[r]]</p>
+<p>g: [[g]]</p>
+<p>b: [[b]]</p>
 ```
 
 #### Use the polyfill or the native picker
-By default it checks if `color` is supported as input. If it is not and you had set `native`, the polyfill will be used instead of the native input.
+By default it checks if `color` is supported for a native input. If it is not and you have set `native`, the polyfill will be used instead of the native input. Additionally there is the attribute `native-on-mobile`.
+
+### Styling
+Have a look at [input-picker-pattern#input-shared-style](https://github.com/fooloomanzoo/input-picker-pattern#input-shared-style) to see how to style the element.
 
 ### Installation
 ```
