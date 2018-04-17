@@ -15,6 +15,7 @@
     <link rel="import" href="../../paper-styles/shadow.html">
 
     <link rel="import" href="../color-picker.html">
+    <link rel="import" href="../overlay-color-picker.html">
 
     <custom-style>
       <style is="custom-style" include="demo-pages-shared-styles">
@@ -22,7 +23,9 @@
           margin-bottom: 4px;
           margin-left: 8px;
         }
+        overlay-color-picker,
         color-picker {
+          vertical-align: middle;
           margin-bottom: 4px;
           margin-left: 8px;
         }
@@ -62,19 +65,9 @@
                   name: <input name="name" required value="Batman"/><br>
                   job: <input name="job" required value="Hero"/><br>
                   <p>
-                    color format:
-                    <select id="formats" value="{{format::change}}">
-                      <option value="auto">auto</option>
-                      <option value="hex">hex</option>
-                      <option value="rgb">rgb</option>
-                      <option value="hsl">hsl</option>
-                    </select>
+                    color of the cape:  <color-picker required name="cape" format="rgb"></color-picker>
                     <br>
-                    <br>
-                    color of the cape:  <color-picker required name="cape" format="[[format]]"></color-picker>
-                    <br>
-                    <br>
-                    color of the glasses:  <color-picker required name="glasses" format="[[format]]" alpha="0.5"></color-picker>
+                    color of the glasses:  <overlay-color-picker required name="glasses" alpha="0.5" no-overlap no-tip></overlay-color-picker>
                   </p>
                   <button onclick="form1.submit()">Submit</button>
                   <button onclick="form1.validate()">Validate</button>
