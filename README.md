@@ -45,7 +45,7 @@ Examples:
 -->
 
 ```html
-<color-picker r="{{r}}" g="{{g}}" b="{{b}}" default="green"></color-picker>  
+<color-picker r="{{r}}" g="{{g}}" b="{{b}}" default="green" native="[[native]]" auto-confirm="[[autoConfirm]]"></color-picker>  
 <p>
   <span> red: [[r]] </span>
   <br>
