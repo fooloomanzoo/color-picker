@@ -37,7 +37,10 @@
           justify-content: space-between;
           position: relative;
           box-sizing: content-box;
-          border-radius: inherit;
+          border-top-left-radius: inherit;
+          border-top-right-radius: inherit;
+          border-bottom-left-radius: 0;
+          border-bottom-right-radius: 0;
         }
         #colorElement .selectors > * {
           position: relative;
@@ -45,29 +48,21 @@
           background: transparent;
           cursor: pointer;
           box-sizing: content-box;
-          border-radius: inherit;
+          border-radius: 0;
+          flex-shrink: 0;
+        }
+        #colorElement .selectors > :first-child {
+          border-top-left-radius: inherit;
+        }
+        #colorElement .selectors > :last-child {
+          border-top-right-radius: inherit;
         }
         #colorElement canvas {
           pointer-events: all;
           position: absolute;
-          border: 1px solid var(--input-picker-background);
-          left: -1px;
-          top: -1px;
-          right: -1px;
-          bottom: -1px;
           border-radius: inherit;
-        }
-        #colorElement .selectors > :not(:last-child),
-        #colorElement .selectors > :not(:last-child) canvas {
-          border-top-right-radius: 0;
-          border-bottom-right-radius: 0;
-          border-bottom-left-radius: 0;
-        }
-        #colorElement .selectors > :not(:first-child),
-        #colorElement .selectors > :not(:first-child) canvas {
-          border-top-left-radius: 0;
-          border-bottom-right-radius: 0;
-          border-bottom-left-radius: 0;
+          left: 0;
+          top: 0;
         }
         #colorElement .selectors > :not(:first-child) {
           margin-left: var(--input-picker-padding);
@@ -80,6 +75,9 @@
         #colorElement #saturationBadge {
           cursor: crosshair;
           width: var(--color-element-width, 184px);
+          flex: 1;
+          right: 0;
+          left: auto;
         }
         #colorElement #hueBadge,
         #colorElement #alphaBadge {
@@ -94,6 +92,7 @@
           pointer-events: none;
           background: transparent;
           border: thin solid #fff;
+          z-index: 1;
           mix-blend-mode: exclusion;
           transition-property: background-color;
           transition-duration: var(--input-transition-duration, 250ms);
@@ -113,7 +112,7 @@
           padding: var(--color-pin-radius, 3px);
           border-radius: 50%;
           transform: translate(-50%, -50%);
-          transition-property: opacity background-color;
+          transition-property: opacity, background-color;
         }
         #colorElement canvas.active:hover ~ .pin {
           opacity: 0;
@@ -147,15 +146,15 @@
         <div id="colorElement">
           <div class="selectors">
             <div id="saturationBadge" class="badge">
-              <canvas id="saturation" prop="color" width$="[[_saturationwidth]]" height$="[[_saturationheight]]" on-dblclick="_onDblClick" on-track="_onTrack" on-down="_onDown" on-tap="_onTap"></canvas>
+              <canvas id="saturation" prop="color" width$="[[_saturationwidth]]" height$="[[_saturationheight]]" on-dblclick="_onDblClick" on-track="_onTrack" on-down="_onDown" on-up="_onUp"></canvas>
               <button id="colorPin" prop="color" hidden$=[[!_valueIsSet]] class="selector pin" on-focus="_onFocusButton" on-keydown="_onKeyDown"></button>
             </div>
             <div id="alphaBadge" class="transparency">
-              <canvas id="alpha" prop="alpha" width$="[[_sliderwidth]]" height$="[[_saturationheight]]" on-track="_onTrack" on-down="_onDown" on-tap="_onTap"></canvas>
+              <canvas id="alpha" prop="alpha" width$="[[_sliderwidth]]" height$="[[_saturationheight]]" on-track="_onTrack" on-down="_onDown" on-tap="_onUp"></canvas>
               <button id="alphaSlider" class="selector slider" prop="alpha" on-focus="_onFocusButton" on-keydown="_onKeyDown"></button>
             </div>
             <div id="hueBadge">
-              <canvas id="hue" prop="hue" width$="[[_sliderwidth]]" height$="[[_saturationheight]]" on-track="_onTrack" on-down="_onDown" on-tap="_onTap"></canvas>
+              <canvas id="hue" prop="hue" width$="[[_sliderwidth]]" height$="[[_saturationheight]]" on-track="_onTrack" on-down="_onDown" on-tap="_onUp"></canvas>
               <button id="hueSlider" class="selector slider" prop="hue" on-focus="_onFocusButton" on-keydown="_onKeyDown"></button>
             </div>
           </div>
@@ -172,7 +171,7 @@
      */
     static get buttonTemplate() {
       return `
-        <button id="random" class="icon random" on-click="random"><svg viewBox="0 0 24 24"><g><path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></g></svg></button>
+        <button id="random" class="icon random" on-click="random" on-keydown="_stopPropagation"><svg viewBox="0 0 24 24"><g><path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></g></svg></button>
         ${super.buttonTemplate || ''}
       `;
     }
@@ -205,11 +204,37 @@
       }
     }
 
+    /**
+     * generate a random color
+     */
+    random() {
+      super.random();
+      this.setProperties({
+        alpha: 1,
+        alphaMode: false
+      })
+    }
+
+    /**
+     * redraw the element manually
+     */
+    redraw() {
+      this._resizeBadge();
+      this._drawAlphaAndSaturation(this.h, this._saturationheight);
+      this._drawAlphaSlider(this.alpha, this._saturationheight);
+      this._drawColorPin(this.s, this.l, this._saturationwidth, this._saturationheight);
+    }
+
     _resizeBadge() {
       super._resizeBadge();
+      if (this._alphacontext === undefined) {
+        this._alphacontext = this.$.alpha.getContext("2d");
+      }
+      if (this._saturationcontext === undefined) {
+        this._saturationcontext = this.$.saturation.getContext("2d");
+      }
       const sliderwidth = Math.round(this.$.alphaBadge.getBoundingClientRect().width);
       const saturationRect = this.$.saturationBadge.getBoundingClientRect();
-
       this.setProperties({
         _saturationwidth: Math.ceil(saturationRect.width) || 184,
         _saturationheight: Math.ceil(saturationRect.height) || 184,
@@ -218,8 +243,8 @@
     }
 
     _drawSelector(element, x, y) {
-      element.style.left = `${x || 0}px`;
-      element.style.top = `${y || 0}px`;
+      element.style.left = `${Math.round(x || 0)}px`;
+      element.style.top = `${Math.round(y || 0)}px`;
     }
 
     _drawAlphaSlider(alpha, height) {
@@ -244,13 +269,6 @@
       }
       const sliderwidth = this._sliderwidth,
         saturationwidth = this._saturationwidth;
-
-      if (this._alphacontext === undefined) {
-        this._alphacontext = this.$.alpha.getContext("2d");
-      }
-      if (this._saturationcontext === undefined) {
-        this._saturationcontext = this.$.saturation.getContext("2d");
-      }
 
       // alpha
       this._alphacontext.clearRect(0, 0, sliderwidth, height);
@@ -334,7 +352,9 @@
     }
 
     _onTrack(e) {
-      e && e.stopPropagation && e.stopPropagation();
+      if (e && e.detail && e.detail.sourceEvent) {
+        this._stopPropagation(e.detail.sourceEvent);
+      }
       if (!this._activeProperty) {
         this._activeProperty = this._checkSelectorForProperty(e);
       }
@@ -390,25 +410,21 @@
             l: +(c/2).toFixed(2)
           });
 
+          this._drawSelector(this.$.colorPin, offsetX, offsetY);
         }
         if (e.detail.state && e.detail.state === 'end') {
-          if (this._activeProperty !== 'alpha' && this._activeProperty !== 'hue') {
-            setTimeout(() => {
-              this._drawSelector(this.$.colorPin, offsetX, offsetY);
-            }, 0);
-          }
           this._onSelectEnd(e);
         }
       }
 
       _onDown(e) {
-        e && e.stopPropagation && e.stopPropagation();
+        this._stopPropagation(e);
         this._onSelectEnd(e);
         this._onTrack(e);
       }
 
-      _onTap(e) {
-        e && e.stopPropagation && e.stopPropagation();
+      _onUp(e) {
+        this._stopPropagation(e);
         this._onSelectEnd(e);
         this._onTrack(e);
         switch (this._activeProperty) {
@@ -478,7 +494,7 @@
               switched = true;
           }
           if (switched) {
-            e && e.stopPropagation && e.stopPropagation();
+            this._stopPropagation(e);
             e && e.preventDefault && e.preventDefault();
           }
         } else if (this.keyCode === 27) {
@@ -488,7 +504,7 @@
       }
 
       _onSelectEnd(e) {
-        e && e.stopPropagation && e.stopPropagation();
+        this._stopPropagation(e);
         if (this._activeSelectionCanvas) {
           this._activeSelectionCanvas.classList.remove('active');
         }
@@ -496,6 +512,11 @@
         this._activeSelectionRect = null;
         this._activeProperty = null;
       }
+
+      _stopPropagation(e) {
+        e && e.stopPropagation && e.stopPropagation();
+      }
+
     }
     window.ColorElementPattern = ColorElementPattern;
 </script>

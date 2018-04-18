@@ -37,22 +37,25 @@
           height: var(--color-badge-height, 28px);
           width: var(--color-badge-width, 28px);
         }
-        #buttons #recentColorBadge {
+        #buttons #colorBadgeContainer {
+          position: relative;
+          display: inline-flex;
+          min-width: var(--color-badge-width, 28px);
+          align-self: stretch;
+          flex: 1;
+          margin-right: var(--input-picker-padding);
+        }
+        #buttons #colorBadge {
           background: #fff;
           position: relative;
           border-radius: var(--input-icon-border-radius);
-          flex: 1;
-          align-self: stretch;
-          padding: 0;
-          margin: 0;
-          box-sizing: border-box;
-          border-width: 0 !important;
-        }
-        #buttons #recentColorBadge > canvas {
-          cursor: pointer;
+          height: 100%;
+          width: 100%;
         }
         #formats {
+          font-size: 0.9em;
           --inner-input-color: var(--input-picker-color, currentColor);
+          margin-right: var(--input-picker-padding);
         }
         ::-webkit-color-swatch {
           border-radius: var(--input-border-radius, var(--color-badge-radius, 3px));
@@ -83,12 +86,21 @@
       `;
     }
 
+    static get inputTemplate() {
+      return `
+        <div id="recentColorBadge" class="transparency badge">
+          <canvas id="recentColor" width$="[[_recentcolorwidth]]" height$="[[_recentcolorheight]]" on-tap="_resetValues"></canvas>
+        </div>
+        ${super.inputTemplate}
+      `;
+    }
+
     static get buttonTemplate() {
       return `
-        <button id="recentColorBadge" class="transparency badge" hidden$="[[autoConfirm]]" invisible$="[[!_confirmedValueIsSet]]">
-          <canvas id="recentColor" width$="[[_recentcolorwidth]]" height$="[[_recentcolorheight]]" on-tap="_resetValues"></canvas>
-        </button>
-        <select id="formats" value="{{format::change}}">
+        <div id="colorBadgeContainer" hidden$="[[autoConfirm]]">
+          ${this.colorBadgeTemplate}
+        </div>
+        <select id="formats" value="{{format::change}}" on-keydown="_stopPropagation">
           <option value="auto">auto</option>
           <option value="rgb">rgb</option>
           <option value="hex">hex</option>
@@ -123,14 +135,6 @@
           value: 'colorString'
         },
 
-        /**
-         * is true when the value is not undefined
-         */
-        _confirmedValueIsSet: {
-          type: Boolean,
-          value: false
-        },
-
         _recentcolorheight: Number,
 
         _recentcolorwidth: Number
@@ -145,13 +149,24 @@
       ];
     }
 
+    redraw() {
+      super.redraw();
+      this._drawBadge(this._badgecontext, this.colorString, this._badgewidth, this._badgeheight);
+      this._drawBadge(this._recentcolorcontext, this.propertyForValue === 'colorString' ? this.confirmedValue : this.colorString, this._recentcolorwidth, this._recentcolorheight);
+    }
+
     _resizeBadge() {
       super._resizeBadge();
+      if (this._recentcolorcontext === undefined) {
+        this._recentcolorcontext = this.$.recentColor.getContext("2d");
+      }
+      if (this._badgecontext === undefined) {
+        this._badgecontext = this.$.badge.getContext("2d");
+      }
       const recentcolorRect = this.$.recentColorBadge.getBoundingClientRect();
-
       this.setProperties({
-        _recentcolorwidth: Math.ceil(recentcolorRect.width) || 30,
-        _recentcolorheight: Math.ceil(recentcolorRect.height) || 30
+        _recentcolorwidth: Math.ceil(recentcolorRect.width) || 28,
+        _recentcolorheight: Math.ceil(recentcolorRect.height) || 28
       });
     }
 
@@ -183,16 +198,8 @@
     }
 
     _confirmedValueChanged(confirmedValue) {
-      if (this._recentcolorcontext === undefined) {
-        this._recentcolorcontext = this.$.recentColor.getContext("2d");
-      }
-      if (confirmedValue !== undefined && !this._confirmedValueIsSet) {
-        this._confirmedValueIsSet = true;
-        this._resizeBadge();
-      }
       this._drawBadge(this._recentcolorcontext, this.propertyForValue === 'colorString' ? confirmedValue : this.colorString, this._recentcolorwidth, this._recentcolorheight);
       if (confirmedValue === undefined) {
-        this._confirmedValueIsSet = false;
         this._resetConfirmedValues();
         return;
       }
@@ -221,12 +228,8 @@
     open() {
       super.open();
       requestAnimationFrame(() => {
-        if (this._recentcolorcontext === undefined) {
-          this._recentcolorcontext = this.$.recentColor.getContext("2d");
-        }
-        this._resizeBadge();
-        this._drawBadge(this._recentcolorcontext, this.propertyForValue === 'colorString' ? this.confirmedValue : this.colorString, this._recentcolorwidth, this._recentcolorheight);
-      })
+        this.redraw();
+      });
     }
 
     _onDblClick() {
