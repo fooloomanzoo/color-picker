@@ -89,7 +89,7 @@
     static get inputTemplate() {
       return `
         <div id="recentColorBadge" class="transparency badge">
-          <canvas id="recentColor" width$="[[_recentcolorwidth]]" height$="[[_recentcolorheight]]" on-tap="_resetValues"></canvas>
+          <canvas id="recentColor" width$="[[_recentcolorwidth]]" height$="[[_recentcolorheight]]" on-click="_resetValues"></canvas>
         </div>
         ${super.inputTemplate}
       `;
@@ -122,14 +122,6 @@
     static get properties() {
       return {
 
-        /**
-         * the confirmed value
-         */
-        confirmedValue: {
-          type: Object,
-          notify: true
-        },
-
         propertyForValue: {
           type: String,
           value: 'colorString'
@@ -139,14 +131,6 @@
 
         _recentcolorwidth: Number
       }
-    }
-
-    static get observers() {
-      return [
-        '_confirmedValueChanged(confirmedValue)',
-        '_valueChanged(value, autoConfirm)',
-        '_computeInvalid(required, confirmedValue)'
-      ];
     }
 
     redraw() {
@@ -170,31 +154,11 @@
       });
     }
 
-    _valueChanged(value) {
-      if (value === undefined) {
-        this._resetConfirmedValues();
-        return; // return, if resseting, so that the picker is not itself resetted
+    _resetValues() {
+      this._colorStringChanged(this.confirmedValue);
+      if (this.value !== this.confirmedValue) {
+        this.value = this.confirmedValue;
       }
-      if (this.autoConfirm || (this._hasNative && this.native)) {
-        setTimeout(() => {
-          this._setConfirmedValues();
-        })
-      }
-    }
-
-    confirm() {
-      super.confirm();
-      this._setConfirmedValues();
-    }
-
-    cancel() {
-      this._resetValues();
-      super.cancel();
-    }
-
-    validate() {
-      this.value = this.confirmedValue;
-      return super.validate();
     }
 
     _confirmedValueChanged(confirmedValue) {
@@ -204,25 +168,6 @@
         return;
       }
       this.value = confirmedValue;
-    }
-
-    _setConfirmedValues() {
-      this.setProperties({
-        confirmedValue: this.value
-      })
-    }
-
-    _resetConfirmedValues() {
-      this.setProperties({
-        value: undefined,
-        confirmedValue: undefined
-      })
-    }
-
-    _resetValues() {
-      this.setProperties({
-        value: this.confirmedValue
-      })
     }
 
     open() {

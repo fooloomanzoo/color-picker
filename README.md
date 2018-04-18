@@ -85,7 +85,7 @@ Examples:
 -->
 
 ```html
-  <color-element color-string="{{colorString}}" alpha="{{alpha}}" format="{{format}}" hex="{{hex}}"></color-element><br>
+  <color-element alpha="{{alpha}}" r="{{r}}" g="{{g}}" b="{{b}}" h="{{h}}" s="{{s}}" l="{{l}}" format="{{format}}"></color-element><br>
   <p>
     <span>format </span>
     <select id="formats" value="{{format::change}}">
