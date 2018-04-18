@@ -170,6 +170,21 @@
       this.value = confirmedValue;
     }
 
+    _addCancelOnClickListener() {
+      // prevent when clicking on the picker that it is closes
+      // NOTE: different than input-picker-pattern, using polymer.gestures to prevent 'track' to cancel picker
+      if (!this.noCancelOnOutsideClick) {
+        Polymer.Gestures.addListener(document, 'tap', this.cancel, false);
+        this.addEventListener('click', this._stopPropagation, false);
+      }
+    }
+
+    _removeCancelOnClickListener() {
+    // NOTE: different than input-picker-pattern
+      Polymer.Gestures.removeListener(document, 'tap', this.cancel, false);
+      this.removeEventListener('click', this._stopPropagation, false);
+    }
+
     open() {
       super.open();
       requestAnimationFrame(() => {

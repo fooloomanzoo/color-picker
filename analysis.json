@@ -3302,38 +3302,36 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
-              "line": 313,
-              "column": 6
+              "line": 172,
+              "column": 4
             },
             "end": {
-              "line": 319,
-              "column": 7
+              "line": 179,
+              "column": 5
             }
           },
           "metadata": {},
           "params": [],
-          "inheritedFrom": "InputPickerPattern"
+          "inheritedFrom": "ColorPickerPattern"
         },
         {
           "name": "_removeCancelOnClickListener",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
-              "line": 321,
-              "column": 6
+              "line": 181,
+              "column": 4
             },
             "end": {
-              "line": 324,
-              "column": 7
+              "line": 185,
+              "column": 5
             }
           },
           "metadata": {},
           "params": [],
-          "inheritedFrom": "InputPickerPattern"
+          "inheritedFrom": "ColorPickerPattern"
         },
         {
           "name": "_addKeepPickersOpenListener",
@@ -3484,11 +3482,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 172,
+              "line": 187,
               "column": 4
             },
             "end": {
-              "line": 177,
+              "line": 192,
               "column": 5
             }
           },
@@ -4012,11 +4010,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 179,
+              "line": 194,
               "column": 4
             },
             "end": {
-              "line": 181,
+              "line": 196,
               "column": 5
             }
           },
@@ -4938,11 +4936,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 206,
+          "line": 221,
           "column": 4
         },
         "end": {
-          "line": 219,
+          "line": 234,
           "column": 5
         }
       },
@@ -6881,11 +6879,11 @@
           "sourceRange": {
             "file": "color-picker.html",
             "start": {
-              "line": 172,
+              "line": 187,
               "column": 4
             },
             "end": {
-              "line": 177,
+              "line": 192,
               "column": 5
             }
           },
@@ -7176,38 +7174,38 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
+            "file": "color-picker.html",
             "start": {
-              "line": 313,
-              "column": 6
+              "line": 172,
+              "column": 4
             },
             "end": {
-              "line": 319,
-              "column": 7
+              "line": 179,
+              "column": 5
             }
           },
           "metadata": {},
           "params": [],
-          "inheritedFrom": "InputPickerPattern"
+          "inheritedFrom": "ColorPickerPattern"
         },
         {
           "name": "_removeCancelOnClickListener",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
+            "file": "color-picker.html",
             "start": {
-              "line": 321,
-              "column": 6
+              "line": 181,
+              "column": 4
             },
             "end": {
-              "line": 324,
-              "column": 7
+              "line": 185,
+              "column": 5
             }
           },
           "metadata": {},
           "params": [],
-          "inheritedFrom": "InputPickerPattern"
+          "inheritedFrom": "ColorPickerPattern"
         },
         {
           "name": "_addKeepPickersOpenListener",
@@ -7873,11 +7871,11 @@
           "sourceRange": {
             "file": "color-picker.html",
             "start": {
-              "line": 179,
+              "line": 194,
               "column": 4
             },
             "end": {
-              "line": 181,
+              "line": 196,
               "column": 5
             }
           },
@@ -11418,38 +11416,34 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
-              "line": 313,
-              "column": 6
+              "line": 172,
+              "column": 4
             },
             "end": {
-              "line": 319,
-              "column": 7
+              "line": 179,
+              "column": 5
             }
           },
           "metadata": {},
-          "params": [],
-          "inheritedFrom": "InputPickerPattern"
+          "params": []
         },
         {
           "name": "_removeCancelOnClickListener",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
-              "line": 321,
-              "column": 6
+              "line": 181,
+              "column": 4
             },
             "end": {
-              "line": 324,
-              "column": 7
+              "line": 185,
+              "column": 5
             }
           },
           "metadata": {},
-          "params": [],
-          "inheritedFrom": "InputPickerPattern"
+          "params": []
         },
         {
           "name": "_addKeepPickersOpenListener",
@@ -11600,11 +11594,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 172,
+              "line": 187,
               "column": 4
             },
             "end": {
-              "line": 177,
+              "line": 192,
               "column": 5
             }
           },
@@ -12123,11 +12117,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 179,
+              "line": 194,
               "column": 4
             },
             "end": {
-              "line": 181,
+              "line": 196,
               "column": 5
             }
           },
@@ -13043,7 +13037,7 @@
           "column": 2
         },
         "end": {
-          "line": 183,
+          "line": 198,
           "column": 3
         }
       },
