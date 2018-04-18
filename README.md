@@ -21,6 +21,46 @@ The **[component page](https://fooloomanzoo.github.io/color-picker/components/co
 
 Examples:
 
+#### color-picker
+
+<!--
+```
+<custom-element-demo height="300">
+  <template>
+    <script src="../webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel="import" href="color-picker.html">
+    <style>
+      html {
+        font-family: 'Source Sans Pro', sans-serif;
+      }
+    </style>
+    <dom-bind>
+      <template is="dom-bind">
+        <next-code-block></next-code-block>
+      </template>
+    </dom-bind>
+  </template>
+</custom-element-demo>
+```
+-->
+
+```html
+<color-picker r="{{r}}" g="{{g}}" b="{{b}}" default="green"></color-picker>  
+<p>
+  <span> red: [[r]] </span>
+  <br>
+  <span> green: [[g]] </span>
+  <br>
+  <span> blue: [[b]] </span>  
+  <br>
+  <br>
+  <input type="checkbox" checked="{{native::change}}">native color picker
+  <br>
+  <br>
+  <input type="checkbox" checked="{{autoConfirm::change}}">auto confirm
+</p>
+```
+
 #### Stand-alone color-element
 
 <!--
@@ -45,46 +85,31 @@ Examples:
 -->
 
 ```html
-  <color-element color-string="{{colorString}}" alpha="{{alpha}}" format="[[format]]"></color-element><br>
-  <p><select id="formats" value="{{format::change}}">
-    <option value="auto">auto</option>
-    <option value="rgb">rgb</option>
-    <option value="hex">hex</option>
-    <option value="hsl">hsl</option>
-  </select></p>  
-  <p>hex: <b>[[value]]</p>
-  <p>alpha: <b>[[alpha]]</p>
-  <p>color-string: <b>[[colorString]]</p>
-```
-
-#### Stand-alone color-picker
-
-<!--
-```
-<custom-element-demo height="300">
-  <template>
-    <script src="../webcomponentsjs/webcomponents-lite.js"></script>
-    <link rel="import" href="color-picker.html">
-    <style>
-      html {
-        font-family: 'Source Sans Pro', sans-serif;
-      }
-    </style>
-    <dom-bind>
-      <template is="dom-bind">
-        <next-code-block></next-code-block>
-      </template>
-    </dom-bind>
-  </template>
-</custom-element-demo>
-```
--->
-
-```html
-<color-picker r="{{r}}" g="{{g}}" b="{{b}}" default="green"></color-picker>
-<p>r: [[r]]</p>
-<p>g: [[g]]</p>
-<p>b: [[b]]</p>
+  <color-element color-string="{{colorString}}" alpha="{{alpha}}" format="{{format}}" hex="{{hex}}"></color-element><br>
+  <p>
+    <span>format </span>
+    <select id="formats" value="{{format::change}}">
+      <option value="auto">auto</option>
+      <option value="rgb">rgb</option>
+      <option value="hex">hex</option>
+      <option value="hsl">hsl</option>
+    </select>
+    <br>
+    <input type="range" min="0" max="1" step="0.01" value="{{alpha::change}}"><span> alpha: [[alpha]] </span>
+    <br>
+    <input type="range" min="0" max="255" step="1" value="{{r::input}}"><span> red: [[r]] </span>
+    <br>
+    <input type="range" min="0" max="255" step="1" value="{{g::input}}"><span> green: [[g]] </span>
+    <br>
+    <input type="range" min="0" max="255" step="1" value="{{b::input}}"><span> blue: [[b]] </span>
+    <br>
+    <input type="range" min="0" max="359" step="1" value="{{h::input}}"><span> hue: [[h]] </span>
+    <br>
+    <input type="range" min="0" max="1" step="0.001" value="{{s::input}}"><span> saturation: [[s]] </span>
+    <br>
+    <input type="range" min="0" max="1" step="0.001" value="{{l::input}}"><span> lightness: [[l]] </span>
+    <br>
+  </p>
 ```
 
 #### Use the polyfill or the native picker
