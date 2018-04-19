@@ -52,7 +52,7 @@
           height: 100%;
           width: 100%;
         }
-        #formats {
+        #buttons #formats {
           font-size: 0.9em;
           --inner-input-color: var(--input-picker-color, currentColor);
           margin-right: var(--input-picker-padding);
@@ -127,31 +127,48 @@
           value: 'colorString'
         },
 
-        _recentcolorheight: Number,
+        _recentcolorheight: {
+          type: Number
+        },
 
-        _recentcolorwidth: Number
+        _recentcolorwidth: {
+          type: Number
+        }
+      }
+    }
+
+    ready() {
+      super.ready();
+      if (this.$.recentColor) {
+        this._recentcolorcontext = this.$.recentColor.getContext("2d");
       }
     }
 
     redraw() {
       super.redraw();
-      this._drawBadge(this._badgecontext, this.colorString, this._badgewidth, this._badgeheight);
-      this._drawBadge(this._recentcolorcontext, this.propertyForValue === 'colorString' ? this.confirmedValue : this.colorString, this._recentcolorwidth, this._recentcolorheight);
+      this._drawConfimedColorBadge(this.propertyForValue === 'colorString' ? this.confirmedValue : this.colorString, this._recentcolorwidth, this._recentcolorheight);
     }
 
     _resizeBadge() {
-      super._resizeBadge();
-      if (this._recentcolorcontext === undefined) {
-        this._recentcolorcontext = this.$.recentColor.getContext("2d");
+      let toSet = {};
+      if (this.$.colorBadge) {
+        const box = this.$.colorBadge.getBoundingClientRect();
+        toSet._badgewidth = Math.ceil(box.width) || 28;
+        toSet._badgeheight = Math.ceil(box.height) || 28;
       }
-      if (this._badgecontext === undefined) {
-        this._badgecontext = this.$.badge.getContext("2d");
+      if (this.$.alphaBadge && this.$.saturationBadge) {
+        const sliderwidth = Math.round(this.$.alphaBadge.getBoundingClientRect().width);
+        const saturationRect = this.$.saturationBadge.getBoundingClientRect();
+        toSet._saturationwidth = (Math.ceil(saturationRect.width) || 184);
+        toSet._saturationheight = (Math.ceil(saturationRect.height) || 184);
+        toSet._sliderwidth = (sliderwidth || 16);
       }
-      const recentcolorRect = this.$.recentColorBadge.getBoundingClientRect();
-      this.setProperties({
-        _recentcolorwidth: Math.ceil(recentcolorRect.width) || 28,
-        _recentcolorheight: Math.ceil(recentcolorRect.height) || 28
-      });
+      if (this.$.recentColorBadge) {
+        const recentcolorRect = this.$.recentColorBadge.getBoundingClientRect();
+        toSet._recentcolorwidth = Math.ceil(recentcolorRect.width) || 28;
+        toSet._recentcolorheight = Math.ceil(recentcolorRect.height) || 28;
+      }
+      this.setProperties(toSet);
     }
 
     _resetValues() {
@@ -162,12 +179,16 @@
     }
 
     _confirmedValueChanged(confirmedValue) {
-      this._drawBadge(this._recentcolorcontext, this.propertyForValue === 'colorString' ? confirmedValue : this.colorString, this._recentcolorwidth, this._recentcolorheight);
+      this._drawConfimedColorBadge(this.propertyForValue === 'colorString' ? confirmedValue : this.colorString, this._recentcolorwidth, this._recentcolorheight);
       if (confirmedValue === undefined) {
         this._resetConfirmedValues();
         return;
       }
       this.value = confirmedValue;
+    }
+
+    _drawConfimedColorBadge(value, width, height) {
+      this._drawBadge(this._recentcolorcontext, value, width, height);
     }
 
     _addCancelOnClickListener() {

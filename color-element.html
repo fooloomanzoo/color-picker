@@ -28,14 +28,15 @@
           display: -webkit-inline-flex;
           display: inline-flex;
           flex-flow: column nowrap;
+          position: relative;
           @apply --color-element;
         }
         #colorElement .selectors {
           display: inline-flex;
           flex-flow: row nowrap;
           align-items: stretch;
-          justify-content: space-between;
           position: relative;
+          justify-content: space-between;
           box-sizing: content-box;
           border-top-left-radius: inherit;
           border-top-right-radius: inherit;
@@ -74,7 +75,7 @@
         }
         #colorElement #saturationBadge {
           cursor: crosshair;
-          width: var(--color-element-width, 184px);
+          min-width: var(--color-element-width, 184px);
           flex: 1;
           right: 0;
           left: auto;
@@ -178,29 +179,32 @@
 
     static get properties() {
       return {
-        _sliderwidth: Number,
+        _sliderwidth: {
+          type: Number
+        },
 
-        _saturationheight: Number,
+        _saturationheight: {
+          type: Number
+        },
 
-        _saturationwidth: Number
+        _saturationwidth: {
+          type: Number
+        }
       };
     }
 
-    static get observers() {
-      return [
-        '_drawHue(_saturationheight)',
-        '_drawAlphaAndSaturation(h, _saturationheight)',
-        '_drawAlphaSlider(alpha, _saturationheight)',
-        '_drawColorPin(s, l, _saturationwidth, _saturationheight)',
-      ];
-    }
-
-    connectedCallback() {
-      super.connectedCallback();
-      if (this.colorString === undefined) {
-        if (this.default) {
-          this.colorString = this.default;
-        }
+    ready() {
+      super.ready();
+      this._alphacontext = this.$.alpha.getContext("2d");
+      this._saturationcontext = this.$.saturation.getContext("2d");
+      this._huecontext = this.$.hue.getContext("2d");
+      if (this._huecontext) {
+        this._createMethodObserver('_drawHue(_saturationheight)', true);
+      }
+      if (this._alphacontext && this._saturationcontext) {
+        this._createMethodObserver('_drawAlphaAndSaturation(h, _saturationheight)', true);
+        this._createMethodObserver('_drawAlphaSlider(alpha, _saturationheight)', true);
+        this._createMethodObserver('_drawColorPin(s, l, _saturationwidth, _saturationheight)', true);
       }
     }
 
@@ -219,30 +223,33 @@
      * redraw the element manually
      */
     redraw() {
-      this._resizeBadge();
+      super.redraw();
       this._drawAlphaAndSaturation(this.h, this._saturationheight);
       this._drawAlphaSlider(this.alpha, this._saturationheight);
       this._drawColorPin(this.s, this.l, this._saturationwidth, this._saturationheight);
     }
 
     _resizeBadge() {
-      super._resizeBadge();
-      if (this._alphacontext === undefined) {
-        this._alphacontext = this.$.alpha.getContext("2d");
+      let toSet = {};
+      if (this.$.colorBadge) {
+        const box = this.$.colorBadge.getBoundingClientRect();
+        toSet._badgewidth = Math.ceil(box.width) || 28;
+        toSet._badgeheight = Math.ceil(box.height) || 28;
       }
-      if (this._saturationcontext === undefined) {
-        this._saturationcontext = this.$.saturation.getContext("2d");
+      if (this.$.alphaBadge && this.$.saturationBadge) {
+        const sliderwidth = Math.round(this.$.alphaBadge.getBoundingClientRect().width);
+        const saturationRect = this.$.saturationBadge.getBoundingClientRect();
+        toSet._saturationwidth = (Math.ceil(saturationRect.width) || 184);
+        toSet._saturationheight = (Math.ceil(saturationRect.height) || 184);
+        toSet._sliderwidth = (sliderwidth || 16);
       }
-      const sliderwidth = Math.round(this.$.alphaBadge.getBoundingClientRect().width);
-      const saturationRect = this.$.saturationBadge.getBoundingClientRect();
-      this.setProperties({
-        _saturationwidth: Math.ceil(saturationRect.width) || 184,
-        _saturationheight: Math.ceil(saturationRect.height) || 184,
-        _sliderwidth: sliderwidth || 16
-      });
+      this.setProperties(toSet);
     }
 
     _drawSelector(element, x, y) {
+      if (element === undefined) {
+        return;
+      }
       element.style.left = `${Math.round(x || 0)}px`;
       element.style.top = `${Math.round(y || 0)}px`;
     }
@@ -261,10 +268,7 @@
     }
 
     _drawAlphaAndSaturation(h, height) {
-      if (!height) {
-        setTimeout( () => {
-          this._resizeBadge();
-        }, 0);
+      if (height === undefined) {
         return;
       }
       const sliderwidth = this._sliderwidth,
@@ -300,13 +304,7 @@
 
     _drawHue(height) {
       if (height === undefined) {
-        setTimeout( () => {
-          this._resizeBadge();
-        }, 0);
         return;
-      }
-      if (this._huecontext === undefined) {
-        this._huecontext = this.$.hue.getContext("2d");
       }
 
       const sliderwidth = this._sliderwidth;

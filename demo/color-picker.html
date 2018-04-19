@@ -33,7 +33,7 @@
         <template>
           <dom-bind>
             <template is="dom-bind">
-              <color-input color-string="{{value}}" hex="{{hex}}" alpha="{{alpha}}" format="{{format}}"></color-input>
+              <color-input color-string="{{value}}" default="hsl(222, 50%, 90%)" alpha="{{alpha}}" format="{{format}}"></color-input>
               <br>
               <br>
               <color-element color-string="{{value}}" hex="{{hex}}" alpha="{{alpha}}" format="{{format}}"></color-element>
@@ -77,9 +77,8 @@
               </select>
               <br>
               <br>
-              <color-picker value="{{value}}" alpha="{{alpha}}" hex="{{hex}}" default="blue" auto-confirm="[[autoConfirm]]" confirmed-value="{{confirmedValue}}" vertical-align="bottom" native="{{native}}" format="{{format}}"></color-picker>
+              <color-picker value="{{value}}" default="yellow" alpha="{{alpha}}" hex="{{hex}}" auto-confirm="[[autoConfirm]]" confirmed-value="{{confirmedValue}}" vertical-align="bottom" native="{{native}}" format="{{format}}"></color-picker>
               <div class="vertical-section-container result">
-
                 <div><code>hex</code>: <b>[[hex]]</b></div>
                 <div><code>alpha</code>: <b>[[alpha]]</b></div>
                 <div><code>value</code>: <b>[[value]]</b></div>
@@ -126,7 +125,6 @@
         </template>
       </demo-snippet>
     </div>
-
 
   </body>
 
