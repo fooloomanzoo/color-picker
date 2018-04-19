@@ -94,7 +94,7 @@
           background: transparent;
           border: thin solid #fff;
           z-index: 1;
-          mix-blend-mode: exclusion;
+          mix-blend-mode: var(--color-selector-mix-blend-mode, exclusion);
           transition-property: background-color;
           transition-duration: var(--input-transition-duration, 250ms);
           transition-timing-function: var(--input-transition-timing-function, cubic-bezier(0.6, 1, 0.2, 1));
@@ -369,7 +369,16 @@
           } else if (offsetY < 0) {
             offsetY = 0;
           }
-          this.alpha = +this._normalizedClamp((rect.height - offsetY) / rect.height).toFixed(2);
+          c = +this._normalizedClamp((rect.height - offsetY) / rect.height).toFixed(2);
+          if (!this._hexAlphaSupported && this.format === 'hex' && c !== 1) {
+            this.setProperties({
+              format: 'auto',
+              alphaMode: true,
+              alpha: c
+            });
+          } else {
+            this.alpha = c;
+          }
           this._drawSelector(this.$.alphaSlider, 0, offsetY);
           break;
         case 'hue':
@@ -453,6 +462,9 @@
           let switched, ev;
           switch (this._activeProperty) {
             case 'alpha':
+              if (!this.alphaMode) {
+                this.alphaMode = true;
+              }
               if (e.keyCode === 38) { // up
                 this.alpha = window._numberUtilities._safeMult(Math.round(this.alpha*100 + 1), 0.01); switched = true;
               } else if (e.keyCode === 40) { // down
@@ -537,6 +549,7 @@
   * `--color-slider-width` | width of the alpha- and the hue-slider | 16px
   * `--color-slider-padding` | padding of the alpha- and the hue-slider | 2px
   * `--color-pin-radius` | radius of the color pin | 3px
+  * `--color-selector-mix-blend-mode` | mix-blend-mode of the selectors (sliders and color pin) | exclusion
   * `--color-element` | mixin applied to the color element | {}
   *
   *  Have a look at [input-picker-pattern#input-shared-style](https://github.com/fooloomanzoo/input-picker-pattern#input-shared-style) to see the used style-properties.

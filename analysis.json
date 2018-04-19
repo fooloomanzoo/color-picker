@@ -13,12 +13,12 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 180,
+              "line": 181,
               "column": 8
             },
             "end": {
-              "line": 180,
-              "column": 28
+              "line": 183,
+              "column": 9
             }
           },
           "metadata": {
@@ -33,12 +33,12 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 182,
+              "line": 185,
               "column": 8
             },
             "end": {
-              "line": 182,
-              "column": 33
+              "line": 187,
+              "column": 9
             }
           },
           "metadata": {
@@ -53,12 +53,12 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 184,
+              "line": 189,
               "column": 8
             },
             "end": {
-              "line": 184,
-              "column": 32
+              "line": 191,
+              "column": 9
             }
           },
           "metadata": {
@@ -501,8 +501,8 @@
               "column": 8
             },
             "end": {
-              "line": 98,
-              "column": 27
+              "line": 100,
+              "column": 9
             }
           },
           "metadata": {
@@ -518,12 +518,12 @@
           "sourceRange": {
             "file": "bower_components\\color-input\\color-badge.html",
             "start": {
-              "line": 100,
+              "line": 102,
               "column": 8
             },
             "end": {
-              "line": 100,
-              "column": 28
+              "line": 104,
+              "column": 9
             }
           },
           "metadata": {
@@ -534,17 +534,17 @@
       ],
       "methods": [
         {
-          "name": "connectedCallback",
+          "name": "ready",
           "description": "",
-          "privacy": "public",
+          "privacy": "protected",
           "sourceRange": {
             "file": "bower_components\\color-input\\color-badge.html",
             "start": {
-              "line": 104,
+              "line": 108,
               "column": 4
             },
             "end": {
-              "line": 107,
+              "line": 115,
               "column": 5
             }
           },
@@ -559,11 +559,11 @@
           "sourceRange": {
             "file": "bower_components\\color-input\\color-badge.html",
             "start": {
-              "line": 132,
+              "line": 150,
               "column": 4
             },
             "end": {
-              "line": 138,
+              "line": 156,
               "column": 5
             }
           },
@@ -577,21 +577,22 @@
         },
         {
           "name": "redraw",
-          "description": "redraw the element manually",
+          "description": "",
           "privacy": "public",
           "sourceRange": {
+            "file": "bower_components\\color-input\\color-badge.html",
             "start": {
-              "line": 220,
+              "line": 122,
               "column": 4
             },
             "end": {
-              "line": 225,
+              "line": 125,
               "column": 5
             }
           },
           "metadata": {},
           "params": [],
-          "inheritedFrom": "ColorElementPattern"
+          "inheritedFrom": "ColorBadgePattern"
         },
         {
           "name": "_resizeBadge",
@@ -600,11 +601,11 @@
           "sourceRange": {
             "file": "bower_components\\color-input\\color-badge.html",
             "start": {
-              "line": 157,
+              "line": 176,
               "column": 4
             },
             "end": {
-              "line": 165,
+              "line": 184,
               "column": 5
             }
           },
@@ -618,11 +619,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 244,
+              "line": 248,
               "column": 4
             },
             "end": {
-              "line": 247,
+              "line": 254,
               "column": 5
             }
           },
@@ -646,11 +647,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 249,
+              "line": 256,
               "column": 4
             },
             "end": {
-              "line": 251,
+              "line": 258,
               "column": 5
             }
           },
@@ -671,11 +672,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 253,
+              "line": 260,
               "column": 4
             },
             "end": {
-              "line": 260,
+              "line": 267,
               "column": 5
             }
           },
@@ -702,11 +703,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 262,
+              "line": 269,
               "column": 4
             },
             "end": {
-              "line": 298,
+              "line": 302,
               "column": 5
             }
           },
@@ -727,11 +728,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 300,
+              "line": 304,
               "column": 4
             },
             "end": {
-              "line": 322,
+              "line": 320,
               "column": 5
             }
           },
@@ -749,11 +750,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 324,
+              "line": 322,
               "column": 4
             },
             "end": {
-              "line": 336,
+              "line": 334,
               "column": 5
             }
           },
@@ -774,11 +775,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 338,
+              "line": 336,
               "column": 4
             },
             "end": {
-              "line": 351,
+              "line": 349,
               "column": 5
             }
           },
@@ -792,11 +793,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 353,
+              "line": 351,
               "column": 4
             },
             "end": {
-              "line": 417,
+              "line": 415,
               "column": 7
             }
           },
@@ -814,11 +815,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 419,
+              "line": 417,
               "column": 6
             },
             "end": {
-              "line": 423,
+              "line": 421,
               "column": 7
             }
           },
@@ -836,11 +837,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 425,
+              "line": 423,
               "column": 6
             },
             "end": {
-              "line": 444,
+              "line": 442,
               "column": 7
             }
           },
@@ -858,11 +859,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 446,
+              "line": 444,
               "column": 6
             },
             "end": {
-              "line": 446,
+              "line": 444,
               "column": 23
             }
           },
@@ -876,11 +877,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 448,
+              "line": 446,
               "column": 6
             },
             "end": {
-              "line": 450,
+              "line": 448,
               "column": 7
             }
           },
@@ -898,11 +899,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 452,
+              "line": 450,
               "column": 6
             },
             "end": {
-              "line": 503,
+              "line": 501,
               "column": 7
             }
           },
@@ -920,11 +921,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 505,
+              "line": 503,
               "column": 6
             },
             "end": {
-              "line": 513,
+              "line": 511,
               "column": 7
             }
           },
@@ -942,11 +943,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 515,
+              "line": 513,
               "column": 6
             },
             "end": {
-              "line": 517,
+              "line": 515,
               "column": 7
             }
           },
@@ -957,6 +958,25 @@
             }
           ],
           "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "connectedCallback",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "bower_components\\color-input\\color-badge.html",
+            "start": {
+              "line": 117,
+              "column": 4
+            },
+            "end": {
+              "line": 120,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "inheritedFrom": "ColorBadgePattern"
         },
         {
           "name": "_createTestCanvas",
@@ -1056,11 +1076,11 @@
           "sourceRange": {
             "file": "bower_components\\color-input\\color-badge.html",
             "start": {
-              "line": 140,
+              "line": 158,
               "column": 4
             },
             "end": {
-              "line": 149,
+              "line": 161,
               "column": 5
             }
           },
@@ -1068,9 +1088,6 @@
           "params": [
             {
               "name": "value"
-            },
-            {
-              "name": "oldValue"
             }
           ],
           "inheritedFrom": "ColorBadgePattern"
@@ -1555,11 +1572,11 @@
           "sourceRange": {
             "file": "bower_components\\color-input\\color-badge.html",
             "start": {
-              "line": 109,
+              "line": 127,
               "column": 4
             },
             "end": {
-              "line": 116,
+              "line": 134,
               "column": 5
             }
           },
@@ -1578,11 +1595,11 @@
           "sourceRange": {
             "file": "bower_components\\color-input\\color-badge.html",
             "start": {
-              "line": 118,
+              "line": 136,
               "column": 4
             },
             "end": {
-              "line": 123,
+              "line": 141,
               "column": 5
             }
           },
@@ -1597,11 +1614,11 @@
           "sourceRange": {
             "file": "bower_components\\color-input\\color-badge.html",
             "start": {
-              "line": 125,
+              "line": 143,
               "column": 4
             },
             "end": {
-              "line": 130,
+              "line": 148,
               "column": 5
             }
           },
@@ -1616,11 +1633,11 @@
           "sourceRange": {
             "file": "bower_components\\color-input\\color-badge.html",
             "start": {
-              "line": 151,
+              "line": 163,
               "column": 4
             },
             "end": {
-              "line": 155,
+              "line": 170,
               "column": 5
             }
           },
@@ -1629,6 +1646,35 @@
             {
               "name": "context"
             },
+            {
+              "name": "value"
+            },
+            {
+              "name": "width"
+            },
+            {
+              "name": "height"
+            }
+          ],
+          "inheritedFrom": "ColorBadgePattern"
+        },
+        {
+          "name": "_drawColorBadge",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "bower_components\\color-input\\color-badge.html",
+            "start": {
+              "line": 172,
+              "column": 4
+            },
+            "end": {
+              "line": 174,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
             {
               "name": "value"
             },
@@ -1652,11 +1698,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 553,
+          "line": 551,
           "column": 4
         },
         "end": {
-          "line": 583,
+          "line": 581,
           "column": 5
         }
       },
@@ -2388,12 +2434,12 @@
           "sourceRange": {
             "file": "color-element.html",
             "start": {
-              "line": 180,
+              "line": 181,
               "column": 8
             },
             "end": {
-              "line": 180,
-              "column": 28
+              "line": 183,
+              "column": 9
             }
           },
           "metadata": {
@@ -2409,12 +2455,12 @@
           "sourceRange": {
             "file": "color-element.html",
             "start": {
-              "line": 182,
+              "line": 185,
               "column": 8
             },
             "end": {
-              "line": 182,
-              "column": 33
+              "line": 187,
+              "column": 9
             }
           },
           "metadata": {
@@ -2430,12 +2476,12 @@
           "sourceRange": {
             "file": "color-element.html",
             "start": {
-              "line": 184,
+              "line": 189,
               "column": 8
             },
             "end": {
-              "line": 184,
-              "column": 32
+              "line": 191,
+              "column": 9
             }
           },
           "metadata": {
@@ -2878,8 +2924,8 @@
               "column": 8
             },
             "end": {
-              "line": 98,
-              "column": 27
+              "line": 100,
+              "column": 9
             }
           },
           "metadata": {
@@ -2895,12 +2941,12 @@
           "sourceRange": {
             "file": "bower_components\\color-input\\color-badge.html",
             "start": {
-              "line": 100,
+              "line": 102,
               "column": 8
             },
             "end": {
-              "line": 100,
-              "column": 28
+              "line": 104,
+              "column": 9
             }
           },
           "metadata": {
@@ -2988,8 +3034,8 @@
               "column": 8
             },
             "end": {
-              "line": 129,
-              "column": 34
+              "line": 131,
+              "column": 9
             }
           },
           "metadata": {
@@ -3004,12 +3050,12 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 131,
+              "line": 133,
               "column": 8
             },
             "end": {
-              "line": 131,
-              "column": 33
+              "line": 135,
+              "column": 9
             }
           },
           "metadata": {
@@ -3098,7 +3144,7 @@
               "column": 6
             },
             "end": {
-              "line": 106,
+              "line": 112,
               "column": 7
             }
           },
@@ -3117,11 +3163,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
-              "line": 111,
+              "line": 117,
               "column": 6
             },
             "end": {
-              "line": 113,
+              "line": 119,
               "column": 7
             }
           },
@@ -3136,11 +3182,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
-              "line": 118,
+              "line": 124,
               "column": 6
             },
             "end": {
-              "line": 127,
+              "line": 133,
               "column": 7
             }
           },
@@ -3159,11 +3205,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
-              "line": 129,
+              "line": 135,
               "column": 6
             },
             "end": {
-              "line": 141,
+              "line": 148,
               "column": 7
             }
           },
@@ -3182,11 +3228,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
-              "line": 143,
+              "line": 150,
               "column": 6
             },
             "end": {
-              "line": 145,
+              "line": 152,
               "column": 7
             }
           },
@@ -3205,11 +3251,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
-              "line": 147,
+              "line": 154,
               "column": 6
             },
             "end": {
-              "line": 149,
+              "line": 156,
               "column": 7
             }
           },
@@ -3303,11 +3349,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 172,
+              "line": 193,
               "column": 4
             },
             "end": {
-              "line": 179,
+              "line": 200,
               "column": 5
             }
           },
@@ -3321,11 +3367,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 181,
+              "line": 202,
               "column": 4
             },
             "end": {
-              "line": 185,
+              "line": 206,
               "column": 5
             }
           },
@@ -3378,11 +3424,11 @@
           "sourceRange": {
             "file": "color-element.html",
             "start": {
-              "line": 515,
+              "line": 513,
               "column": 6
             },
             "end": {
-              "line": 517,
+              "line": 515,
               "column": 7
             }
           },
@@ -3482,11 +3528,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 187,
+              "line": 208,
               "column": 4
             },
             "end": {
-              "line": 192,
+              "line": 213,
               "column": 5
             }
           },
@@ -3623,11 +3669,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 163,
+              "line": 180,
               "column": 4
             },
             "end": {
-              "line": 170,
+              "line": 187,
               "column": 5
             }
           },
@@ -3683,11 +3729,29 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 156,
+              "line": 173,
               "column": 4
             },
             "end": {
-              "line": 161,
+              "line": 178,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "inheritedFrom": "ColorPickerPattern"
+        },
+        {
+          "name": "ready",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 139,
+              "column": 4
+            },
+            "end": {
+              "line": 144,
               "column": 5
             }
           },
@@ -3702,11 +3766,11 @@
           "sourceRange": {
             "file": "bower_components\\color-input\\color-badge.html",
             "start": {
-              "line": 132,
+              "line": 150,
               "column": 4
             },
             "end": {
-              "line": 138,
+              "line": 156,
               "column": 5
             }
           },
@@ -3724,11 +3788,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 135,
+              "line": 146,
               "column": 4
             },
             "end": {
-              "line": 139,
+              "line": 149,
               "column": 5
             }
           },
@@ -3742,11 +3806,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 141,
+              "line": 151,
               "column": 4
             },
             "end": {
-              "line": 154,
+              "line": 171,
               "column": 5
             }
           },
@@ -3761,11 +3825,11 @@
           "sourceRange": {
             "file": "color-element.html",
             "start": {
-              "line": 244,
+              "line": 248,
               "column": 4
             },
             "end": {
-              "line": 247,
+              "line": 254,
               "column": 5
             }
           },
@@ -3790,11 +3854,11 @@
           "sourceRange": {
             "file": "color-element.html",
             "start": {
-              "line": 249,
+              "line": 256,
               "column": 4
             },
             "end": {
-              "line": 251,
+              "line": 258,
               "column": 5
             }
           },
@@ -3816,11 +3880,11 @@
           "sourceRange": {
             "file": "color-element.html",
             "start": {
-              "line": 253,
+              "line": 260,
               "column": 4
             },
             "end": {
-              "line": 260,
+              "line": 267,
               "column": 5
             }
           },
@@ -3848,11 +3912,11 @@
           "sourceRange": {
             "file": "color-element.html",
             "start": {
-              "line": 262,
+              "line": 269,
               "column": 4
             },
             "end": {
-              "line": 298,
+              "line": 302,
               "column": 5
             }
           },
@@ -3874,11 +3938,11 @@
           "sourceRange": {
             "file": "color-element.html",
             "start": {
-              "line": 300,
+              "line": 304,
               "column": 4
             },
             "end": {
-              "line": 322,
+              "line": 320,
               "column": 5
             }
           },
@@ -3897,11 +3961,11 @@
           "sourceRange": {
             "file": "color-element.html",
             "start": {
-              "line": 324,
+              "line": 322,
               "column": 4
             },
             "end": {
-              "line": 336,
+              "line": 334,
               "column": 5
             }
           },
@@ -3923,11 +3987,11 @@
           "sourceRange": {
             "file": "color-element.html",
             "start": {
-              "line": 338,
+              "line": 336,
               "column": 4
             },
             "end": {
-              "line": 351,
+              "line": 349,
               "column": 5
             }
           },
@@ -3942,11 +4006,11 @@
           "sourceRange": {
             "file": "color-element.html",
             "start": {
-              "line": 353,
+              "line": 351,
               "column": 4
             },
             "end": {
-              "line": 417,
+              "line": 415,
               "column": 7
             }
           },
@@ -3965,11 +4029,11 @@
           "sourceRange": {
             "file": "color-element.html",
             "start": {
-              "line": 419,
+              "line": 417,
               "column": 6
             },
             "end": {
-              "line": 423,
+              "line": 421,
               "column": 7
             }
           },
@@ -3988,11 +4052,11 @@
           "sourceRange": {
             "file": "color-element.html",
             "start": {
-              "line": 425,
+              "line": 423,
               "column": 6
             },
             "end": {
-              "line": 444,
+              "line": 442,
               "column": 7
             }
           },
@@ -4010,11 +4074,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 194,
+              "line": 215,
               "column": 4
             },
             "end": {
-              "line": 196,
+              "line": 217,
               "column": 5
             }
           },
@@ -4029,11 +4093,11 @@
           "sourceRange": {
             "file": "color-element.html",
             "start": {
-              "line": 448,
+              "line": 446,
               "column": 6
             },
             "end": {
-              "line": 450,
+              "line": 448,
               "column": 7
             }
           },
@@ -4052,11 +4116,11 @@
           "sourceRange": {
             "file": "color-element.html",
             "start": {
-              "line": 452,
+              "line": 450,
               "column": 6
             },
             "end": {
-              "line": 503,
+              "line": 501,
               "column": 7
             }
           },
@@ -4075,11 +4139,11 @@
           "sourceRange": {
             "file": "color-element.html",
             "start": {
-              "line": 505,
+              "line": 503,
               "column": 6
             },
             "end": {
-              "line": 513,
+              "line": 511,
               "column": 7
             }
           },
@@ -4189,11 +4253,11 @@
           "sourceRange": {
             "file": "bower_components\\color-input\\color-badge.html",
             "start": {
-              "line": 140,
+              "line": 158,
               "column": 4
             },
             "end": {
-              "line": 149,
+              "line": 161,
               "column": 5
             }
           },
@@ -4201,9 +4265,6 @@
           "params": [
             {
               "name": "value"
-            },
-            {
-              "name": "oldValue"
             }
           ],
           "inheritedFrom": "ColorBadgePattern"
@@ -4688,11 +4749,11 @@
           "sourceRange": {
             "file": "bower_components\\color-input\\color-badge.html",
             "start": {
-              "line": 109,
+              "line": 127,
               "column": 4
             },
             "end": {
-              "line": 116,
+              "line": 134,
               "column": 5
             }
           },
@@ -4711,11 +4772,11 @@
           "sourceRange": {
             "file": "bower_components\\color-input\\color-badge.html",
             "start": {
-              "line": 118,
+              "line": 136,
               "column": 4
             },
             "end": {
-              "line": 123,
+              "line": 141,
               "column": 5
             }
           },
@@ -4730,11 +4791,11 @@
           "sourceRange": {
             "file": "bower_components\\color-input\\color-badge.html",
             "start": {
-              "line": 125,
+              "line": 143,
               "column": 4
             },
             "end": {
-              "line": 130,
+              "line": 148,
               "column": 5
             }
           },
@@ -4749,11 +4810,11 @@
           "sourceRange": {
             "file": "bower_components\\color-input\\color-badge.html",
             "start": {
-              "line": 151,
+              "line": 163,
               "column": 4
             },
             "end": {
-              "line": 155,
+              "line": 170,
               "column": 5
             }
           },
@@ -4762,6 +4823,35 @@
             {
               "name": "context"
             },
+            {
+              "name": "value"
+            },
+            {
+              "name": "width"
+            },
+            {
+              "name": "height"
+            }
+          ],
+          "inheritedFrom": "ColorBadgePattern"
+        },
+        {
+          "name": "_drawColorBadge",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "bower_components\\color-input\\color-badge.html",
+            "start": {
+              "line": 172,
+              "column": 4
+            },
+            "end": {
+              "line": 174,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
             {
               "name": "value"
             },
@@ -4920,6 +5010,34 @@
             }
           ],
           "inheritedFrom": "ColorInputPattern"
+        },
+        {
+          "name": "_drawConfimedColorBadge",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 189,
+              "column": 4
+            },
+            "end": {
+              "line": 191,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "value"
+            },
+            {
+              "name": "width"
+            },
+            {
+              "name": "height"
+            }
+          ],
+          "inheritedFrom": "ColorPickerPattern"
         }
       ],
       "staticMethods": [],
@@ -4936,11 +5054,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 221,
+          "line": 242,
           "column": 4
         },
         "end": {
-          "line": 234,
+          "line": 255,
           "column": 5
         }
       },
@@ -6201,12 +6319,12 @@
           "sourceRange": {
             "file": "color-element.html",
             "start": {
-              "line": 180,
+              "line": 181,
               "column": 8
             },
             "end": {
-              "line": 180,
-              "column": 28
+              "line": 183,
+              "column": 9
             }
           },
           "metadata": {
@@ -6222,12 +6340,12 @@
           "sourceRange": {
             "file": "color-element.html",
             "start": {
-              "line": 182,
+              "line": 185,
               "column": 8
             },
             "end": {
-              "line": 182,
-              "column": 33
+              "line": 187,
+              "column": 9
             }
           },
           "metadata": {
@@ -6243,12 +6361,12 @@
           "sourceRange": {
             "file": "color-element.html",
             "start": {
-              "line": 184,
+              "line": 189,
               "column": 8
             },
             "end": {
-              "line": 184,
-              "column": 32
+              "line": 191,
+              "column": 9
             }
           },
           "metadata": {
@@ -6691,8 +6809,8 @@
               "column": 8
             },
             "end": {
-              "line": 98,
-              "column": 27
+              "line": 100,
+              "column": 9
             }
           },
           "metadata": {
@@ -6708,12 +6826,12 @@
           "sourceRange": {
             "file": "bower_components\\color-input\\color-badge.html",
             "start": {
-              "line": 100,
+              "line": 102,
               "column": 8
             },
             "end": {
-              "line": 100,
-              "column": 28
+              "line": 104,
+              "column": 9
             }
           },
           "metadata": {
@@ -6802,8 +6920,8 @@
               "column": 8
             },
             "end": {
-              "line": 129,
-              "column": 34
+              "line": 131,
+              "column": 9
             }
           },
           "metadata": {
@@ -6819,12 +6937,12 @@
           "sourceRange": {
             "file": "color-picker.html",
             "start": {
-              "line": 131,
+              "line": 133,
               "column": 8
             },
             "end": {
-              "line": 131,
-              "column": 33
+              "line": 135,
+              "column": 9
             }
           },
           "metadata": {
@@ -6879,11 +6997,11 @@
           "sourceRange": {
             "file": "color-picker.html",
             "start": {
-              "line": 187,
+              "line": 208,
               "column": 4
             },
             "end": {
-              "line": 192,
+              "line": 213,
               "column": 5
             }
           },
@@ -6970,7 +7088,7 @@
               "column": 6
             },
             "end": {
-              "line": 106,
+              "line": 112,
               "column": 7
             }
           },
@@ -6989,11 +7107,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
-              "line": 111,
+              "line": 117,
               "column": 6
             },
             "end": {
-              "line": 113,
+              "line": 119,
               "column": 7
             }
           },
@@ -7008,11 +7126,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
-              "line": 118,
+              "line": 124,
               "column": 6
             },
             "end": {
-              "line": 127,
+              "line": 133,
               "column": 7
             }
           },
@@ -7031,11 +7149,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
-              "line": 129,
+              "line": 135,
               "column": 6
             },
             "end": {
-              "line": 141,
+              "line": 148,
               "column": 7
             }
           },
@@ -7054,11 +7172,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
-              "line": 143,
+              "line": 150,
               "column": 6
             },
             "end": {
-              "line": 145,
+              "line": 152,
               "column": 7
             }
           },
@@ -7077,11 +7195,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
-              "line": 147,
+              "line": 154,
               "column": 6
             },
             "end": {
-              "line": 149,
+              "line": 156,
               "column": 7
             }
           },
@@ -7176,11 +7294,11 @@
           "sourceRange": {
             "file": "color-picker.html",
             "start": {
-              "line": 172,
+              "line": 193,
               "column": 4
             },
             "end": {
-              "line": 179,
+              "line": 200,
               "column": 5
             }
           },
@@ -7195,11 +7313,11 @@
           "sourceRange": {
             "file": "color-picker.html",
             "start": {
-              "line": 181,
+              "line": 202,
               "column": 4
             },
             "end": {
-              "line": 185,
+              "line": 206,
               "column": 5
             }
           },
@@ -7252,11 +7370,11 @@
           "sourceRange": {
             "file": "color-element.html",
             "start": {
-              "line": 515,
+              "line": 513,
               "column": 6
             },
             "end": {
-              "line": 517,
+              "line": 515,
               "column": 7
             }
           },
@@ -7480,11 +7598,11 @@
           "sourceRange": {
             "file": "color-picker.html",
             "start": {
-              "line": 163,
+              "line": 180,
               "column": 4
             },
             "end": {
-              "line": 170,
+              "line": 187,
               "column": 5
             }
           },
@@ -7541,11 +7659,30 @@
           "sourceRange": {
             "file": "color-picker.html",
             "start": {
-              "line": 156,
+              "line": 173,
               "column": 4
             },
             "end": {
-              "line": 161,
+              "line": 178,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "inheritedFrom": "ColorPickerPattern"
+        },
+        {
+          "name": "ready",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "color-picker.html",
+            "start": {
+              "line": 139,
+              "column": 4
+            },
+            "end": {
+              "line": 144,
               "column": 5
             }
           },
@@ -7560,11 +7697,11 @@
           "sourceRange": {
             "file": "bower_components\\color-input\\color-badge.html",
             "start": {
-              "line": 132,
+              "line": 150,
               "column": 4
             },
             "end": {
-              "line": 138,
+              "line": 156,
               "column": 5
             }
           },
@@ -7583,11 +7720,11 @@
           "sourceRange": {
             "file": "color-picker.html",
             "start": {
-              "line": 135,
+              "line": 146,
               "column": 4
             },
             "end": {
-              "line": 139,
+              "line": 149,
               "column": 5
             }
           },
@@ -7602,11 +7739,11 @@
           "sourceRange": {
             "file": "color-picker.html",
             "start": {
-              "line": 141,
+              "line": 151,
               "column": 4
             },
             "end": {
-              "line": 154,
+              "line": 171,
               "column": 5
             }
           },
@@ -7621,11 +7758,11 @@
           "sourceRange": {
             "file": "color-element.html",
             "start": {
-              "line": 244,
+              "line": 248,
               "column": 4
             },
             "end": {
-              "line": 247,
+              "line": 254,
               "column": 5
             }
           },
@@ -7650,11 +7787,11 @@
           "sourceRange": {
             "file": "color-element.html",
             "start": {
-              "line": 249,
+              "line": 256,
               "column": 4
             },
             "end": {
-              "line": 251,
+              "line": 258,
               "column": 5
             }
           },
@@ -7676,11 +7813,11 @@
           "sourceRange": {
             "file": "color-element.html",
             "start": {
-              "line": 253,
+              "line": 260,
               "column": 4
             },
             "end": {
-              "line": 260,
+              "line": 267,
               "column": 5
             }
           },
@@ -7708,11 +7845,11 @@
           "sourceRange": {
             "file": "color-element.html",
             "start": {
-              "line": 262,
+              "line": 269,
               "column": 4
             },
             "end": {
-              "line": 298,
+              "line": 302,
               "column": 5
             }
           },
@@ -7734,11 +7871,11 @@
           "sourceRange": {
             "file": "color-element.html",
             "start": {
-              "line": 300,
+              "line": 304,
               "column": 4
             },
             "end": {
-              "line": 322,
+              "line": 320,
               "column": 5
             }
           },
@@ -7757,11 +7894,11 @@
           "sourceRange": {
             "file": "color-element.html",
             "start": {
-              "line": 324,
+              "line": 322,
               "column": 4
             },
             "end": {
-              "line": 336,
+              "line": 334,
               "column": 5
             }
           },
@@ -7783,11 +7920,11 @@
           "sourceRange": {
             "file": "color-element.html",
             "start": {
-              "line": 338,
+              "line": 336,
               "column": 4
             },
             "end": {
-              "line": 351,
+              "line": 349,
               "column": 5
             }
           },
@@ -7802,11 +7939,11 @@
           "sourceRange": {
             "file": "color-element.html",
             "start": {
-              "line": 353,
+              "line": 351,
               "column": 4
             },
             "end": {
-              "line": 417,
+              "line": 415,
               "column": 7
             }
           },
@@ -7825,11 +7962,11 @@
           "sourceRange": {
             "file": "color-element.html",
             "start": {
-              "line": 419,
+              "line": 417,
               "column": 6
             },
             "end": {
-              "line": 423,
+              "line": 421,
               "column": 7
             }
           },
@@ -7848,11 +7985,11 @@
           "sourceRange": {
             "file": "color-element.html",
             "start": {
-              "line": 425,
+              "line": 423,
               "column": 6
             },
             "end": {
-              "line": 444,
+              "line": 442,
               "column": 7
             }
           },
@@ -7871,11 +8008,11 @@
           "sourceRange": {
             "file": "color-picker.html",
             "start": {
-              "line": 194,
+              "line": 215,
               "column": 4
             },
             "end": {
-              "line": 196,
+              "line": 217,
               "column": 5
             }
           },
@@ -7890,11 +8027,11 @@
           "sourceRange": {
             "file": "color-element.html",
             "start": {
-              "line": 448,
+              "line": 446,
               "column": 6
             },
             "end": {
-              "line": 450,
+              "line": 448,
               "column": 7
             }
           },
@@ -7913,11 +8050,11 @@
           "sourceRange": {
             "file": "color-element.html",
             "start": {
-              "line": 452,
+              "line": 450,
               "column": 6
             },
             "end": {
-              "line": 503,
+              "line": 501,
               "column": 7
             }
           },
@@ -7936,11 +8073,11 @@
           "sourceRange": {
             "file": "color-element.html",
             "start": {
-              "line": 505,
+              "line": 503,
               "column": 6
             },
             "end": {
-              "line": 513,
+              "line": 511,
               "column": 7
             }
           },
@@ -8050,11 +8187,11 @@
           "sourceRange": {
             "file": "bower_components\\color-input\\color-badge.html",
             "start": {
-              "line": 140,
+              "line": 158,
               "column": 4
             },
             "end": {
-              "line": 149,
+              "line": 161,
               "column": 5
             }
           },
@@ -8062,9 +8199,6 @@
           "params": [
             {
               "name": "value"
-            },
-            {
-              "name": "oldValue"
             }
           ],
           "inheritedFrom": "ColorBadgePattern"
@@ -8549,11 +8683,11 @@
           "sourceRange": {
             "file": "bower_components\\color-input\\color-badge.html",
             "start": {
-              "line": 109,
+              "line": 127,
               "column": 4
             },
             "end": {
-              "line": 116,
+              "line": 134,
               "column": 5
             }
           },
@@ -8572,11 +8706,11 @@
           "sourceRange": {
             "file": "bower_components\\color-input\\color-badge.html",
             "start": {
-              "line": 118,
+              "line": 136,
               "column": 4
             },
             "end": {
-              "line": 123,
+              "line": 141,
               "column": 5
             }
           },
@@ -8591,11 +8725,11 @@
           "sourceRange": {
             "file": "bower_components\\color-input\\color-badge.html",
             "start": {
-              "line": 125,
+              "line": 143,
               "column": 4
             },
             "end": {
-              "line": 130,
+              "line": 148,
               "column": 5
             }
           },
@@ -8610,11 +8744,11 @@
           "sourceRange": {
             "file": "bower_components\\color-input\\color-badge.html",
             "start": {
-              "line": 151,
+              "line": 163,
               "column": 4
             },
             "end": {
-              "line": 155,
+              "line": 170,
               "column": 5
             }
           },
@@ -8623,6 +8757,35 @@
             {
               "name": "context"
             },
+            {
+              "name": "value"
+            },
+            {
+              "name": "width"
+            },
+            {
+              "name": "height"
+            }
+          ],
+          "inheritedFrom": "ColorBadgePattern"
+        },
+        {
+          "name": "_drawColorBadge",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "bower_components\\color-input\\color-badge.html",
+            "start": {
+              "line": 172,
+              "column": 4
+            },
+            "end": {
+              "line": 174,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
             {
               "name": "value"
             },
@@ -8781,6 +8944,35 @@
             }
           ],
           "inheritedFrom": "ColorInputPattern"
+        },
+        {
+          "name": "_drawConfimedColorBadge",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "color-picker.html",
+            "start": {
+              "line": 189,
+              "column": 4
+            },
+            "end": {
+              "line": 191,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "value"
+            },
+            {
+              "name": "width"
+            },
+            {
+              "name": "height"
+            }
+          ],
+          "inheritedFrom": "ColorPickerPattern"
         }
       ],
       "staticMethods": [],
@@ -9571,12 +9763,12 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 180,
+              "line": 181,
               "column": 8
             },
             "end": {
-              "line": 180,
-              "column": 28
+              "line": 183,
+              "column": 9
             }
           },
           "metadata": {
@@ -9590,12 +9782,12 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 182,
+              "line": 185,
               "column": 8
             },
             "end": {
-              "line": 182,
-              "column": 33
+              "line": 187,
+              "column": 9
             }
           },
           "metadata": {
@@ -9609,12 +9801,12 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 184,
+              "line": 189,
               "column": 8
             },
             "end": {
-              "line": 184,
-              "column": 32
+              "line": 191,
+              "column": 9
             }
           },
           "metadata": {
@@ -9624,16 +9816,16 @@
       ],
       "methods": [
         {
-          "name": "connectedCallback",
+          "name": "ready",
           "description": "",
-          "privacy": "public",
+          "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 197,
+              "line": 195,
               "column": 4
             },
             "end": {
-              "line": 204,
+              "line": 208,
               "column": 5
             }
           },
@@ -9646,11 +9838,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 209,
+              "line": 213,
               "column": 4
             },
             "end": {
-              "line": 215,
+              "line": 219,
               "column": 5
             }
           },
@@ -9663,11 +9855,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 220,
+              "line": 224,
               "column": 4
             },
             "end": {
-              "line": 225,
+              "line": 229,
               "column": 5
             }
           },
@@ -9680,11 +9872,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 227,
+              "line": 231,
               "column": 4
             },
             "end": {
-              "line": 242,
+              "line": 246,
               "column": 5
             }
           },
@@ -9697,11 +9889,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 244,
+              "line": 248,
               "column": 4
             },
             "end": {
-              "line": 247,
+              "line": 254,
               "column": 5
             }
           },
@@ -9724,11 +9916,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 249,
+              "line": 256,
               "column": 4
             },
             "end": {
-              "line": 251,
+              "line": 258,
               "column": 5
             }
           },
@@ -9748,11 +9940,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 253,
+              "line": 260,
               "column": 4
             },
             "end": {
-              "line": 260,
+              "line": 267,
               "column": 5
             }
           },
@@ -9778,11 +9970,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 262,
+              "line": 269,
               "column": 4
             },
             "end": {
-              "line": 298,
+              "line": 302,
               "column": 5
             }
           },
@@ -9802,11 +9994,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 300,
+              "line": 304,
               "column": 4
             },
             "end": {
-              "line": 322,
+              "line": 320,
               "column": 5
             }
           },
@@ -9823,11 +10015,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 324,
+              "line": 322,
               "column": 4
             },
             "end": {
-              "line": 336,
+              "line": 334,
               "column": 5
             }
           },
@@ -9847,11 +10039,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 338,
+              "line": 336,
               "column": 4
             },
             "end": {
-              "line": 351,
+              "line": 349,
               "column": 5
             }
           },
@@ -9864,11 +10056,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 353,
+              "line": 351,
               "column": 4
             },
             "end": {
-              "line": 417,
+              "line": 415,
               "column": 7
             }
           },
@@ -9885,11 +10077,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 419,
+              "line": 417,
               "column": 6
             },
             "end": {
-              "line": 423,
+              "line": 421,
               "column": 7
             }
           },
@@ -9906,11 +10098,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 425,
+              "line": 423,
               "column": 6
             },
             "end": {
-              "line": 444,
+              "line": 442,
               "column": 7
             }
           },
@@ -9927,11 +10119,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 446,
+              "line": 444,
               "column": 6
             },
             "end": {
-              "line": 446,
+              "line": 444,
               "column": 23
             }
           },
@@ -9944,11 +10136,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 448,
+              "line": 446,
               "column": 6
             },
             "end": {
-              "line": 450,
+              "line": 448,
               "column": 7
             }
           },
@@ -9965,11 +10157,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 452,
+              "line": 450,
               "column": 6
             },
             "end": {
-              "line": 503,
+              "line": 501,
               "column": 7
             }
           },
@@ -9986,11 +10178,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 505,
+              "line": 503,
               "column": 6
             },
             "end": {
-              "line": 513,
+              "line": 511,
               "column": 7
             }
           },
@@ -10007,11 +10199,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 515,
+              "line": 513,
               "column": 6
             },
             "end": {
-              "line": 517,
+              "line": 515,
               "column": 7
             }
           },
@@ -10032,7 +10224,7 @@
           "column": 2
         },
         "end": {
-          "line": 519,
+          "line": 517,
           "column": 5
         }
       },
@@ -10504,12 +10696,12 @@
           "sourceRange": {
             "file": "color-element.html",
             "start": {
-              "line": 180,
+              "line": 181,
               "column": 8
             },
             "end": {
-              "line": 180,
-              "column": 28
+              "line": 183,
+              "column": 9
             }
           },
           "metadata": {
@@ -10525,12 +10717,12 @@
           "sourceRange": {
             "file": "color-element.html",
             "start": {
-              "line": 182,
+              "line": 185,
               "column": 8
             },
             "end": {
-              "line": 182,
-              "column": 33
+              "line": 187,
+              "column": 9
             }
           },
           "metadata": {
@@ -10546,12 +10738,12 @@
           "sourceRange": {
             "file": "color-element.html",
             "start": {
-              "line": 184,
+              "line": 189,
               "column": 8
             },
             "end": {
-              "line": 184,
-              "column": 32
+              "line": 191,
+              "column": 9
             }
           },
           "metadata": {
@@ -10994,8 +11186,8 @@
               "column": 8
             },
             "end": {
-              "line": 98,
-              "column": 27
+              "line": 100,
+              "column": 9
             }
           },
           "metadata": {
@@ -11011,12 +11203,12 @@
           "sourceRange": {
             "file": "bower_components\\color-input\\color-badge.html",
             "start": {
-              "line": 100,
+              "line": 102,
               "column": 8
             },
             "end": {
-              "line": 100,
-              "column": 28
+              "line": 104,
+              "column": 9
             }
           },
           "metadata": {
@@ -11104,8 +11296,8 @@
               "column": 8
             },
             "end": {
-              "line": 129,
-              "column": 34
+              "line": 131,
+              "column": 9
             }
           },
           "metadata": {
@@ -11119,12 +11311,12 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 131,
+              "line": 133,
               "column": 8
             },
             "end": {
-              "line": 131,
-              "column": 33
+              "line": 135,
+              "column": 9
             }
           },
           "metadata": {
@@ -11212,7 +11404,7 @@
               "column": 6
             },
             "end": {
-              "line": 106,
+              "line": 112,
               "column": 7
             }
           },
@@ -11231,11 +11423,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
-              "line": 111,
+              "line": 117,
               "column": 6
             },
             "end": {
-              "line": 113,
+              "line": 119,
               "column": 7
             }
           },
@@ -11250,11 +11442,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
-              "line": 118,
+              "line": 124,
               "column": 6
             },
             "end": {
-              "line": 127,
+              "line": 133,
               "column": 7
             }
           },
@@ -11273,11 +11465,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
-              "line": 129,
+              "line": 135,
               "column": 6
             },
             "end": {
-              "line": 141,
+              "line": 148,
               "column": 7
             }
           },
@@ -11296,11 +11488,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
-              "line": 143,
+              "line": 150,
               "column": 6
             },
             "end": {
-              "line": 145,
+              "line": 152,
               "column": 7
             }
           },
@@ -11319,11 +11511,11 @@
           "sourceRange": {
             "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
-              "line": 147,
+              "line": 154,
               "column": 6
             },
             "end": {
-              "line": 149,
+              "line": 156,
               "column": 7
             }
           },
@@ -11417,11 +11609,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 172,
+              "line": 193,
               "column": 4
             },
             "end": {
-              "line": 179,
+              "line": 200,
               "column": 5
             }
           },
@@ -11434,11 +11626,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 181,
+              "line": 202,
               "column": 4
             },
             "end": {
-              "line": 185,
+              "line": 206,
               "column": 5
             }
           },
@@ -11490,11 +11682,11 @@
           "sourceRange": {
             "file": "color-element.html",
             "start": {
-              "line": 515,
+              "line": 513,
               "column": 6
             },
             "end": {
-              "line": 517,
+              "line": 515,
               "column": 7
             }
           },
@@ -11594,11 +11786,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 187,
+              "line": 208,
               "column": 4
             },
             "end": {
-              "line": 192,
+              "line": 213,
               "column": 5
             }
           },
@@ -11734,11 +11926,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 163,
+              "line": 180,
               "column": 4
             },
             "end": {
-              "line": 170,
+              "line": 187,
               "column": 5
             }
           },
@@ -11793,11 +11985,28 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 156,
+              "line": 173,
               "column": 4
             },
             "end": {
-              "line": 161,
+              "line": 178,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "ready",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 139,
+              "column": 4
+            },
+            "end": {
+              "line": 144,
               "column": 5
             }
           },
@@ -11811,11 +12020,11 @@
           "sourceRange": {
             "file": "bower_components\\color-input\\color-badge.html",
             "start": {
-              "line": 132,
+              "line": 150,
               "column": 4
             },
             "end": {
-              "line": 138,
+              "line": 156,
               "column": 5
             }
           },
@@ -11833,11 +12042,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 135,
+              "line": 146,
               "column": 4
             },
             "end": {
-              "line": 139,
+              "line": 149,
               "column": 5
             }
           },
@@ -11850,11 +12059,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 141,
+              "line": 151,
               "column": 4
             },
             "end": {
-              "line": 154,
+              "line": 171,
               "column": 5
             }
           },
@@ -11868,11 +12077,11 @@
           "sourceRange": {
             "file": "color-element.html",
             "start": {
-              "line": 244,
+              "line": 248,
               "column": 4
             },
             "end": {
-              "line": 247,
+              "line": 254,
               "column": 5
             }
           },
@@ -11897,11 +12106,11 @@
           "sourceRange": {
             "file": "color-element.html",
             "start": {
-              "line": 249,
+              "line": 256,
               "column": 4
             },
             "end": {
-              "line": 251,
+              "line": 258,
               "column": 5
             }
           },
@@ -11923,11 +12132,11 @@
           "sourceRange": {
             "file": "color-element.html",
             "start": {
-              "line": 253,
+              "line": 260,
               "column": 4
             },
             "end": {
-              "line": 260,
+              "line": 267,
               "column": 5
             }
           },
@@ -11955,11 +12164,11 @@
           "sourceRange": {
             "file": "color-element.html",
             "start": {
-              "line": 262,
+              "line": 269,
               "column": 4
             },
             "end": {
-              "line": 298,
+              "line": 302,
               "column": 5
             }
           },
@@ -11981,11 +12190,11 @@
           "sourceRange": {
             "file": "color-element.html",
             "start": {
-              "line": 300,
+              "line": 304,
               "column": 4
             },
             "end": {
-              "line": 322,
+              "line": 320,
               "column": 5
             }
           },
@@ -12004,11 +12213,11 @@
           "sourceRange": {
             "file": "color-element.html",
             "start": {
-              "line": 324,
+              "line": 322,
               "column": 4
             },
             "end": {
-              "line": 336,
+              "line": 334,
               "column": 5
             }
           },
@@ -12030,11 +12239,11 @@
           "sourceRange": {
             "file": "color-element.html",
             "start": {
-              "line": 338,
+              "line": 336,
               "column": 4
             },
             "end": {
-              "line": 351,
+              "line": 349,
               "column": 5
             }
           },
@@ -12049,11 +12258,11 @@
           "sourceRange": {
             "file": "color-element.html",
             "start": {
-              "line": 353,
+              "line": 351,
               "column": 4
             },
             "end": {
-              "line": 417,
+              "line": 415,
               "column": 7
             }
           },
@@ -12072,11 +12281,11 @@
           "sourceRange": {
             "file": "color-element.html",
             "start": {
-              "line": 419,
+              "line": 417,
               "column": 6
             },
             "end": {
-              "line": 423,
+              "line": 421,
               "column": 7
             }
           },
@@ -12095,11 +12304,11 @@
           "sourceRange": {
             "file": "color-element.html",
             "start": {
-              "line": 425,
+              "line": 423,
               "column": 6
             },
             "end": {
-              "line": 444,
+              "line": 442,
               "column": 7
             }
           },
@@ -12117,11 +12326,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 194,
+              "line": 215,
               "column": 4
             },
             "end": {
-              "line": 196,
+              "line": 217,
               "column": 5
             }
           },
@@ -12135,11 +12344,11 @@
           "sourceRange": {
             "file": "color-element.html",
             "start": {
-              "line": 448,
+              "line": 446,
               "column": 6
             },
             "end": {
-              "line": 450,
+              "line": 448,
               "column": 7
             }
           },
@@ -12158,11 +12367,11 @@
           "sourceRange": {
             "file": "color-element.html",
             "start": {
-              "line": 452,
+              "line": 450,
               "column": 6
             },
             "end": {
-              "line": 503,
+              "line": 501,
               "column": 7
             }
           },
@@ -12181,11 +12390,11 @@
           "sourceRange": {
             "file": "color-element.html",
             "start": {
-              "line": 505,
+              "line": 503,
               "column": 6
             },
             "end": {
-              "line": 513,
+              "line": 511,
               "column": 7
             }
           },
@@ -12295,11 +12504,11 @@
           "sourceRange": {
             "file": "bower_components\\color-input\\color-badge.html",
             "start": {
-              "line": 140,
+              "line": 158,
               "column": 4
             },
             "end": {
-              "line": 149,
+              "line": 161,
               "column": 5
             }
           },
@@ -12307,9 +12516,6 @@
           "params": [
             {
               "name": "value"
-            },
-            {
-              "name": "oldValue"
             }
           ],
           "inheritedFrom": "ColorBadgePattern"
@@ -12794,11 +13000,11 @@
           "sourceRange": {
             "file": "bower_components\\color-input\\color-badge.html",
             "start": {
-              "line": 109,
+              "line": 127,
               "column": 4
             },
             "end": {
-              "line": 116,
+              "line": 134,
               "column": 5
             }
           },
@@ -12817,11 +13023,11 @@
           "sourceRange": {
             "file": "bower_components\\color-input\\color-badge.html",
             "start": {
-              "line": 118,
+              "line": 136,
               "column": 4
             },
             "end": {
-              "line": 123,
+              "line": 141,
               "column": 5
             }
           },
@@ -12836,11 +13042,11 @@
           "sourceRange": {
             "file": "bower_components\\color-input\\color-badge.html",
             "start": {
-              "line": 125,
+              "line": 143,
               "column": 4
             },
             "end": {
-              "line": 130,
+              "line": 148,
               "column": 5
             }
           },
@@ -12855,11 +13061,11 @@
           "sourceRange": {
             "file": "bower_components\\color-input\\color-badge.html",
             "start": {
-              "line": 151,
+              "line": 163,
               "column": 4
             },
             "end": {
-              "line": 155,
+              "line": 170,
               "column": 5
             }
           },
@@ -12868,6 +13074,35 @@
             {
               "name": "context"
             },
+            {
+              "name": "value"
+            },
+            {
+              "name": "width"
+            },
+            {
+              "name": "height"
+            }
+          ],
+          "inheritedFrom": "ColorBadgePattern"
+        },
+        {
+          "name": "_drawColorBadge",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "bower_components\\color-input\\color-badge.html",
+            "start": {
+              "line": 172,
+              "column": 4
+            },
+            "end": {
+              "line": 174,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
             {
               "name": "value"
             },
@@ -13026,6 +13261,33 @@
             }
           ],
           "inheritedFrom": "ColorInputPattern"
+        },
+        {
+          "name": "_drawConfimedColorBadge",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 189,
+              "column": 4
+            },
+            "end": {
+              "line": 191,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "value"
+            },
+            {
+              "name": "width"
+            },
+            {
+              "name": "height"
+            }
+          ]
         }
       ],
       "staticMethods": [],
@@ -13037,7 +13299,7 @@
           "column": 2
         },
         "end": {
-          "line": 198,
+          "line": 219,
           "column": 3
         }
       },
