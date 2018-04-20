@@ -1,6 +1,6 @@
 {
   "name": "@fooloomanzoo/color-picker",
-  "version": "1.0.4",
+  "version": "2.0.4",
   "authors": [
     "Johannes Brautzsch <fooloomanzoo>"
   ],
@@ -17,9 +17,10 @@
   ],
   "main": "index.html",
   "scripts": {
-    "postinstall": "bower install",
+    "postinstall": "bower install --save-dev",
     "prepublish": "npm run build && git add . && git commit -m \"publish new version\" && git push && npm version patch",
-    "build": "bower update && polymer analyze > analysis.json",
+    "gh-pages": "git checkout gh-pages && git pull && bower update -f && git add . && git commit -m \"update\" && git push && git checkout master",
+    "build": "git pull && bower update && polymer analyze > analysis.json",
     "prestart": "polymer analyze > analysis.json",
     "start": "polymer serve",
     "test": "echo \"Error: no test specified\" && exit 1"

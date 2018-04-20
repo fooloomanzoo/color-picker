@@ -1,17 +1,230 @@
 <link rel="import" href="../polymer/polymer-element.html">
 <link rel="import" href="../input-picker-pattern/input-picker-pattern.html">
 <link rel="import" href="../input-picker-pattern/dropdown-style.html">
-<link rel="import" href="../input-picker-pattern/input-shared-style.html">
 
 <link rel="import" href="../color-input/color-input.html">
-<link rel="import" href="../color-input/color-text-input.html">
-
 <link rel="import" href="color-element.html">
+
+<script>
+  /**
+   * Mixin for color-picker
+   *
+   *  @appliesMixin InputPickerPattern
+   *  @appliesMixin ColorElementPattern
+   *  @appliesMixin ColorInputPattern
+   *
+   * @mixinFunction
+   * @polymer
+   */
+  const ColorPickerPattern = (superClass) => class extends Polymer.GestureEventListeners(InputPickerPattern(ColorElementPattern(ColorInputPattern(superClass)))) { // eslint-disable-line no-unused-vars, no-undef
+
+    static get expectedNativeInputType() {
+      return 'color';
+    }
+
+    static get nativeInputBinding() {
+      return 'hex';
+    }
+
+    static get styleTemplate() {
+      return `
+        ${super.styleTemplate || ''}
+        input.native {
+          --input-padding: 0;
+          --input-background: transparent;
+          --input-focus-background: transparent;
+          border-radius: var(--input-border-radius, var(--color-badge-radius, 3px));
+          height: var(--color-badge-height, 28px);
+          width: var(--color-badge-width, 28px);
+        }
+        #buttons #colorBadgeContainer {
+          position: relative;
+          display: inline-flex;
+          min-width: var(--color-badge-width, 28px);
+          align-self: stretch;
+          flex: 1;
+          margin-right: var(--input-picker-padding);
+        }
+        #buttons #colorBadge {
+          background: #fff;
+          position: relative;
+          border-radius: var(--input-icon-border-radius);
+          height: 100%;
+          width: 100%;
+        }
+        #buttons #formats {
+          font-size: 0.9em;
+          --inner-input-color: var(--input-picker-color, currentColor);
+          margin-right: var(--input-picker-padding);
+        }
+        ::-webkit-color-swatch {
+          border-radius: var(--input-border-radius, var(--color-badge-radius, 3px));
+          border: none;
+        }
+        ::-webkit-color-swatch-wrapper {
+          padding: 0;
+        }
+        ::-moz-color-swatch {
+          border-radius: var(--input-border-radius, var(--color-badge-radius, 3px));
+          border: none;
+        }
+      `;
+    }
+
+    /**
+     * template for native input element
+     * @type {string}
+     */
+    static get nativeInputTemplate() {
+      return `
+        <template is="dom-if" if="[[native]]" restamp>
+          <div id="input">
+            ${super.nativeInputTemplate}
+            ${this.textInputTemplate}
+          </div>
+        </template>
+      `;
+    }
+
+    static get inputTemplate() {
+      return `
+        <div id="recentColorBadge" class="transparency badge">
+          <canvas id="recentColor" width$="[[_recentcolorwidth]]" height$="[[_recentcolorheight]]" on-click="_resetValues"></canvas>
+        </div>
+        ${super.inputTemplate}
+      `;
+    }
+
+    static get buttonTemplate() {
+      return `
+        <div id="colorBadgeContainer" hidden$="[[autoConfirm]]">
+          ${this.colorBadgeTemplate}
+        </div>
+        <select id="formats" value="{{format::change}}" on-keydown="_stopPropagation">
+          <option value="auto">auto</option>
+          <option value="rgb">rgb</option>
+          <option value="hex">hex</option>
+          <option value="hsl">hsl</option>
+        </select>
+        <div style="flex:1;" hidden$="[[!autoConfirm]]"></div>
+        ${super.buttonTemplate || ''}
+      `;
+    }
+
+    static get pickerTemplate() {
+      return `
+        <div id="picker" class="dropdown">
+          ${this.colorElementTemplate}
+        </div>
+      `;
+    }
+
+    static get properties() {
+      return {
+
+        propertyForValue: {
+          type: String,
+          value: 'colorString'
+        },
+
+        _recentcolorheight: {
+          type: Number
+        },
+
+        _recentcolorwidth: {
+          type: Number
+        }
+      }
+    }
+
+    ready() {
+      super.ready();
+      if (this.$.recentColor) {
+        this._recentcolorcontext = this.$.recentColor.getContext("2d");
+      }
+    }
+
+    redraw() {
+      super.redraw();
+      this._drawConfimedColorBadge(this.propertyForValue === 'colorString' ? this.confirmedValue : this.colorString, this._recentcolorwidth, this._recentcolorheight);
+    }
+
+    _resizeBadge() {
+      let toSet = {};
+      if (this.$.colorBadge) {
+        const box = this.$.colorBadge.getBoundingClientRect();
+        toSet._badgewidth = Math.ceil(box.width) || 28;
+        toSet._badgeheight = Math.ceil(box.height) || 28;
+      }
+      if (this.$.alphaBadge && this.$.saturationBadge) {
+        const sliderwidth = Math.round(this.$.alphaBadge.getBoundingClientRect().width);
+        const saturationRect = this.$.saturationBadge.getBoundingClientRect();
+        toSet._saturationwidth = (Math.ceil(saturationRect.width) || 184);
+        toSet._saturationheight = (Math.ceil(saturationRect.height) || 184);
+        toSet._sliderwidth = (sliderwidth || 16);
+      }
+      if (this.$.recentColorBadge) {
+        const recentcolorRect = this.$.recentColorBadge.getBoundingClientRect();
+        toSet._recentcolorwidth = Math.ceil(recentcolorRect.width) || 28;
+        toSet._recentcolorheight = Math.ceil(recentcolorRect.height) || 28;
+      }
+      this.setProperties(toSet);
+    }
+
+    _resetValues() {
+      this._colorStringChanged(this.confirmedValue);
+      if (this.value !== this.confirmedValue) {
+        this.value = this.confirmedValue;
+      }
+    }
+
+    _confirmedValueChanged(confirmedValue) {
+      this._drawConfimedColorBadge(this.propertyForValue === 'colorString' ? confirmedValue : this.colorString, this._recentcolorwidth, this._recentcolorheight);
+      if (confirmedValue === undefined) {
+        this._resetConfirmedValues();
+        return;
+      }
+      this.value = confirmedValue;
+    }
+
+    _drawConfimedColorBadge(value, width, height) {
+      this._drawBadge(this._recentcolorcontext, value, width, height);
+    }
+
+    _addCancelOnClickListener() {
+      // prevent when clicking on the picker that it is closes
+      // NOTE: different than input-picker-pattern, using polymer.gestures to prevent 'track' to cancel picker
+      if (!this.noCancelOnOutsideClick) {
+        Polymer.Gestures.addListener(document, 'tap', this.cancel, false);
+        this.addEventListener('click', this._stopPropagation, false);
+      }
+    }
+
+    _removeCancelOnClickListener() {
+    // NOTE: different than input-picker-pattern
+      Polymer.Gestures.removeListener(document, 'tap', this.cancel, false);
+      this.removeEventListener('click', this._stopPropagation, false);
+    }
+
+    open() {
+      super.open();
+      requestAnimationFrame(() => {
+        this.redraw();
+      });
+    }
+
+    _onDblClick() {
+      this._setConfirmedValues();
+    }
+
+  }
+  window.ColorPickerPattern = ColorPickerPattern;
+</script>
 
 <dom-module id="color-picker">
   <script>
   /**
-   *  `color-picker` is a picker for color for **[Polymer](https://github.com/Polymer/polymer)** that can use the native input, too. If the **native** picker is choosen and is not supported, this element uses the **polyfill** datetime-picker. The `<calendar-element>` and the `<time-element>` will come in place if the native picker is not available or is not explicitly wanted. The `value` represents the selected `hex-color` and `alpha` the opacity of the color. `css-value` will give you directly the css-string.
+   *  `color-picker` is a picker for color for **[Polymer](https://github.com/Polymer/polymer)** that can use the native input, too. If the **native** picker is choosen and is not supported, this element uses the **polyfill** datetime-picker. The `<calendar-element>` and the `<time-element>` will come in place if the native picker is not available or is not explicitly wanted. `css-value` will give you directly the css-string.
    *
    *  ```html
    *    <color-picker value="{{value}}"></color-picker>
@@ -19,149 +232,40 @@
    *
    * Custom property | Description | Default
    * ----------------|-------------|----------
-   * `--input-margin` | margin of the single color-element | `0px`
-   * `--input-background` | background-color of the color-element | `#f0f0f0`
-   * `--input-color` | color of the color-element | `#f0f0f0`
-   *    *
+   * `--transparency-pattern` | background pattern for the transparency layer | linear-gradient(45deg, rgba(0,0,0,0.15) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.15) 75%, rgba(0,0,0,0.15)), linear-gradient(45deg, rgba(0,0,0,0.15) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.15) 75%, rgba(0,0,0,0.15)))
+   * `--transparency-pattern-size` | size transparency pattern | 12px
+   * `--color-element-badge-radius` | border-radius of the badge | --input-picker-border-radius, 6px
+   * `--color-element-height` | height of the selector badge and the alpha- and the hue-slider| 184px
+   * `--color-element-width` | width of the selector badge | 184px
+   * `--color-slider-width` | width of the alpha- and the hue-slider | 16px
+   * `--color-slider-padding` | padding of the alpha- and the hue-slider | 2px
+   * `--color-pin-radius` | radius of the color pin | 3px
+   * `--color-selector-mix-blend-mode` | mix-blend-mode of the selectors (sliders and color pin) | exclusion
+   * `--color-element` | mixin applied to the color element | {}
+   *
+   *  Have a look at `<color-element>` and [input-picker-pattern#input-shared-style](https://github.com/fooloomanzoo/input-picker-pattern#input-shared-style) to see the used style-properties.
+   *
    *  @polymer
    *  @customElement
    *
-   *  @appliesMixin ColorElementPattern
-   *  @appliesMixin colorPickerMixin
-   *  @appliesMixin PolyfillPickerPattern
+   *  @appliesMixin ColorPickerPattern
    *
-   *  @demo demo/color-picker.html
+   *  @demo demo/color-picker.html Color Picker
+   *  @demo demo/form.html In A Form
    **/
-    class ColorPicker extends InputPickerPattern(ColorElementPattern(Polymer.Element)) { // eslint-disable-line no-undef
+    class ColorPicker extends ColorPickerPattern(Polymer.Element) { // eslint-disable-line no-undef
 
       static get is() {
         return 'color-picker';
       }
 
-      static get expectedNativeInputType() {
-        return 'color';
+      get _hasNative() {
+        return ColorPicker._hasNative;
       }
 
-      static get nativeInputBinding() {
-        return 'value';
+      static get styleToInclude() {
+        return `${super.styleToInclude || '' } dropdown-style`;
       }
-
-      static get customStyleToInclude() {
-        return 'input-shared-style dropdown-style';
-      }
-
-      static get customStyleContent() {
-        return `
-          ${super.customStyleContent || ''}
-          :host {
-            --input-selected-background: #ddd;
-            --input-selected-color: #111;
-            --input-background: #252525;
-            --input-color: #f1f1f1;
-          }
-          input[type="color"].native {
-            height: 1.5em;
-            width: 2em;
-            padding: 0.5em;
-            box-sizing: content-box;
-            cursor: pointer;
-            margin: 0;
-            @apply --input-input;
-          }
-          input[type="color"].native::-webkit-color-swatch-wrapper {
-            padding: 0;
-          }
-          input[type="color"].native::-webkit-color-swatch {
-            border-radius: 4px;
-          }
-          .value {
-            margin: 0 0.5em;
-          }
-          [hidden] {
-            display: none !important;
-          }
-          number-input.alpha {
-            --number-input: {
-              @apply --input-style;
-            };
-            --number-input-focus: {
-              @apply --input-focus;
-            };
-          }
-          .polyfill {
-            @apply --input-style;
-          }
-          .polyfill:focus,
-          .polyfill:hover {
-            @apply --input-focus;
-          }
-          input.native {
-            @apply --input-style;
-          }
-          #picker {
-            @apply --input-element;
-            @apply --input-picker;
-            overflow: hidden;
-            padding: 0;
-          }
-          #picker > #buttons {
-            background: var(--input-background, #252525);
-            color: var(--input-color, #f1f1f1);
-          }
-          #picker > #buttons {
-            background: var(--input-background, #252525);
-            color: var(--input-color, #f1f1f1);
-          }
-          .alpha {
-            font-size: 0.6em;
-            margin-left: 6px;
-            height: 100%;
-            transition: opacity 500ms cubic-bezier(0.4, 0, 0.2, 1);
-            opacity: 0.5;
-          }
-          :host(:hover) .alpha {
-            opacity: 1;
-          }
-          .replacement {
-            border-radius: inherit;
-            border: thin solid #bbb;
-            display: inline-flex;
-            overflow: hidden;
-          }
-        `;
-      }
-
-      /**
-       * template for native input element
-       * @type {string}
-       */
-      static get _nativeInputTemplate() {
-        return `
-          ${super._nativeInputTemplate}
-          <number-input class="alpha" hidden$="[[!native]]" value="{{alpha}}" min="0" max="1" step="0.01" saturate></number-input>
-        `;
-      }
-
-      static get replacementInputTemplate() {
-        return `
-          <div class="transparency replacement">
-            <canvas class="current" width="96" height="24"></canvas>
-          </div>
-          <number-input class="alpha" value="{{alpha}}" min="0" max="1" step="0.01" saturate></number-input>
-        `;
-      }
-
-      static get pickerTemplate() {
-        return `
-          <div id="picker" class="dropdown">
-            ${this.colorTemplate}
-            <div id="buttons">
-              ${this._buttonTemplate}
-            <div>
-          </div>
-        `;
-      }
-
     }
 
     window.customElements.define(ColorPicker.is, ColorPicker);
