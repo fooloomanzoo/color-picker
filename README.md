@@ -11,9 +11,16 @@ _[Demo and API docs](https://fooloomanzoo.github.io/color-picker/components/colo
 
 ### Motivation
 
-Internally it tests the browser, if **native** input-types `color` is supported. If it is not, a `<color-element>` or a `<color-element>` will be displayed instead, according to the kind of picker you choose. You can decide to use the native or the replacements during runtime. `color-element` can also be used separately.
+Internally it tests the browser, if native input-type `color` is supported. You can decide to use the native or the replacements during runtime. `color-element` can also be used separately. By default, the polyfilled version is used.
 
-It might be useful for you to use, if you like to keep the native approach of Browsers like in Chrome for Desktop or Mobile, you like to have a different look or you would like to have a guaranteed working **color-picker**.
+It might be useful for you to use, if you like to keep the native approach of Browsers on Mobile Devices, or you like to have a different look or you would like to have a guaranteed working **color-picker**. Another use case could be for example, if you want on _mobile devices_ use the native picker, when supported, and on _desktop devices_ this polyfill. 
+
+For that purposes the attributes **native** and **native-on-mobile** are provided.
+
+```html
+  <datetime-picker native></datetime-picker>
+  <datetime-picker native-on-mobile></datetime-picker>
+```
 
 ### How?
 
