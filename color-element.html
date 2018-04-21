@@ -84,6 +84,12 @@
         #colorElement #alphaBadge {
           width: var(--color-slider-width, 16px);
         }
+        @media (pointer:coarse) {
+          #colorElement #hueBadge,
+          #colorElement #alphaBadge {
+            width: var(--color-slider-width, 20px);
+          }
+        }
         #colorElement #alphaBadge {
           background: #fff;
         }
@@ -123,7 +129,7 @@
           cursor: none;
         }
         @media (pointer:coarse) {
-          canvas.active:hover ~ .pin {
+          canvas.active ~ .pin {
             opacity: 1;
           }
         }
@@ -350,9 +356,7 @@
     }
 
     _onTrack(e) {
-      if (e && e.detail && e.detail.sourceEvent) {
-        this._stopPropagation(e.detail.sourceEvent);
-      }
+      this._stopPropagation(e);
       if (!this._activeProperty) {
         this._activeProperty = this._checkSelectorForProperty(e);
       }
@@ -525,6 +529,7 @@
 
       _stopPropagation(e) {
         e && e.stopPropagation && e.stopPropagation();
+        e && e.detail && e.detail.sourceEvent && e.detail.sourceEvent.stopPropagation && e.detail.sourceEvent.stopPropagation();
       }
 
     }
