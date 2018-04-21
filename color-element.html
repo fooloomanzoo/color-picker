@@ -230,6 +230,7 @@
      */
     redraw() {
       super.redraw();
+      this._drawHue(this._saturationheight)
       this._drawAlphaAndSaturation(this.h, this._saturationheight);
       this._drawAlphaSlider(this.alpha, this._saturationheight);
       this._drawColorPin(this.s, this.l, this._saturationwidth, this._saturationheight);
