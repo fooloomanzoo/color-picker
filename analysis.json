@@ -72,7 +72,7 @@
           "description": "Hex-color",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 21,
               "column": 10
@@ -96,7 +96,7 @@
           "description": "Red",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 29,
               "column": 10
@@ -119,7 +119,7 @@
           "description": "Green",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 36,
               "column": 10
@@ -142,7 +142,7 @@
           "description": "Blue",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 43,
               "column": 10
@@ -165,7 +165,7 @@
           "description": "Hue",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 50,
               "column": 10
@@ -188,7 +188,7 @@
           "description": "Saturation (hsl)",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 57,
               "column": 10
@@ -211,7 +211,7 @@
           "description": "Lightness",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 64,
               "column": 10
@@ -234,7 +234,7 @@
           "description": "Alpha",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 71,
               "column": 10
@@ -259,7 +259,7 @@
           "description": "if true, colorString has alpha",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 81,
               "column": 10
@@ -283,7 +283,7 @@
           "description": "Precision of hsl-colorStrings, if the format is 'hsl' (for saturation and lightness it is applied according to their percentage colorString)",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 89,
               "column": 10
@@ -305,7 +305,7 @@
           "description": "format of the colorString (possible colorStrings: 'rgb', 'hex', 'hsl', 'auto')",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 96,
               "column": 10
@@ -330,7 +330,7 @@
           "description": "hex-color",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 105,
               "column": 10
@@ -354,7 +354,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 111,
               "column": 10
@@ -378,7 +378,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 117,
               "column": 10
@@ -402,7 +402,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 123,
               "column": 10
@@ -426,7 +426,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 129,
               "column": 10
@@ -450,7 +450,7 @@
           "description": "hide the transparency pattern",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/color-input/color-badge.html",
+            "file": "bower_components\\color-input\\color-badge.html",
             "start": {
               "line": 84,
               "column": 8
@@ -471,7 +471,7 @@
           "description": "if true, clicking on the color badge won't generate a random color",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/color-input/color-badge.html",
+            "file": "bower_components\\color-input\\color-badge.html",
             "start": {
               "line": 92,
               "column": 8
@@ -495,7 +495,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/color-input/color-badge.html",
+            "file": "bower_components\\color-input\\color-badge.html",
             "start": {
               "line": 98,
               "column": 8
@@ -516,7 +516,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/color-input/color-badge.html",
+            "file": "bower_components\\color-input\\color-badge.html",
             "start": {
               "line": 102,
               "column": 8
@@ -538,7 +538,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/color-input/color-badge.html",
+            "file": "bower_components\\color-input\\color-badge.html",
             "start": {
               "line": 108,
               "column": 4
@@ -557,7 +557,7 @@
           "description": "",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/color-input/color-badge.html",
+            "file": "bower_components\\color-input\\color-badge.html",
             "start": {
               "line": 150,
               "column": 4
@@ -580,7 +580,7 @@
           "description": "",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/color-input/color-badge.html",
+            "file": "bower_components\\color-input\\color-badge.html",
             "start": {
               "line": 122,
               "column": 4
@@ -599,7 +599,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/color-input/color-badge.html",
+            "file": "bower_components\\color-input\\color-badge.html",
             "start": {
               "line": 176,
               "column": 4
@@ -964,7 +964,7 @@
           "description": "",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/color-input/color-badge.html",
+            "file": "bower_components\\color-input\\color-badge.html",
             "start": {
               "line": 117,
               "column": 4
@@ -983,7 +983,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 165,
               "column": 6
@@ -1002,7 +1002,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 179,
               "column": 6
@@ -1025,7 +1025,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 196,
               "column": 6
@@ -1048,7 +1048,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 202,
               "column": 6
@@ -1074,7 +1074,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/color-input/color-badge.html",
+            "file": "bower_components\\color-input\\color-badge.html",
             "start": {
               "line": 158,
               "column": 4
@@ -1097,7 +1097,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 311,
               "column": 6
@@ -1116,7 +1116,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 319,
               "column": 6
@@ -1135,7 +1135,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 362,
               "column": 6
@@ -1161,7 +1161,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 389,
               "column": 6
@@ -1184,7 +1184,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 410,
               "column": 6
@@ -1213,7 +1213,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 461,
               "column": 6
@@ -1242,7 +1242,7 @@
           "description": "generate random rgb-color",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 515,
               "column": 6
@@ -1265,7 +1265,7 @@
           "description": "generate random hsl-color",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 527,
               "column": 6
@@ -1288,7 +1288,7 @@
           "description": "",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 535,
               "column": 6
@@ -1311,7 +1311,7 @@
           "description": "",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 551,
               "column": 6
@@ -1340,7 +1340,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 558,
               "column": 6
@@ -1363,7 +1363,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 567,
               "column": 6
@@ -1389,7 +1389,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 575,
               "column": 6
@@ -1415,7 +1415,7 @@
           "description": "",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 581,
               "column": 6
@@ -1444,7 +1444,7 @@
           "description": "",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 594,
               "column": 6
@@ -1473,7 +1473,7 @@
           "description": "",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 603,
               "column": 6
@@ -1502,7 +1502,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 640,
               "column": 6
@@ -1521,7 +1521,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 654,
               "column": 6
@@ -1547,7 +1547,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 658,
               "column": 6
@@ -1570,7 +1570,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/color-input/color-badge.html",
+            "file": "bower_components\\color-input\\color-badge.html",
             "start": {
               "line": 127,
               "column": 4
@@ -1593,7 +1593,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/color-input/color-badge.html",
+            "file": "bower_components\\color-input\\color-badge.html",
             "start": {
               "line": 136,
               "column": 4
@@ -1612,7 +1612,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/color-input/color-badge.html",
+            "file": "bower_components\\color-input\\color-badge.html",
             "start": {
               "line": 143,
               "column": 4
@@ -1631,7 +1631,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/color-input/color-badge.html",
+            "file": "bower_components\\color-input\\color-badge.html",
             "start": {
               "line": 163,
               "column": 4
@@ -1663,7 +1663,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/color-input/color-badge.html",
+            "file": "bower_components\\color-input\\color-badge.html",
             "start": {
               "line": 172,
               "column": 4
@@ -1714,7 +1714,7 @@
           "name": "hex",
           "description": "Hex-color",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 21,
               "column": 10
@@ -1732,7 +1732,7 @@
           "name": "r",
           "description": "Red",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 29,
               "column": 10
@@ -1750,7 +1750,7 @@
           "name": "g",
           "description": "Green",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 36,
               "column": 10
@@ -1768,7 +1768,7 @@
           "name": "b",
           "description": "Blue",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 43,
               "column": 10
@@ -1786,7 +1786,7 @@
           "name": "h",
           "description": "Hue",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 50,
               "column": 10
@@ -1804,7 +1804,7 @@
           "name": "s",
           "description": "Saturation (hsl)",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 57,
               "column": 10
@@ -1822,7 +1822,7 @@
           "name": "l",
           "description": "Lightness",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 64,
               "column": 10
@@ -1840,7 +1840,7 @@
           "name": "alpha",
           "description": "Alpha",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 71,
               "column": 10
@@ -1858,7 +1858,7 @@
           "name": "alpha-mode",
           "description": "if true, colorString has alpha",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 81,
               "column": 10
@@ -1876,7 +1876,7 @@
           "name": "hsl-precision",
           "description": "Precision of hsl-colorStrings, if the format is 'hsl' (for saturation and lightness it is applied according to their percentage colorString)",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 89,
               "column": 10
@@ -1894,7 +1894,7 @@
           "name": "format",
           "description": "format of the colorString (possible colorStrings: 'rgb', 'hex', 'hsl', 'auto')",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 96,
               "column": 10
@@ -1912,7 +1912,7 @@
           "name": "color-string",
           "description": "hex-color",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 105,
               "column": 10
@@ -1930,7 +1930,7 @@
           "name": "hide-transparency-pattern",
           "description": "hide the transparency pattern",
           "sourceRange": {
-            "file": "bower_components/color-input/color-badge.html",
+            "file": "bower_components\\color-input\\color-badge.html",
             "start": {
               "line": 84,
               "column": 8
@@ -1948,7 +1948,7 @@
           "name": "no-random-color-on-click",
           "description": "if true, clicking on the color badge won't generate a random color",
           "sourceRange": {
-            "file": "bower_components/color-input/color-badge.html",
+            "file": "bower_components\\color-input\\color-badge.html",
             "start": {
               "line": 92,
               "column": 8
@@ -1986,7 +1986,7 @@
           "description": "required attribute",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 16,
               "column": 10
@@ -2009,7 +2009,7 @@
           "description": "required attribute",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 25,
               "column": 10
@@ -2032,7 +2032,7 @@
           "description": "disables the input",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 34,
               "column": 10
@@ -2055,7 +2055,7 @@
           "description": "name of the input",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 43,
               "column": 10
@@ -2076,7 +2076,7 @@
           "description": "value of the input",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 50,
               "column": 10
@@ -2099,7 +2099,7 @@
           "description": "is true when the value is not undefined",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 58,
               "column": 10
@@ -2142,7 +2142,7 @@
           "description": "default value of the input",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 74,
               "column": 10
@@ -2163,7 +2163,7 @@
           "description": "Set to `true` to use the native input, if it available",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 157,
               "column": 10
@@ -2185,7 +2185,7 @@
           "description": "Set to `true` to use the native input automatically on mobile devices, if it available",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 165,
               "column": 10
@@ -2208,7 +2208,7 @@
           "description": "When `nativeOnMobile` is set to `true` this string is used to test the userAgent for a mobile device",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 173,
               "column": 10
@@ -2232,7 +2232,7 @@
           "description": "if `true` the picker is opened",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 182,
               "column": 10
@@ -2256,7 +2256,7 @@
           "description": "The orientation against which to align the element horizontally\nrelative to the related input element. Possible values are \"left\", \"right\", \"center\", \"auto\". (comparable to `iron-fit-behavior` and its `no-overlap`-attribute)",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 193,
               "column": 10
@@ -2278,7 +2278,7 @@
           "description": "The orientation against which to align the element vertically\nrelative to the related input element. Possible values are \"top\", \"bottom\", \"middle\", \"auto\". (comparable to `iron-fit-behavior` and its `no-overlap`-attribute)",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 203,
               "column": 10
@@ -2300,7 +2300,7 @@
           "description": "Set to `true` to make the input auto-confirming",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 212,
               "column": 10
@@ -2322,7 +2322,7 @@
           "description": "Set to `true` to disable canceling the overlay with the ESC key.",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 220,
               "column": 10
@@ -2344,7 +2344,7 @@
           "description": "Set to `true` to disable canceling the dropdown by clicking outside the picker.",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 228,
               "column": 10
@@ -2366,7 +2366,7 @@
           "description": "Set to `true` to keep multiple pickers open. (will only work as expected when e.g. `noCancelOnOutsideClick` is set to true)",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 236,
               "column": 10
@@ -2388,7 +2388,7 @@
           "description": "Set to `true` to disable the tip of the picker",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 244,
               "column": 10
@@ -2409,7 +2409,7 @@
           "description": "The confirmed value. When `auto-confirm` is not set, the value will only change, when you confirm.",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 252,
               "column": 10
@@ -2495,7 +2495,7 @@
           "description": "Hex-color",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 21,
               "column": 10
@@ -2519,7 +2519,7 @@
           "description": "Red",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 29,
               "column": 10
@@ -2542,7 +2542,7 @@
           "description": "Green",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 36,
               "column": 10
@@ -2565,7 +2565,7 @@
           "description": "Blue",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 43,
               "column": 10
@@ -2588,7 +2588,7 @@
           "description": "Hue",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 50,
               "column": 10
@@ -2611,7 +2611,7 @@
           "description": "Saturation (hsl)",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 57,
               "column": 10
@@ -2634,7 +2634,7 @@
           "description": "Lightness",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 64,
               "column": 10
@@ -2657,7 +2657,7 @@
           "description": "Alpha",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 71,
               "column": 10
@@ -2682,7 +2682,7 @@
           "description": "if true, colorString has alpha",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 81,
               "column": 10
@@ -2706,7 +2706,7 @@
           "description": "Precision of hsl-colorStrings, if the format is 'hsl' (for saturation and lightness it is applied according to their percentage colorString)",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 89,
               "column": 10
@@ -2728,7 +2728,7 @@
           "description": "format of the colorString (possible colorStrings: 'rgb', 'hex', 'hsl', 'auto')",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 96,
               "column": 10
@@ -2753,7 +2753,7 @@
           "description": "hex-color",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 105,
               "column": 10
@@ -2777,7 +2777,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 111,
               "column": 10
@@ -2801,7 +2801,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 117,
               "column": 10
@@ -2825,7 +2825,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 123,
               "column": 10
@@ -2849,7 +2849,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 129,
               "column": 10
@@ -2873,7 +2873,7 @@
           "description": "hide the transparency pattern",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/color-input/color-badge.html",
+            "file": "bower_components\\color-input\\color-badge.html",
             "start": {
               "line": 84,
               "column": 8
@@ -2894,7 +2894,7 @@
           "description": "if true, clicking on the color badge won't generate a random color",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/color-input/color-badge.html",
+            "file": "bower_components\\color-input\\color-badge.html",
             "start": {
               "line": 92,
               "column": 8
@@ -2918,7 +2918,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/color-input/color-badge.html",
+            "file": "bower_components\\color-input\\color-badge.html",
             "start": {
               "line": 98,
               "column": 8
@@ -2939,7 +2939,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/color-input/color-badge.html",
+            "file": "bower_components\\color-input\\color-badge.html",
             "start": {
               "line": 102,
               "column": 8
@@ -2960,7 +2960,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/color-input/color-input.html",
+            "file": "bower_components\\color-input\\color-input.html",
             "start": {
               "line": 73,
               "column": 8
@@ -2983,7 +2983,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/color-input/color-input.html",
+            "file": "bower_components\\color-input\\color-input.html",
             "start": {
               "line": 78,
               "column": 8
@@ -3006,7 +3006,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/color-input/color-input.html",
+            "file": "bower_components\\color-input\\color-input.html",
             "start": {
               "line": 83,
               "column": 8
@@ -3070,7 +3070,7 @@
           "description": "",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 88,
               "column": 6
@@ -3089,7 +3089,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 93,
               "column": 6
@@ -3115,7 +3115,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 97,
               "column": 6
@@ -3138,7 +3138,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 101,
               "column": 6
@@ -3161,7 +3161,7 @@
           "description": "validates the input for iron-form",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 117,
               "column": 6
@@ -3180,7 +3180,7 @@
           "description": "attach dom with `delegatesFocus: true` so that the element is also focussed while its's children are too, and to autofocus to first tabable",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 124,
               "column": 6
@@ -3203,7 +3203,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 135,
               "column": 6
@@ -3226,7 +3226,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 150,
               "column": 6
@@ -3249,7 +3249,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 154,
               "column": 6
@@ -3272,7 +3272,7 @@
           "description": "",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 287,
               "column": 6
@@ -3291,7 +3291,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 293,
               "column": 6
@@ -3310,7 +3310,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 302,
               "column": 6
@@ -3329,7 +3329,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 306,
               "column": 6
@@ -3353,7 +3353,7 @@
               "column": 4
             },
             "end": {
-              "line": 200,
+              "line": 201,
               "column": 5
             }
           },
@@ -3367,11 +3367,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 202,
+              "line": 203,
               "column": 4
             },
             "end": {
-              "line": 206,
+              "line": 207,
               "column": 5
             }
           },
@@ -3384,7 +3384,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 326,
               "column": 6
@@ -3403,7 +3403,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 332,
               "column": 6
@@ -3423,11 +3423,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 208,
+              "line": 209,
               "column": 4
             },
             "end": {
-              "line": 211,
+              "line": 212,
               "column": 5
             }
           },
@@ -3444,7 +3444,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 340,
               "column": 6
@@ -3463,7 +3463,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 345,
               "column": 6
@@ -3482,7 +3482,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 350,
               "column": 6
@@ -3501,7 +3501,7 @@
           "description": "key press event handler",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 370,
               "column": 6
@@ -3527,11 +3527,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 213,
+              "line": 214,
               "column": 4
             },
             "end": {
-              "line": 218,
+              "line": 219,
               "column": 5
             }
           },
@@ -3544,7 +3544,7 @@
           "description": "close the picker",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 417,
               "column": 6
@@ -3569,7 +3569,7 @@
           "description": "toggle the picker",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 436,
               "column": 6
@@ -3594,7 +3594,7 @@
           "description": "confirms the input",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 450,
               "column": 6
@@ -3619,7 +3619,7 @@
           "description": "cancels the input",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 469,
               "column": 6
@@ -3644,7 +3644,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 484,
               "column": 6
@@ -3689,7 +3689,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 509,
               "column": 6
@@ -3708,7 +3708,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 515,
               "column": 6
@@ -3763,7 +3763,7 @@
           "description": "",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/color-input/color-badge.html",
+            "file": "bower_components\\color-input\\color-badge.html",
             "start": {
               "line": 150,
               "column": 4
@@ -4073,11 +4073,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 220,
+              "line": 221,
               "column": 4
             },
             "end": {
-              "line": 222,
+              "line": 223,
               "column": 5
             }
           },
@@ -4159,7 +4159,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 165,
               "column": 6
@@ -4178,7 +4178,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 179,
               "column": 6
@@ -4201,7 +4201,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 196,
               "column": 6
@@ -4224,7 +4224,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 202,
               "column": 6
@@ -4250,7 +4250,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/color-input/color-badge.html",
+            "file": "bower_components\\color-input\\color-badge.html",
             "start": {
               "line": 158,
               "column": 4
@@ -4273,7 +4273,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 311,
               "column": 6
@@ -4292,7 +4292,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 319,
               "column": 6
@@ -4311,7 +4311,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 362,
               "column": 6
@@ -4337,7 +4337,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 389,
               "column": 6
@@ -4360,7 +4360,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 410,
               "column": 6
@@ -4389,7 +4389,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 461,
               "column": 6
@@ -4418,7 +4418,7 @@
           "description": "generate random rgb-color",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 515,
               "column": 6
@@ -4441,7 +4441,7 @@
           "description": "generate random hsl-color",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 527,
               "column": 6
@@ -4464,7 +4464,7 @@
           "description": "",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 535,
               "column": 6
@@ -4487,7 +4487,7 @@
           "description": "",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 551,
               "column": 6
@@ -4516,7 +4516,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 558,
               "column": 6
@@ -4539,7 +4539,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 567,
               "column": 6
@@ -4565,7 +4565,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 575,
               "column": 6
@@ -4591,7 +4591,7 @@
           "description": "",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 581,
               "column": 6
@@ -4620,7 +4620,7 @@
           "description": "",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 594,
               "column": 6
@@ -4649,7 +4649,7 @@
           "description": "",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 603,
               "column": 6
@@ -4678,7 +4678,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 640,
               "column": 6
@@ -4697,7 +4697,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 654,
               "column": 6
@@ -4723,7 +4723,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 658,
               "column": 6
@@ -4746,7 +4746,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/color-input/color-badge.html",
+            "file": "bower_components\\color-input\\color-badge.html",
             "start": {
               "line": 127,
               "column": 4
@@ -4769,7 +4769,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/color-input/color-badge.html",
+            "file": "bower_components\\color-input\\color-badge.html",
             "start": {
               "line": 136,
               "column": 4
@@ -4788,7 +4788,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/color-input/color-badge.html",
+            "file": "bower_components\\color-input\\color-badge.html",
             "start": {
               "line": 143,
               "column": 4
@@ -4807,7 +4807,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/color-input/color-badge.html",
+            "file": "bower_components\\color-input\\color-badge.html",
             "start": {
               "line": 163,
               "column": 4
@@ -4839,7 +4839,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/color-input/color-badge.html",
+            "file": "bower_components\\color-input\\color-badge.html",
             "start": {
               "line": 172,
               "column": 4
@@ -4868,7 +4868,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/color-input/color-text-input.html",
+            "file": "bower_components\\color-input\\color-text-input.html",
             "start": {
               "line": 71,
               "column": 4
@@ -4891,7 +4891,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/color-input/color-input.html",
+            "file": "bower_components\\color-input\\color-input.html",
             "start": {
               "line": 90,
               "column": 4
@@ -4917,7 +4917,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/color-input/color-input.html",
+            "file": "bower_components\\color-input\\color-input.html",
             "start": {
               "line": 94,
               "column": 4
@@ -4946,7 +4946,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/color-input/color-input.html",
+            "file": "bower_components\\color-input\\color-input.html",
             "start": {
               "line": 98,
               "column": 4
@@ -4969,7 +4969,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/color-input/color-input.html",
+            "file": "bower_components\\color-input\\color-input.html",
             "start": {
               "line": 102,
               "column": 4
@@ -4992,7 +4992,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/color-input/color-input.html",
+            "file": "bower_components\\color-input\\color-input.html",
             "start": {
               "line": 106,
               "column": 4
@@ -5053,11 +5053,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 260,
+          "line": 261,
           "column": 4
         },
         "end": {
-          "line": 273,
+          "line": 274,
           "column": 5
         }
       },
@@ -5069,7 +5069,7 @@
           "name": "required",
           "description": "required attribute",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 16,
               "column": 10
@@ -5087,7 +5087,7 @@
           "name": "invalid",
           "description": "required attribute",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 25,
               "column": 10
@@ -5105,7 +5105,7 @@
           "name": "disabled",
           "description": "disables the input",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 34,
               "column": 10
@@ -5123,7 +5123,7 @@
           "name": "name",
           "description": "name of the input",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 43,
               "column": 10
@@ -5141,7 +5141,7 @@
           "name": "value",
           "description": "value of the input",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 50,
               "column": 10
@@ -5176,7 +5176,7 @@
           "name": "default",
           "description": "default value of the input",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 74,
               "column": 10
@@ -5194,7 +5194,7 @@
           "name": "native",
           "description": "Set to `true` to use the native input, if it available",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 157,
               "column": 10
@@ -5212,7 +5212,7 @@
           "name": "native-on-mobile",
           "description": "Set to `true` to use the native input automatically on mobile devices, if it available",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 165,
               "column": 10
@@ -5230,7 +5230,7 @@
           "name": "mobile-user-agent-test-string",
           "description": "When `nativeOnMobile` is set to `true` this string is used to test the userAgent for a mobile device",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 173,
               "column": 10
@@ -5248,7 +5248,7 @@
           "name": "opened",
           "description": "if `true` the picker is opened",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 182,
               "column": 10
@@ -5266,7 +5266,7 @@
           "name": "horizontal-align",
           "description": "The orientation against which to align the element horizontally\nrelative to the related input element. Possible values are \"left\", \"right\", \"center\", \"auto\". (comparable to `iron-fit-behavior` and its `no-overlap`-attribute)",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 193,
               "column": 10
@@ -5284,7 +5284,7 @@
           "name": "vertical-align",
           "description": "The orientation against which to align the element vertically\nrelative to the related input element. Possible values are \"top\", \"bottom\", \"middle\", \"auto\". (comparable to `iron-fit-behavior` and its `no-overlap`-attribute)",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 203,
               "column": 10
@@ -5302,7 +5302,7 @@
           "name": "auto-confirm",
           "description": "Set to `true` to make the input auto-confirming",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 212,
               "column": 10
@@ -5320,7 +5320,7 @@
           "name": "no-cancel-on-esc-key",
           "description": "Set to `true` to disable canceling the overlay with the ESC key.",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 220,
               "column": 10
@@ -5338,7 +5338,7 @@
           "name": "no-cancel-on-outside-click",
           "description": "Set to `true` to disable canceling the dropdown by clicking outside the picker.",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 228,
               "column": 10
@@ -5356,7 +5356,7 @@
           "name": "keep-multiple-pickers-open",
           "description": "Set to `true` to keep multiple pickers open. (will only work as expected when e.g. `noCancelOnOutsideClick` is set to true)",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 236,
               "column": 10
@@ -5374,7 +5374,7 @@
           "name": "no-tip",
           "description": "Set to `true` to disable the tip of the picker",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 244,
               "column": 10
@@ -5392,7 +5392,7 @@
           "name": "confirmed-value",
           "description": "The confirmed value. When `auto-confirm` is not set, the value will only change, when you confirm.",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 252,
               "column": 10
@@ -5410,7 +5410,7 @@
           "name": "hex",
           "description": "Hex-color",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 21,
               "column": 10
@@ -5428,7 +5428,7 @@
           "name": "r",
           "description": "Red",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 29,
               "column": 10
@@ -5446,7 +5446,7 @@
           "name": "g",
           "description": "Green",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 36,
               "column": 10
@@ -5464,7 +5464,7 @@
           "name": "b",
           "description": "Blue",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 43,
               "column": 10
@@ -5482,7 +5482,7 @@
           "name": "h",
           "description": "Hue",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 50,
               "column": 10
@@ -5500,7 +5500,7 @@
           "name": "s",
           "description": "Saturation (hsl)",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 57,
               "column": 10
@@ -5518,7 +5518,7 @@
           "name": "l",
           "description": "Lightness",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 64,
               "column": 10
@@ -5536,7 +5536,7 @@
           "name": "alpha",
           "description": "Alpha",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 71,
               "column": 10
@@ -5554,7 +5554,7 @@
           "name": "alpha-mode",
           "description": "if true, colorString has alpha",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 81,
               "column": 10
@@ -5572,7 +5572,7 @@
           "name": "hsl-precision",
           "description": "Precision of hsl-colorStrings, if the format is 'hsl' (for saturation and lightness it is applied according to their percentage colorString)",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 89,
               "column": 10
@@ -5590,7 +5590,7 @@
           "name": "format",
           "description": "format of the colorString (possible colorStrings: 'rgb', 'hex', 'hsl', 'auto')",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 96,
               "column": 10
@@ -5608,7 +5608,7 @@
           "name": "color-string",
           "description": "hex-color",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 105,
               "column": 10
@@ -5626,7 +5626,7 @@
           "name": "hide-transparency-pattern",
           "description": "hide the transparency pattern",
           "sourceRange": {
-            "file": "bower_components/color-input/color-badge.html",
+            "file": "bower_components\\color-input\\color-badge.html",
             "start": {
               "line": 84,
               "column": 8
@@ -5644,7 +5644,7 @@
           "name": "no-random-color-on-click",
           "description": "if true, clicking on the color badge won't generate a random color",
           "sourceRange": {
-            "file": "bower_components/color-input/color-badge.html",
+            "file": "bower_components\\color-input\\color-badge.html",
             "start": {
               "line": 92,
               "column": 8
@@ -5696,7 +5696,7 @@
           "description": "Set to true to keep overlay always on top.",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/overlay-picker-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\overlay-picker-mixin.html",
             "start": {
               "line": 20,
               "column": 10
@@ -5717,7 +5717,7 @@
           "description": "Will position the element around the positionTarget without overlapping it.",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/overlay-picker-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\overlay-picker-mixin.html",
             "start": {
               "line": 26,
               "column": 10
@@ -5739,7 +5739,7 @@
           "description": "Set to true to display a backdrop behind the overlay. It traps the focus\nwithin the light DOM of the overlay.",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/overlay-picker-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\overlay-picker-mixin.html",
             "start": {
               "line": 34,
               "column": 10
@@ -5761,7 +5761,7 @@
           "description": "Set to `true` to disable canceling the dropdown by clicking outside the picker.",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 228,
               "column": 10
@@ -5783,7 +5783,7 @@
           "description": "If true, it will use `horizontalAlign` and `verticalAlign` values as preferred alignment\nand if there's not enough space, it will pick the values which minimize the cropping.",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/overlay-picker-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\overlay-picker-mixin.html",
             "start": {
               "line": 50,
               "column": 10
@@ -5804,7 +5804,7 @@
           "description": "Set to true to auto-fit on attach.",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/overlay-picker-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\overlay-picker-mixin.html",
             "start": {
               "line": 58,
               "column": 10
@@ -5826,7 +5826,7 @@
           "description": "The element to fit the overlay into. By default it is the window.",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/overlay-picker-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\overlay-picker-mixin.html",
             "start": {
               "line": 66,
               "column": 10
@@ -5847,7 +5847,7 @@
           "description": "The element that should be used to position the overlay. If not set, it will\ndefault to the polyfill node.",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/overlay-picker-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\overlay-picker-mixin.html",
             "start": {
               "line": 74,
               "column": 10
@@ -5868,7 +5868,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/overlay-picker-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\overlay-picker-mixin.html",
             "start": {
               "line": 78,
               "column": 10
@@ -5891,7 +5891,7 @@
           "description": "required attribute",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 16,
               "column": 10
@@ -5914,7 +5914,7 @@
           "description": "required attribute",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 25,
               "column": 10
@@ -5937,7 +5937,7 @@
           "description": "disables the input",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 34,
               "column": 10
@@ -5960,7 +5960,7 @@
           "description": "name of the input",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 43,
               "column": 10
@@ -5981,7 +5981,7 @@
           "description": "value of the input",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 50,
               "column": 10
@@ -6004,7 +6004,7 @@
           "description": "is true when the value is not undefined",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 58,
               "column": 10
@@ -6048,7 +6048,7 @@
           "description": "default value of the input",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 74,
               "column": 10
@@ -6069,7 +6069,7 @@
           "description": "Set to `true` to use the native input, if it available",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 157,
               "column": 10
@@ -6091,7 +6091,7 @@
           "description": "Set to `true` to use the native input automatically on mobile devices, if it available",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 165,
               "column": 10
@@ -6114,7 +6114,7 @@
           "description": "When `nativeOnMobile` is set to `true` this string is used to test the userAgent for a mobile device",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 173,
               "column": 10
@@ -6138,7 +6138,7 @@
           "description": "if `true` the picker is opened",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 182,
               "column": 10
@@ -6162,7 +6162,7 @@
           "description": "The orientation against which to align the element horizontally\nrelative to the related input element. Possible values are \"left\", \"right\", \"center\", \"auto\". (comparable to `iron-fit-behavior` and its `no-overlap`-attribute)",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 193,
               "column": 10
@@ -6184,7 +6184,7 @@
           "description": "The orientation against which to align the element vertically\nrelative to the related input element. Possible values are \"top\", \"bottom\", \"middle\", \"auto\". (comparable to `iron-fit-behavior` and its `no-overlap`-attribute)",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 203,
               "column": 10
@@ -6206,7 +6206,7 @@
           "description": "Set to `true` to make the input auto-confirming",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 212,
               "column": 10
@@ -6228,7 +6228,7 @@
           "description": "Set to `true` to disable canceling the overlay with the ESC key.",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 220,
               "column": 10
@@ -6250,7 +6250,7 @@
           "description": "Set to `true` to keep multiple pickers open. (will only work as expected when e.g. `noCancelOnOutsideClick` is set to true)",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 236,
               "column": 10
@@ -6272,7 +6272,7 @@
           "description": "Set to `true` to disable the tip of the picker",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 244,
               "column": 10
@@ -6293,7 +6293,7 @@
           "description": "The confirmed value. When `auto-confirm` is not set, the value will only change, when you confirm.",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 252,
               "column": 10
@@ -6379,7 +6379,7 @@
           "description": "Hex-color",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 21,
               "column": 10
@@ -6403,7 +6403,7 @@
           "description": "Red",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 29,
               "column": 10
@@ -6426,7 +6426,7 @@
           "description": "Green",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 36,
               "column": 10
@@ -6449,7 +6449,7 @@
           "description": "Blue",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 43,
               "column": 10
@@ -6472,7 +6472,7 @@
           "description": "Hue",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 50,
               "column": 10
@@ -6495,7 +6495,7 @@
           "description": "Saturation (hsl)",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 57,
               "column": 10
@@ -6518,7 +6518,7 @@
           "description": "Lightness",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 64,
               "column": 10
@@ -6541,7 +6541,7 @@
           "description": "Alpha",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 71,
               "column": 10
@@ -6566,7 +6566,7 @@
           "description": "if true, colorString has alpha",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 81,
               "column": 10
@@ -6590,7 +6590,7 @@
           "description": "Precision of hsl-colorStrings, if the format is 'hsl' (for saturation and lightness it is applied according to their percentage colorString)",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 89,
               "column": 10
@@ -6612,7 +6612,7 @@
           "description": "format of the colorString (possible colorStrings: 'rgb', 'hex', 'hsl', 'auto')",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 96,
               "column": 10
@@ -6637,7 +6637,7 @@
           "description": "hex-color",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 105,
               "column": 10
@@ -6661,7 +6661,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 111,
               "column": 10
@@ -6685,7 +6685,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 117,
               "column": 10
@@ -6709,7 +6709,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 123,
               "column": 10
@@ -6733,7 +6733,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 129,
               "column": 10
@@ -6757,7 +6757,7 @@
           "description": "hide the transparency pattern",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/color-input/color-badge.html",
+            "file": "bower_components\\color-input\\color-badge.html",
             "start": {
               "line": 84,
               "column": 8
@@ -6778,7 +6778,7 @@
           "description": "if true, clicking on the color badge won't generate a random color",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/color-input/color-badge.html",
+            "file": "bower_components\\color-input\\color-badge.html",
             "start": {
               "line": 92,
               "column": 8
@@ -6802,7 +6802,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/color-input/color-badge.html",
+            "file": "bower_components\\color-input\\color-badge.html",
             "start": {
               "line": 98,
               "column": 8
@@ -6823,7 +6823,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/color-input/color-badge.html",
+            "file": "bower_components\\color-input\\color-badge.html",
             "start": {
               "line": 102,
               "column": 8
@@ -6844,7 +6844,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/color-input/color-input.html",
+            "file": "bower_components\\color-input\\color-input.html",
             "start": {
               "line": 73,
               "column": 8
@@ -6867,7 +6867,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/color-input/color-input.html",
+            "file": "bower_components\\color-input\\color-input.html",
             "start": {
               "line": 78,
               "column": 8
@@ -6890,7 +6890,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/color-input/color-input.html",
+            "file": "bower_components\\color-input\\color-input.html",
             "start": {
               "line": 83,
               "column": 8
@@ -6956,7 +6956,7 @@
           "description": "",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 88,
               "column": 6
@@ -6975,7 +6975,7 @@
           "description": "Positions and fits the overlay into the `fitInto` element.",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/overlay-picker-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\overlay-picker-mixin.html",
             "start": {
               "line": 129,
               "column": 6
@@ -6996,11 +6996,11 @@
           "sourceRange": {
             "file": "color-picker.html",
             "start": {
-              "line": 213,
+              "line": 214,
               "column": 4
             },
             "end": {
-              "line": 218,
+              "line": 219,
               "column": 5
             }
           },
@@ -7013,7 +7013,7 @@
           "description": "notify manually the overlay to resize",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/overlay-picker-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\overlay-picker-mixin.html",
             "start": {
               "line": 141,
               "column": 6
@@ -7032,7 +7032,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 93,
               "column": 6
@@ -7058,7 +7058,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 97,
               "column": 6
@@ -7081,7 +7081,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 101,
               "column": 6
@@ -7104,7 +7104,7 @@
           "description": "validates the input for iron-form",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 117,
               "column": 6
@@ -7123,7 +7123,7 @@
           "description": "attach dom with `delegatesFocus: true` so that the element is also focussed while its's children are too, and to autofocus to first tabable",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 124,
               "column": 6
@@ -7146,7 +7146,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 135,
               "column": 6
@@ -7169,7 +7169,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 150,
               "column": 6
@@ -7192,7 +7192,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 154,
               "column": 6
@@ -7215,7 +7215,7 @@
           "description": "",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 287,
               "column": 6
@@ -7234,7 +7234,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 293,
               "column": 6
@@ -7253,7 +7253,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 302,
               "column": 6
@@ -7272,7 +7272,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 306,
               "column": 6
@@ -7297,7 +7297,7 @@
               "column": 4
             },
             "end": {
-              "line": 200,
+              "line": 201,
               "column": 5
             }
           },
@@ -7312,11 +7312,11 @@
           "sourceRange": {
             "file": "color-picker.html",
             "start": {
-              "line": 202,
+              "line": 203,
               "column": 4
             },
             "end": {
-              "line": 206,
+              "line": 207,
               "column": 5
             }
           },
@@ -7329,7 +7329,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 326,
               "column": 6
@@ -7348,7 +7348,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 332,
               "column": 6
@@ -7369,11 +7369,11 @@
           "sourceRange": {
             "file": "color-picker.html",
             "start": {
-              "line": 208,
+              "line": 209,
               "column": 4
             },
             "end": {
-              "line": 211,
+              "line": 212,
               "column": 5
             }
           },
@@ -7390,7 +7390,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 340,
               "column": 6
@@ -7409,7 +7409,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 345,
               "column": 6
@@ -7428,7 +7428,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 350,
               "column": 6
@@ -7447,7 +7447,7 @@
           "description": "key press event handler",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 370,
               "column": 6
@@ -7472,7 +7472,7 @@
           "description": "close the picker",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 417,
               "column": 6
@@ -7497,7 +7497,7 @@
           "description": "toggle the picker",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 436,
               "column": 6
@@ -7522,7 +7522,7 @@
           "description": "confirms the input",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 450,
               "column": 6
@@ -7547,7 +7547,7 @@
           "description": "cancels the input",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 469,
               "column": 6
@@ -7572,7 +7572,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 484,
               "column": 6
@@ -7618,7 +7618,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 509,
               "column": 6
@@ -7637,7 +7637,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 515,
               "column": 6
@@ -7694,7 +7694,7 @@
           "description": "",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/color-input/color-badge.html",
+            "file": "bower_components\\color-input\\color-badge.html",
             "start": {
               "line": 150,
               "column": 4
@@ -8007,11 +8007,11 @@
           "sourceRange": {
             "file": "color-picker.html",
             "start": {
-              "line": 220,
+              "line": 221,
               "column": 4
             },
             "end": {
-              "line": 222,
+              "line": 223,
               "column": 5
             }
           },
@@ -8093,7 +8093,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 165,
               "column": 6
@@ -8112,7 +8112,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 179,
               "column": 6
@@ -8135,7 +8135,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 196,
               "column": 6
@@ -8158,7 +8158,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 202,
               "column": 6
@@ -8184,7 +8184,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/color-input/color-badge.html",
+            "file": "bower_components\\color-input\\color-badge.html",
             "start": {
               "line": 158,
               "column": 4
@@ -8207,7 +8207,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 311,
               "column": 6
@@ -8226,7 +8226,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 319,
               "column": 6
@@ -8245,7 +8245,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 362,
               "column": 6
@@ -8271,7 +8271,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 389,
               "column": 6
@@ -8294,7 +8294,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 410,
               "column": 6
@@ -8323,7 +8323,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 461,
               "column": 6
@@ -8352,7 +8352,7 @@
           "description": "generate random rgb-color",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 515,
               "column": 6
@@ -8375,7 +8375,7 @@
           "description": "generate random hsl-color",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 527,
               "column": 6
@@ -8398,7 +8398,7 @@
           "description": "",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 535,
               "column": 6
@@ -8421,7 +8421,7 @@
           "description": "",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 551,
               "column": 6
@@ -8450,7 +8450,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 558,
               "column": 6
@@ -8473,7 +8473,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 567,
               "column": 6
@@ -8499,7 +8499,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 575,
               "column": 6
@@ -8525,7 +8525,7 @@
           "description": "",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 581,
               "column": 6
@@ -8554,7 +8554,7 @@
           "description": "",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 594,
               "column": 6
@@ -8583,7 +8583,7 @@
           "description": "",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 603,
               "column": 6
@@ -8612,7 +8612,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 640,
               "column": 6
@@ -8631,7 +8631,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 654,
               "column": 6
@@ -8657,7 +8657,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 658,
               "column": 6
@@ -8680,7 +8680,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/color-input/color-badge.html",
+            "file": "bower_components\\color-input\\color-badge.html",
             "start": {
               "line": 127,
               "column": 4
@@ -8703,7 +8703,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/color-input/color-badge.html",
+            "file": "bower_components\\color-input\\color-badge.html",
             "start": {
               "line": 136,
               "column": 4
@@ -8722,7 +8722,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/color-input/color-badge.html",
+            "file": "bower_components\\color-input\\color-badge.html",
             "start": {
               "line": 143,
               "column": 4
@@ -8741,7 +8741,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/color-input/color-badge.html",
+            "file": "bower_components\\color-input\\color-badge.html",
             "start": {
               "line": 163,
               "column": 4
@@ -8773,7 +8773,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/color-input/color-badge.html",
+            "file": "bower_components\\color-input\\color-badge.html",
             "start": {
               "line": 172,
               "column": 4
@@ -8802,7 +8802,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/color-input/color-text-input.html",
+            "file": "bower_components\\color-input\\color-text-input.html",
             "start": {
               "line": 71,
               "column": 4
@@ -8825,7 +8825,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/color-input/color-input.html",
+            "file": "bower_components\\color-input\\color-input.html",
             "start": {
               "line": 90,
               "column": 4
@@ -8851,7 +8851,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/color-input/color-input.html",
+            "file": "bower_components\\color-input\\color-input.html",
             "start": {
               "line": 94,
               "column": 4
@@ -8880,7 +8880,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/color-input/color-input.html",
+            "file": "bower_components\\color-input\\color-input.html",
             "start": {
               "line": 98,
               "column": 4
@@ -8903,7 +8903,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/color-input/color-input.html",
+            "file": "bower_components\\color-input\\color-input.html",
             "start": {
               "line": 102,
               "column": 4
@@ -8926,7 +8926,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/color-input/color-input.html",
+            "file": "bower_components\\color-input\\color-input.html",
             "start": {
               "line": 106,
               "column": 4
@@ -9004,7 +9004,7 @@
           "name": "always-on-top",
           "description": "Set to true to keep overlay always on top.",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/overlay-picker-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\overlay-picker-mixin.html",
             "start": {
               "line": 20,
               "column": 10
@@ -9022,7 +9022,7 @@
           "name": "no-overlap",
           "description": "Will position the element around the positionTarget without overlapping it.",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/overlay-picker-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\overlay-picker-mixin.html",
             "start": {
               "line": 26,
               "column": 10
@@ -9040,7 +9040,7 @@
           "name": "with-backdrop",
           "description": "Set to true to display a backdrop behind the overlay. It traps the focus\nwithin the light DOM of the overlay.",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/overlay-picker-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\overlay-picker-mixin.html",
             "start": {
               "line": 34,
               "column": 10
@@ -9058,7 +9058,7 @@
           "name": "no-cancel-on-outside-click",
           "description": "Set to `true` to disable canceling the dropdown by clicking outside the picker.",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 228,
               "column": 10
@@ -9076,7 +9076,7 @@
           "name": "dynamic-align",
           "description": "If true, it will use `horizontalAlign` and `verticalAlign` values as preferred alignment\nand if there's not enough space, it will pick the values which minimize the cropping.",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/overlay-picker-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\overlay-picker-mixin.html",
             "start": {
               "line": 50,
               "column": 10
@@ -9094,7 +9094,7 @@
           "name": "auto-fit-on-attach",
           "description": "Set to true to auto-fit on attach.",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/overlay-picker-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\overlay-picker-mixin.html",
             "start": {
               "line": 58,
               "column": 10
@@ -9112,7 +9112,7 @@
           "name": "fit-into",
           "description": "The element to fit the overlay into. By default it is the window.",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/overlay-picker-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\overlay-picker-mixin.html",
             "start": {
               "line": 66,
               "column": 10
@@ -9130,7 +9130,7 @@
           "name": "position-target",
           "description": "The element that should be used to position the overlay. If not set, it will\ndefault to the polyfill node.",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/overlay-picker-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\overlay-picker-mixin.html",
             "start": {
               "line": 74,
               "column": 10
@@ -9148,7 +9148,7 @@
           "name": "required",
           "description": "required attribute",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 16,
               "column": 10
@@ -9166,7 +9166,7 @@
           "name": "invalid",
           "description": "required attribute",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 25,
               "column": 10
@@ -9184,7 +9184,7 @@
           "name": "disabled",
           "description": "disables the input",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 34,
               "column": 10
@@ -9202,7 +9202,7 @@
           "name": "name",
           "description": "name of the input",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 43,
               "column": 10
@@ -9220,7 +9220,7 @@
           "name": "value",
           "description": "value of the input",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 50,
               "column": 10
@@ -9256,7 +9256,7 @@
           "name": "default",
           "description": "default value of the input",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 74,
               "column": 10
@@ -9274,7 +9274,7 @@
           "name": "native",
           "description": "Set to `true` to use the native input, if it available",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 157,
               "column": 10
@@ -9292,7 +9292,7 @@
           "name": "native-on-mobile",
           "description": "Set to `true` to use the native input automatically on mobile devices, if it available",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 165,
               "column": 10
@@ -9310,7 +9310,7 @@
           "name": "mobile-user-agent-test-string",
           "description": "When `nativeOnMobile` is set to `true` this string is used to test the userAgent for a mobile device",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 173,
               "column": 10
@@ -9328,7 +9328,7 @@
           "name": "opened",
           "description": "if `true` the picker is opened",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 182,
               "column": 10
@@ -9346,7 +9346,7 @@
           "name": "horizontal-align",
           "description": "The orientation against which to align the element horizontally\nrelative to the related input element. Possible values are \"left\", \"right\", \"center\", \"auto\". (comparable to `iron-fit-behavior` and its `no-overlap`-attribute)",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 193,
               "column": 10
@@ -9364,7 +9364,7 @@
           "name": "vertical-align",
           "description": "The orientation against which to align the element vertically\nrelative to the related input element. Possible values are \"top\", \"bottom\", \"middle\", \"auto\". (comparable to `iron-fit-behavior` and its `no-overlap`-attribute)",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 203,
               "column": 10
@@ -9382,7 +9382,7 @@
           "name": "auto-confirm",
           "description": "Set to `true` to make the input auto-confirming",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 212,
               "column": 10
@@ -9400,7 +9400,7 @@
           "name": "no-cancel-on-esc-key",
           "description": "Set to `true` to disable canceling the overlay with the ESC key.",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 220,
               "column": 10
@@ -9418,7 +9418,7 @@
           "name": "keep-multiple-pickers-open",
           "description": "Set to `true` to keep multiple pickers open. (will only work as expected when e.g. `noCancelOnOutsideClick` is set to true)",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 236,
               "column": 10
@@ -9436,7 +9436,7 @@
           "name": "no-tip",
           "description": "Set to `true` to disable the tip of the picker",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 244,
               "column": 10
@@ -9454,7 +9454,7 @@
           "name": "confirmed-value",
           "description": "The confirmed value. When `auto-confirm` is not set, the value will only change, when you confirm.",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 252,
               "column": 10
@@ -9472,7 +9472,7 @@
           "name": "hex",
           "description": "Hex-color",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 21,
               "column": 10
@@ -9490,7 +9490,7 @@
           "name": "r",
           "description": "Red",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 29,
               "column": 10
@@ -9508,7 +9508,7 @@
           "name": "g",
           "description": "Green",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 36,
               "column": 10
@@ -9526,7 +9526,7 @@
           "name": "b",
           "description": "Blue",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 43,
               "column": 10
@@ -9544,7 +9544,7 @@
           "name": "h",
           "description": "Hue",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 50,
               "column": 10
@@ -9562,7 +9562,7 @@
           "name": "s",
           "description": "Saturation (hsl)",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 57,
               "column": 10
@@ -9580,7 +9580,7 @@
           "name": "l",
           "description": "Lightness",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 64,
               "column": 10
@@ -9598,7 +9598,7 @@
           "name": "alpha",
           "description": "Alpha",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 71,
               "column": 10
@@ -9616,7 +9616,7 @@
           "name": "alpha-mode",
           "description": "if true, colorString has alpha",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 81,
               "column": 10
@@ -9634,7 +9634,7 @@
           "name": "hsl-precision",
           "description": "Precision of hsl-colorStrings, if the format is 'hsl' (for saturation and lightness it is applied according to their percentage colorString)",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 89,
               "column": 10
@@ -9652,7 +9652,7 @@
           "name": "format",
           "description": "format of the colorString (possible colorStrings: 'rgb', 'hex', 'hsl', 'auto')",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 96,
               "column": 10
@@ -9670,7 +9670,7 @@
           "name": "color-string",
           "description": "hex-color",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 105,
               "column": 10
@@ -9688,7 +9688,7 @@
           "name": "hide-transparency-pattern",
           "description": "hide the transparency pattern",
           "sourceRange": {
-            "file": "bower_components/color-input/color-badge.html",
+            "file": "bower_components\\color-input\\color-badge.html",
             "start": {
               "line": 84,
               "column": 8
@@ -9706,7 +9706,7 @@
           "name": "no-random-color-on-click",
           "description": "if true, clicking on the color badge won't generate a random color",
           "sourceRange": {
-            "file": "bower_components/color-input/color-badge.html",
+            "file": "bower_components\\color-input\\color-badge.html",
             "start": {
               "line": 92,
               "column": 8
@@ -10248,7 +10248,7 @@
           "description": "required attribute",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 16,
               "column": 10
@@ -10271,7 +10271,7 @@
           "description": "required attribute",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 25,
               "column": 10
@@ -10294,7 +10294,7 @@
           "description": "disables the input",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 34,
               "column": 10
@@ -10317,7 +10317,7 @@
           "description": "name of the input",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 43,
               "column": 10
@@ -10338,7 +10338,7 @@
           "description": "value of the input",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 50,
               "column": 10
@@ -10361,7 +10361,7 @@
           "description": "is true when the value is not undefined",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 58,
               "column": 10
@@ -10403,7 +10403,7 @@
           "description": "default value of the input",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 74,
               "column": 10
@@ -10424,7 +10424,7 @@
           "description": "Set to `true` to use the native input, if it available",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 157,
               "column": 10
@@ -10446,7 +10446,7 @@
           "description": "Set to `true` to use the native input automatically on mobile devices, if it available",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 165,
               "column": 10
@@ -10469,7 +10469,7 @@
           "description": "When `nativeOnMobile` is set to `true` this string is used to test the userAgent for a mobile device",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 173,
               "column": 10
@@ -10493,7 +10493,7 @@
           "description": "if `true` the picker is opened",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 182,
               "column": 10
@@ -10517,7 +10517,7 @@
           "description": "The orientation against which to align the element horizontally\nrelative to the related input element. Possible values are \"left\", \"right\", \"center\", \"auto\". (comparable to `iron-fit-behavior` and its `no-overlap`-attribute)",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 193,
               "column": 10
@@ -10539,7 +10539,7 @@
           "description": "The orientation against which to align the element vertically\nrelative to the related input element. Possible values are \"top\", \"bottom\", \"middle\", \"auto\". (comparable to `iron-fit-behavior` and its `no-overlap`-attribute)",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 203,
               "column": 10
@@ -10561,7 +10561,7 @@
           "description": "Set to `true` to make the input auto-confirming",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 212,
               "column": 10
@@ -10583,7 +10583,7 @@
           "description": "Set to `true` to disable canceling the overlay with the ESC key.",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 220,
               "column": 10
@@ -10605,7 +10605,7 @@
           "description": "Set to `true` to disable canceling the dropdown by clicking outside the picker.",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 228,
               "column": 10
@@ -10627,7 +10627,7 @@
           "description": "Set to `true` to keep multiple pickers open. (will only work as expected when e.g. `noCancelOnOutsideClick` is set to true)",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 236,
               "column": 10
@@ -10649,7 +10649,7 @@
           "description": "Set to `true` to disable the tip of the picker",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 244,
               "column": 10
@@ -10670,7 +10670,7 @@
           "description": "The confirmed value. When `auto-confirm` is not set, the value will only change, when you confirm.",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 252,
               "column": 10
@@ -10756,7 +10756,7 @@
           "description": "Hex-color",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 21,
               "column": 10
@@ -10780,7 +10780,7 @@
           "description": "Red",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 29,
               "column": 10
@@ -10803,7 +10803,7 @@
           "description": "Green",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 36,
               "column": 10
@@ -10826,7 +10826,7 @@
           "description": "Blue",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 43,
               "column": 10
@@ -10849,7 +10849,7 @@
           "description": "Hue",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 50,
               "column": 10
@@ -10872,7 +10872,7 @@
           "description": "Saturation (hsl)",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 57,
               "column": 10
@@ -10895,7 +10895,7 @@
           "description": "Lightness",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 64,
               "column": 10
@@ -10918,7 +10918,7 @@
           "description": "Alpha",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 71,
               "column": 10
@@ -10943,7 +10943,7 @@
           "description": "if true, colorString has alpha",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 81,
               "column": 10
@@ -10967,7 +10967,7 @@
           "description": "Precision of hsl-colorStrings, if the format is 'hsl' (for saturation and lightness it is applied according to their percentage colorString)",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 89,
               "column": 10
@@ -10989,7 +10989,7 @@
           "description": "format of the colorString (possible colorStrings: 'rgb', 'hex', 'hsl', 'auto')",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 96,
               "column": 10
@@ -11014,7 +11014,7 @@
           "description": "hex-color",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 105,
               "column": 10
@@ -11038,7 +11038,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 111,
               "column": 10
@@ -11062,7 +11062,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 117,
               "column": 10
@@ -11086,7 +11086,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 123,
               "column": 10
@@ -11110,7 +11110,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 129,
               "column": 10
@@ -11134,7 +11134,7 @@
           "description": "hide the transparency pattern",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/color-input/color-badge.html",
+            "file": "bower_components\\color-input\\color-badge.html",
             "start": {
               "line": 84,
               "column": 8
@@ -11155,7 +11155,7 @@
           "description": "if true, clicking on the color badge won't generate a random color",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/color-input/color-badge.html",
+            "file": "bower_components\\color-input\\color-badge.html",
             "start": {
               "line": 92,
               "column": 8
@@ -11179,7 +11179,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/color-input/color-badge.html",
+            "file": "bower_components\\color-input\\color-badge.html",
             "start": {
               "line": 98,
               "column": 8
@@ -11200,7 +11200,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/color-input/color-badge.html",
+            "file": "bower_components\\color-input\\color-badge.html",
             "start": {
               "line": 102,
               "column": 8
@@ -11221,7 +11221,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/color-input/color-input.html",
+            "file": "bower_components\\color-input\\color-input.html",
             "start": {
               "line": 73,
               "column": 8
@@ -11244,7 +11244,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/color-input/color-input.html",
+            "file": "bower_components\\color-input\\color-input.html",
             "start": {
               "line": 78,
               "column": 8
@@ -11267,7 +11267,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/color-input/color-input.html",
+            "file": "bower_components\\color-input\\color-input.html",
             "start": {
               "line": 83,
               "column": 8
@@ -11329,7 +11329,7 @@
           "description": "",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 88,
               "column": 6
@@ -11348,7 +11348,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 93,
               "column": 6
@@ -11374,7 +11374,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 97,
               "column": 6
@@ -11397,7 +11397,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 101,
               "column": 6
@@ -11420,7 +11420,7 @@
           "description": "validates the input for iron-form",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 117,
               "column": 6
@@ -11439,7 +11439,7 @@
           "description": "attach dom with `delegatesFocus: true` so that the element is also focussed while its's children are too, and to autofocus to first tabable",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 124,
               "column": 6
@@ -11462,7 +11462,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 135,
               "column": 6
@@ -11485,7 +11485,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 150,
               "column": 6
@@ -11508,7 +11508,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 154,
               "column": 6
@@ -11531,7 +11531,7 @@
           "description": "",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 287,
               "column": 6
@@ -11550,7 +11550,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 293,
               "column": 6
@@ -11569,7 +11569,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 302,
               "column": 6
@@ -11588,7 +11588,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 306,
               "column": 6
@@ -11612,7 +11612,7 @@
               "column": 4
             },
             "end": {
-              "line": 200,
+              "line": 201,
               "column": 5
             }
           },
@@ -11625,11 +11625,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 202,
+              "line": 203,
               "column": 4
             },
             "end": {
-              "line": 206,
+              "line": 207,
               "column": 5
             }
           },
@@ -11641,7 +11641,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 326,
               "column": 6
@@ -11660,7 +11660,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 332,
               "column": 6
@@ -11680,11 +11680,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 208,
+              "line": 209,
               "column": 4
             },
             "end": {
-              "line": 211,
+              "line": 212,
               "column": 5
             }
           },
@@ -11700,7 +11700,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 340,
               "column": 6
@@ -11719,7 +11719,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 345,
               "column": 6
@@ -11738,7 +11738,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 350,
               "column": 6
@@ -11757,7 +11757,7 @@
           "description": "key press event handler",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 370,
               "column": 6
@@ -11783,11 +11783,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 213,
+              "line": 214,
               "column": 4
             },
             "end": {
-              "line": 218,
+              "line": 219,
               "column": 5
             }
           },
@@ -11799,7 +11799,7 @@
           "description": "close the picker",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 417,
               "column": 6
@@ -11824,7 +11824,7 @@
           "description": "toggle the picker",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 436,
               "column": 6
@@ -11849,7 +11849,7 @@
           "description": "confirms the input",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 450,
               "column": 6
@@ -11874,7 +11874,7 @@
           "description": "cancels the input",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 469,
               "column": 6
@@ -11899,7 +11899,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 484,
               "column": 6
@@ -11943,7 +11943,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 509,
               "column": 6
@@ -11962,7 +11962,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 515,
               "column": 6
@@ -12015,7 +12015,7 @@
           "description": "",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/color-input/color-badge.html",
+            "file": "bower_components\\color-input\\color-badge.html",
             "start": {
               "line": 150,
               "column": 4
@@ -12323,11 +12323,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 220,
+              "line": 221,
               "column": 4
             },
             "end": {
-              "line": 222,
+              "line": 223,
               "column": 5
             }
           },
@@ -12408,7 +12408,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 165,
               "column": 6
@@ -12427,7 +12427,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 179,
               "column": 6
@@ -12450,7 +12450,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 196,
               "column": 6
@@ -12473,7 +12473,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 202,
               "column": 6
@@ -12499,7 +12499,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/color-input/color-badge.html",
+            "file": "bower_components\\color-input\\color-badge.html",
             "start": {
               "line": 158,
               "column": 4
@@ -12522,7 +12522,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 311,
               "column": 6
@@ -12541,7 +12541,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 319,
               "column": 6
@@ -12560,7 +12560,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 362,
               "column": 6
@@ -12586,7 +12586,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 389,
               "column": 6
@@ -12609,7 +12609,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 410,
               "column": 6
@@ -12638,7 +12638,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 461,
               "column": 6
@@ -12667,7 +12667,7 @@
           "description": "generate random rgb-color",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 515,
               "column": 6
@@ -12690,7 +12690,7 @@
           "description": "generate random hsl-color",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 527,
               "column": 6
@@ -12713,7 +12713,7 @@
           "description": "",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 535,
               "column": 6
@@ -12736,7 +12736,7 @@
           "description": "",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 551,
               "column": 6
@@ -12765,7 +12765,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 558,
               "column": 6
@@ -12788,7 +12788,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 567,
               "column": 6
@@ -12814,7 +12814,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 575,
               "column": 6
@@ -12840,7 +12840,7 @@
           "description": "",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 581,
               "column": 6
@@ -12869,7 +12869,7 @@
           "description": "",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 594,
               "column": 6
@@ -12898,7 +12898,7 @@
           "description": "",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 603,
               "column": 6
@@ -12927,7 +12927,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 640,
               "column": 6
@@ -12946,7 +12946,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 654,
               "column": 6
@@ -12972,7 +12972,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 658,
               "column": 6
@@ -12995,7 +12995,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/color-input/color-badge.html",
+            "file": "bower_components\\color-input\\color-badge.html",
             "start": {
               "line": 127,
               "column": 4
@@ -13018,7 +13018,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/color-input/color-badge.html",
+            "file": "bower_components\\color-input\\color-badge.html",
             "start": {
               "line": 136,
               "column": 4
@@ -13037,7 +13037,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/color-input/color-badge.html",
+            "file": "bower_components\\color-input\\color-badge.html",
             "start": {
               "line": 143,
               "column": 4
@@ -13056,7 +13056,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/color-input/color-badge.html",
+            "file": "bower_components\\color-input\\color-badge.html",
             "start": {
               "line": 163,
               "column": 4
@@ -13088,7 +13088,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/color-input/color-badge.html",
+            "file": "bower_components\\color-input\\color-badge.html",
             "start": {
               "line": 172,
               "column": 4
@@ -13117,7 +13117,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/color-input/color-text-input.html",
+            "file": "bower_components\\color-input\\color-text-input.html",
             "start": {
               "line": 71,
               "column": 4
@@ -13140,7 +13140,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/color-input/color-input.html",
+            "file": "bower_components\\color-input\\color-input.html",
             "start": {
               "line": 90,
               "column": 4
@@ -13166,7 +13166,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/color-input/color-input.html",
+            "file": "bower_components\\color-input\\color-input.html",
             "start": {
               "line": 94,
               "column": 4
@@ -13195,7 +13195,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/color-input/color-input.html",
+            "file": "bower_components\\color-input\\color-input.html",
             "start": {
               "line": 98,
               "column": 4
@@ -13218,7 +13218,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/color-input/color-input.html",
+            "file": "bower_components\\color-input\\color-input.html",
             "start": {
               "line": 102,
               "column": 4
@@ -13241,7 +13241,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "bower_components/color-input/color-input.html",
+            "file": "bower_components\\color-input\\color-input.html",
             "start": {
               "line": 106,
               "column": 4
@@ -13296,7 +13296,7 @@
           "column": 2
         },
         "end": {
-          "line": 224,
+          "line": 225,
           "column": 3
         }
       },
@@ -13307,7 +13307,7 @@
           "name": "required",
           "description": "required attribute",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 16,
               "column": 10
@@ -13325,7 +13325,7 @@
           "name": "invalid",
           "description": "required attribute",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 25,
               "column": 10
@@ -13343,7 +13343,7 @@
           "name": "disabled",
           "description": "disables the input",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 34,
               "column": 10
@@ -13361,7 +13361,7 @@
           "name": "name",
           "description": "name of the input",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 43,
               "column": 10
@@ -13379,7 +13379,7 @@
           "name": "value",
           "description": "value of the input",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 50,
               "column": 10
@@ -13413,7 +13413,7 @@
           "name": "default",
           "description": "default value of the input",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/form-element-mixin.html",
+            "file": "bower_components\\input-picker-pattern\\form-element-mixin.html",
             "start": {
               "line": 74,
               "column": 10
@@ -13431,7 +13431,7 @@
           "name": "native",
           "description": "Set to `true` to use the native input, if it available",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 157,
               "column": 10
@@ -13449,7 +13449,7 @@
           "name": "native-on-mobile",
           "description": "Set to `true` to use the native input automatically on mobile devices, if it available",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 165,
               "column": 10
@@ -13467,7 +13467,7 @@
           "name": "mobile-user-agent-test-string",
           "description": "When `nativeOnMobile` is set to `true` this string is used to test the userAgent for a mobile device",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 173,
               "column": 10
@@ -13485,7 +13485,7 @@
           "name": "opened",
           "description": "if `true` the picker is opened",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 182,
               "column": 10
@@ -13503,7 +13503,7 @@
           "name": "horizontal-align",
           "description": "The orientation against which to align the element horizontally\nrelative to the related input element. Possible values are \"left\", \"right\", \"center\", \"auto\". (comparable to `iron-fit-behavior` and its `no-overlap`-attribute)",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 193,
               "column": 10
@@ -13521,7 +13521,7 @@
           "name": "vertical-align",
           "description": "The orientation against which to align the element vertically\nrelative to the related input element. Possible values are \"top\", \"bottom\", \"middle\", \"auto\". (comparable to `iron-fit-behavior` and its `no-overlap`-attribute)",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 203,
               "column": 10
@@ -13539,7 +13539,7 @@
           "name": "auto-confirm",
           "description": "Set to `true` to make the input auto-confirming",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 212,
               "column": 10
@@ -13557,7 +13557,7 @@
           "name": "no-cancel-on-esc-key",
           "description": "Set to `true` to disable canceling the overlay with the ESC key.",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 220,
               "column": 10
@@ -13575,7 +13575,7 @@
           "name": "no-cancel-on-outside-click",
           "description": "Set to `true` to disable canceling the dropdown by clicking outside the picker.",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 228,
               "column": 10
@@ -13593,7 +13593,7 @@
           "name": "keep-multiple-pickers-open",
           "description": "Set to `true` to keep multiple pickers open. (will only work as expected when e.g. `noCancelOnOutsideClick` is set to true)",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 236,
               "column": 10
@@ -13611,7 +13611,7 @@
           "name": "no-tip",
           "description": "Set to `true` to disable the tip of the picker",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 244,
               "column": 10
@@ -13629,7 +13629,7 @@
           "name": "confirmed-value",
           "description": "The confirmed value. When `auto-confirm` is not set, the value will only change, when you confirm.",
           "sourceRange": {
-            "file": "bower_components/input-picker-pattern/input-picker-pattern.html",
+            "file": "bower_components\\input-picker-pattern\\input-picker-pattern.html",
             "start": {
               "line": 252,
               "column": 10
@@ -13647,7 +13647,7 @@
           "name": "hex",
           "description": "Hex-color",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 21,
               "column": 10
@@ -13665,7 +13665,7 @@
           "name": "r",
           "description": "Red",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 29,
               "column": 10
@@ -13683,7 +13683,7 @@
           "name": "g",
           "description": "Green",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 36,
               "column": 10
@@ -13701,7 +13701,7 @@
           "name": "b",
           "description": "Blue",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 43,
               "column": 10
@@ -13719,7 +13719,7 @@
           "name": "h",
           "description": "Hue",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 50,
               "column": 10
@@ -13737,7 +13737,7 @@
           "name": "s",
           "description": "Saturation (hsl)",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 57,
               "column": 10
@@ -13755,7 +13755,7 @@
           "name": "l",
           "description": "Lightness",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 64,
               "column": 10
@@ -13773,7 +13773,7 @@
           "name": "alpha",
           "description": "Alpha",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 71,
               "column": 10
@@ -13791,7 +13791,7 @@
           "name": "alpha-mode",
           "description": "if true, colorString has alpha",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 81,
               "column": 10
@@ -13809,7 +13809,7 @@
           "name": "hsl-precision",
           "description": "Precision of hsl-colorStrings, if the format is 'hsl' (for saturation and lightness it is applied according to their percentage colorString)",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 89,
               "column": 10
@@ -13827,7 +13827,7 @@
           "name": "format",
           "description": "format of the colorString (possible colorStrings: 'rgb', 'hex', 'hsl', 'auto')",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 96,
               "column": 10
@@ -13845,7 +13845,7 @@
           "name": "color-string",
           "description": "hex-color",
           "sourceRange": {
-            "file": "bower_components/property-mixins/color-mixin.html",
+            "file": "bower_components\\property-mixins\\color-mixin.html",
             "start": {
               "line": 105,
               "column": 10
@@ -13863,7 +13863,7 @@
           "name": "hide-transparency-pattern",
           "description": "hide the transparency pattern",
           "sourceRange": {
-            "file": "bower_components/color-input/color-badge.html",
+            "file": "bower_components\\color-input\\color-badge.html",
             "start": {
               "line": 84,
               "column": 8
@@ -13881,7 +13881,7 @@
           "name": "no-random-color-on-click",
           "description": "if true, clicking on the color badge won't generate a random color",
           "sourceRange": {
-            "file": "bower_components/color-input/color-badge.html",
+            "file": "bower_components\\color-input\\color-badge.html",
             "start": {
               "line": 92,
               "column": 8

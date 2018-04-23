@@ -196,6 +196,7 @@
       // NOTE: different than input-picker-pattern, using polymer.gestures to prevent 'track' to cancel picker
       if (!this.noCancelOnOutsideClick) {
         Polymer.Gestures.addListener(document, 'tap', this.cancel, false);
+        Polymer.Gestures.setTouchAction(this, 'auto');
         this.addEventListener('tap', this._stopPropagation, false);
       }
     }
