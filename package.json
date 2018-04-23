@@ -18,7 +18,7 @@
   "main": "index.html",
   "scripts": {
     "postinstall": "bower install --save-dev",
-    "prepublish": "npm run build && git add . && git commit -m \"publish new version\" && git push && npm version patch",
+    "prepublish": "npm run build && git add . && git commit -m \"publish new version\" && npm version patch && git push",
     "gh-pages": "git checkout gh-pages && git pull && bower update -f && git add . && git commit -m \"update\" && git push && git checkout master",
     "build": "git pull && bower update && polymer analyze > analysis.json",
     "prestart": "polymer analyze > analysis.json",
