@@ -191,27 +191,6 @@
       this._drawBadge(this._recentcolorcontext, value, width, height);
     }
 
-    _addCancelOnClickListener() {
-      // prevent when clicking on the picker that it is closes
-      // NOTE: different than input-picker-pattern, using polymer.gestures to prevent 'track' to cancel picker
-      if (!this.noCancelOnOutsideClick) {
-        Polymer.Gestures.addListener(document, 'tap', this.cancel, false);
-        Polymer.Gestures.setTouchAction(this, 'auto');
-        this.addEventListener('tap', this._stopPropagation, false);
-      }
-    }
-
-    _removeCancelOnClickListener() {
-    // NOTE: different than input-picker-pattern
-      Polymer.Gestures.removeListener(document, 'tap', this.cancel, false);
-      this.removeEventListener('tap', this._stopPropagation, false);
-    }
-
-    _stopPropagation(e) {
-      e && e.stopPropagation && e.stopPropagation();
-      e && e.detail && e.detail.sourceEvent && e.detail.sourceEvent.stopPropagation && e.detail.sourceEvent.stopPropagation();
-    }
-
     open() {
       super.open();
       requestAnimationFrame(() => {
