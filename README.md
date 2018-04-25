@@ -1,10 +1,7 @@
 [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/fooloomanzoo/color-picker)
 [![API](https://img.shields.io/badge/API-available-green.svg)](https://www.webcomponents.org/element/fooloomanzoo/color-picker/elements/color-picker)
 [![Demo](https://img.shields.io/badge/demo-available-red.svg)](https://www.webcomponents.org/element/fooloomanzoo/color-picker/demo/demo/color-picker.html)
-  
 [![Published on Vaadin  Directory](https://img.shields.io/badge/Vaadin%20Directory-published-00b4f0.svg)](https://vaadin.com/directory/component/fooloomanzoocolor-picker)
-[![Stars on vaadin.com/directory](https://img.shields.io/vaadin-directory/star/fooloomanzoocolor-picker.svg)](https://vaadin.com/directory/component/fooloomanzoocolor-picker)
-
 
 _[Demo and API docs](https://fooloomanzoo.github.io/color-picker/components/color-picker/)_
 ## &lt;color-picker&gt;
