@@ -1,209 +1,215 @@
-<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../polymer/lib/mixins/gesture-event-listeners.html">
+<link rel="import" href="../polymer/lib/utils/mixin.html">
+<link rel="import" href="../property-mixins/color-mixin.html">
 <link rel="import" href="../input-picker-pattern/input-picker-pattern.html">
 <link rel="import" href="../input-picker-pattern/dropdown-style.html">
-
+<link rel="import" href="../input-picker-pattern/input-shared-style.html">
+<link rel="import" href="../input-picker-pattern/input-picker-shared-style.html">
+<link rel="import" href="../input-picker-pattern/input-pattern.html">
+<link rel="import" href="../color-input/color-badge.html">
+<link rel="import" href="../color-input/color-text-input.html">
 <link rel="import" href="../color-input/color-input.html">
+
 <link rel="import" href="color-element.html">
 
 <script>
   /**
    * Mixin for color-picker
    *
-   *  @appliesMixin InputPickerPattern
-   *  @appliesMixin ColorElementPattern
-   *  @appliesMixin ColorInputPattern
-   *
    * @mixinFunction
    * @polymer
    */
-  const ColorPickerPattern = (superClass) => class extends Polymer.GestureEventListeners(InputPickerPattern(ColorElementPattern(ColorInputPattern(superClass)))) { // eslint-disable-line no-unused-vars, no-undef
+  const ColorPickerPattern = function(superClass) {
 
-    static get expectedNativeInputType() {
-      return 'color';
-    }
+    return class extends Polymer.GestureEventListeners(superClass) { // eslint-disable-line no-unused-vars, no-undef
 
-    static get nativeInputBinding() {
-      return 'hex';
-    }
+      static get expectedNativeInputType() {
+        return 'color';
+      }
 
-    static get styleTemplate() {
-      return `
-        ${super.styleTemplate || ''}
-        input.native {
-          --input-padding: 0;
-          --input-background: transparent;
-          --input-focus-background: transparent;
-          border-radius: var(--input-border-radius, var(--color-badge-radius, 3px));
-          height: var(--color-badge-height, 28px);
-          width: var(--color-badge-width, 28px);
-        }
-        #buttons #colorBadgeContainer {
-          position: relative;
-          display: inline-flex;
-          min-width: var(--color-badge-width, 28px);
-          align-self: stretch;
-          flex: 1;
-          margin-right: var(--input-picker-padding);
-        }
-        #buttons #colorBadge {
-          background: #fff;
-          position: relative;
-          border-radius: var(--input-icon-border-radius);
-          height: 100%;
-          width: 100%;
-        }
-        #buttons #formats {
-          font-size: 0.9em;
-          --inner-input-color: var(--input-picker-color, currentColor);
-          margin-right: var(--input-picker-padding);
-        }
-        ::-webkit-color-swatch {
-          border-radius: var(--input-border-radius, var(--color-badge-radius, 3px));
-          border: none;
-        }
-        ::-webkit-color-swatch-wrapper {
-          padding: 0;
-        }
-        ::-moz-color-swatch {
-          border-radius: var(--input-border-radius, var(--color-badge-radius, 3px));
-          border: none;
-        }
-      `;
-    }
+      static get nativeInputBinding() {
+        return 'hex';
+      }
 
-    /**
-     * template for native input element
-     * @type {string}
-     */
-    static get nativeInputTemplate() {
-      return `
-        <template is="dom-if" if="[[native]]" restamp>
-          <div id="input">
-            ${super.nativeInputTemplate}
-            ${this.textInputTemplate}
+      static get styleTemplate() {
+        return `
+          ${super.styleTemplate || ''}
+          input.native {
+            --input-padding: 0;
+            --input-background: transparent;
+            --input-focus-background: transparent;
+            border-radius: var(--input-border-radius, var(--color-badge-radius, 3px));
+            height: var(--color-badge-height, 28px);
+            width: var(--color-badge-width, 28px);
+          }
+          #buttons #colorBadgeContainer {
+            position: relative;
+            display: inline-flex;
+            min-width: var(--color-badge-width, 28px);
+            align-self: stretch;
+            flex: 1;
+            margin-right: var(--input-picker-padding);
+          }
+          #buttons #colorBadge {
+            background: #fff;
+            position: relative;
+            border-radius: var(--input-icon-border-radius);
+            height: 100%;
+            width: 100%;
+          }
+          #buttons #formats {
+            font-size: 0.9em;
+            --inner-input-color: var(--input-picker-color, currentColor);
+            margin-right: var(--input-picker-padding);
+          }
+          ::-webkit-color-swatch {
+            border-radius: var(--input-border-radius, var(--color-badge-radius, 3px));
+            border: none;
+          }
+          ::-webkit-color-swatch-wrapper {
+            padding: 0;
+          }
+          ::-moz-color-swatch {
+            border-radius: var(--input-border-radius, var(--color-badge-radius, 3px));
+            border: none;
+          }
+        `;
+      }
+
+      /**
+       * template for native input element
+       * @type {string}
+       */
+      static get nativeInputTemplate() {
+        return `
+          <template is="dom-if" if="[[native]]" restamp>
+            <div id="input">
+              ${super.nativeInputTemplate}
+              ${this.textInputTemplate}
+            </div>
+          </template>
+        `;
+      }
+
+      static get inputTemplate() {
+        return `
+          <div id="recentColorBadge" class="transparency badge">
+            <canvas id="recentColor" width$="[[_recentcolorwidth]]" height$="[[_recentcolorheight]]" on-click="_resetValues"></canvas>
           </div>
-        </template>
-      `;
-    }
+          ${super.inputTemplate}
+        `;
+      }
 
-    static get inputTemplate() {
-      return `
-        <div id="recentColorBadge" class="transparency badge">
-          <canvas id="recentColor" width$="[[_recentcolorwidth]]" height$="[[_recentcolorheight]]" on-click="_resetValues"></canvas>
-        </div>
-        ${super.inputTemplate}
-      `;
-    }
+      static get buttonTemplate() {
+        return `
+          <div id="colorBadgeContainer" hidden$="[[autoConfirm]]">
+            ${this.colorBadgeTemplate}
+          </div>
+          <select id="formats" value="{{format::change}}" on-keydown="_stopPropagation">
+            <option value="auto">auto</option>
+            <option value="rgb">rgb</option>
+            <option value="hex">hex</option>
+            <option value="hsl">hsl</option>
+          </select>
+          <div style="flex:1;" hidden$="[[!autoConfirm]]"></div>
+          ${super.buttonTemplate || ''}
+        `;
+      }
 
-    static get buttonTemplate() {
-      return `
-        <div id="colorBadgeContainer" hidden$="[[autoConfirm]]">
-          ${this.colorBadgeTemplate}
-        </div>
-        <select id="formats" value="{{format::change}}" on-keydown="_stopPropagation">
-          <option value="auto">auto</option>
-          <option value="rgb">rgb</option>
-          <option value="hex">hex</option>
-          <option value="hsl">hsl</option>
-        </select>
-        <div style="flex:1;" hidden$="[[!autoConfirm]]"></div>
-        ${super.buttonTemplate || ''}
-      `;
-    }
+      static get pickerTemplate() {
+        return `
+          <div id="picker" class="dropdown">
+            ${this.colorElementTemplate}
+          </div>
+        `;
+      }
 
-    static get pickerTemplate() {
-      return `
-        <div id="picker" class="dropdown">
-          ${this.colorElementTemplate}
-        </div>
-      `;
-    }
+      static get properties() {
+        return {
 
-    static get properties() {
-      return {
+          propertyForValue: {
+            type: String,
+            value: 'colorString'
+          },
 
-        propertyForValue: {
-          type: String,
-          value: 'colorString'
-        },
+          _recentcolorheight: {
+            type: Number
+          },
 
-        _recentcolorheight: {
-          type: Number
-        },
-
-        _recentcolorwidth: {
-          type: Number
+          _recentcolorwidth: {
+            type: Number
+          }
         }
       }
-    }
 
-    ready() {
-      super.ready();
-      if (this.$.recentColor) {
-        this._recentcolorcontext = this.$.recentColor.getContext("2d");
+      ready() {
+        super.ready();
+        if (this.$.recentColor) {
+          this._recentcolorcontext = this.$.recentColor.getContext("2d");
+        }
+      }
+
+      redraw() {
+        super.redraw();
+        this._drawConfimedColorBadge(this.propertyForValue === 'colorString' ? this.confirmedValue : this.colorString, this._recentcolorwidth, this._recentcolorheight);
+      }
+
+      _resizeBadge() {
+        let toSet = {};
+        if (this.$.colorBadge) {
+          const box = this.$.colorBadge.getBoundingClientRect();
+          toSet._badgewidth = Math.ceil(box.width) || 28;
+          toSet._badgeheight = Math.ceil(box.height) || 28;
+        }
+        if (this.$.alphaBadge && this.$.saturationBadge) {
+          const sliderwidth = Math.round(this.$.alphaBadge.getBoundingClientRect().width);
+          const saturationRect = this.$.saturationBadge.getBoundingClientRect();
+          toSet._saturationwidth = (Math.ceil(saturationRect.width) || 184);
+          toSet._saturationheight = (Math.ceil(saturationRect.height) || 184);
+          toSet._sliderwidth = (sliderwidth || 16);
+        }
+        if (this.$.recentColorBadge) {
+          const recentcolorRect = this.$.recentColorBadge.getBoundingClientRect();
+          toSet._recentcolorwidth = Math.ceil(recentcolorRect.width) || 28;
+          toSet._recentcolorheight = Math.ceil(recentcolorRect.height) || 28;
+        }
+        this.setProperties(toSet);
+      }
+
+      _resetValues() {
+        this._colorStringChanged(this.confirmedValue);
+        if (this.value !== this.confirmedValue) {
+          this.value = this.confirmedValue;
+        }
+      }
+
+      _confirmedValueChanged(confirmedValue) {
+        this._drawConfimedColorBadge(this.propertyForValue === 'colorString' ? confirmedValue : this.colorString, this._recentcolorwidth, this._recentcolorheight);
+        if (confirmedValue === undefined) {
+          this._resetConfirmedValues();
+          return;
+        }
+        this.value = confirmedValue;
+      }
+
+      _drawConfimedColorBadge(value, width, height) {
+        this._drawBadge(this._recentcolorcontext, value, width, height);
+      }
+
+      open() {
+        super.open();
+        requestAnimationFrame(() => {
+          this.redraw();
+        });
+      }
+
+      _onDblClick() {
+        this._setConfirmedValues();
       }
     }
-
-    redraw() {
-      super.redraw();
-      this._drawConfimedColorBadge(this.propertyForValue === 'colorString' ? this.confirmedValue : this.colorString, this._recentcolorwidth, this._recentcolorheight);
-    }
-
-    _resizeBadge() {
-      let toSet = {};
-      if (this.$.colorBadge) {
-        const box = this.$.colorBadge.getBoundingClientRect();
-        toSet._badgewidth = Math.ceil(box.width) || 28;
-        toSet._badgeheight = Math.ceil(box.height) || 28;
-      }
-      if (this.$.alphaBadge && this.$.saturationBadge) {
-        const sliderwidth = Math.round(this.$.alphaBadge.getBoundingClientRect().width);
-        const saturationRect = this.$.saturationBadge.getBoundingClientRect();
-        toSet._saturationwidth = (Math.ceil(saturationRect.width) || 184);
-        toSet._saturationheight = (Math.ceil(saturationRect.height) || 184);
-        toSet._sliderwidth = (sliderwidth || 16);
-      }
-      if (this.$.recentColorBadge) {
-        const recentcolorRect = this.$.recentColorBadge.getBoundingClientRect();
-        toSet._recentcolorwidth = Math.ceil(recentcolorRect.width) || 28;
-        toSet._recentcolorheight = Math.ceil(recentcolorRect.height) || 28;
-      }
-      this.setProperties(toSet);
-    }
-
-    _resetValues() {
-      this._colorStringChanged(this.confirmedValue);
-      if (this.value !== this.confirmedValue) {
-        this.value = this.confirmedValue;
-      }
-    }
-
-    _confirmedValueChanged(confirmedValue) {
-      this._drawConfimedColorBadge(this.propertyForValue === 'colorString' ? confirmedValue : this.colorString, this._recentcolorwidth, this._recentcolorheight);
-      if (confirmedValue === undefined) {
-        this._resetConfirmedValues();
-        return;
-      }
-      this.value = confirmedValue;
-    }
-
-    _drawConfimedColorBadge(value, width, height) {
-      this._drawBadge(this._recentcolorcontext, value, width, height);
-    }
-
-    open() {
-      super.open();
-      requestAnimationFrame(() => {
-        this.redraw();
-      });
-    }
-
-    _onDblClick() {
-      this._setConfirmedValues();
-    }
-
   }
-  window.ColorPickerPattern = ColorPickerPattern;
+  window.ColorPickerPattern = Polymer.dedupingMixin(ColorPickerPattern);
 </script>
 
 <dom-module id="color-picker">
@@ -234,11 +240,17 @@
    *  @customElement
    *
    *  @appliesMixin ColorPickerPattern
+   *  @appliesMixin ColorElementPattern
+   *  @appliesMixin ColorInputPattern
+   *  @appliesMixin ColorTextInputPattern
+   *  @appliesMixin ColorBadgePattern
+   *  @appliesMixin ColorFormMixin
+   *  @appliesMixin InputPickerPattern
    *
    *  @demo demo/color-picker.html Color Picker
    *  @demo demo/form.html In A Form
    **/
-    class ColorPicker extends ColorPickerPattern(Polymer.Element) { // eslint-disable-line no-undef
+    class ColorPicker extends ColorPickerPattern(ColorElementPattern(ColorInputPattern(ColorTextInputPattern(ColorBadgePattern(ColorFormMixin(ColorMixin(InputPickerPattern(Polymer.Element)))))))) { // eslint-disable-line no-undef
 
       static get is() {
         return 'color-picker';

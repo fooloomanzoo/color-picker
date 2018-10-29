@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+  <title>color-element test</title>
+
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+  <script src="../../web-component-tester/browser.js"></script>
+  <script src="../../iron-test-helpers/mock-interactions.js"></script>
+  <script src="../../input-picker-pattern/utils/wct-mixin-test-helper.js"></script>
+
+  <link rel="import" href="../color-element.html">
+</head>
+
+<body>
+
+  <test-fixture id="Basic">
+    <template>
+      <color-element></color-element>
+    </template>
+  </test-fixture>
+
+  <script>
+    WCT.helpers.mixinSuite('color-element');
+
+    suite('basic', function() {
+
+      let element;
+
+      setup(function() {
+        element = fixture('Basic');
+      });
+
+      test('instantiating the element with default properties should work', done => {
+        assert.isUndefined(element.hideTransparencyPattern, 'no hideTransparencyPattern is defined');
+        setTimeout(() => {
+          assert.isDefined(element._badgeWidth, '_badgewidth is defined');
+          assert.isDefined(element._badgeHeight, '_badgeheight is defined');
+          assert.isDefined(element._badgeContext, '_badgecontext is defined');
+          done();
+        })
+      });
+
+      test('calling "randomColor" on the element should work', done => {
+        assert.isDefined(element.randomColor, '"randomColor" exists');
+        element.randomColor();
+        Polymer.Base.async(() => {
+          assert.isDefined(element.r, 'r is defined');
+          assert.isDefined(element.g, 'g is defined');
+          assert.isDefined(element.b, 'b is defined');
+          assert.isDefined(element.h, 'h is defined');
+          assert.isDefined(element.s, 's is defined');
+          assert.isDefined(element.l, 'year is defined');
+          assert.isDefined(element.alpha, 'alpha is defined');
+          assert.isDefined(element.colorString, 'colorString is defined');
+          done();
+        })
+      });
+    });
+
+    suite('interactions', function() {
+      let element;
+
+      setup(function() {
+        element = fixture('Basic');
+      });
+
+      test('clicking on badge causing random color', done => {
+        Polymer.Base.async(() => {
+          let badge = element.$.badge;
+          // wait a tick to let dom-if stamping finish
+          if (badge && !element.noRandomColorOnClick) {
+            MockInteractions.tap(badge);
+            // setting  is async, so wait one tick.
+            assert.isDefined(element.colorString, 'colorString is defined');
+            assert.isDefined(element.r, 'r is defined');
+            assert.isDefined(element.g, 'g is defined');
+            assert.isDefined(element.b, 'b is defined');
+            assert.isDefined(element.h, 'h is defined');
+            assert.isDefined(element.s, 's is defined');
+            assert.isDefined(element.l, 'year is defined');
+            assert.isDefined(element.alpha, 'alpha is defined');
+          }
+          done();
+        });
+      });
+    });
+  </script>
+
+</body>
+
+</html>

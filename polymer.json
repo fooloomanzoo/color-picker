@@ -1,0 +1,12 @@
+{
+  "sources": [
+    "color-element.html",
+    "color-picker.html",
+    "overlay-color-picker.html"
+  ],
+  "lint": {
+    "rules": [
+      "polymer-2"
+    ]
+  }
+}

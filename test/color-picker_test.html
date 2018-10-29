@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+  <title>color-picker test</title>
+
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+  <script src="../../web-component-tester/browser.js"></script>
+  <script src="../../iron-test-helpers/mock-interactions.js"></script>
+  <script src="../../input-picker-pattern/utils/wct-mixin-test-helper.js"></script>
+
+  <link rel="import" href="../color-picker.html">
+</head>
+
+<body>
+
+  <test-fixture id="Basic">
+    <template>
+      <color-picker></color-picker>
+    </template>
+  </test-fixture>
+
+  <script>
+    WCT.helpers.mixinSuite('color-picker');
+
+    suite('basic', function() {
+
+      let element;
+
+      setup(function() {
+        element = fixture('Basic');
+      });
+
+      test('instantiating the element with default properties should work', done => {
+        assert.isDefined(element.propertyForValue, 'propertyForValue is defined');
+        setTimeout(() => {
+          let button = element.shadowRoot.querySelector('.icon.reset');
+          assert.isOk(button, 'element has an reset icon');
+          done();
+        }, 0);
+      });
+    });
+  </script>
+
+</body>
+
+</html>

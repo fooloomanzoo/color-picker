@@ -10,7 +10,6 @@
     <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
     <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
 
-    <link rel="import" href="../color-element.html">
     <link rel="import" href="../color-picker.html">
     <link rel="import" href="../overlay-color-picker.html">
 
@@ -26,36 +25,6 @@
   </head>
 
   <body>
-
-    <div class="vertical-section-container centered">
-      <h3>Create a standalone color-element</h3>
-      <demo-snippet>
-        <template>
-          <dom-bind>
-            <template is="dom-bind">
-              <color-input color-string="{{value}}" default="hsl(222, 50%, 90%)" alpha="{{alpha}}" format="{{format}}"></color-input>
-              <br>
-              <br>
-              <color-element color-string="{{value}}" hex="{{hex}}" alpha="{{alpha}}" format="{{format}}"></color-element>
-              <div class="vertical-section-container result">
-                <div>
-                  <span>format </span>
-                  <select id="formats" value="{{format::change}}">
-                    <option value="auto">auto</option>
-                    <option value="rgb">rgb</option>
-                    <option value="hex">hex</option>
-                    <option value="hsl">hsl</option>
-                  </select>
-                </div>
-                <div><code>hex</code>: <b>[[hex]]</b></div>
-                <div><code>alpha</code>: <b>[[alpha]]</b></div>
-                <div><code>color-string</code>: <b>[[value]]</b></div>
-              </div>
-            </template>
-          </dom-bind>
-        </template>
-      </demo-snippet>
-    </div>
 
     <div class="vertical-section-container centered">
       <h3>Create a polyfill color-picker, if available</h3>
