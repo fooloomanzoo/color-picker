@@ -27,7 +27,6 @@
     WCT.helpers.mixinSuite('color-picker');
 
     suite('basic', function() {
-
       let element;
 
       setup(function() {
@@ -35,12 +34,14 @@
       });
 
       test('instantiating the element with default properties should work', done => {
-        assert.isDefined(element.propertyForValue, 'propertyForValue is defined');
         setTimeout(() => {
+          assert.isDefined(element._confirmedColorHeight, '_confirmedColorHeight is defined');
+          assert.isDefined(element._confirmedColorWidth, '_confirmedColorWidth is defined');
+          assert.isDefined(element._confirmedColorCanvasContext, '_confirmedColorCanvasContext is defined');
           let button = element.shadowRoot.querySelector('.icon.reset');
           assert.isOk(button, 'element has an reset icon');
           done();
-        }, 0);
+        }, 1);
       });
 
       test('calling "randomColor" on the element should work', done => {
@@ -65,24 +66,35 @@
 
       setup(function() {
         element = fixture('Basic');
+        element.opened = true;
+        element.format = 'auto';
+        element.colorString = '#000000';
       });
 
-      test('clicking on badge causing random color', done => {
+      test('clicking on badge confirms', done => {
         Polymer.Base.async(() => {
-          let badge = element.$.badge;
+          let badge = element.$.colorBadgeContainer;
           // wait a tick to let dom-if stamping finish
-          if (badge && !element.noRandomColorOnClick) {
-            MockInteractions.tap(badge);
-            // setting  is async, so wait one tick.
-            assert.isDefined(element.colorString, 'colorString is defined');
-            assert.isDefined(element.r, 'r is defined');
-            assert.isDefined(element.g, 'g is defined');
-            assert.isDefined(element.b, 'b is defined');
-            assert.isDefined(element.h, 'h is defined');
-            assert.isDefined(element.s, 's is defined');
-            assert.isDefined(element.l, 'year is defined');
-            assert.isDefined(element.alpha, 'alpha is defined');
-          }
+          assert.equal(element.value, '#000000', 'value is set');
+          assert.isUndefined(element.confirmedValue, 'confirmedValue is not set');
+          MockInteractions.tap(badge);
+          assert.equal(element.confirmedValue, '#000000', 'confirmedValue is set');
+          done();
+        });
+      });
+
+      test('clicking on confirmed badge resets value', done => {
+        element.confirm();
+        Polymer.Base.async(() => {
+          let badge = element.$.confirmedColorBadge;
+          assert.equal(element.confirmedValue, '#000000', 'confirmedValue is set');
+          element.colorString = '#ff0000';
+          // wait a tick to let dom-if stamping finish
+          assert.equal(element.value, '#ff0000', 'value is set');
+          assert.equal(element.confirmedValue, '#000000', 'confirmedValue does not change');
+          MockInteractions.tap(badge);
+          assert.equal(element.value, '#000000', 'value is reset');
+          assert.equal(element.confirmedValue, '#000000', 'confirmedValue does not change');
           done();
         });
       });

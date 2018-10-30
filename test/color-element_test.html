@@ -35,13 +35,15 @@
       });
 
       test('instantiating the element with default properties should work', done => {
-        assert.isUndefined(element.hideTransparencyPattern, 'no hideTransparencyPattern is defined');
         setTimeout(() => {
-          assert.isDefined(element._badgeWidth, '_badgewidth is defined');
-          assert.isDefined(element._badgeHeight, '_badgeheight is defined');
-          assert.isDefined(element._badgeContext, '_badgecontext is defined');
+          assert.isDefined(element._sliderWidth, '_sliderWidth is defined');
+          assert.isDefined(element._saturationHeight, '_saturationHeight is defined');
+          assert.isDefined(element._saturationWidth, '_saturationWidth is defined');
+          assert.isDefined(element._hueContext, '_hueContext is defined');
+          assert.isDefined(element._saturationContext, '_saturationContext is defined');
+          assert.isDefined(element._alphaContext, '_alphaContext is defined');
           done();
-        })
+        },1)
       });
 
       test('calling "randomColor" on the element should work', done => {

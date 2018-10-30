@@ -424,9 +424,7 @@
             this.alpha = +numberUtilities.normalizedClamp((rect.height - offsetY) / rect.height).toFixed(2);
             break;
           case 'hue':
-          console.log(numberUtilities.mathMod(Math.floor(359 * offsetY / rect.height), 360));
             this.h = numberUtilities.mathMod(Math.floor(359 * offsetY / rect.height), 360);
-            console.log(this.h);
             break;
           case 'color':
             let offsetX = (e.detail.x || e.clientX) - rect.left;

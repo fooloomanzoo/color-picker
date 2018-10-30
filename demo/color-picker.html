@@ -46,7 +46,7 @@
               </select>
               <br>
               <br>
-              <color-picker value="{{value}}" default="yellow" alpha="{{alpha}}" hex="{{hex}}" auto-confirm="[[autoConfirm]]" confirmed-value="{{confirmedValue}}" native="{{native}}" format="{{format}}"></color-picker>
+              <color-picker value="{{value}}" alpha="{{alpha}}" color-string="#123abc" hex="{{hex}}" auto-confirm="[[autoConfirm]]" confirmed-value="{{confirmedValue}}" native="{{native}}" format="{{format}}"></color-picker>
               <div class="vertical-section-container result">
                 <div><code>hex</code>: <b>[[hex]]</b></div>
                 <div><code>alpha</code>: <b>[[alpha]]</b></div>
@@ -82,7 +82,7 @@
               </custom-style>
               <br>
               <br>
-              <overlay-color-picker class="custom" color-string="#123abc" alpha="{{alpha}}" no-overlap no-tip vertical-align="bottom"></overlay-color-picker>
+              <overlay-color-picker class="custom" default="yellow" alpha="{{alpha}}" no-overlap no-tip vertical-align="bottom"></overlay-color-picker>
             </template>
           </dom-bind>
         </template>

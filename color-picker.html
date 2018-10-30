@@ -225,7 +225,7 @@
         if (confirmedColorCanvasContext === undefined || width === undefined || height === undefined) {
           return;
         }
-        this._draw(confirmedColorCanvasContext, typeof value === 'string' ? value : this.colorString, width, height);
+        this._draw(confirmedColorCanvasContext, typeof value === 'string' ? value : 'rgba(0,0,0,0)', width, height);
       }
 
       _openedChanged(opened) {
@@ -234,10 +234,7 @@
           this.resize();
           requestAnimationFrame(() => {
             this.render();
-          })
-          if (!this.colorString) {
-            this.randomColor();
-          }
+          });
         }
       }
 
