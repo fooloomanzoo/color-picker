@@ -70,27 +70,7 @@
         element = fixture('Basic');
       });
 
-      test('clicking on badge causing random color', done => {
-        Polymer.Base.async(() => {
-          let badge = element.$.badge;
-          // wait a tick to let dom-if stamping finish
-          if (badge && !element.noRandomColorOnClick) {
-            MockInteractions.tap(badge);
-            // setting  is async, so wait one tick.
-            assert.isDefined(element.colorString, 'colorString is defined');
-            assert.isDefined(element.r, 'r is defined');
-            assert.isDefined(element.g, 'g is defined');
-            assert.isDefined(element.b, 'b is defined');
-            assert.isDefined(element.h, 'h is defined');
-            assert.isDefined(element.s, 's is defined');
-            assert.isDefined(element.l, 'year is defined');
-            assert.isDefined(element.alpha, 'alpha is defined');
-          }
-          done();
-        });
-      });
-
-      test('clicking on random button causing random color', done => {
+      test('clicking on "random"-button causing random color', done => {
         Polymer.Base.async(() => {
           let button = element.shadowRoot.querySelector('button.random');
           // wait a tick to let dom-if stamping finish
@@ -159,5 +139,4 @@
   </script>
 
 </body>
-
 </html>
