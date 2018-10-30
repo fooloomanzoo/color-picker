@@ -2,11 +2,1398 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`<color-element>` adds a color selector to your page using Polymer.\n\n  ```html\n    <color-element value=\"{{color}}\"></color-element>\n  ```\nCustom property | Description | Default\n----------------|-------------|----------\n`--transparency-pattern` | background pattern for the transparency layer | linear-gradient(45deg, rgba(0,0,0,0.15) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.15) 75%, rgba(0,0,0,0.15)), linear-gradient(45deg, rgba(0,0,0,0.15) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.15) 75%, rgba(0,0,0,0.15)))\n`--transparency-pattern-size` | size transparency pattern | 12px\n`--color-element-badge-radius` | border-radius of the badge | --input-picker-border-radius, 6px\n`--color-element-height` | height of the selector badge and the alpha- and the hue-slider| 184px\n`--color-element-width` | width of the selector badge | 184px\n`--color-slider-width` | width of the alpha- and the hue-slider | 16px\n`--color-slider-padding` | padding of the alpha- and the hue-slider | 2px\n`--color-pin-radius` | radius of the color pin | 3px\n`--color-selector-mix-blend-mode` | mix-blend-mode of the selectors (sliders and color pin) | exclusion\n`--color-element` | mixin applied to the color element | {}\n\n Have a look at [input-picker-pattern#input-shared-style](https://github.com/fooloomanzoo/input-picker-pattern#input-shared-style) to see the used style-properties.",
+      "description": "`<color-element>` adds a color selector to your page using Polymer.\n\n```html\n<color-element value=\"{{color}}\"></color-element>\n```\nCustom property | Description | Default\n----------------|-------------|----------\n`--transparency-pattern` | background pattern for the transparency layer | linear-gradient(45deg, rgba(0,0,0,0.15) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.15) 75%, rgba(0,0,0,0.15)),\n    linear-gradient(45deg, rgba(0,0,0,0.15) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.15) 75%, rgba(0,0,0,0.15)))\n`--transparency-pattern-size` | size transparency pattern | 12px\n`--color-element-badge-radius` | border-radius of the badge | --input-picker-border-radius, 6px\n`--color-element-height` | height of the selector badge and the alpha- and the hue-slider| 184px\n`--color-element-width` | width of the selector badge | 184px\n`--color-slider-width` | width of the alpha- and the hue-slider | 16px\n`--color-slider-padding` | padding of the alpha- and the hue-slider | 2px\n`--color-pin-radius` | radius of the color pin | 3px\n`--color-selector-mix-blend-mode` | mix-blend-mode of the selectors (sliders and color pin) | exclusion\n`--color-element` | mixin applied to the color element | {}\n\nHave a look at [input-picker-pattern#input-shared-style](https://github.com/fooloomanzoo/input-picker-pattern#input-shared-style) to see the used style-properties.",
       "summary": "",
       "path": "color-element.html",
-      "properties": [],
-      "methods": [],
+      "properties": [
+        {
+          "name": "_sliderWidth",
+          "type": "number | null | undefined",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 197,
+              "column": 10
+            },
+            "end": {
+              "line": 199,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Number"
+            }
+          },
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_saturationHeight",
+          "type": "number | null | undefined",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 201,
+              "column": 10
+            },
+            "end": {
+              "line": 203,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Number"
+            }
+          },
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_saturationWidth",
+          "type": "number | null | undefined",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 205,
+              "column": 10
+            },
+            "end": {
+              "line": 207,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Number"
+            }
+          },
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_hueContext",
+          "type": "CanvasRenderingContext2D | null | undefined",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 209,
+              "column": 10
+            },
+            "end": {
+              "line": 211,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "CanvasRenderingContext2D"
+            }
+          },
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_saturationContext",
+          "type": "CanvasRenderingContext2D | null | undefined",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 213,
+              "column": 10
+            },
+            "end": {
+              "line": 215,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "CanvasRenderingContext2D"
+            }
+          },
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_alphaContext",
+          "type": "CanvasRenderingContext2D | null | undefined",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 217,
+              "column": 10
+            },
+            "end": {
+              "line": 219,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "CanvasRenderingContext2D"
+            }
+          },
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "propertyForValue",
+          "type": "string | null | undefined",
+          "description": "defines the property that should be used for the value",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../input-picker-pattern/form-element-mixin.html",
+            "start": {
+              "line": 53,
+              "column": 10
+            },
+            "end": {
+              "line": 56,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "\"_createReflectPropertyToValueObserver\"",
+              "attributeType": "String"
+            }
+          },
+          "inheritedFrom": "FormElementMixin"
+        },
+        {
+          "name": "name",
+          "type": "string | null | undefined",
+          "description": "name of the input",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../input-picker-pattern/form-element-mixin.html",
+            "start": {
+              "line": 38,
+              "column": 10
+            },
+            "end": {
+              "line": 40,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          },
+          "inheritedFrom": "FormElementMixin"
+        },
+        {
+          "name": "title",
+          "type": "string | null | undefined",
+          "description": "description for the element and can be used as a hint for invalid values",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../input-picker-pattern/form-element-mixin.html",
+            "start": {
+              "line": 45,
+              "column": 10
+            },
+            "end": {
+              "line": 48,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          },
+          "inheritedFrom": "FormElementMixin"
+        },
+        {
+          "name": "value",
+          "type": "Object | null | undefined",
+          "description": "value of the input",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../input-picker-pattern/form-element-mixin.html",
+            "start": {
+              "line": 61,
+              "column": 10
+            },
+            "end": {
+              "line": 65,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "observer": "\"_valueChanged\"",
+              "attributeType": "Object"
+            }
+          },
+          "inheritedFrom": "FormElementMixin"
+        },
+        {
+          "name": "default",
+          "type": "Object | null | undefined",
+          "description": "default value of the value, when it does not validate",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../input-picker-pattern/form-element-mixin.html",
+            "start": {
+              "line": 70,
+              "column": 10
+            },
+            "end": {
+              "line": 73,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "\"_defaultChanged\"",
+              "attributeType": "Object"
+            }
+          },
+          "inheritedFrom": "FormElementMixin"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean | null | undefined",
+          "description": "disables the input",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../input-picker-pattern/form-element-mixin.html",
+            "start": {
+              "line": 78,
+              "column": 10
+            },
+            "end": {
+              "line": 82,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "attributeType": "Boolean"
+            }
+          },
+          "inheritedFrom": "FormElementMixin"
+        },
+        {
+          "name": "invalid",
+          "type": "boolean | null | undefined",
+          "description": "required attribute",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../input-picker-pattern/form-element-mixin.html",
+            "start": {
+              "line": 87,
+              "column": 10
+            },
+            "end": {
+              "line": 92,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "readOnly": true,
+              "attributeType": "Boolean"
+            }
+          },
+          "inheritedFrom": "FormElementMixin"
+        },
+        {
+          "name": "required",
+          "type": "boolean | null | undefined",
+          "description": "required attribute",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../input-picker-pattern/form-element-mixin.html",
+            "start": {
+              "line": 97,
+              "column": 10
+            },
+            "end": {
+              "line": 102,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "attributeType": "Boolean"
+            }
+          },
+          "defaultValue": "false",
+          "inheritedFrom": "FormElementMixin"
+        },
+        {
+          "name": "valueIsSet",
+          "type": "boolean | null | undefined",
+          "description": "is true when the value is set",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../input-picker-pattern/form-element-mixin.html",
+            "start": {
+              "line": 107,
+              "column": 10
+            },
+            "end": {
+              "line": 111,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": true,
+              "attributeType": "Boolean"
+            }
+          },
+          "defaultValue": "false",
+          "inheritedFrom": "FormElementMixin"
+        },
+        {
+          "name": "_isSet",
+          "type": "Function | null | undefined",
+          "description": "defines whether the value is set",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../input-picker-pattern/form-element-mixin.html",
+            "start": {
+              "line": 116,
+              "column": 10
+            },
+            "end": {
+              "line": 119,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "attributeType": "Function"
+            }
+          },
+          "inheritedFrom": "FormElementMixin"
+        },
+        {
+          "name": "_validate",
+          "type": "Function | null | undefined",
+          "description": "validates the value (when required)",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../input-picker-pattern/form-element-mixin.html",
+            "start": {
+              "line": 124,
+              "column": 10
+            },
+            "end": {
+              "line": 127,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "attributeType": "Function"
+            }
+          },
+          "inheritedFrom": "FormElementMixin"
+        }
+      ],
+      "methods": [
+        {
+          "name": "_addEventListenerToNode",
+          "description": "Add the event listener to the node if it is a gestures event.",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../polymer/lib/mixins/gesture-event-listeners.html",
+            "start": {
+              "line": 55,
+              "column": 6
+            },
+            "end": {
+              "line": 59,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "node",
+              "type": "!Node",
+              "description": "Node to add event listener to"
+            },
+            {
+              "name": "eventName",
+              "type": "string",
+              "description": "Name of event"
+            },
+            {
+              "name": "handler",
+              "type": "function (!Event): void",
+              "description": "Listener function to add"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "Polymer.GestureEventListeners"
+        },
+        {
+          "name": "_removeEventListenerFromNode",
+          "description": "Remove the event listener to the node if it is a gestures event.",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../polymer/lib/mixins/gesture-event-listeners.html",
+            "start": {
+              "line": 69,
+              "column": 6
+            },
+            "end": {
+              "line": 73,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "node",
+              "type": "!Node",
+              "description": "Node to remove event listener from"
+            },
+            {
+              "name": "eventName",
+              "type": "string",
+              "description": "Name of event"
+            },
+            {
+              "name": "handler",
+              "type": "function (!Event): void",
+              "description": "Listener function to remove"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "Polymer.GestureEventListeners"
+        },
+        {
+          "name": "ready",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 233,
+              "column": 6
+            },
+            "end": {
+              "line": 236,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "connectedCallback",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../input-picker-pattern/form-element-mixin.html",
+            "start": {
+              "line": 138,
+              "column": 6
+            },
+            "end": {
+              "line": 141,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "FormElementMixin"
+        },
+        {
+          "name": "render",
+          "description": "render the element",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 246,
+              "column": 6
+            },
+            "end": {
+              "line": 252,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "resize",
+          "description": "resize the element",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 257,
+              "column": 6
+            },
+            "end": {
+              "line": 260,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_computeColorBadgeContexts",
+          "description": "computes the canvas contexts of the color element",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 265,
+              "column": 6
+            },
+            "end": {
+              "line": 285,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_computeColorElementSizeProperties",
+          "description": "computes the size properties for the color element canvas",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 290,
+              "column": 6
+            },
+            "end": {
+              "line": 312,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_initializeHueSlider",
+          "description": "draw hue-sliders background",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 317,
+              "column": 6
+            },
+            "end": {
+              "line": 331,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "hueContext"
+            },
+            {
+              "name": "sliderWidth"
+            },
+            {
+              "name": "saturationHeight"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_drawColorElement",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 333,
+              "column": 6
+            },
+            "end": {
+              "line": 356,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "alphaContext"
+            },
+            {
+              "name": "saturationContext"
+            },
+            {
+              "name": "h"
+            },
+            {
+              "name": "sliderWidth"
+            },
+            {
+              "name": "saturationWidth"
+            },
+            {
+              "name": "saturationHeight"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_moveHueSlider",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 358,
+              "column": 6
+            },
+            "end": {
+              "line": 360,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "h"
+            },
+            {
+              "name": "height"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_moveAlphaSlider",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 362,
+              "column": 6
+            },
+            "end": {
+              "line": 364,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "alpha"
+            },
+            {
+              "name": "height"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_moveColorPin",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 366,
+              "column": 6
+            },
+            "end": {
+              "line": 375,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "s"
+            },
+            {
+              "name": "l"
+            },
+            {
+              "name": "width"
+            },
+            {
+              "name": "height"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_moveSelector",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 377,
+              "column": 6
+            },
+            "end": {
+              "line": 384,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "element"
+            },
+            {
+              "name": "x"
+            },
+            {
+              "name": "y"
+            },
+            {
+              "name": "borderColor"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_onTrack",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 386,
+              "column": 6
+            },
+            "end": {
+              "line": 455,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_onDown",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 457,
+              "column": 6
+            },
+            "end": {
+              "line": 461,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_onUp",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 463,
+              "column": 6
+            },
+            "end": {
+              "line": 482,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_onDblClick",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 484,
+              "column": 6
+            },
+            "end": {
+              "line": 486,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_onFocusButton",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 488,
+              "column": 6
+            },
+            "end": {
+              "line": 490,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_onKeyDown",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 492,
+              "column": 6
+            },
+            "end": {
+              "line": 551,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_onSelectEnd",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 553,
+              "column": 6
+            },
+            "end": {
+              "line": 561,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_stopPropagation",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 563,
+              "column": 6
+            },
+            "end": {
+              "line": 567,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_checkSelectorForProperty",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 569,
+              "column": 6
+            },
+            "end": {
+              "line": 581,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            },
+            {
+              "name": "id"
+            }
+          ],
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_defineActiveCanvas",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 583,
+              "column": 6
+            },
+            "end": {
+              "line": 596,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_computeIsSetFunction",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../color-input/color-text-input.html",
+            "start": {
+              "line": 33,
+              "column": 6
+            },
+            "end": {
+              "line": 68,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "propertyForValue"
+            },
+            {
+              "name": "format"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "ColorFormMixin"
+        },
+        {
+          "name": "reset",
+          "description": "reset the value",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../input-picker-pattern/form-element-mixin.html",
+            "start": {
+              "line": 230,
+              "column": 6
+            },
+            "end": {
+              "line": 236,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "value"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "FormElementMixin"
+        },
+        {
+          "name": "_attachDom",
+          "description": "attach dom with `delegatesFocus: true` so that the element is also focussed while its's children are too, and to autofocus to first tabable",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../input-picker-pattern/form-element-mixin.html",
+            "start": {
+              "line": 22,
+              "column": 6
+            },
+            "end": {
+              "line": 31,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "dom"
+            }
+          ],
+          "inheritedFrom": "FormElementMixin"
+        },
+        {
+          "name": "_defaultIsSet",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../input-picker-pattern/form-element-mixin.html",
+            "start": {
+              "line": 149,
+              "column": 6
+            },
+            "end": {
+              "line": 151,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "value",
+              "type": "Object",
+              "description": "value to test"
+            }
+          ],
+          "return": {
+            "type": "Boolean",
+            "desc": "true, if the value is set"
+          },
+          "inheritedFrom": "FormElementMixin"
+        },
+        {
+          "name": "_defaultValidate",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../input-picker-pattern/form-element-mixin.html",
+            "start": {
+              "line": 160,
+              "column": 6
+            },
+            "end": {
+              "line": 162,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "value",
+              "type": "Object",
+              "description": "value to validate"
+            },
+            {
+              "name": "required",
+              "type": "Boolean",
+              "description": "if true, the value is required"
+            }
+          ],
+          "return": {
+            "type": "Boolean",
+            "desc": "true, if the value is valid"
+          },
+          "inheritedFrom": "FormElementMixin"
+        },
+        {
+          "name": "_computeInvalid",
+          "description": "defines whether the value is set",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../input-picker-pattern/form-element-mixin.html",
+            "start": {
+              "line": 170,
+              "column": 6
+            },
+            "end": {
+              "line": 172,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "validate"
+            },
+            {
+              "name": "value"
+            },
+            {
+              "name": "required"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "FormElementMixin"
+        },
+        {
+          "name": "_computeValueIsSet",
+          "description": "defines whether the value is set",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../input-picker-pattern/form-element-mixin.html",
+            "start": {
+              "line": 179,
+              "column": 6
+            },
+            "end": {
+              "line": 181,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "isSet"
+            },
+            {
+              "name": "value"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "FormElementMixin"
+        },
+        {
+          "name": "_valueChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../input-picker-pattern/form-element-mixin.html",
+            "start": {
+              "line": 183,
+              "column": 6
+            },
+            "end": {
+              "line": 188,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "value"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "FormElementMixin"
+        },
+        {
+          "name": "_defaultChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../input-picker-pattern/form-element-mixin.html",
+            "start": {
+              "line": 190,
+              "column": 6
+            },
+            "end": {
+              "line": 198,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "def"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "FormElementMixin"
+        },
+        {
+          "name": "_createReflectPropertyToValueObserver",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../input-picker-pattern/form-element-mixin.html",
+            "start": {
+              "line": 200,
+              "column": 6
+            },
+            "end": {
+              "line": 210,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "prop"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "FormElementMixin"
+        },
+        {
+          "name": "_reflectPropertyToValue",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../input-picker-pattern/form-element-mixin.html",
+            "start": {
+              "line": 212,
+              "column": 6
+            },
+            "end": {
+              "line": 214,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "FormElementMixin"
+        },
+        {
+          "name": "_reflectValueToProperty",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../input-picker-pattern/form-element-mixin.html",
+            "start": {
+              "line": 216,
+              "column": 6
+            },
+            "end": {
+              "line": 218,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "value"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "FormElementMixin"
+        },
+        {
+          "name": "validate",
+          "description": "validates the input for iron-form",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../input-picker-pattern/form-element-mixin.html",
+            "start": {
+              "line": 223,
+              "column": 6
+            },
+            "end": {
+              "line": 225,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "inheritedFrom": "FormElementMixin"
+        }
+      ],
       "staticMethods": [],
       "demos": [
         {
@@ -17,18 +1404,181 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 635,
-          "column": 2
+          "line": 634,
+          "column": 4
         },
         "end": {
-          "line": 664,
-          "column": 3
+          "line": 672,
+          "column": 5
         }
       },
       "privacy": "public",
       "superclass": "HTMLElement",
       "name": "ColorElement",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "property-for-value",
+          "description": "defines the property that should be used for the value",
+          "sourceRange": {
+            "file": "../input-picker-pattern/form-element-mixin.html",
+            "start": {
+              "line": 53,
+              "column": 10
+            },
+            "end": {
+              "line": 56,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined",
+          "inheritedFrom": "FormElementMixin"
+        },
+        {
+          "name": "name",
+          "description": "name of the input",
+          "sourceRange": {
+            "file": "../input-picker-pattern/form-element-mixin.html",
+            "start": {
+              "line": 38,
+              "column": 10
+            },
+            "end": {
+              "line": 40,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined",
+          "inheritedFrom": "FormElementMixin"
+        },
+        {
+          "name": "title",
+          "description": "description for the element and can be used as a hint for invalid values",
+          "sourceRange": {
+            "file": "../input-picker-pattern/form-element-mixin.html",
+            "start": {
+              "line": 45,
+              "column": 10
+            },
+            "end": {
+              "line": 48,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined",
+          "inheritedFrom": "FormElementMixin"
+        },
+        {
+          "name": "value",
+          "description": "value of the input",
+          "sourceRange": {
+            "file": "../input-picker-pattern/form-element-mixin.html",
+            "start": {
+              "line": 61,
+              "column": 10
+            },
+            "end": {
+              "line": 65,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "Object | null | undefined",
+          "inheritedFrom": "FormElementMixin"
+        },
+        {
+          "name": "default",
+          "description": "default value of the value, when it does not validate",
+          "sourceRange": {
+            "file": "../input-picker-pattern/form-element-mixin.html",
+            "start": {
+              "line": 70,
+              "column": 10
+            },
+            "end": {
+              "line": 73,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "Object | null | undefined",
+          "inheritedFrom": "FormElementMixin"
+        },
+        {
+          "name": "disabled",
+          "description": "disables the input",
+          "sourceRange": {
+            "file": "../input-picker-pattern/form-element-mixin.html",
+            "start": {
+              "line": 78,
+              "column": 10
+            },
+            "end": {
+              "line": 82,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined",
+          "inheritedFrom": "FormElementMixin"
+        },
+        {
+          "name": "invalid",
+          "description": "required attribute",
+          "sourceRange": {
+            "file": "../input-picker-pattern/form-element-mixin.html",
+            "start": {
+              "line": 87,
+              "column": 10
+            },
+            "end": {
+              "line": 92,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined",
+          "inheritedFrom": "FormElementMixin"
+        },
+        {
+          "name": "required",
+          "description": "required attribute",
+          "sourceRange": {
+            "file": "../input-picker-pattern/form-element-mixin.html",
+            "start": {
+              "line": 97,
+              "column": 10
+            },
+            "end": {
+              "line": 102,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined",
+          "inheritedFrom": "FormElementMixin"
+        },
+        {
+          "name": "value-is-set",
+          "description": "is true when the value is set",
+          "sourceRange": {
+            "file": "../input-picker-pattern/form-element-mixin.html",
+            "start": {
+              "line": 107,
+              "column": 10
+            },
+            "end": {
+              "line": 111,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined",
+          "inheritedFrom": "FormElementMixin"
+        }
+      ],
       "events": [],
       "styling": {
         "cssVariables": [],
@@ -114,6 +1664,309 @@
             }
           },
           "inheritedFrom": "ColorPickerPattern"
+        },
+        {
+          "name": "_sliderWidth",
+          "type": "number | null | undefined",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "color-element.html",
+            "start": {
+              "line": 197,
+              "column": 10
+            },
+            "end": {
+              "line": 199,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Number"
+            }
+          },
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_saturationHeight",
+          "type": "number | null | undefined",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "color-element.html",
+            "start": {
+              "line": 201,
+              "column": 10
+            },
+            "end": {
+              "line": 203,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Number"
+            }
+          },
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_saturationWidth",
+          "type": "number | null | undefined",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "color-element.html",
+            "start": {
+              "line": 205,
+              "column": 10
+            },
+            "end": {
+              "line": 207,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Number"
+            }
+          },
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_hueContext",
+          "type": "CanvasRenderingContext2D | null | undefined",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "color-element.html",
+            "start": {
+              "line": 209,
+              "column": 10
+            },
+            "end": {
+              "line": 211,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "CanvasRenderingContext2D"
+            }
+          },
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_saturationContext",
+          "type": "CanvasRenderingContext2D | null | undefined",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "color-element.html",
+            "start": {
+              "line": 213,
+              "column": 10
+            },
+            "end": {
+              "line": 215,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "CanvasRenderingContext2D"
+            }
+          },
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_alphaContext",
+          "type": "CanvasRenderingContext2D | null | undefined",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "color-element.html",
+            "start": {
+              "line": 217,
+              "column": 10
+            },
+            "end": {
+              "line": 219,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "CanvasRenderingContext2D"
+            }
+          },
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_hslStep",
+          "type": "number | null | undefined",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../color-input/color-input.html",
+            "start": {
+              "line": 62,
+              "column": 10
+            },
+            "end": {
+              "line": 65,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": true,
+              "attributeType": "Number"
+            }
+          },
+          "inheritedFrom": "ColorInputPattern"
+        },
+        {
+          "name": "_hslPercentStep",
+          "type": "number | null | undefined",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../color-input/color-input.html",
+            "start": {
+              "line": 67,
+              "column": 10
+            },
+            "end": {
+              "line": 70,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": true,
+              "attributeType": "Number"
+            }
+          },
+          "inheritedFrom": "ColorInputPattern"
+        },
+        {
+          "name": "hideTransparencyPattern",
+          "type": "boolean | null | undefined",
+          "description": "hide the transparency pattern",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../color-input/color-badge.html",
+            "start": {
+              "line": 52,
+              "column": 10
+            },
+            "end": {
+              "line": 55,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Boolean"
+            }
+          },
+          "inheritedFrom": "ColorBadgePattern"
+        },
+        {
+          "name": "noRandomColorOnClick",
+          "type": "boolean | null | undefined",
+          "description": "if true, clicking on the color badge won't generate a random color",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../color-input/color-badge.html",
+            "start": {
+              "line": 60,
+              "column": 10
+            },
+            "end": {
+              "line": 64,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "\"_noRandomColorOnClickChanged\"",
+              "attributeType": "Boolean"
+            }
+          },
+          "defaultValue": "false",
+          "inheritedFrom": "ColorBadgePattern"
+        },
+        {
+          "name": "_badgeWidth",
+          "type": "number | null | undefined",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../color-input/color-badge.html",
+            "start": {
+              "line": 66,
+              "column": 10
+            },
+            "end": {
+              "line": 68,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Number"
+            }
+          },
+          "inheritedFrom": "ColorBadgePattern"
+        },
+        {
+          "name": "_badgeHeight",
+          "type": "number | null | undefined",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../color-input/color-badge.html",
+            "start": {
+              "line": 70,
+              "column": 10
+            },
+            "end": {
+              "line": 72,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Number"
+            }
+          },
+          "inheritedFrom": "ColorBadgePattern"
+        },
+        {
+          "name": "_badgeContext",
+          "type": "CanvasRenderingContext2D | null | undefined",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../color-input/color-badge.html",
+            "start": {
+              "line": 74,
+              "column": 10
+            },
+            "end": {
+              "line": 76,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "CanvasRenderingContext2D"
+            }
+          },
+          "inheritedFrom": "ColorBadgePattern"
         },
         {
           "name": "name",
@@ -674,12 +2527,13 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
+            "file": "../color-input/color-badge.html",
             "start": {
-              "line": 145,
+              "line": 86,
               "column": 6
             },
             "end": {
-              "line": 150,
+              "line": 89,
               "column": 7
             }
           },
@@ -688,7 +2542,7 @@
           "return": {
             "type": "void"
           },
-          "inheritedFrom": "ColorPickerPattern"
+          "inheritedFrom": "ColorBadgePattern"
         },
         {
           "name": "redraw",
@@ -837,12 +2691,13 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
+            "file": "color-element.html",
             "start": {
-              "line": 206,
+              "line": 484,
               "column": 6
             },
             "end": {
-              "line": 208,
+              "line": 486,
               "column": 7
             }
           },
@@ -851,7 +2706,7 @@
           "return": {
             "type": "void"
           },
-          "inheritedFrom": "ColorPickerPattern"
+          "inheritedFrom": "ColorElementPattern"
         },
         {
           "name": "_addEventListenerToNode",
@@ -930,6 +2785,966 @@
           "inheritedFrom": "Polymer.GestureEventListeners"
         },
         {
+          "name": "connectedCallback",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../input-picker-pattern/input-picker-pattern.html",
+            "start": {
+              "line": 285,
+              "column": 6
+            },
+            "end": {
+              "line": 289,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "InputPickerPattern"
+        },
+        {
+          "name": "render",
+          "description": "render the element",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../color-input/color-badge.html",
+            "start": {
+              "line": 99,
+              "column": 6
+            },
+            "end": {
+              "line": 101,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "ColorBadgePattern"
+        },
+        {
+          "name": "resize",
+          "description": "resize the element",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../color-input/color-badge.html",
+            "start": {
+              "line": 106,
+              "column": 6
+            },
+            "end": {
+              "line": 108,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "ColorBadgePattern"
+        },
+        {
+          "name": "_computeColorBadgeContexts",
+          "description": "computes the canvas contexts of the color element",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "color-element.html",
+            "start": {
+              "line": 265,
+              "column": 6
+            },
+            "end": {
+              "line": 285,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_computeColorElementSizeProperties",
+          "description": "computes the size properties for the color element canvas",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "color-element.html",
+            "start": {
+              "line": 290,
+              "column": 6
+            },
+            "end": {
+              "line": 312,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_initializeHueSlider",
+          "description": "draw hue-sliders background",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "color-element.html",
+            "start": {
+              "line": 317,
+              "column": 6
+            },
+            "end": {
+              "line": 331,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "hueContext"
+            },
+            {
+              "name": "sliderWidth"
+            },
+            {
+              "name": "saturationHeight"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_drawColorElement",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "color-element.html",
+            "start": {
+              "line": 333,
+              "column": 6
+            },
+            "end": {
+              "line": 356,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "alphaContext"
+            },
+            {
+              "name": "saturationContext"
+            },
+            {
+              "name": "h"
+            },
+            {
+              "name": "sliderWidth"
+            },
+            {
+              "name": "saturationWidth"
+            },
+            {
+              "name": "saturationHeight"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_moveHueSlider",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "color-element.html",
+            "start": {
+              "line": 358,
+              "column": 6
+            },
+            "end": {
+              "line": 360,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "h"
+            },
+            {
+              "name": "height"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_moveAlphaSlider",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "color-element.html",
+            "start": {
+              "line": 362,
+              "column": 6
+            },
+            "end": {
+              "line": 364,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "alpha"
+            },
+            {
+              "name": "height"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_moveColorPin",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "color-element.html",
+            "start": {
+              "line": 366,
+              "column": 6
+            },
+            "end": {
+              "line": 375,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "s"
+            },
+            {
+              "name": "l"
+            },
+            {
+              "name": "width"
+            },
+            {
+              "name": "height"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_moveSelector",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "color-element.html",
+            "start": {
+              "line": 377,
+              "column": 6
+            },
+            "end": {
+              "line": 384,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "element"
+            },
+            {
+              "name": "x"
+            },
+            {
+              "name": "y"
+            },
+            {
+              "name": "borderColor"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_onTrack",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "color-element.html",
+            "start": {
+              "line": 386,
+              "column": 6
+            },
+            "end": {
+              "line": 455,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_onDown",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "color-element.html",
+            "start": {
+              "line": 457,
+              "column": 6
+            },
+            "end": {
+              "line": 461,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_onUp",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "color-element.html",
+            "start": {
+              "line": 463,
+              "column": 6
+            },
+            "end": {
+              "line": 482,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_onFocusButton",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "color-element.html",
+            "start": {
+              "line": 488,
+              "column": 6
+            },
+            "end": {
+              "line": 490,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_onKeyDown",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "color-element.html",
+            "start": {
+              "line": 492,
+              "column": 6
+            },
+            "end": {
+              "line": 551,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_onSelectEnd",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "color-element.html",
+            "start": {
+              "line": 553,
+              "column": 6
+            },
+            "end": {
+              "line": 561,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_stopPropagation",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../input-picker-pattern/input-picker-pattern.html",
+            "start": {
+              "line": 341,
+              "column": 6
+            },
+            "end": {
+              "line": 344,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "InputPickerPattern"
+        },
+        {
+          "name": "_checkSelectorForProperty",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "color-element.html",
+            "start": {
+              "line": 569,
+              "column": 6
+            },
+            "end": {
+              "line": 581,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            },
+            {
+              "name": "id"
+            }
+          ],
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_defineActiveCanvas",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "color-element.html",
+            "start": {
+              "line": 583,
+              "column": 6
+            },
+            "end": {
+              "line": 596,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "ColorElementPattern"
+        },
+        {
+          "name": "_equals",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../color-input/color-input.html",
+            "start": {
+              "line": 74,
+              "column": 6
+            },
+            "end": {
+              "line": 76,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "a"
+            },
+            {
+              "name": "b"
+            }
+          ],
+          "inheritedFrom": "ColorInputPattern"
+        },
+        {
+          "name": "_equalsNot",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../color-input/color-input.html",
+            "start": {
+              "line": 78,
+              "column": 6
+            },
+            "end": {
+              "line": 80,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "a"
+            },
+            {
+              "name": "b"
+            },
+            {
+              "name": "c"
+            }
+          ],
+          "inheritedFrom": "ColorInputPattern"
+        },
+        {
+          "name": "_computeHexPatternString",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../color-input/color-input.html",
+            "start": {
+              "line": 82,
+              "column": 6
+            },
+            "end": {
+              "line": 84,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "_validateHex"
+            }
+          ],
+          "inheritedFrom": "ColorInputPattern"
+        },
+        {
+          "name": "_computeHslStep",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../color-input/color-input.html",
+            "start": {
+              "line": 86,
+              "column": 6
+            },
+            "end": {
+              "line": 88,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "hslPrecision"
+            }
+          ],
+          "inheritedFrom": "ColorInputPattern"
+        },
+        {
+          "name": "_computeHslPercentStep",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../color-input/color-input.html",
+            "start": {
+              "line": 90,
+              "column": 6
+            },
+            "end": {
+              "line": 92,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "hslPrecision"
+            }
+          ],
+          "inheritedFrom": "ColorInputPattern"
+        },
+        {
+          "name": "_computeFormatPattern",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../color-input/color-text-input.html",
+            "start": {
+              "line": 142,
+              "column": 6
+            },
+            "end": {
+              "line": 159,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "format"
+            },
+            {
+              "name": "fixedFormat"
+            },
+            {
+              "name": "alphaMode"
+            }
+          ],
+          "inheritedFrom": "ColorTextInputPattern"
+        },
+        {
+          "name": "_computeFormatPlaceholder",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../color-input/color-text-input.html",
+            "start": {
+              "line": 161,
+              "column": 6
+            },
+            "end": {
+              "line": 172,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "format"
+            },
+            {
+              "name": "alphaMode"
+            }
+          ],
+          "inheritedFrom": "ColorTextInputPattern"
+        },
+        {
+          "name": "randomColor",
+          "description": "generates a random color",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../color-input/color-badge.html",
+            "start": {
+              "line": 113,
+              "column": 6
+            },
+            "end": {
+              "line": 119,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "ColorBadgePattern"
+        },
+        {
+          "name": "_draw",
+          "description": "fills a canvas context with a color",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../color-input/color-badge.html",
+            "start": {
+              "line": 132,
+              "column": 6
+            },
+            "end": {
+              "line": 139,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "context",
+              "type": "CanvasRenderingContext2D",
+              "description": "The context of the canvas that should be drawn."
+            },
+            {
+              "name": "colorString",
+              "type": "String",
+              "description": "The color string to be drawn."
+            },
+            {
+              "name": "width",
+              "type": "Number",
+              "description": "The width to draw within the canvas."
+            },
+            {
+              "name": "height",
+              "type": "Number",
+              "description": "The height to draw within the canvas"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "ColorBadgePattern"
+        },
+        {
+          "name": "_computeBadgeContext",
+          "description": "computes the canvas contexts of the badge element",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../color-input/color-badge.html",
+            "start": {
+              "line": 144,
+              "column": 6
+            },
+            "end": {
+              "line": 150,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "ColorBadgePattern"
+        },
+        {
+          "name": "_computeBadgeSizeProperties",
+          "description": "computes the size properties for the badge canvas",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../color-input/color-badge.html",
+            "start": {
+              "line": 155,
+              "column": 6
+            },
+            "end": {
+              "line": 169,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "ColorBadgePattern"
+        },
+        {
+          "name": "_noRandomColorOnClickChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../color-input/color-badge.html",
+            "start": {
+              "line": 171,
+              "column": 6
+            },
+            "end": {
+              "line": 177,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "noRandomColorOnClick"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "ColorBadgePattern"
+        },
+        {
+          "name": "_addClickListenerForBadge",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../color-input/color-badge.html",
+            "start": {
+              "line": 179,
+              "column": 6
+            },
+            "end": {
+              "line": 184,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "ColorBadgePattern"
+        },
+        {
+          "name": "_removeClickListenerForBadge",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../color-input/color-badge.html",
+            "start": {
+              "line": 186,
+              "column": 6
+            },
+            "end": {
+              "line": 191,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "ColorBadgePattern"
+        },
+        {
+          "name": "_computeIsSetFunction",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../color-input/color-text-input.html",
+            "start": {
+              "line": 33,
+              "column": 6
+            },
+            "end": {
+              "line": 68,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "propertyForValue"
+            },
+            {
+              "name": "format"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "ColorFormMixin"
+        },
+        {
+          "name": "reset",
+          "description": "reset confirmedValue and value",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../input-picker-pattern/input-picker-pattern.html",
+            "start": {
+              "line": 491,
+              "column": 6
+            },
+            "end": {
+              "line": 496,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "value",
+              "type": "Number",
+              "description": "value to set"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "InputPickerPattern"
+        },
+        {
           "name": "_attachDom",
           "description": "attach dom with `delegatesFocus: true` so that the element is also focussed while its's children are too, and to autofocus to first tabable",
           "privacy": "protected",
@@ -951,28 +3766,6 @@
             }
           ],
           "inheritedFrom": "FormElementMixin"
-        },
-        {
-          "name": "connectedCallback",
-          "description": "",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../input-picker-pattern/input-picker-pattern.html",
-            "start": {
-              "line": 285,
-              "column": 6
-            },
-            "end": {
-              "line": 289,
-              "column": 7
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "InputPickerPattern"
         },
         {
           "name": "_defaultIsSet",
@@ -1244,34 +4037,6 @@
           "inheritedFrom": "InputPickerPattern"
         },
         {
-          "name": "reset",
-          "description": "reset confirmedValue and value",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../input-picker-pattern/input-picker-pattern.html",
-            "start": {
-              "line": 491,
-              "column": 6
-            },
-            "end": {
-              "line": 496,
-              "column": 7
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "value",
-              "type": "Number",
-              "description": "value to set"
-            }
-          ],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "InputPickerPattern"
-        },
-        {
           "name": "disconnectedCallback",
           "description": "",
           "privacy": "public",
@@ -1446,32 +4211,6 @@
           },
           "metadata": {},
           "params": [],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "InputPickerPattern"
-        },
-        {
-          "name": "_stopPropagation",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../input-picker-pattern/input-picker-pattern.html",
-            "start": {
-              "line": 341,
-              "column": 6
-            },
-            "end": {
-              "line": 344,
-              "column": 7
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "e"
-            }
-          ],
           "return": {
             "type": "void"
           },
@@ -1799,6 +4538,42 @@
           "metadata": {},
           "type": "string | null | undefined",
           "inheritedFrom": "FormElementMixin"
+        },
+        {
+          "name": "hide-transparency-pattern",
+          "description": "hide the transparency pattern",
+          "sourceRange": {
+            "file": "../color-input/color-badge.html",
+            "start": {
+              "line": 52,
+              "column": 10
+            },
+            "end": {
+              "line": 55,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined",
+          "inheritedFrom": "ColorBadgePattern"
+        },
+        {
+          "name": "no-random-color-on-click",
+          "description": "if true, clicking on the color badge won't generate a random color",
+          "sourceRange": {
+            "file": "../color-input/color-badge.html",
+            "start": {
+              "line": 60,
+              "column": 10
+            },
+            "end": {
+              "line": 64,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined",
+          "inheritedFrom": "ColorBadgePattern"
         },
         {
           "name": "name",
@@ -2963,6 +5738,783 @@
     }
   ],
   "mixins": [
+    {
+      "description": "Mixin for color-element",
+      "summary": "",
+      "path": "color-element.html",
+      "properties": [
+        {
+          "name": "_sliderWidth",
+          "type": "number | null | undefined",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 197,
+              "column": 10
+            },
+            "end": {
+              "line": 199,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Number"
+            }
+          }
+        },
+        {
+          "name": "_saturationHeight",
+          "type": "number | null | undefined",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 201,
+              "column": 10
+            },
+            "end": {
+              "line": 203,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Number"
+            }
+          }
+        },
+        {
+          "name": "_saturationWidth",
+          "type": "number | null | undefined",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 205,
+              "column": 10
+            },
+            "end": {
+              "line": 207,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Number"
+            }
+          }
+        },
+        {
+          "name": "_hueContext",
+          "type": "CanvasRenderingContext2D | null | undefined",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 209,
+              "column": 10
+            },
+            "end": {
+              "line": 211,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "CanvasRenderingContext2D"
+            }
+          }
+        },
+        {
+          "name": "_saturationContext",
+          "type": "CanvasRenderingContext2D | null | undefined",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 213,
+              "column": 10
+            },
+            "end": {
+              "line": 215,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "CanvasRenderingContext2D"
+            }
+          }
+        },
+        {
+          "name": "_alphaContext",
+          "type": "CanvasRenderingContext2D | null | undefined",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 217,
+              "column": 10
+            },
+            "end": {
+              "line": 219,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "CanvasRenderingContext2D"
+            }
+          }
+        }
+      ],
+      "methods": [
+        {
+          "name": "_addEventListenerToNode",
+          "description": "Add the event listener to the node if it is a gestures event.",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../polymer/lib/mixins/gesture-event-listeners.html",
+            "start": {
+              "line": 55,
+              "column": 6
+            },
+            "end": {
+              "line": 59,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "node",
+              "type": "!Node",
+              "description": "Node to add event listener to"
+            },
+            {
+              "name": "eventName",
+              "type": "string",
+              "description": "Name of event"
+            },
+            {
+              "name": "handler",
+              "type": "function (!Event): void",
+              "description": "Listener function to add"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "Polymer.GestureEventListeners"
+        },
+        {
+          "name": "_removeEventListenerFromNode",
+          "description": "Remove the event listener to the node if it is a gestures event.",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../polymer/lib/mixins/gesture-event-listeners.html",
+            "start": {
+              "line": 69,
+              "column": 6
+            },
+            "end": {
+              "line": 73,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "node",
+              "type": "!Node",
+              "description": "Node to remove event listener from"
+            },
+            {
+              "name": "eventName",
+              "type": "string",
+              "description": "Name of event"
+            },
+            {
+              "name": "handler",
+              "type": "function (!Event): void",
+              "description": "Listener function to remove"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "Polymer.GestureEventListeners"
+        },
+        {
+          "name": "ready",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 233,
+              "column": 6
+            },
+            "end": {
+              "line": 236,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "connectedCallback",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 238,
+              "column": 6
+            },
+            "end": {
+              "line": 241,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "render",
+          "description": "render the element",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 246,
+              "column": 6
+            },
+            "end": {
+              "line": 252,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "resize",
+          "description": "resize the element",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 257,
+              "column": 6
+            },
+            "end": {
+              "line": 260,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_computeColorBadgeContexts",
+          "description": "computes the canvas contexts of the color element",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 265,
+              "column": 6
+            },
+            "end": {
+              "line": 285,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_computeColorElementSizeProperties",
+          "description": "computes the size properties for the color element canvas",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 290,
+              "column": 6
+            },
+            "end": {
+              "line": 312,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_initializeHueSlider",
+          "description": "draw hue-sliders background",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 317,
+              "column": 6
+            },
+            "end": {
+              "line": 331,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "hueContext"
+            },
+            {
+              "name": "sliderWidth"
+            },
+            {
+              "name": "saturationHeight"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_drawColorElement",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 333,
+              "column": 6
+            },
+            "end": {
+              "line": 356,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "alphaContext"
+            },
+            {
+              "name": "saturationContext"
+            },
+            {
+              "name": "h"
+            },
+            {
+              "name": "sliderWidth"
+            },
+            {
+              "name": "saturationWidth"
+            },
+            {
+              "name": "saturationHeight"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_moveHueSlider",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 358,
+              "column": 6
+            },
+            "end": {
+              "line": 360,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "h"
+            },
+            {
+              "name": "height"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_moveAlphaSlider",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 362,
+              "column": 6
+            },
+            "end": {
+              "line": 364,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "alpha"
+            },
+            {
+              "name": "height"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_moveColorPin",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 366,
+              "column": 6
+            },
+            "end": {
+              "line": 375,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "s"
+            },
+            {
+              "name": "l"
+            },
+            {
+              "name": "width"
+            },
+            {
+              "name": "height"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_moveSelector",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 377,
+              "column": 6
+            },
+            "end": {
+              "line": 384,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "element"
+            },
+            {
+              "name": "x"
+            },
+            {
+              "name": "y"
+            },
+            {
+              "name": "borderColor"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_onTrack",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 386,
+              "column": 6
+            },
+            "end": {
+              "line": 455,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_onDown",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 457,
+              "column": 6
+            },
+            "end": {
+              "line": 461,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_onUp",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 463,
+              "column": 6
+            },
+            "end": {
+              "line": 482,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_onDblClick",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 484,
+              "column": 6
+            },
+            "end": {
+              "line": 486,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_onFocusButton",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 488,
+              "column": 6
+            },
+            "end": {
+              "line": 490,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_onKeyDown",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 492,
+              "column": 6
+            },
+            "end": {
+              "line": 551,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_onSelectEnd",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 553,
+              "column": 6
+            },
+            "end": {
+              "line": 561,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_stopPropagation",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 563,
+              "column": 6
+            },
+            "end": {
+              "line": 567,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_checkSelectorForProperty",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 569,
+              "column": 6
+            },
+            "end": {
+              "line": 581,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            },
+            {
+              "name": "id"
+            }
+          ]
+        },
+        {
+          "name": "_defineActiveCanvas",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 583,
+              "column": 6
+            },
+            "end": {
+              "line": 596,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        }
+      ],
+      "staticMethods": [],
+      "demos": [],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 20,
+          "column": 2
+        },
+        "end": {
+          "line": 598,
+          "column": 3
+        }
+      },
+      "privacy": "public",
+      "name": "ColorElementPattern",
+      "attributes": [],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [],
+      "mixins": [
+        "Polymer.GestureEventListeners"
+      ]
+    },
     {
       "description": "Mixin for color-picker",
       "summary": "",

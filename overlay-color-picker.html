@@ -17,11 +17,18 @@
    *
    *  @appliesMixin OverlayPickerMixin
    *  @appliesMixin ColorPickerPattern
+   *  @appliesMixin ColorElementPattern
+   *  @appliesMixin ColorInputPattern
+   *  @appliesMixin ColorTextInputPattern
+   *  @appliesMixin ColorBadgePattern
+   *  @appliesMixin ColorFormMixin
+   *  @appliesMixin ColorMixin
+   *  @appliesMixin InputPickerPattern
    *
    *  @demo demo/color-picker.html Color Picker
    *  @demo demo/form.html In A Form
    **/
-    class OverlayColorPicker extends OverlayPickerMixin(ColorPickerPattern(Polymer.Element)) { // eslint-disable-line no-undef
+    class OverlayColorPicker extends OverlayPickerMixin( ColorPickerPattern(ColorElementPattern(ColorInputPattern(ColorTextInputPattern(ColorBadgePattern(ColorFormMixin(ColorMixin(InputPickerPattern(Polymer.Element)))))))) ) { // eslint-disable-line no-undef
 
       static get is() {
         return 'overlay-color-picker';

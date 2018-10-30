@@ -10,9 +10,8 @@
     <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
     <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
 
+    <link rel="import" href="../../color-input/color-input.html">
     <link rel="import" href="../color-element.html">
-    <link rel="import" href="../color-picker.html">
-    <link rel="import" href="../overlay-color-picker.html">
 
     <custom-style>
       <style is="custom-style" include="demo-pages-shared-styles">
@@ -33,7 +32,7 @@
         <template>
           <dom-bind>
             <template is="dom-bind">
-              <color-input color-string="{{value}}" default="hsl(222, 50%, 90%)" alpha="{{alpha}}" format="{{format}}"></color-input>
+              <color-input color-string="{{value}}" default="rgb(222, 133, 11)" alpha="{{alpha}}" format="{{format}}"></color-input>
               <br>
               <br>
               <color-element color-string="{{value}}" hex="{{hex}}" alpha="{{alpha}}" format="{{format}}"></color-element>

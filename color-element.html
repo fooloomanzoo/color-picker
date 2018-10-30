@@ -2,36 +2,40 @@
 <link rel="import" href="../polymer/lib/mixins/gesture-event-listeners.html">
 <link rel="import" href="../polymer/lib/utils/mixin.html">
 <link rel="import" href="../property-mixins/color-mixin.html">
-<link rel="import" href="../input-picker-pattern/input-shared-style.html">
+<link rel="import" href="../property-mixins/number-utilities.html">
 <link rel="import" href="../input-picker-pattern/input-picker-shared-style.html">
 <link rel="import" href="../input-picker-pattern/form-element-mixin.html">
 <link rel="import" href="../input-picker-pattern/input-pattern.html">
 <link rel="import" href="../color-input/color-text-input.html">
+<link rel="import" href="../color-input/transparency-pattern-style.html">
 
 <script>
   /**
    * Mixin for color-element
-   *
-   * @appliesMixin Polymer.GestureEventListeners
    *
    * @mixinFunction
    * @polymer
    */
   const ColorElementPattern = function(superClass) {
 
-    return class extends Polymer.GestureEventListeners(superClass) { // eslint-disable-line no-unused-vars, no-undef
+    return class extends superClass { // eslint-disable-line no-unused-vars, no-undef
+
+      static get styleToInclude() {
+        return `input-picker-shared-style transparency-pattern-style`;
+      }
 
       static get styleTemplate() {
         return `
           ${super.styleTemplate || ''}
+          :host {
+            --computed-inner-border-radius: calc(var(--color-element-badge-radius, var(--input-picker-border-radius, 0.3em)) - var(--input-picker-padding, 0.5em)/2);
+          }
           #colorElement {
             color: var(--input-picker-color);
             background-color: var(--input-picker-background);
-            border-radius: var(--color-element-badge-radius, var(--input-picker-border-radius, 6px));
-            padding: var(--input-picker-padding);
+            border-radius: var(--color-element-badge-radius, var(--input-picker-border-radius, 0.3em));
+            padding: var(--input-picker-padding, 0.5em);
             @apply --input-picker;
-            display: -ms-inline-flexbox;
-            display: -webkit-inline-flex;
             display: inline-flex;
             flex-flow: column nowrap;
             position: relative;
@@ -48,6 +52,7 @@
             border-top-right-radius: inherit;
             border-bottom-left-radius: 0;
             border-bottom-right-radius: 0;
+            outline: none;
           }
           #colorElement .selectors > * {
             position: relative;
@@ -57,12 +62,13 @@
             box-sizing: content-box;
             border-radius: 0;
             flex-shrink: 0;
+            overflow: visible;
           }
           #colorElement .selectors > :first-child {
-            border-top-left-radius: inherit;
+            border-top-left-radius: var(--computed-inner-border-radius);
           }
           #colorElement .selectors > :last-child {
-            border-top-right-radius: inherit;
+            border-top-right-radius: var(--computed-inner-border-radius);
           }
           #colorElement canvas {
             pointer-events: all;
@@ -81,7 +87,7 @@
           }
           #colorElement #saturationBadge {
             cursor: crosshair;
-            min-width: var(--color-element-width, 184px);
+            width: var(--color-element-width, 184px);
             flex: 1;
             right: 0;
             left: auto;
@@ -90,12 +96,6 @@
           #colorElement #alphaBadge {
             width: var(--color-slider-width, 16px);
           }
-          @media (pointer:coarse) {
-            #colorElement #hueBadge,
-            #colorElement #alphaBadge {
-              width: var(--color-slider-width, 20px);
-            }
-          }
           #colorElement #alphaBadge {
             background: #fff;
           }
@@ -103,17 +103,22 @@
             position: absolute;
             top: 0; left: 0;
             pointer-events: none;
-            background: transparent;
             border: thin solid #fff;
             z-index: 1;
-            mix-blend-mode: var(--color-selector-mix-blend-mode, exclusion);
-            transition-property: background-color;
-            transition-duration: var(--input-transition-duration, 250ms);
-            transition-timing-function: var(--input-transition-timing-function, cubic-bezier(0.6, 1, 0.2, 1));
+            box-sizing: border-box;
+            overflow: hidden;
           }
-          #colorElement .selector:focus {
-            border-color: #fff;
-            background: rgba(255,255,255,0.33);
+          #colorElement .selector:before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            pointer-events: none;
+            background-color: var(--input-focus-background, rgba(0,0,0,0.1));
+            opacity: 0;
+          }
+          #colorElement .selectors canvas.active ~ .selector:before,
+          #colorElement .selectors canvas:hover ~ .selector:before {
+            opacity: 0.5;
           }
           #colorElement .slider {
             padding: var(--color-slider-padding, 2px);
@@ -125,7 +130,9 @@
             padding: var(--color-pin-radius, 3px);
             border-radius: 50%;
             transform: translate(-50%, -50%);
-            transition-property: opacity, background-color;
+            transition-property: opacity;
+            transition-duration: var(--input-transition-duration, 250ms);
+            transition-timing-function: var(--input-transition-timing-function, cubic-bezier(0.6, 1, 0.2, 1));
           }
           #colorElement canvas.active:hover ~ .pin {
             opacity: 0;
@@ -133,11 +140,6 @@
           #colorElement #alpha.active,
           #colorElement #hue.active {
             cursor: none;
-          }
-          @media (pointer:coarse) {
-            canvas.active ~ .pin {
-              opacity: 1;
-            }
           }
           #colorElement #buttons {
             display: inline-flex;
@@ -151,24 +153,33 @@
           #colorElement #buttons #formats {
             align-self: stretch;
           }
+          @media (pointer:coarse) {
+            canvas.active ~ .pin {
+              opacity: 1;
+            }
+            #colorElement #hueBadge,
+            #colorElement #alphaBadge {
+              width: var(--color-slider-width, 20px);
+            }
+          }
         `;
       }
 
       static get colorElementTemplate() {
         return `
           <div id="colorElement">
-            <div class="selectors">
+            <div class="selectors" tabindex="0" on-keydown="_onKeyDown">
               <div id="saturationBadge" class="badge">
                 <canvas id="saturation" prop="color" width$="[[_saturationWidth]]" height$="[[_saturationHeight]]" on-dblclick="_onDblClick" on-track="_onTrack" on-down="_onDown" on-up="_onUp"></canvas>
-                <button id="colorPin" prop="color" hidden$=[[!_valueIsSet]] class="selector pin" on-focus="_onFocusButton" on-keydown="_onKeyDown"></button>
+                <div id="colorPin" class="selector pin" prop="color" hidden$=[[!valueIsSet]]></div>
               </div>
               <div id="alphaBadge" class="transparency">
                 <canvas id="alpha" prop="alpha" width$="[[_sliderWidth]]" height$="[[_saturationHeight]]" on-track="_onTrack" on-down="_onDown" on-tap="_onUp"></canvas>
-                <button id="alphaSlider" class="selector slider" prop="alpha" on-focus="_onFocusButton" on-keydown="_onKeyDown"></button>
+                <div id="alphaSlider" class="selector slider" prop="alpha"></div>
               </div>
               <div id="hueBadge">
                 <canvas id="hue" prop="hue" width$="[[_sliderWidth]]" height$="[[_saturationHeight]]" on-track="_onTrack" on-down="_onDown" on-tap="_onUp"></canvas>
-                <button id="hueSlider" class="selector slider" prop="hue" on-focus="_onFocusButton" on-keydown="_onKeyDown"></button>
+                <div id="hueSlider" class="selector slider" prop="hue"></div>
               </div>
             </div>
             <div id="buttons">
@@ -184,7 +195,7 @@
        */
       static get buttonTemplate() {
         return `
-          <button id="random" class="icon random" on-click="random" on-keydown="_stopPropagation">
+          <button id="random" class="icon random" on-click="randomColor" on-keydown="_stopPropagation">
             <svg viewBox="0 0 24 24">
               <g><path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></g>
             </svg>
@@ -200,11 +211,13 @@
           },
 
           _saturationHeight: {
-            type: Number
+            type: Number,
+            value: 184
           },
 
           _saturationWidth: {
-            type: Number
+            type: Number,
+            value: 184
           },
 
           _hueContext: {
@@ -233,7 +246,7 @@
 
       ready() {
         super.ready();
-        this._computeColorBadgeContexts();
+        this._computeColorElementContexts();
       }
 
       connectedCallback() {
@@ -242,20 +255,28 @@
       }
 
       /**
-       * render the element manually
+       * render the element
        */
       render() {
         super.render && super.render();
-        // this._initializeHueSlider(this._saturationHeight)
-        // this._drawColorElement(this.h, this._saturationHeight);
-        // this._moveAlphaSlider(this.alpha, this._saturationHeight);
-        // this._moveColorPin(this.s, this.l, this._saturationWidth, this._saturationHeight);
+        this._drawColorElement(this._alphaContext, this._saturationContext, this.h, this._sliderWidth, this._saturationWidth, this._saturationHeight);
+        this._moveHueSlider(this.h, this._saturationHeight)
+        this._moveAlphaSlider(this.alpha, this._saturationHeight);
+        this._moveColorPin(this.s, this.l, this._saturationWidth, this._saturationHeight);
+      }
+
+      /**
+       * resize the element
+       */
+      resize() {
+        super.resize && super.resize();
+        this._computeColorElementSizeProperties();
       }
 
       /**
        * computes the canvas contexts of the color element
        */
-      _computeColorBadgeContexts() {
+      _computeColorElementContexts() {
         let toSet = {};
 
         const alphaCanvas = this.shadowRoot.querySelector('#alpha');
@@ -289,7 +310,7 @@
           if (alphaBadge) {
             box = getBoundingClientRectByRelative(alphaBadge, true);
             if (box.width !== this._sliderWidth) {
-              toSet._sliderWidth = (sliderwidth || 16);
+              toSet._sliderWidth = Math.ceil(box.width) || 16;
             }
           }
           const saturationBadge = this.shadowRoot.querySelector('#saturationBadge');
@@ -297,7 +318,7 @@
             box = getBoundingClientRectByRelative(saturationBadge, true);
             if (box.width !== this._saturationWidth || box.height !== this._saturationHeight) {
               toSet._saturationWidth = Math.ceil(box.width) || 184;
-              toSet._saturationHeight = Math.ceil(box.height) || 100;
+              toSet._saturationHeight = Math.ceil(box.height) || 184;
             }
           }
           this.setProperties(toSet);
@@ -311,20 +332,20 @@
         if (hueContext === undefined || sliderWidth === undefined || saturationHeight === undefined) {
           return;
         }
-        let gradient = huecontext.createLinearGradient(0, 0, 1, saturationHeight);
+        let gradient = hueContext.createLinearGradient(0, 0, 1, saturationHeight);
 
-        huecontext.clearRect(0, 0, sliderWidth, saturationHeight);
+        hueContext.clearRect(0, 0, sliderWidth, saturationHeight);
         for (let step = 0; step < 360; step += 30) {
           gradient.addColorStop(step / 360, `hsl(${step},100%,50%)`);
         }
         gradient.addColorStop(1, `hsl(0,100%,50%)`);
-        huecontext.fillStyle = gradient;
-        huecontext.fillRect(0, 0, sliderWidth,
+        hueContext.fillStyle = gradient;
+        hueContext.fillRect(0, 0, sliderWidth,
           saturationHeight);
       }
 
       _drawColorElement(alphaContext, saturationContext, h, sliderWidth, saturationWidth, saturationHeight) {
-        if (alphaContext === undefined || saturationContext === undefined || height === undefined) {
+        if (alphaContext === undefined || saturationContext === undefined || sliderWidth === undefined || saturationWidth === undefined || saturationHeight === undefined) {
           return;
         }
         let gradient;
@@ -353,30 +374,170 @@
       }
 
       _moveAlphaSlider(alpha, height) {
-        this._moveSelector(this.$.alphaSlider, 0, (1 - (alpha || 1)) * height);
+        this._moveSelector(this.$.alphaSlider, 0, (1 - (alpha || 0)) * height, `hsl(0,0%,${(alpha || 0)*100}%)`);
       }
 
       _moveColorPin(s, l, width, height) {
-        // convert color model
+        if (this._activeProperty === 'color') {
+          return;
+        }
+        // convert saturation and lightness to (x,y) coordinates
         const c = s * (l < .5 ? l : 1 - l);
         const s2 = ((2 * c) / (l + c)) || 0;
         const v = 1 - (l + c);
-        this._moveSelector(this.$.colorPin, width * s2, height * v);
+        this._moveSelector(this.$.colorPin, width * s2, height * v, `hsl(0,0%,${100*(1-(s+l)/2)}%)`);
       }
 
-      _moveSelector(element, x, y) {
+      _moveSelector(element, x, y, borderColor) {
         if (element === undefined) {
           return;
         }
         element.style.left = `${Math.round(x || 0)}px`;
         element.style.top = `${Math.round(y || 0)}px`;
+        element.style['border-color'] = borderColor || '';
       }
 
-      _checkSelectorForProperty(e, id) {
+      _onDown(e) {
+        this._stopPropagation(e);
+        this._onSelectEnd(e);
+        this._activeProperty = null;
+        this._onTrack(e);
+      }
+
+      _onTrack(e) {
+        this._stopPropagation(e);
+        this._getActiveProperty(e)
+        if (!this._activeSelectionCanvas) {
+          this._defineActiveCanvas();
+        }
+        const rect = this._activeSelectionRect;
+
+        let offsetY = (e.detail.y || e.clientY) - rect.top;
+        // check if vertically out of bounds
+        if (offsetY > rect.height) {
+          offsetY = rect.height;
+        } else if (offsetY < 0) {
+          offsetY = 0;
+        }
+
+        switch (this._activeProperty) {
+          case 'alpha':
+            this.alpha = +numberUtilities.normalizedClamp((rect.height - offsetY) / rect.height).toFixed(2);
+            break;
+          case 'hue':
+            this.h = numberUtilities.mathMod(Math.floor(359 * offsetY / rect.height), 360);
+            break;
+          case 'color':
+            let offsetX = (e.detail.x || e.clientX) - rect.left;
+            // check if horizontal out of bound
+            if (offsetX > rect.width) {
+              offsetX = rect.width;
+            } else if (offsetX < 0) {
+              offsetX = 0;
+            }
+
+            const s = offsetX / rect.width;
+            const v = 1 - offsetY / rect.height;
+            const c = (2 - s) * v;
+            this.setProperties(this._normalizeHsl({
+              h: this.h || 0,
+              s: c === 0 ? 0 : +(s * v / (c < 1 ? c : 2 - c)),
+              l: +(c / 2)
+            }));
+            // move color pin so that the position is garanteed to be defined by the last cursor position (black defines in hsl the complete lower area)
+            this._moveSelector(this.$.colorPin, offsetX, offsetY, `hsl(0,0%,${100*(1-(this.s+this.l)/2)}%)`);
+        }
+        if (e.detail.state && e.detail.state === 'end') {
+          this._onSelectEnd(e);
+        }
+      }
+
+      _onKeyDown(e) {
+        if (this._activeProperty) {
+          switch (this._activeProperty) {
+            case 'alpha':
+              if (!this.alphaMode) {
+                this.alphaMode = true;
+              }
+              if (e.keyCode === 38) { // up
+                this.alpha = numberUtilities.normalizedClamp(numberUtilities.safeAdd(this.alpha, 0.01));
+                e.preventDefault(); e.stopPropagation();
+              } else if (e.keyCode === 40) { // down
+                this.alpha = numberUtilities.normalizedClamp(numberUtilities.safeAdd(this.alpha, -0.01));
+                e.preventDefault(); e.stopPropagation();
+              }
+              break;
+            case 'hue':
+              if (e.keyCode === 38) { // up
+                this.h = Math.round(this.h - 1);
+                e.preventDefault(); e.stopPropagation();
+              } else if (e.keyCode === 40) { // down
+                this.h = Math.round(this.h + 1);
+                e.preventDefault(); e.stopPropagation();
+              }
+              break;
+            case 'color':
+              if (!this._activeSelectionRect) {
+                this._activeSelectionCanvas = this.$.saturation;
+                this._activeSelectionRect = this._activeSelectionCanvas.getBoundingClientRect();
+                // this._activeSelectionCanvas.classList.add('active');
+              }
+              let ev = {
+                detail: this.$.colorPin.getBoundingClientRect()
+              };
+              // get the the center of the pin
+              ev.detail.x = ev.detail.x + ev.detail.width / 2;
+              ev.detail.y = ev.detail.y + ev.detail.height / 2;
+              // walk throught canvas in percent step
+              if (e.keyCode === 38) { // up
+                ev.detail.y = ev.detail.y - (Math.floor(this._activeSelectionRect.height / 100) || 1);
+              } else if (e.keyCode === 40) { // down
+                ev.detail.y = ev.detail.y + (Math.floor(this._activeSelectionRect.height / 100) || 1);
+              } else if (e.keyCode === 37) { // left
+                ev.detail.x = ev.detail.x - (Math.floor(this._activeSelectionRect.width / 100) || 1);
+              } else if (e.keyCode === 39) { // right
+                ev.detail.x = ev.detail.x + (Math.floor(this._activeSelectionRect.width / 100) || 1);
+              } else {
+                return;
+              }
+              e.preventDefault(); e.stopPropagation();
+              this._onTrack(ev);
+          }
+        }
+      }
+
+      _onUp(e) {
+        this._stopPropagation(e);
+        this._onTrack(e);
+        this._onSelectEnd(e);
+      }
+
+      _onDblClick() {}
+
+      _onSelectEnd(e) {
+        this._stopPropagation(e);
+        if (this._activeSelectionCanvas) {
+          this._activeSelectionCanvas.classList.remove('active');
+        }
+        this._activeSelectionCanvas = null;
+        this._activeSelectionRect = null;
+      }
+
+      _stopPropagation(e) {
+        e && e.stopPropagation && e.stopPropagation();
+        e && e.detail && e.detail.sourceEvent && e.detail.sourceEvent.stopPropagation && e.detail.sourceEvent.stopPropagation();
+      }
+
+      _getActiveProperty(e) {
+        if (!this._activeProperty) {
+          this._activeProperty = this._checkSelectorForProperty(e)
+        }
+        return this._activeProperty;
+      }
+
+      _checkSelectorForProperty(e) {
         if (e.target.hasAttribute('prop')) {
           return e.target.getAttribute('prop');
-        } else if (id && this.$[id] && this.$[id].hasAttribute('prop')) {
-          return this.$[id].getAttribute('prop');
         } else if (e.path) {
           for (let i = 0; i < e.path.length; i++) {
             if (e.path[i] && e.path[i].hasAttribute && e.path[i].hasAttribute('prop')) {
@@ -386,7 +547,7 @@
         }
       }
 
-      _getActiveCanvas() {
+      _defineActiveCanvas() {
         switch (this._activeProperty) {
           case 'alpha':
             this._activeSelectionCanvas = this.$.alpha;
@@ -399,186 +560,6 @@
         }
         this._activeSelectionRect = this._activeSelectionCanvas.getBoundingClientRect();
         this._activeSelectionCanvas.classList.add('active');
-      }
-
-      _onTrack(e) {
-        this._stopPropagation(e);
-        if (!this._activeProperty) {
-          this._activeProperty = this._checkSelectorForProperty(e);
-        }
-        if (!this._activeSelectionCanvas) {
-          this._getActiveCanvas();
-        }
-        const rect = this._activeSelectionRect;
-        let s, c, h, v, offsetX = e.detail.x || e.clientX,
-          offsetY = e.detail.y || e.clientY;
-        switch (this._activeProperty) {
-          case 'alpha':
-            offsetY = offsetY - rect.top;
-            if (offsetY > rect.height) {
-              offsetY = rect.height;
-            } else if (offsetY < 0) {
-              offsetY = 0;
-            }
-            c = c + this._normalizedClamp((rect.height - offsetY) / rect.height).toFixed(2);
-            if (!this._hexAlphaSupported && this.format === 'hex' && c !== 1) {
-              this.setProperties({
-                format: 'auto',
-                alphaMode: true,
-                alpha: c
-              });
-            } else {
-              this.alpha = c;
-            }
-            this._moveSelector(this.$.alphaSlider, 0, offsetY);
-            break;
-          case 'hue':
-            offsetY = offsetY - rect.top;
-            if (offsetY > rect.height) {
-              offsetY = rect.height;
-            } else if (offsetY < 0) {
-              offsetY = 0;
-            }
-            h = Math.round(360 * offsetY / rect.height);
-            this.h = this._mathMod(h, 360);
-            this._moveSelector(this.$.hueSlider, 0, offsetY);
-            break;
-          default:
-            offsetX = offsetX - rect.left;
-            if (offsetX > rect.width) {
-              offsetX = rect.width;
-            } else if (offsetX < 0) {
-              offsetX = 0;
-            }
-            offsetY = offsetY - rect.top;
-            if (offsetY > rect.height) {
-              offsetY = rect.height;
-            } else if (offsetY < 0) {
-              offsetY = 0;
-            }
-            s = offsetX / rect.width;
-            v = 1 - offsetY / rect.height;
-            c = (2 - s) * v;
-            this.setProperties({
-              h: this.h || 0,
-              s: c === 0 ? 0 : +(s * v / (c < 1 ? c : 2 - c)).toFixed(2),
-              l: +(c / 2).toFixed(2)
-            });
-            this._moveSelector(this.$.colorPin, offsetX, offsetY);
-        }
-        if (e.detail.state && e.detail.state === 'end') {
-          this._onSelectEnd(e);
-        }
-      }
-
-      _onDown(e) {
-        this._stopPropagation(e);
-        this._onSelectEnd(e);
-        this._onTrack(e);
-      }
-
-      _onUp(e) {
-        this._stopPropagation(e);
-        this._onSelectEnd(e);
-        this._onTrack(e);
-        switch (this._activeProperty) {
-          case 'alpha':
-            this.$.alphaSlider.focus();
-            break;
-          case 'hue':
-            this.$.hueSlider.focus();
-            break;
-          case 'color':
-            this.$.colorPin.focus();
-        }
-        if (this._activeSelectionCanvas) {
-          this._activeSelectionCanvas.classList.remove('active');
-        }
-        this._activeSelectionCanvas = null;
-        this._activeSelectionRect = null;
-      }
-
-      _onDblClick() {
-
-      }
-
-      _onFocusButton(e) {
-        this._activeProperty = this._checkSelectorForProperty(e, e.target.id);
-      }
-
-      _onKeyDown(e) {
-        if (this._activeProperty) {
-          let switched, ev;
-          switch (this._activeProperty) {
-            case 'alpha':
-              if (!this.alphaMode) {
-                this.alphaMode = true;
-              }
-              if (e.keyCode === 38) { // up
-                this.alpha = window._numberUtilities._safeMult(Math.round(this.alpha * 100 + 1), 0.01);
-                switched = true;
-              } else if (e.keyCode === 40) { // down
-                this.alpha = window._numberUtilities._safeMult(Math.round(this.alpha * 100 - 1), 0.01);
-                switched = true;
-              }
-              break;
-            case 'hue':
-              if (e.keyCode === 38) { // up
-                this.h = Math.round(this.h - 1);
-                switched = true;
-              } else if (e.keyCode === 40) { // down
-                this.h = Math.round(this.h + 1);
-                switched = true;
-              }
-              break;
-            default:
-              if (!this._activeSelectionRect) {
-                this._activeSelectionRect = this.$.saturation.getBoundingClientRect();
-                this._activeSelectionCanvas = this.$.saturation;
-              }
-              ev = {
-                detail: this.$.colorPin.getBoundingClientRect()
-              };
-              ev.detail.x = ev.detail.x + ev.detail.width / 2;
-              ev.detail.y = ev.detail.y + ev.detail.height / 2;
-              if (e.keyCode === 38) { // up
-                ev.detail.y = ev.detail.y - (Math.round(this._activeSelectionRect.height / 100) || 1);
-              } else if (e.keyCode === 40) { // down
-                ev.detail.y = ev.detail.y + (Math.round(this._activeSelectionRect.height / 100) || 1);
-              } else if (e.keyCode === 37) { // left
-                ev.detail.x = ev.detail.x - (Math.round(this._activeSelectionRect.width / 100) || 1);
-              } else if (e.keyCode === 39) { // right
-                ev.detail.x = ev.detail.x + (Math.round(this._activeSelectionRect.width / 100) || 1);
-              } else {
-                return;
-              }
-              this._onTrack(ev);
-              switched = true;
-          }
-          if (switched) {
-            this._stopPropagation(e);
-            e && e.preventDefault && e.preventDefault();
-          }
-        } else if (this.keyCode === 27) {
-          document.activeElement.blur();
-          this._onSelectEnd();
-        }
-      }
-
-      _onSelectEnd(e) {
-        this._stopPropagation(e);
-        if (this._activeSelectionCanvas) {
-          this._activeSelectionCanvas.classList.remove('active');
-        }
-        this._activeSelectionCanvas = null;
-        this._activeSelectionRect = null;
-        this._activeProperty = null;
-      }
-
-      _stopPropagation(e) {
-        e && e.stopPropagation && e.stopPropagation();
-        e && e.detail && e.detail.sourceEvent && e.detail.sourceEvent.stopPropagation &&
-          e.detail.sourceEvent.stopPropagation();
       }
     }
   }
@@ -611,28 +592,33 @@
     * @customElement
     * @polymer
     *
+    * @appliesMixin Polymer.GestureEventListeners
     * @appliesMixin ColorElementPattern
     * @appliesMixin ColorFormMixin
+    * @appliesMixin ColorMixin
     * @appliesMixin FormElementMixin
     *
     * @demo demo/color-element.html Color Element
     **/
-    class ColorElement extends ColorElementPattern(ColorFormMixin(ColorMixin(FormElementMixin(Polymer.Element)))) { // eslint-disable-line no-undef
+    class ColorElement extends Polymer.GestureEventListeners(ColorElementPattern(ColorFormMixin(ColorMixin(FormElementMixin(Polymer.Element))))) { // eslint-disable-line no-undef
 
       static get is() {
         return 'color-element';
       }
 
-      static get styleToInclude() {
-        return `${super.styleToInclude || '' } input-picker-shared-style`;
+      static get styleTemplate() {
+        return `
+          ${super.styleTemplate || ''}
+          :host {
+            display: inline-flex;
+          }
+        `
       }
 
       static get template() {
         return `
           <style include="${this.styleToInclude}">
-            $ {
-              this.styleTemplate
-            }
+            ${this.styleTemplate}
           </style>
           ${this.colorElementTemplate}
         `;
