@@ -42,6 +42,50 @@
           done();
         }, 0);
       });
+
+      test('calling "randomColor" on the element should work', done => {
+        assert.isDefined(element.randomColor, '"randomColor" exists');
+        element.randomColor();
+        Polymer.Base.async(() => {
+          assert.isDefined(element.r, 'r is defined');
+          assert.isDefined(element.g, 'g is defined');
+          assert.isDefined(element.b, 'b is defined');
+          assert.isDefined(element.h, 'h is defined');
+          assert.isDefined(element.s, 's is defined');
+          assert.isDefined(element.l, 'year is defined');
+          assert.isDefined(element.alpha, 'alpha is defined');
+          assert.isDefined(element.colorString, 'colorString is defined');
+          done();
+        })
+      });
+    });
+
+    suite('interactions', function() {
+      let element;
+
+      setup(function() {
+        element = fixture('Basic');
+      });
+
+      test('clicking on badge causing random color', done => {
+        Polymer.Base.async(() => {
+          let badge = element.$.badge;
+          // wait a tick to let dom-if stamping finish
+          if (badge && !element.noRandomColorOnClick) {
+            MockInteractions.tap(badge);
+            // setting  is async, so wait one tick.
+            assert.isDefined(element.colorString, 'colorString is defined');
+            assert.isDefined(element.r, 'r is defined');
+            assert.isDefined(element.g, 'g is defined');
+            assert.isDefined(element.b, 'b is defined');
+            assert.isDefined(element.h, 'h is defined');
+            assert.isDefined(element.s, 's is defined');
+            assert.isDefined(element.l, 'year is defined');
+            assert.isDefined(element.alpha, 'alpha is defined');
+          }
+          done();
+        });
+      });
     });
   </script>
 

@@ -37,16 +37,15 @@
             padding: var(--input-picker-padding, 0.5em);
             @apply --input-picker;
             display: inline-flex;
-            flex-flow: column nowrap;
+            flex-direction: column;
             position: relative;
             @apply --color-element;
           }
           #colorElement .selectors {
             display: inline-flex;
-            flex-flow: row nowrap;
-            align-items: stretch;
+            flex-direction: row;
+            flex-wrap: nowrap:
             position: relative;
-            justify-content: space-between;
             box-sizing: content-box;
             border-top-left-radius: inherit;
             border-top-right-radius: inherit;
@@ -59,9 +58,8 @@
             height: var(--color-element-height, 184px);
             background: transparent;
             cursor: pointer;
-            box-sizing: content-box;
+            box-sizing: border-box;
             border-radius: 0;
-            flex-shrink: 0;
             overflow: visible;
           }
           #colorElement .selectors > :first-child {
@@ -104,18 +102,22 @@
             z-index: 1;
             box-sizing: border-box;
             overflow: hidden;
+            mix-blend-mode: exclusion;
           }
           #colorElement .selector:before {
             content: "";
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
             pointer-events: none;
-            background-color: var(--input-focus-background, rgba(0,0,0,0.1));
+            background-color: rgba(255,255,255,0.2);
+            transition-property: opacity;
+            transition-duration: 150ms;
+            transition-timing-function: var(--input-transition-timing-function, cubic-bezier(0.6, 1, 0.2, 1));
             opacity: 0;
           }
           #colorElement .selectors canvas.active ~ .selector:before,
           #colorElement .selectors canvas:hover ~ .selector:before {
-            opacity: 0.5;
+            opacity: 1;
           }
           #colorElement .slider {
             padding: var(--color-slider-padding, 2px);
@@ -166,7 +168,7 @@
         return `
           <div id="colorElement">
             <div class="selectors" tabindex="0" on-keydown="_onKeyDown">
-              <div id="saturationBadge" class="badge">
+              <div id="saturationBadge">
                 <canvas id="saturation" prop="color" width$="[[_saturationWidth]]" height$="[[_saturationHeight]]" on-dblclick="_onDblClick" on-track="_onTrack" on-down="_onDown" on-up="_onUp"></canvas>
                 <div id="colorPin" class="selector pin" prop="color" hidden$=[[!valueIsSet]]></div>
               </div>
@@ -346,17 +348,18 @@
           return;
         }
         let gradient;
+        h = Math.round(h || 0);
         // alpha
         alphaContext.clearRect(0, 0, sliderWidth, saturationHeight);
         gradient = alphaContext.createLinearGradient(0, 0, 1, saturationHeight);
-        gradient.addColorStop(0, `hsla(${Math.round(h || 0)},100%,50%,1)`);
-        gradient.addColorStop(1, 'rgba(0,0,0,0)');
+        gradient.addColorStop(0, `hsla(${h},100%,50%,1)`);
+        gradient.addColorStop(1, `hsla(${h},100%,50%,0)`);
         alphaContext.fillStyle = gradient;
         alphaContext.fillRect(0, 0, sliderWidth, saturationHeight);
-        // saturation
+        // saturation & lightness
         gradient = saturationContext.createLinearGradient(0, 0, saturationWidth, 1);
-        gradient.addColorStop(0, 'hsl(0,100%,100%)');
-        gradient.addColorStop(1, `hsl(${Math.round(h || 0)},100%,50%)`);
+        gradient.addColorStop(0, `hsl(${h},100%,100%)`);
+        gradient.addColorStop(1, `hsl(${h},100%,50%)`);
         saturationContext.fillStyle = gradient;
         saturationContext.fillRect(0, 0, saturationWidth, saturationHeight);
         gradient = saturationContext.createLinearGradient(0, 0, 1, saturationHeight);
@@ -371,7 +374,7 @@
       }
 
       _moveAlphaSlider(alpha, height) {
-        this._moveSelector(this.$.alphaSlider, 0, (1 - (alpha || 0)) * height, `hsl(0,0%,${(alpha || 0)*100}%)`);
+        this._moveSelector(this.$.alphaSlider, 0, (1 - (isNaN(alpha) ? 1 : alpha)) * height);
       }
 
       _moveColorPin(s, l, width, height) {
@@ -382,16 +385,15 @@
         const c = s * (l < .5 ? l : 1 - l);
         const s2 = ((2 * c) / (l + c)) || 0;
         const v = 1 - (l + c);
-        this._moveSelector(this.$.colorPin, width * s2, height * v, `hsl(0,0%,${100*(1-(s+l)/2)}%)`);
+        this._moveSelector(this.$.colorPin, width * s2, height * v);
       }
 
-      _moveSelector(element, x, y, borderColor) {
+      _moveSelector(element, x, y) {
         if (element === undefined) {
           return;
         }
         element.style.left = `${Math.round(x || 0)}px`;
         element.style.top = `${Math.round(y || 0)}px`;
-        element.style['border-color'] = borderColor || '';
       }
 
       _onDown(e) {
@@ -422,7 +424,9 @@
             this.alpha = +numberUtilities.normalizedClamp((rect.height - offsetY) / rect.height).toFixed(2);
             break;
           case 'hue':
+          console.log(numberUtilities.mathMod(Math.floor(359 * offsetY / rect.height), 360));
             this.h = numberUtilities.mathMod(Math.floor(359 * offsetY / rect.height), 360);
+            console.log(this.h);
             break;
           case 'color':
             let offsetX = (e.detail.x || e.clientX) - rect.left;
@@ -436,13 +440,14 @@
             const s = offsetX / rect.width;
             const v = 1 - offsetY / rect.height;
             const c = (2 - s) * v;
+
             this.setProperties(this._normalizeHsl({
               h: this.h || 0,
               s: c === 0 ? 0 : +(s * v / (c < 1 ? c : 2 - c)),
               l: +(c / 2)
             }));
             // move color pin so that the position is garanteed to be defined by the last cursor position (black defines in hsl the complete lower area)
-            this._moveSelector(this.$.colorPin, offsetX, offsetY, `hsl(0,0%,${100*(1-(this.s+this.l)/2)}%)`);
+            this._moveSelector(this.$.colorPin, offsetX, offsetY);
         }
         if (e.detail.state && e.detail.state === 'end') {
           this._onSelectEnd(e);

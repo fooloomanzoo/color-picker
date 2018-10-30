@@ -105,8 +105,9 @@
       }
 
       static get buttonTemplate() {
+        // draw in the button area a badge with the current color
         return `
-          <div id="colorBadgeContainer" hidden$="[[autoConfirm]]">
+          <div id="colorBadgeContainer" hidden$="[[autoConfirm]]" on-tap="confirm">
             ${super.colorBadgeTemplate}
           </div>
           <select id="formats" value="{{format::change}}" on-keydown="_stopPropagation">
@@ -131,9 +132,10 @@
       }
 
       static get colorBadgeTemplate() {
+        // replace color-inputs badge with a badge that draws the confirmed value
         return `
-          <div id="confirmedColorBadge" class="transparency badge">
-            <canvas id="confirmedColor" width$="[[_confirmedColorWidth]]" height$="[[_confirmedColorHeight]]" on-click="_resetValue"></canvas>
+          <div id="confirmedColorBadge" class="transparency badge" on-tap="_resetValue">
+            <canvas id="confirmedColor" width$="[[_confirmedColorWidth]]" height$="[[_confirmedColorHeight]]"></canvas>
           </div>
         `;
       }
@@ -233,6 +235,9 @@
           requestAnimationFrame(() => {
             this.render();
           })
+          if (!this.colorString) {
+            this.randomColor();
+          }
         }
       }
 

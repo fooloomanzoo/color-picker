@@ -87,6 +87,72 @@
           done();
         });
       });
+
+      test('clicking on random button causing random color', done => {
+        Polymer.Base.async(() => {
+          let button = element.shadowRoot.querySelector('button.random');
+          // wait a tick to let dom-if stamping finish
+          if (button && !element.noRandomColorOnClick) {
+            MockInteractions.tap(button);
+            // setting  is async, so wait one tick.
+            assert.isDefined(element.colorString, 'colorString is defined');
+            assert.isDefined(element.r, 'r is defined');
+            assert.isDefined(element.g, 'g is defined');
+            assert.isDefined(element.b, 'b is defined');
+            assert.isDefined(element.h, 'h is defined');
+            assert.isDefined(element.s, 's is defined');
+            assert.isDefined(element.l, 'year is defined');
+            assert.isDefined(element.alpha, 'alpha is defined');
+          }
+          done();
+        });
+      });
+
+      test('clicking on saturation selector causing a color to be set', done => {
+        Polymer.Base.async(() => {
+          let saturation = element.$.saturation;
+          // wait a tick to let dom-if stamping finish
+          if (saturation) {
+            MockInteractions.tap(saturation);
+            // setting  is async, so wait one tick.
+            assert.isDefined(element.colorString, 'colorString is defined');
+            assert.isDefined(element.r, 'r is defined');
+            assert.isDefined(element.g, 'g is defined');
+            assert.isDefined(element.b, 'b is defined');
+            assert.isDefined(element.h, 'h is defined');
+            assert.isDefined(element.s, 's is defined');
+            assert.isDefined(element.l, 'year is defined');
+            assert.isDefined(element.alpha, 'alpha is defined');
+          }
+          done();
+        });
+      });
+
+      test('clicking on saturation selector causing hue to be set', done => {
+        Polymer.Base.async(() => {
+          let hue = element.$.hue;
+          // wait a tick to let dom-if stamping finish
+          if (hue) {
+            MockInteractions.tap(hue);
+            // setting  is async, so wait one tick.
+            assert.isDefined(element.h, 'h is defined');
+          }
+          done();
+        });
+      });
+
+      test('clicking on alpha selector causing a alpha to be set', done => {
+        Polymer.Base.async(() => {
+          let alpha = element.$.alpha;
+          // wait a tick to let dom-if stamping finish
+          if (alpha) {
+            MockInteractions.tap(alpha);
+            // setting  is async, so wait one tick.
+            assert.isDefined(element.alpha, 'alpha is defined');
+          }
+          done();
+        });
+      });
     });
   </script>
 
