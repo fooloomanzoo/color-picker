@@ -134,9 +134,9 @@
       static get colorBadgeTemplate() {
         // replace color-inputs badge with a badge that draws the confirmed value
         return `
-          <div id="confirmedColorBadge" class="transparency badge" on-tap="_resetValue">
+          <button id="confirmedColorBadge" class="transparency badge" on-tap="_resetValue">
             <canvas id="confirmedColor" width$="[[_confirmedColorWidth]]" height$="[[_confirmedColorHeight]]"></canvas>
-          </div>
+          </button>
         `;
       }
 
@@ -245,6 +245,7 @@
       _resetValue(e) {
         this._activeProperty = null;
         super._resetValue(e);
+        this.$.saturation.focus();
       }
     }
   }
