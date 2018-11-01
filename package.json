@@ -37,10 +37,11 @@
     "@fooloomanzoo/color-input": "^2"
   },
   "devDependencies": {
-    "@webcomponents/webcomponentsjs": "*",
-    "@polymer/iron-component-page": "*",
-    "@polymer/iron-flex-layout": "*",
-    "@polymer/iron-demo-helpers": "*",
-    "@polymer/iron-form": "*"
+    "web-component-tester": "^6.5.0",
+    "@webcomponents/webcomponentsjs": "^1",
+    "@polymer/iron-component-page": "^3",
+    "@polymer/iron-flex-layout": "^2",
+    "@polymer/iron-demo-helpers": "^2",
+    "@polymer/iron-form": "^2"
   }
 }
