@@ -241,6 +241,11 @@
       _onDblClick() {
         this.confirm();
       }
+
+      _resetValue(e) {
+        this._activeProperty = null;
+        super._resetValue(e);
+      }
     }
   }
   window.ColorPickerPattern = Polymer.dedupingMixin(ColorPickerPattern);
