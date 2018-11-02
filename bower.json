@@ -20,7 +20,7 @@
   "licence": "https://github.com/fooloomanzoo/color-picker/raw/master/LICENSE.txt",
   "dependencies": {
     "polymer": "Polymer/polymer#2.6.1",
-    "color-input": "fooloomanzoo/text-input#2",
+    "color-input": "fooloomanzoo/color-input#2",
     "input-picker-pattern": "fooloomanzoo/input-picker-pattern#2"
   },
   "devDependencies": {
