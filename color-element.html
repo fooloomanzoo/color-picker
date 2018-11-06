@@ -161,10 +161,12 @@
                 <canvas id="saturation" prop="color" tabindex="0" width$="[[_saturationWidth]]" height$="[[_saturationHeight]]" on-dblclick="_onDblClick" on-track="_onTrack" on-down="_onDown" on-up="_onUp" on-blur="_onColorElementBlur" on-focus="_onColorElementFocus" on-keydown="_onKeyDown"></canvas>
                 <div id="colorPin" class="selector pin" prop="color" hidden$=[[!valueIsSet]]></div>
               </div>
-              <div id="alphaBadge" class="transparency">
-                <canvas id="alpha" prop="alpha" tabindex="0" width$="[[_sliderWidth]]" height$="[[_saturationHeight]]" on-track="_onTrack" on-down="_onDown" on-tap="_onUp" on-blur="_onColorElementBlur" on-focus="_onColorElementFocus" on-keydown="_onKeyDown"></canvas>
-                <div id="alphaSlider" class="selector slider" prop="alpha"></div>
-              </div>
+              <template is="dom-if" if="[[hasAlphaDisplay]]">
+                <div id="alphaBadge" class="transparency">
+                  <canvas id="alpha" prop="alpha" tabindex="0" width$="[[_sliderWidth]]" height$="[[_saturationHeight]]" on-track="_onTrack" on-down="_onDown" on-tap="_onUp" on-blur="_onColorElementBlur" on-focus="_onColorElementFocus" on-keydown="_onKeyDown"></canvas>
+                  <div id="alphaSlider" class="selector slider" prop="alpha"></div>
+                </div>
+              </template>
               <div id="hueBadge">
                 <canvas id="hue" prop="hue" tabindex="0" width$="[[_sliderWidth]]" height$="[[_saturationHeight]]" on-track="_onTrack" on-down="_onDown" on-tap="_onUp" on-blur="_onColorElementBlur" on-focus="_onColorElementFocus" on-keydown="_onKeyDown"></canvas>
                 <div id="hueSlider" class="selector slider" prop="hue"></div>
@@ -218,6 +220,12 @@
 
           _alphaContext: {
             type: CanvasRenderingContext2D
+          },
+          
+          hasAlphaDisplay: {
+            type: Boolean,
+            value: true,
+            reflectToAttribute:true
           }
         };
       }
@@ -234,7 +242,8 @@
 
       ready() {
         super.ready();
-        this._computeColorElementContexts();
+        // allow for the conditional template to eval
+        Polymer.Async.microTask.run(() => this._computeColorElementContexts());
       }
 
       connectedCallback() {
@@ -294,9 +303,9 @@
         requestAnimationFrame(() => {
           let toSet = {},
             box;
-          const alphaBadge = this.shadowRoot.querySelector('#alphaBadge');
-          if (alphaBadge) {
-            box = getBoundingClientRectByRelative(alphaBadge, true);
+          const huebadge = this.shadowRoot.querySelector('#hueBadge');
+          if (huebadge) {
+            box = getBoundingClientRectByRelative(huebadge, true);
             if (box.width !== this._sliderWidth) {
               toSet._sliderWidth = Math.ceil(box.width) || 16;
             }
@@ -333,18 +342,20 @@
       }
 
       _drawColorElement(alphaContext, saturationContext, h, sliderWidth, saturationWidth, saturationHeight) {
-        if (alphaContext === undefined || saturationContext === undefined || sliderWidth === undefined || saturationWidth === undefined || saturationHeight === undefined) {
+        if ((alphaContext === undefined && this.hasAlphaDisplay) || saturationContext === undefined || sliderWidth === undefined || saturationWidth === undefined || saturationHeight === undefined) {
           return;
         }
         let gradient;
         h = Math.round(h || 0);
         // alpha
-        alphaContext.clearRect(0, 0, sliderWidth, saturationHeight);
-        gradient = alphaContext.createLinearGradient(0, 0, 1, saturationHeight);
-        gradient.addColorStop(0, `hsla(${h},100%,50%,1)`);
-        gradient.addColorStop(1, `hsla(${h},100%,50%,0)`);
-        alphaContext.fillStyle = gradient;
-        alphaContext.fillRect(0, 0, sliderWidth, saturationHeight);
+        if(this.hasAlphaDisplay) {
+          alphaContext.clearRect(0, 0, sliderWidth, saturationHeight);
+          gradient = alphaContext.createLinearGradient(0, 0, 1, saturationHeight);
+          gradient.addColorStop(0, `hsla(${h},100%,50%,1)`);
+          gradient.addColorStop(1, `hsla(${h},100%,50%,0)`);
+          alphaContext.fillStyle = gradient;
+          alphaContext.fillRect(0, 0, sliderWidth, saturationHeight);
+        }
         // saturation & lightness
         gradient = saturationContext.createLinearGradient(0, 0, saturationWidth, 1);
         gradient.addColorStop(0, `hsl(${h},100%,100%)`);
