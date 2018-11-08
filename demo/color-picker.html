@@ -34,11 +34,13 @@
             <template is="dom-bind">
               <input type="checkbox" checked="{{native::change}}">native color picker
               <br>
-              <br>
               <input type="checkbox" checked="{{autoConfirm::change}}">auto confirm
               <br>
+              <input type="checkbox" checked="{{withoutAlpha::change}}">without alpha
               <br>
-              <select id="formats" value="{{format::change}}">
+              <input type="checkbox" checked="{{hideRandomButton::change}}">hide random button
+              <br><br>
+              format: <select id="formats" value="{{format::change}}">
                 <option value="auto">auto</option>
                 <option value="rgb">rgb</option>
                 <option value="hex">hex</option>
@@ -46,7 +48,7 @@
               </select>
               <br>
               <br>
-              <color-picker value="{{value}}" alpha="{{alpha}}" color-string="#123abc" hex="{{hex}}" auto-confirm="[[autoConfirm]]" confirmed-value="{{confirmedValue}}" native="{{native}}" format="{{format}}"></color-picker>
+              <color-picker value="{{value}}" alpha="{{alpha}}" color-string="#123abc" hex="{{hex}}" auto-confirm="[[autoConfirm]]" confirmed-value="{{confirmedValue}}" native="{{native}}" format="{{format}}" without-alpha="[[withoutAlpha]]" hide-random-button="[[hideRandomButton]]"></color-picker>
               <div class="vertical-section-container result">
                 <div><code>hex</code>: <b>[[hex]]</b></div>
                 <div><code>alpha</code>: <b>[[alpha]]</b></div>

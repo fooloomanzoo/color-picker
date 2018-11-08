@@ -32,10 +32,10 @@
         <template>
           <dom-bind>
             <template is="dom-bind">
-              <color-input color-string="{{value}}" default="rgb(222, 133, 11)" alpha="{{alpha}}" format="{{format}}"></color-input>
+              <color-input color-string="{{value}}" default="rgb(222, 133, 11)" alpha="{{alpha}}" format="{{format}}" without-alpha="[[withoutAlpha]]"></color-input>
               <br>
               <br>
-              <color-element color-string="{{value}}" hex="{{hex}}" alpha="{{alpha}}" format="{{format}}"></color-element>
+              <color-element color-string="{{value}}" hex="{{hex}}" alpha="{{alpha}}" format="{{format}}" without-alpha="[[withoutAlpha]]" hide-random-button="[[hideRandomButton]]"></color-element>
               <div class="vertical-section-container result">
                 <div>
                   <span>format </span>
@@ -45,6 +45,10 @@
                     <option value="hex">hex</option>
                     <option value="hsl">hsl</option>
                   </select>
+                  <br>
+                  <input type="checkbox" checked="{{withoutAlpha::change}}">without alpha
+                  <br>
+                  <input type="checkbox" checked="{{hideRandomButton::change}}">hide random button
                 </div>
                 <div><code>hex</code>: <b>[[hex]]</b></div>
                 <div><code>alpha</code>: <b>[[alpha]]</b></div>

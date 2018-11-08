@@ -17,7 +17,6 @@
   ],
   "main": "index.html",
   "scripts": {
-    "postinstall": "bower install",
     "prepublish": "npm run build && git add . && git commit -m \"publish new version\" && npm version patch && git push",
     "gh-pages": "git checkout gh-pages && git pull && bower update -f && git add . && git commit -m \"update\" && git push && git checkout master",
     "build": "git pull && bower update && npm run analyze",
