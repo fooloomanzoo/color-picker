@@ -1,6 +1,5 @@
-[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/fooloomanzoo/color-picker)
-[![API](https://img.shields.io/badge/API-available-green.svg)](https://www.webcomponents.org/element/fooloomanzoo/color-picker/elements/color-picker)
-[![Demo](https://img.shields.io/badge/demo-available-red.svg)](https://www.webcomponents.org/element/fooloomanzoo/color-picker/demo/demo/color-picker.html)
+[![Published on NPM](https://img.shields.io/npm/v/@fooloomanzoo/color-input.svg)](https://www.npmjs.com/package/@fooloomanzoo/color-picker)
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/@fooloomanzoo/color-picker)
 [![Published on Vaadin  Directory](https://img.shields.io/badge/Vaadin%20Directory-published-00b4f0.svg)](https://vaadin.com/directory/component/fooloomanzoocolor-picker)
 
 _[Demo and API docs](https://fooloomanzoo.github.io/color-picker/components/color-picker/)_
@@ -14,7 +13,7 @@ _[Demo and API docs](https://fooloomanzoo.github.io/color-picker/components/colo
 
 Internally it tests the browser, if native input-type `color` is supported. You can decide to use the native or the replacements during runtime. `color-element` can also be used separately. By default, the polyfilled version is used.
 
-It might be useful for you to use, if you like to keep the native approach of Browsers on Mobile Devices, or you like to have a different look or you would like to have a guaranteed working **color-picker**. Another use case could be for example, if you want on _mobile devices_ use the native picker, when supported, and on _desktop devices_ this polyfill. 
+It might be useful for you to use, if you like to keep the native approach of Browsers on Mobile Devices, or you like to have a different look or you would like to have a guaranteed working **color-picker**. Another use case could be for example, if you want on _mobile devices_ use the native picker, when supported, and on _desktop devices_ this polyfill.
 
 For that purposes the attributes **native** and **native-on-mobile** are provided.
 
@@ -30,28 +29,6 @@ The **[component page](https://fooloomanzoo.github.io/color-picker/components/co
 Examples:
 
 #### color-picker
-
-<!--
-```
-<custom-element-demo height="300">
-  <template>
-    <script src="../webcomponentsjs/webcomponents-lite.js"></script>
-    <link rel="import" href="color-picker.html">
-    <style>
-      html {
-        font-family: 'Source Sans Pro', sans-serif;
-      }
-    </style>
-    <dom-bind>
-      <template is="dom-bind">
-        <next-code-block></next-code-block>
-      </template>
-    </dom-bind>
-  </template>
-</custom-element-demo>
-```
--->
-
 ```html
 <color-picker r="{{r}}" g="{{g}}" b="{{b}}" default="green" native="[[native]]" auto-confirm="[[autoConfirm]]"></color-picker>  
 <p>
@@ -70,28 +47,6 @@ Examples:
 ```
 
 #### Stand-alone color-element
-
-<!--
-```
-<custom-element-demo height="300">
-  <template>
-    <script src="../webcomponentsjs/webcomponents-lite.js"></script>
-    <link rel="import" href="color-picker.html">
-    <style>
-      html {
-        font-family: 'Source Sans Pro', sans-serif;
-      }
-    </style>
-    <dom-bind>
-      <template is="dom-bind">
-        <next-code-block></next-code-block>
-      </template>
-    </dom-bind>
-  </template>
-</custom-element-demo>
-```
--->
-
 ```html
   <color-element alpha="{{alpha}}" r="{{r}}" g="{{g}}" b="{{b}}" h="{{h}}" s="{{s}}" l="{{l}}" format="{{format}}"></color-element><br>
   <p>
@@ -128,13 +83,8 @@ Have a look at [input-picker-pattern#input-shared-style](https://github.com/fool
 
 ### Installation
 ```
-bower install --save fooloomanzoo/color-picker
-```
-or
-```
 npm install --save @fooloomanzoo/color-picker
 ```
-
 
 ### Contribute?
 Feel free to send a new issue, a commit, a pull request or just fork it!

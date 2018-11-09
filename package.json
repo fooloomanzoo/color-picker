@@ -17,9 +17,9 @@
   ],
   "main": "index.html",
   "scripts": {
-    "prepublish": "npm run build && git add . && git commit -m \"publish new version\" && npm version patch && git push",
-    "gh-pages": "git checkout gh-pages && git pull && bower update -f && git add . && git commit -m \"update\" && git push && git checkout master",
-    "build": "git pull && bower update && npm run analyze",
+    "prepublishOnly": "npm run build && git add . && git commit -m \"publish new version\" && npm version patch && git push",
+    "gh-pages": "git checkout gh-pages && git pull && npm update -f && git add . && git commit -m \"update\" && git push && git checkout master",
+    "build": "git pull && npm update && npm run analyze",
     "start": "npm run analyze && polymer serve -o",
     "analyze": "polymer analyze > analysis.json",
     "test": "polymer test",
@@ -31,16 +31,16 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@polymer/polymer": "^2.6.1",
-    "@fooloomanzoo/input-picker-pattern": "^2",
-    "@fooloomanzoo/color-input": "^2"
+    "@polymer/polymer": "^3",
+    "@fooloomanzoo/input-picker-pattern": "^3",
+    "@fooloomanzoo/color-input": "^3"
   },
   "devDependencies": {
     "web-component-tester": "^6.5.0",
-    "@webcomponents/webcomponentsjs": "^1",
-    "@polymer/iron-component-page": "^3",
-    "@polymer/iron-flex-layout": "^2",
-    "@polymer/iron-demo-helpers": "^2",
-    "@polymer/iron-form": "^2"
+    "@webcomponents/webcomponentsjs": "^2",
+    "@polymer/iron-component-page": "^4",
+    "@polymer/iron-flex-layout": "^3",
+    "@polymer/iron-demo-helpers": "^3",
+    "@polymer/iron-form": "^3"
   }
 }
