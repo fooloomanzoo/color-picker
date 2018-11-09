@@ -5,15 +5,29 @@
     <title>color-picker demo</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
-    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../../../@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
 
-    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
-    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+    <script type="module" src="../../../@polymer/iron-demo-helpers/demo-pages-shared-styles.js"></script>
+    <script type="module" src="../../../@polymer/iron-demo-helpers/demo-snippet.js"></script>
 
-    <link rel="import" href="../../color-input/color-input.html">
-    <link rel="import" href="../color-element.html">
+    <script type="module" src="../../../color-input/color-input.js"></script>
+    <script type="module" src="../color-element.js"></script>
 
     <custom-style>
+      <style is="custom-style" include="demo-pages-shared-styles">
+        .result {
+    <!-- FIXME(polymer-modulizer):
+        These imperative modules that innerHTML your HTML are
+        a hacky way to be sure that any mixins in included style
+        modules are ready before any elements that reference them are
+        instantiated, otherwise the CSS @apply mixin polyfill won't be
+        able to expand the underlying CSS custom properties.
+        See: https://github.com/Polymer/polymer-modulizer/issues/154
+        -->
+    <script type="module">
+const $_documentContainer = document.createElement('template');
+
+$_documentContainer.innerHTML = `<custom-style>
       <style is="custom-style" include="demo-pages-shared-styles">
         .result {
           margin: 0.75em;
@@ -21,12 +35,18 @@
           line-height: 1.5;
         }
       </style>
-    </custom-style>
-  </head>
+    </custom-style>`;
 
-  <body>
+document.body.appendChild($_documentContainer.content);
+</script>v class="vertical-section-container centered">
+      <h3>Create a standalone color-element</h3>
+      <demo-snippet>
+        <template>
+          <dom-bind>
+    <script type="module">
+const $_documentContainer = document.createElement('template');
 
-    <div class="vertical-section-container centered">
+$_documentContainer.innerHTML = `<div class="vertical-section-container centered">
       <h3>Create a standalone color-element</h3>
       <demo-snippet>
         <template>
@@ -58,7 +78,7 @@
           </dom-bind>
         </template>
       </demo-snippet>
-    </div>
+    </div>`;
 
-  </body>
-</html>
+document.body.appendChild($_documentContainer.content);
+</script>

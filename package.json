@@ -1,11 +1,5 @@
 {
-  "name": "@fooloomanzoo/color-picker",
-  "version": "2.0.11",
-  "authors": [
-    "Johannes Brautzsch <fooloomanzoo>"
-  ],
   "description": "A picker for color, that can use the native input.",
-  "homepage": "https://github.com/fooloomanzoo/color-picker/",
   "keywords": [
     "webcomponents",
     "polymer",
@@ -15,7 +9,17 @@
     "input",
     "polyfill"
   ],
-  "main": "index.html",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fooloomanzoo/color-picker.git"
+  },
+  "homepage": "https://github.com/fooloomanzoo/color-picker/",
+  "name": "@fooloomanzoo/color-picker",
+  "version": "2.0.11",
+  "authors": [
+    "Johannes Brautzsch <fooloomanzoo>"
+  ],
+  "main": "index.js",
   "scripts": {
     "prepublishOnly": "npm run build && git add . && git commit -m \"publish new version\" && npm version patch && git push",
     "gh-pages": "git checkout gh-pages && git pull && npm update -f && git add . && git commit -m \"update\" && git push && git checkout master",
@@ -25,22 +29,27 @@
     "test": "polymer test",
     "test:p": "polymer test -p --config-file=wct.p.conf.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/fooloomanzoo/color-picker.git"
-  },
   "license": "MIT",
   "dependencies": {
-    "@polymer/polymer": "^3",
+    "@polymer/polymer": "^3.0.0",
     "@fooloomanzoo/input-picker-pattern": "^3",
     "@fooloomanzoo/color-input": "^3"
   },
   "devDependencies": {
     "web-component-tester": "^6.5.0",
-    "@webcomponents/webcomponentsjs": "^2",
-    "@polymer/iron-component-page": "^4",
+    "@webcomponents/webcomponentsjs": "^2.0.0",
+    "@polymer/iron-component-page": "^3.0.0-pre.18",
     "@polymer/iron-flex-layout": "^3",
-    "@polymer/iron-demo-helpers": "^3",
-    "@polymer/iron-form": "^3"
-  }
+    "@polymer/iron-demo-helpers": "^3.0.0-pre.18",
+    "@polymer/iron-form": "^3.0.0-pre.18",
+    "wct-browser-legacy": "^1.0.1",
+    "@polymer/iron-test-helpers": "^3.0.0-pre.18"
+  },
+  "resolutions": {
+    "inherits": "2.0.3",
+    "samsam": "1.1.3",
+    "supports-color": "3.1.2",
+    "type-detect": "1.0.0"
+  },
+  "author": "Johannes Brautzsch <fooloomanzoo>"
 }

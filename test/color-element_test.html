@@ -7,12 +7,10 @@
 
   <title>color-element test</title>
 
-  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-  <script src="../../web-component-tester/browser.js"></script>
-  <script src="../../iron-test-helpers/mock-interactions.js"></script>
-  <script src="../../input-picker-pattern/utils/wct-mixin-test-helper.js"></script>
+  <script src="../../../@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+  <script src="../../../wct-browser-legacy/browser.js"></script>
 
-  <link rel="import" href="../color-element.html">
+  <script type="module" src="../color-element.js"></script>
 </head>
 
 <body>
@@ -23,120 +21,125 @@
     </template>
   </test-fixture>
 
-  <script>
-    WCT.helpers.mixinSuite('color-element');
+  <script type="module">
+    import {
+      Base
+    } from '../../../@polymer/polymer/polymer-legacy.js';
+    import { tap } from '../../../@polymer/iron-test-helpers/mock-interactions.js';
+    import {
+      getParams,
+      mixinSuite
+    } from '../../input-picker-pattern/utils/wct-mixin-test-helper.js';
 
-    suite('basic', function() {
+    const params = getParams();
+    mixinSuite('color-element');
 
-      let element;
+  setup(function() {
+    element = fixture('Basic');
+  });
 
-      setup(function() {
-        element = fixture('Basic');
-      });
+  test('instantiating the element with default properties should work', done => {
+    setTimeout(() => {
+      assert.isDefined(element._sliderWidth, '_sliderWidth is defined');
+      assert.isDefined(element._saturationHeight, '_saturationHeight is defined');
+      assert.isDefined(element._saturationWidth, '_saturationWidth is defined');
+      assert.isDefined(element._hueContext, '_hueContext is defined');
+      assert.isDefined(element._saturationContext, '_saturationContext is defined');
+      assert.isDefined(element._alphaContext, '_alphaContext is defined');
+      done();
+    },1)
+  });
 
-      test('instantiating the element with default properties should work', done => {
-        setTimeout(() => {
-          assert.isDefined(element._sliderWidth, '_sliderWidth is defined');
-          assert.isDefined(element._saturationHeight, '_saturationHeight is defined');
-          assert.isDefined(element._saturationWidth, '_saturationWidth is defined');
-          assert.isDefined(element._hueContext, '_hueContext is defined');
-          assert.isDefined(element._saturationContext, '_saturationContext is defined');
-          assert.isDefined(element._alphaContext, '_alphaContext is defined');
-          done();
-        },1)
-      });
+  test('calling "randomColor" on the element should work', done => {
+    assert.isDefined(element.randomColor, '"randomColor" exists');
+    element.randomColor();
+    Base.async(() => {
+      assert.isDefined(element.r, 'r is defined');
+      assert.isDefined(element.g, 'g is defined');
+      assert.isDefined(element.b, 'b is defined');
+      assert.isDefined(element.h, 'h is defined');
+      assert.isDefined(element.s, 's is defined');
+      assert.isDefined(element.l, 'year is defined');
+      assert.isDefined(element.alpha, 'alpha is defined');
+      assert.isDefined(element.colorString, 'colorString is defined');
+      done();
+    })
+  });
+});
 
-      test('calling "randomColor" on the element should work', done => {
-        assert.isDefined(element.randomColor, '"randomColor" exists');
-        element.randomColor();
-        Polymer.Base.async(() => {
-          assert.isDefined(element.r, 'r is defined');
-          assert.isDefined(element.g, 'g is defined');
-          assert.isDefined(element.b, 'b is defined');
-          assert.isDefined(element.h, 'h is defined');
-          assert.isDefined(element.s, 's is defined');
-          assert.isDefined(element.l, 'year is defined');
-          assert.isDefined(element.alpha, 'alpha is defined');
-          assert.isDefined(element.colorString, 'colorString is defined');
-          done();
-        })
-      });
+suite('interactions', function() {
+  let element;
+
+  setup(function() {
+    element = fixture('Basic');
+  });
+
+  test('clicking on "random"-button causing random color', done => {
+    Base.async(() => {
+      let button = element.shadowRoot.querySelector('button.random');
+      // wait a tick to let dom-if stamping finish
+      if (button && !element.noRandomColorOnClick) {
+        tap(button);
+        // setting  is async, so wait one tick.
+        assert.isDefined(element.colorString, 'colorString is defined');
+        assert.isDefined(element.r, 'r is defined');
+        assert.isDefined(element.g, 'g is defined');
+        assert.isDefined(element.b, 'b is defined');
+        assert.isDefined(element.h, 'h is defined');
+        assert.isDefined(element.s, 's is defined');
+        assert.isDefined(element.l, 'year is defined');
+        assert.isDefined(element.alpha, 'alpha is defined');
+      }
+      done();
     });
+  });
 
-    suite('interactions', function() {
-      let element;
-
-      setup(function() {
-        element = fixture('Basic');
-      });
-
-      test('clicking on "random"-button causing random color', done => {
-        Polymer.Base.async(() => {
-          let button = element.shadowRoot.querySelector('button.random');
-          // wait a tick to let dom-if stamping finish
-          if (button && !element.noRandomColorOnClick) {
-            MockInteractions.tap(button);
-            // setting  is async, so wait one tick.
-            assert.isDefined(element.colorString, 'colorString is defined');
-            assert.isDefined(element.r, 'r is defined');
-            assert.isDefined(element.g, 'g is defined');
-            assert.isDefined(element.b, 'b is defined');
-            assert.isDefined(element.h, 'h is defined');
-            assert.isDefined(element.s, 's is defined');
-            assert.isDefined(element.l, 'year is defined');
-            assert.isDefined(element.alpha, 'alpha is defined');
-          }
-          done();
-        });
-      });
-
-      test('clicking on saturation selector causing a color to be set', done => {
-        Polymer.Base.async(() => {
-          let saturation = element.$.saturation;
-          // wait a tick to let dom-if stamping finish
-          if (saturation) {
-            MockInteractions.tap(saturation);
-            // setting  is async, so wait one tick.
-            assert.isDefined(element.colorString, 'colorString is defined');
-            assert.isDefined(element.r, 'r is defined');
-            assert.isDefined(element.g, 'g is defined');
-            assert.isDefined(element.b, 'b is defined');
-            assert.isDefined(element.h, 'h is defined');
-            assert.isDefined(element.s, 's is defined');
-            assert.isDefined(element.l, 'year is defined');
-            assert.isDefined(element.alpha, 'alpha is defined');
-          }
-          done();
-        });
-      });
-
-      test('clicking on saturation selector causing hue to be set', done => {
-        Polymer.Base.async(() => {
-          let hue = element.$.hue;
-          // wait a tick to let dom-if stamping finish
-          if (hue) {
-            MockInteractions.tap(hue);
-            // setting  is async, so wait one tick.
-            assert.isDefined(element.h, 'h is defined');
-          }
-          done();
-        });
-      });
-
-      test('clicking on alpha selector causing a alpha to be set', done => {
-        Polymer.Base.async(() => {
-          let alpha = element.$.alpha;
-          // wait a tick to let dom-if stamping finish
-          if (alpha) {
-            MockInteractions.tap(alpha);
-            // setting  is async, so wait one tick.
-            assert.isDefined(element.alpha, 'alpha is defined');
-          }
-          done();
-        });
-      });
+  test('clicking on saturation selector causing a color to be set', done => {
+    Base.async(() => {
+      let saturation = element.$.saturation;
+      // wait a tick to let dom-if stamping finish
+      if (saturation) {
+        tap(saturation);
+        // setting  is async, so wait one tick.
+        assert.isDefined(element.colorString, 'colorString is defined');
+        assert.isDefined(element.r, 'r is defined');
+        assert.isDefined(element.g, 'g is defined');
+        assert.isDefined(element.b, 'b is defined');
+        assert.isDefined(element.h, 'h is defined');
+        assert.isDefined(element.s, 's is defined');
+        assert.isDefined(element.l, 'year is defined');
+        assert.isDefined(element.alpha, 'alpha is defined');
+      }
+      done();
     });
-  </script>
+  });
 
+  test('clicking on saturation selector causing hue to be set', done => {
+    Base.async(() => {
+      let hue = element.$.hue;
+      // wait a tick to let dom-if stamping finish
+      if (hue) {
+        tap(hue);
+        // setting  is async, so wait one tick.
+        assert.isDefined(element.h, 'h is defined');
+      }
+      done();
+    });
+  });
+
+  test('clicking on alpha selector causing a alpha to be set', done => {
+    Base.async(() => {
+      let alpha = element.$.alpha;
+      // wait a tick to let dom-if stamping finish
+      if (alpha) {
+        tap(alpha);
+        // setting  is async, so wait one tick.
+        assert.isDefined(element.alpha, 'alpha is defined');
+      }
+      done();
+    });
+  });
+});
+</script>
 </body>
 </html>

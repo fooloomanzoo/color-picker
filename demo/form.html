@@ -8,16 +8,32 @@
 
     <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
 
-    <link rel="import" href="../../polymer/polymer.html">
-    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
-    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
-    <link rel="import" href="../../iron-form/iron-form.html">
-    <link rel="import" href="../../paper-styles/shadow.html">
+    <script src="../../../@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>.js"></script>
+    <script type="module" src="../../../@polymer/iron-demo-helpers/demo-pages-shared-styles.js"></script>
+    <script type="module" src="../../../@polymer/iron-demo-helpers/demo-snippet.js"></script>
+    <script type="module" src="../../../@polymer/iron-form/iron-form.js"></script>
+    <script type="module" src="../../../@polymer/paper-styles/shadow.js"></script>
 
-    <link rel="import" href="../color-picker.html">
-    <link rel="import" href="../overlay-color-picker.html">
+    <script type="module" src="../color-picker.js"></script>
+    <script type="module" src="../overlay-color-picker.js"></script>
 
     <custom-style>
+      <style is="custom-style" include="demo-pages-shared-styles">
+        input {
+          margin-bottom: 4px;
+          margin-left: 8px;
+    <!-- FIXME(polymer-modulizer):
+        These imperative modules that innerHTML your HTML are
+        a hacky way to be sure that any mixins in included style
+        modules are ready before any elements that reference them are
+        instantiated, otherwise the CSS @apply mixin polyfill won't be
+        able to expand the underlying CSS custom properties.
+        See: https://github.com/Polymer/polymer-modulizer/issues/154
+        -->
+    <script type="module">
+const $_documentContainer = document.createElement('template');
+
+$_documentContainer.innerHTML = `<custom-style>
       <style is="custom-style" include="demo-pages-shared-styles">
         input {
           margin-bottom: 4px;
@@ -45,29 +61,36 @@
           border-style: dashed;
         }
       </style>
-    </custom-style>
-  </head>
-  <body>
+    </custom-style>`;
 
-    <div class="vertical-section-container centered">
+document.body.appendChild($_documentContainer.content);
+</script>ker in <code>iron-form</code></h3>
+      <demo-snippet>
+        <template>
+          <dom-bind>
+            <template>
+    <script type="module">
+const $_documentContainer = document.createElement('template');
+
+$_documentContainer.innerHTML = `<div class="vertical-section-container centered">
       <h3>color-picker in <code>iron-form</code></h3>
       <demo-snippet>
         <template>
           <dom-bind>
             <template>
               <label>
-                <input type="checkbox" checked onchange="form1.allowRedirect = !this.checked;">Prevent automatic form redirection
+                <input type="checkbox" checked="" onchange="form1.allowRedirect = !this.checked;">Prevent automatic form redirection
               </label>
               <br><br>
 
               <iron-form id="form1">
                 <form action="/foo" method="get">
-                  name: <input name="name" required value="Batman"/><br>
-                  job: <input name="job" required value="Hero"/><br>
+                  name: <input name="name" required="" value="Batman"><br>
+                  job: <input name="job" required="" value="Hero"><br>
                   <p>
-                    color of the cape:  <color-picker required name="cape" format="rgb"></color-picker>
+                    color of the cape:  <color-picker required="" name="cape" format="rgb"></color-picker>
                     <br>
-                    color of the glasses:  <overlay-color-picker required name="glasses" alpha="0.5" no-overlap no-tip></overlay-color-picker>
+                    color of the glasses:  <overlay-color-picker required="" name="glasses" alpha="0.5" no-overlap="" no-tip=""></overlay-color-picker>
                   </p>
                   <button onclick="form1.submit()">Submit</button>
                   <button onclick="form1.validate()">Validate</button>
@@ -78,12 +101,22 @@
                 form1.addEventListener('iron-form-submit', function(event) {
                   this.querySelector('.output').innerHTML = JSON.stringify(event.detail);
                 });
-              </script>
+              &lt;/script>
             </template>
           </dom-bind>
         </template>
       </demo-snippet>
-    </div>
+    </div>`;
 
-  </body>
-</html>
+document.body.appendChild($_documentContainer.content);
+</script>js';
+import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+import '@polymer/iron-demo-helpers/demo-snippet.js';
+import '@polymer/iron-form/iron-form.js';
+import '@polymer/paper-styles/shadow.js';
+import '../color-picker.js';
+import '../overlay-color-picker.js';
+form1.addEventListener('iron-form-submit', function(event) {
+  this.querySelector('.output').innerHTML = JSON.stringify(event.detail);
+});
+</script>
