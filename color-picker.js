@@ -3,6 +3,7 @@ import { html, htmlLiteral } from '../../@polymer/polymer/lib/utils/html-tag.js'
 import { dedupingMixin } from '@polymer/polymer/lib/utils/mixin.js';;
 import { ColorMixin } from '@fooloomanzoo/property-mixins/color-mixin.js';
 import { InputPickerPattern } from '@fooloomanzoo/input-picker-pattern/input-picker-pattern.js';
+import { getBoundingClientRectByRelative } from '@fooloomanzoo/input-picker-pattern/input-pattern.js';
 import { ColorBadgePattern } from '@fooloomanzoo/color-input/color-badge.js';
 import { ColorTextInputPattern, ColorFormMixin } from '@fooloomanzoo/color-input/color-text-input.js';
 import { ColorInputPattern } from '@fooloomanzoo/color-input/color-input.js';
@@ -294,7 +295,7 @@ export class ColorPicker extends ColorPickerPattern(ColorElementPattern(ColorInp
   }
 
   static get styleToInclude() {
-    return `${super.styleToInclude || '' } dropdown-style`;
+    return htmlLiteral`${super.styleToInclude || htmlLiteral`` } dropdown-style`;
   }
 }
 

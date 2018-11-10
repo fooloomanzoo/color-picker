@@ -2,8 +2,10 @@ import { PolymerElement } from '../../@polymer/polymer/polymer-element.js';
 import { html, htmlLiteral } from '../../@polymer/polymer/lib/utils/html-tag.js';
 import { dedupingMixin } from '@polymer/polymer/lib/utils/mixin.js';
 import { GestureEventListeners } from '@polymer/polymer/lib/mixins/gesture-event-listeners.js';
-import { ColorMixin } from '@fooloomanzoo/property-mixins/color-mixin.js';
+import { ColorMixin, normalizeHsl } from '@fooloomanzoo/property-mixins/color-mixin.js';
+import { normalizedClamp, mathMod, safeAdd } from '@fooloomanzoo/property-mixins/number-utilities.js';
 import { FormElementMixin } from '@fooloomanzoo/input-picker-pattern/form-element-mixin.js';
+import { getBoundingClientRectByRelative } from '@fooloomanzoo/input-picker-pattern/input-pattern.js';
 import { ColorFormMixin } from '@fooloomanzoo/color-input/color-text-input.js';
 import '@fooloomanzoo/input-picker-pattern/input-picker-shared-style.js';
 import '@fooloomanzoo/color-input/transparency-pattern-style.js';
@@ -181,13 +183,13 @@ export const ColorElementPattern = dedupingMixin(superClass => {
      * @type {string}
      */
     static get buttonTemplate() {
-      return `
+      return html`
         <button id="random" class="icon random" on-click="randomColor" on-keydown="_stopPropagation" hidden$="[[hideRandomButton]]">
           <svg viewBox="0 0 24 24">
             <g><path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></g>
           </svg>
         </button>
-        ${super.buttonTemplate || ''}
+        ${super.buttonTemplate || html``}
       `;
     }
 
@@ -421,10 +423,10 @@ export const ColorElementPattern = dedupingMixin(superClass => {
 
       switch (this._activeProperty) {
         case 'alpha':
-          this.alpha = +numberUtilities.normalizedClamp((rect.height - offsetY) / rect.height).toFixed(2);
+          this.alpha = +normalizedClamp((rect.height - offsetY) / rect.height).toFixed(2);
           break;
         case 'hue':
-          this.h = numberUtilities.mathMod(Math.floor(359 * offsetY / rect.height), 360);
+          this.h = mathMod(Math.floor(359 * offsetY / rect.height), 360);
           break;
         case 'color':
           let offsetX = (e.detail.x || e.clientX) - rect.left;
@@ -439,7 +441,7 @@ export const ColorElementPattern = dedupingMixin(superClass => {
           const v = 1 - offsetY / rect.height;
           const c = (2 - s) * v;
 
-          this.setProperties(this._normalizeHsl({
+          this.setProperties(normalizeHsl({
             h: this.h || 0,
             s: c === 0 ? 0 : +(s * v / (c < 1 ? c : 2 - c)),
             l: +(c / 2)
@@ -460,10 +462,10 @@ export const ColorElementPattern = dedupingMixin(superClass => {
               this.alphaMode = true;
             }
             if (e.keyCode === 38) { // up
-              this.alpha = numberUtilities.normalizedClamp(numberUtilities.safeAdd(this.alpha, 0.01));
+              this.alpha = normalizedClamp(safeAdd(this.alpha, 0.01));
               e.preventDefault(); e.stopPropagation();
             } else if (e.keyCode === 40) { // down
-              this.alpha = numberUtilities.normalizedClamp(numberUtilities.safeAdd(this.alpha, -0.01));
+              this.alpha = normalizedClamp(safeAdd(this.alpha, -0.01));
               e.preventDefault(); e.stopPropagation();
             }
             break;
