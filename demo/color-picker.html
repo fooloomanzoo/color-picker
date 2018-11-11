@@ -4,28 +4,31 @@
   <head>
     <title>color-picker demo</title>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
-    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="https://unpkg.com/@webcomponents/webcomponentsjs@^2.1.3/webcomponents-loader.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../color-picker.js';
+      import '../overlay-color-picker.js';
 
-    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
-    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
-
-    <link rel="import" href="../color-picker.html">
-    <link rel="import" href="../overlay-color-picker.html">
-
-    <custom-style>
-      <style is="custom-style" include="demo-pages-shared-styles">
-        .result {
-          margin: 0.75em;
-          padding: 0.5em;
-          line-height: 1.5;
-        }
-      </style>
-    </custom-style>
+      import {html} from '@polymer/polymer/lib/utils/html-tag.js';
+      const template = html`
+        <custom-style>
+          <style is="custom-style" include="demo-pages-shared-styles">
+            .result {
+              margin: 0.75em;
+              padding: 0.5em;
+              line-height: 1.5;
+            }
+          </style>
+        </custom-style>`;
+      document.body.appendChild(template.content);
+    </script>
   </head>
 
   <body>
-
     <div class="vertical-section-container centered">
       <h3>Create a polyfill color-picker, if available</h3>
       <demo-snippet>
@@ -82,13 +85,11 @@
                   }
                 </style>
               </custom-style>
-              <overlay-color-picker class="custom" default="yellow" alpha="{{alpha}}" no-overlap no-tip vertical-align="bottom"></overlay-color-picker>
+              <overlay-color-picker class="custom" default="yellow" alpha="{{alpha}}" no-overlap="" no-tip="" vertical-align="bottom"></overlay-color-picker>
             </template>
           </dom-bind>
         </template>
       </demo-snippet>
     </div>
-
   </body>
-
 </html>

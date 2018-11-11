@@ -7,12 +7,10 @@
 
   <title>color-picker test</title>
 
-  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-  <script src="../../web-component-tester/browser.js"></script>
-  <script src="../../iron-test-helpers/mock-interactions.js"></script>
-  <script src="../../input-picker-pattern/utils/wct-mixin-test-helper.js"></script>
+  <script src="../../../@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+  <script src="../../../wct-browser-legacy/browser.js"></script>
 
-  <link rel="import" href="../color-picker.html">
+  <script type="module" src="../color-picker.js"></script>
 </head>
 
 <body>
@@ -23,84 +21,92 @@
     </template>
   </test-fixture>
 
-  <script>
-    WCT.helpers.mixinSuite('color-picker');
+  <script type="module">
+    import {
+      Base
+    } from '../../../@polymer/polymer/polymer-legacy.js';
+    import { tap } from '../../../@polymer/iron-test-helpers/mock-interactions.js';
+    import {
+      getParams,
+      mixinSuite
+    } from '../../input-picker-pattern/utils/wct-mixin-test-helper.js';
 
-    suite('basic', function() {
-      let element;
+    const params = getParams();
+    mixinSuite('color-picker');
 
-      setup(function() {
-        element = fixture('Basic');
-      });
+suite('basic', function() {
+  let element;
 
-      test('instantiating the element with default properties should work', done => {
-        setTimeout(() => {
-          assert.isDefined(element._confirmedColorHeight, '_confirmedColorHeight is defined');
-          assert.isDefined(element._confirmedColorWidth, '_confirmedColorWidth is defined');
-          assert.isDefined(element._confirmedColorCanvasContext, '_confirmedColorCanvasContext is defined');
-          let button = element.shadowRoot.querySelector('.icon.reset');
-          assert.isOk(button, 'element has an reset icon');
-          done();
-        }, 1);
-      });
+  setup(function() {
+    element = fixture('Basic');
+  });
 
-      test('calling "randomColor" on the element should work', done => {
-        assert.isDefined(element.randomColor, '"randomColor" exists');
-        element.randomColor();
-        Polymer.Base.async(() => {
-          assert.isDefined(element.r, 'r is defined');
-          assert.isDefined(element.g, 'g is defined');
-          assert.isDefined(element.b, 'b is defined');
-          assert.isDefined(element.h, 'h is defined');
-          assert.isDefined(element.s, 's is defined');
-          assert.isDefined(element.l, 'year is defined');
-          assert.isDefined(element.alpha, 'alpha is defined');
-          assert.isDefined(element.colorString, 'colorString is defined');
-          done();
-        })
-      });
+  test('instantiating the element with default properties should work', done => {
+    setTimeout(() => {
+      assert.isDefined(element._confirmedColorHeight, '_confirmedColorHeight is defined');
+      assert.isDefined(element._confirmedColorWidth, '_confirmedColorWidth is defined');
+      assert.isDefined(element._confirmedColorCanvasContext, '_confirmedColorCanvasContext is defined');
+      let button = element.shadowRoot.querySelector('.icon.reset');
+      assert.isOk(button, 'element has an reset icon');
+      done();
+    }, 1);
+  });
+
+  test('calling "randomColor" on the element should work', done => {
+    assert.isDefined(element.randomColor, '"randomColor" exists');
+    element.randomColor();
+    Base.async(() => {
+      assert.isDefined(element.r, 'r is defined');
+      assert.isDefined(element.g, 'g is defined');
+      assert.isDefined(element.b, 'b is defined');
+      assert.isDefined(element.h, 'h is defined');
+      assert.isDefined(element.s, 's is defined');
+      assert.isDefined(element.l, 'year is defined');
+      assert.isDefined(element.alpha, 'alpha is defined');
+      assert.isDefined(element.colorString, 'colorString is defined');
+      done();
+    })
+  });
+});
+
+suite('interactions', function() {
+  let element;
+
+  setup(function() {
+    element = fixture('Basic');
+    element.opened = true;
+    element.format = 'auto';
+    element.colorString = '#000000';
+  });
+
+  test('clicking on badge confirms', done => {
+    Base.async(() => {
+      let badge = element.$.colorBadgeContainer;
+      // wait a tick to let dom-if stamping finish
+      assert.equal(element.value, '#000000', 'value is set');
+      assert.isUndefined(element.confirmedValue, 'confirmedValue is not set');
+      tap(badge);
+      assert.equal(element.confirmedValue, '#000000', 'confirmedValue is set');
+      done();
     });
+  });
 
-    suite('interactions', function() {
-      let element;
-
-      setup(function() {
-        element = fixture('Basic');
-        element.opened = true;
-        element.format = 'auto';
-        element.colorString = '#000000';
-      });
-
-      test('clicking on badge confirms', done => {
-        Polymer.Base.async(() => {
-          let badge = element.$.colorBadgeContainer;
-          // wait a tick to let dom-if stamping finish
-          assert.equal(element.value, '#000000', 'value is set');
-          assert.isUndefined(element.confirmedValue, 'confirmedValue is not set');
-          MockInteractions.tap(badge);
-          assert.equal(element.confirmedValue, '#000000', 'confirmedValue is set');
-          done();
-        });
-      });
-
-      test('clicking on confirmed badge resets value', done => {
-        element.confirm();
-        Polymer.Base.async(() => {
-          let badge = element.$.confirmedColorBadge;
-          assert.equal(element.confirmedValue, '#000000', 'confirmedValue is set');
-          element.colorString = '#ff0000';
-          // wait a tick to let dom-if stamping finish
-          assert.equal(element.value, '#ff0000', 'value is set');
-          assert.equal(element.confirmedValue, '#000000', 'confirmedValue does not change');
-          MockInteractions.tap(badge);
-          assert.equal(element.value, '#000000', 'value is reset');
-          assert.equal(element.confirmedValue, '#000000', 'confirmedValue does not change');
-          done();
-        });
-      });
+  test('clicking on confirmed badge resets value', done => {
+    element.confirm();
+    Base.async(() => {
+      let badge = element.$.confirmedColorBadge;
+      assert.equal(element.confirmedValue, '#000000', 'confirmedValue is set');
+      element.colorString = '#ff0000';
+      // wait a tick to let dom-if stamping finish
+      assert.equal(element.value, '#ff0000', 'value is set');
+      assert.equal(element.confirmedValue, '#000000', 'confirmedValue does not change');
+      tap(badge);
+      assert.equal(element.value, '#000000', 'value is reset');
+      assert.equal(element.confirmedValue, '#000000', 'confirmedValue does not change');
+      done();
     });
-  </script>
-
+  });
+});
+</script>
 </body>
-
 </html>

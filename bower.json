@@ -1,34 +1,4 @@
 {
   "name": "color-picker",
-  "authors": [
-    "Johannes Brautzsch <fooloomanzoo>"
-  ],
-  "description": "A picker for color, that can use the native input.",
-  "homepage": "https://github.com/fooloomanzoo/color-picker/",
-  "keywords": [
-    "webcomponents",
-    "polymer",
-    "picker",
-    "color",
-    "input",
-    "polyfill"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/fooloomanzoo/color-picker.git"
-  },
-  "licence": "https://github.com/fooloomanzoo/color-picker/raw/master/LICENSE.txt",
-  "dependencies": {
-    "polymer": "Polymer/polymer#2.6.1",
-    "color-input": "fooloomanzoo/color-input#2",
-    "input-picker-pattern": "fooloomanzoo/input-picker-pattern#2"
-  },
-  "devDependencies": {
-    "web-component-tester": "^6.5.0",
-    "webcomponentsjs": "webcomponents/webcomponentsjs#1",
-    "iron-test-helpers": "PolymerElements/iron-test-helpers#2",
-    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#2",
-    "iron-form": "PolymerElements/iron-form#2",
-    "iron-component-page": "PolymerElements/iron-component-page#^3.0.1"
-  }
+  "licence": "https://github.com/fooloomanzoo/color-picker/raw/master/LICENSE.txt"
 }

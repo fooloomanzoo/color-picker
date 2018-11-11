@@ -1,11 +1,5 @@
 {
-  "name": "@fooloomanzoo/color-picker",
-  "version": "2.0.11",
-  "authors": [
-    "Johannes Brautzsch <fooloomanzoo>"
-  ],
   "description": "A picker for color, that can use the native input.",
-  "homepage": "https://github.com/fooloomanzoo/color-picker/",
   "keywords": [
     "webcomponents",
     "polymer",
@@ -15,32 +9,40 @@
     "input",
     "polyfill"
   ],
-  "main": "index.html",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fooloomanzoo/color-picker.git"
+  },
+  "homepage": "https://github.com/fooloomanzoo/color-picker/",
+  "name": "@fooloomanzoo/color-picker",
+  "version": "3.0.0",
+  "authors": [
+    "Johannes Brautzsch <fooloomanzoo>"
+  ],
+  "main": "index.js",
   "scripts": {
-    "prepublish": "npm run build && git add . && git commit -m \"publish new version\" && npm version patch && git push",
-    "gh-pages": "git checkout gh-pages && git pull && bower update -f && git add . && git commit -m \"update\" && git push && git checkout master",
-    "build": "git pull && bower update && npm run analyze",
+    "prepublishOnly": "npm run build && git add . && git commit -m \"publish new version\" && npm version patch && git push",
+    "gh-pages": "git checkout gh-pages && git pull && npm update -f && git add . && git commit -m \"update\" && git push && git checkout master",
+    "build": "git pull && npm update && npm run analyze",
     "start": "npm run analyze && polymer serve -o",
     "analyze": "polymer analyze > analysis.json",
     "test": "polymer test",
     "test:p": "polymer test -p --config-file=wct.p.conf.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/fooloomanzoo/color-picker.git"
-  },
   "license": "MIT",
   "dependencies": {
-    "@polymer/polymer": "^2.6.1",
-    "@fooloomanzoo/input-picker-pattern": "^2",
-    "@fooloomanzoo/color-input": "^2"
+    "@polymer/polymer": "^3",
+    "@fooloomanzoo/input-picker-pattern": "^3",
+    "@fooloomanzoo/color-input": "^3"
   },
   "devDependencies": {
-    "web-component-tester": "^6.5.0",
-    "@webcomponents/webcomponentsjs": "^1",
-    "@polymer/iron-component-page": "^3",
-    "@polymer/iron-flex-layout": "^2",
-    "@polymer/iron-demo-helpers": "^2",
-    "@polymer/iron-form": "^2"
-  }
+    "@polymer/iron-component-page": "^4",
+    "@polymer/iron-demo-helpers": "^3",
+    "@polymer/iron-flex-layout": "^3",
+    "@polymer/iron-form": "^3",
+    "@polymer/iron-test-helpers": "^3",
+    "@webcomponents/webcomponentsjs": "^2",
+    "wct-browser-legacy": "^1"
+  },
+  "author": "Johannes Brautzsch <fooloomanzoo>"
 }
