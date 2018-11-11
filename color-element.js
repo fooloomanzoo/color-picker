@@ -1,5 +1,5 @@
-import { PolymerElement } from '../../@polymer/polymer/polymer-element.js';
-import { html, htmlLiteral } from '../../@polymer/polymer/lib/utils/html-tag.js';
+import { PolymerElement } from '@polymer/polymer/polymer-element.js';
+import { html } from '@polymer/polymer/lib/utils/html-tag.js';
 import { dedupingMixin } from '@polymer/polymer/lib/utils/mixin.js';
 import { GestureEventListeners } from '@polymer/polymer/lib/mixins/gesture-event-listeners.js';
 import { ColorMixin, normalizeHsl } from '@fooloomanzoo/property-mixins/color-mixin.js';
@@ -7,8 +7,8 @@ import { normalizedClamp, mathMod, safeAdd } from '@fooloomanzoo/property-mixins
 import { FormElementMixin } from '@fooloomanzoo/input-picker-pattern/form-element-mixin.js';
 import { getBoundingClientRectByRelative } from '@fooloomanzoo/input-picker-pattern/input-pattern.js';
 import { ColorFormMixin } from '@fooloomanzoo/color-input/color-text-input.js';
-import '@fooloomanzoo/input-picker-pattern/input-picker-shared-style.js';
-import '@fooloomanzoo/color-input/transparency-pattern-style.js';
+import { style as inputPickerStyle } from '@fooloomanzoo/input-picker-pattern/input-picker-shared-style.js';
+import { style as transpenrencyPatternStyle } from '@fooloomanzoo/color-input/transparency-pattern-style.js';
 
 /**
  * Mixin for color-element
@@ -20,137 +20,135 @@ export const ColorElementPattern = dedupingMixin(superClass => {
 
   return class extends superClass {
 
-    static get styleToInclude() {
-      return htmlLiteral`input-picker-shared-style transparency-pattern-style`;
-    }
-
     static get styleTemplate() {
-      return htmlLiteral`
-        ${super.styleTemplate || htmlLiteral``}
-        :host {
-          --computed-inner-border-radius: calc(var(--color-element-badge-radius, var(--input-picker-border-radius, 0.3em)) - var(--input-picker-padding, 0.5em)/2);
-        }
-        #colorElement {
-          color: var(--input-picker-color);
-          background-color: var(--input-picker-background);
-          border-radius: var(--color-element-badge-radius, var(--input-picker-border-radius, 0.3em));
-          padding: var(--input-picker-padding, 0.5em);
-          @apply --input-picker;
-          display: inline-flex;
-          flex-direction: column;
-          position: relative;
-          @apply --color-element;
-        }
-        #colorElement .selectors {
-          display: inline-flex;
-          flex-direction: row;
-          flex-wrap: nowrap:
-          position: relative;
-          box-sizing: content-box;
-          border-top-left-radius: inherit;
-          border-top-right-radius: inherit;
-          border-bottom-left-radius: 0;
-          border-bottom-right-radius: 0;
-          outline: none;
-        }
-        #colorElement .selectors > * {
-          position: relative;
-          height: var(--color-element-height, 184px);
-          background: transparent;
-          cursor: pointer;
-          box-sizing: border-box;
-          border-radius: 0;
-          overflow: visible;
-        }
-        #colorElement .selectors > :first-child {
-          border-top-left-radius: var(--computed-inner-border-radius);
-        }
-        #colorElement .selectors > :last-child {
-          border-top-right-radius: var(--computed-inner-border-radius);
-        }
-        #colorElement canvas {
-          pointer-events: all;
-          position: absolute;
-          border-radius: inherit;
-          outline: none;
-          left: 0;
-          top: 0;
-        }
-        #colorElement .selectors > :not(:first-child) {
-          margin-left: var(--input-picker-padding);
-        }
-        #colorElement .badge {
-          margin: 0;
-          background: transparent;
-          box-shadow: none;
-        }
-        #colorElement #saturationBadge {
-          cursor: crosshair;
-          width: var(--color-element-width, 184px);
-          flex: 1 0 auto;
-        }
-        #colorElement #hueBadge,
-        #colorElement #alphaBadge {
-          width: var(--color-slider-width, 16px);
-        }
-        #colorElement #alphaBadge {
-          background: #fff;
-        }
-        #colorElement .selector {
-          position: absolute;
-          top: 0; left: 0;
-          border-width: thin;
-          border-style: solid;
-          border-color: #fff;
-          z-index: 1;
-          box-sizing: border-box;
-          overflow: hidden;
-          background-color: transparent;
-          transition-property: background-color;
-          transition-duration: 150ms;
-          transition-timing-function: var(--input-transition-timing-function, cubic-bezier(0.6, 1, 0.2, 1));
-          mix-blend-mode: difference;
-          pointer-events: none;
-        }
-        #colorElement .selectors canvas.active ~ .selector,
-        #colorElement .selectors canvas:focus ~ .selector {
-          background-color: rgba(255,255,255,0.3);
-        }
-        #colorElement .slider {
-          padding: var(--color-slider-padding, 2px);
-          width: 100%;
-          border-radius: 2px;
-          transform: translateY(-50%);
-        }
-        #colorElement .pin {
-          padding: var(--color-pin-radius, 3px);
-          border-radius: 50%;
-          transform: translate(-50%, -50%);
-        }
-        #colorElement canvas.active {
-          cursor: none;
-        }
-        #colorElement #buttons {
-          display: inline-flex;
-          flex-direction: row;
-          position: relative;
-          align-items: flex-end;
-          align-self: stretch;
-          flex: 0 0 auto;
-          margin-top: var(--input-picker-padding);
-        }
-        #colorElement #buttons #formats {
-          align-self: stretch;
-        }
-        @media (pointer:coarse) {
-          canvas.active ~ .pin {
-            opacity: 1;
+      return html`
+        ${inputPickerStyle}
+        ${transpenrencyPatternStyle}
+        ${super.styleTemplate || html``}
+        <style>
+          :host {
+            --computed-inner-border-radius: calc(var(--color-element-badge-radius, var(--input-picker-border-radius, 0.3em)) - var(--input-picker-padding, 0.5em)/2);
+          }
+          #colorElement {
+            color: var(--input-picker-color);
+            background-color: var(--input-picker-background);
+            border-radius: var(--color-element-badge-radius, var(--input-picker-border-radius, 0.3em));
+            padding: var(--input-picker-padding, 0.5em);
+            display: inline-flex;
+            flex-direction: column;
+            position: relative;
+          }
+          #colorElement .selectors {
+            display: inline-flex;
+            flex-direction: row;
+            flex-wrap: nowrap:
+            position: relative;
+            box-sizing: content-box;
+            border-top-left-radius: inherit;
+            border-top-right-radius: inherit;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+            outline: none;
+          }
+          #colorElement .selectors > * {
+            position: relative;
+            height: var(--color-element-height, 184px);
+            background: transparent;
+            cursor: pointer;
+            box-sizing: border-box;
+            border-radius: 0;
+            overflow: visible;
+          }
+          #colorElement .selectors > :first-child {
+            border-top-left-radius: var(--computed-inner-border-radius);
+          }
+          #colorElement .selectors > :last-child {
+            border-top-right-radius: var(--computed-inner-border-radius);
+          }
+          #colorElement canvas {
+            pointer-events: all;
+            position: absolute;
+            border-radius: inherit;
+            outline: none;
+            left: 0;
+            top: 0;
+          }
+          #colorElement .selectors > :not(:first-child) {
+            margin-left: var(--input-picker-padding);
+          }
+          #colorElement .badge {
+            margin: 0;
+            background: transparent;
+            box-shadow: none;
+          }
+          #colorElement #saturationBadge {
+            cursor: crosshair;
+            width: var(--color-element-width, 184px);
+            flex: 1 0 auto;
           }
           #colorElement #hueBadge,
           #colorElement #alphaBadge {
-            width: var(--color-slider-width, 20px);
+            width: var(--color-slider-width, 16px);
           }
-        }
+          #colorElement #alphaBadge {
+            background: #fff;
+          }
+          #colorElement .selector {
+            position: absolute;
+            top: 0; left: 0;
+            border-width: thin;
+            border-style: solid;
+            border-color: #fff;
+            z-index: 1;
+            box-sizing: border-box;
+            overflow: hidden;
+            background-color: transparent;
+            transition-property: background-color;
+            transition-duration: 150ms;
+            transition-timing-function: var(--input-transition-timing-function, cubic-bezier(0.6, 1, 0.2, 1));
+            mix-blend-mode: difference;
+            pointer-events: none;
+          }
+          #colorElement .selectors canvas.active ~ .selector,
+          #colorElement .selectors canvas:focus ~ .selector {
+            background-color: rgba(255,255,255,0.3);
+          }
+          #colorElement .slider {
+            padding: var(--color-slider-padding, 2px);
+            width: 100%;
+            border-radius: 2px;
+            transform: translateY(-50%);
+          }
+          #colorElement .pin {
+            padding: var(--color-pin-radius, 3px);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+          }
+          #colorElement canvas.active {
+            cursor: none;
+          }
+          #colorElement #buttons {
+            display: inline-flex;
+            flex-direction: row;
+            position: relative;
+            align-items: flex-end;
+            align-self: stretch;
+            flex: 0 0 auto;
+            margin-top: var(--input-picker-padding);
+          }
+          #colorElement #buttons #formats {
+            align-self: stretch;
+          }
+          @media (pointer:coarse) {
+            canvas.active ~ .pin {
+              opacity: 1;
+            }
+            #colorElement #hueBadge,
+            #colorElement #alphaBadge {
+              width: var(--color-slider-width, 20px);
+            }
+          }
+        </style>
       `;
     }
 
@@ -614,19 +612,13 @@ export class ColorElement extends GestureEventListeners(ColorElementPattern(Colo
     return 'color-element';
   }
 
-  static get styleTemplate() {
-    return htmlLiteral`
-      ${super.styleTemplate || ''}
-      :host {
-        display: inline-flex;
-      }
-    `
-  }
-
   static get template() {
     return html`
-      <style include="${this.styleToInclude}">
-        ${this.styleTemplate}
+      ${this.styleTemplate}
+      <style>
+        :host {
+          display: inline-flex;
+        }
       </style>
       ${this.colorElementTemplate}
     `;

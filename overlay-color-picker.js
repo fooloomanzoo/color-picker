@@ -1,5 +1,5 @@
-import { PolymerElement } from '../../@polymer/polymer/polymer-element.js';
-import { html, htmlLiteral } from '../../@polymer/polymer/lib/utils/html-tag.js';
+import { PolymerElement } from '@polymer/polymer/polymer-element.js';
+import { html } from '@polymer/polymer/lib/utils/html-tag.js';
 import { dedupingMixin } from '@polymer/polymer/lib/utils/mixin.js';;
 import { ColorMixin } from '@fooloomanzoo/property-mixins/color-mixin.js';
 import { InputPickerPattern } from '@fooloomanzoo/input-picker-pattern/input-picker-pattern.js';

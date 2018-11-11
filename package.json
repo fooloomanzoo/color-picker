@@ -36,13 +36,13 @@
     "@fooloomanzoo/color-input": "^3"
   },
   "devDependencies": {
-    "@webcomponents/webcomponentsjs": "^2",
     "@polymer/iron-component-page": "^4",
-    "@polymer/iron-flex-layout": "^3",
     "@polymer/iron-demo-helpers": "^3",
+    "@polymer/iron-flex-layout": "^3",
     "@polymer/iron-form": "^3",
-    "wct-browser-legacy": "^1",
-    "@polymer/iron-test-helpers": "^3"
+    "@polymer/iron-test-helpers": "^3",
+    "@webcomponents/webcomponentsjs": "^2",
+    "wct-browser-legacy": "^1"
   },
   "author": "Johannes Brautzsch <fooloomanzoo>"
 }

@@ -1,17 +1,15 @@
-import { PolymerElement } from '../../@polymer/polymer/polymer-element.js';
-import { html, htmlLiteral } from '../../@polymer/polymer/lib/utils/html-tag.js';
+import { PolymerElement } from '@polymer/polymer/polymer-element.js';
+import { html, htmlLiteral } from '@polymer/polymer/lib/utils/html-tag.js';
 import { dedupingMixin } from '@polymer/polymer/lib/utils/mixin.js';;
 import { ColorMixin } from '@fooloomanzoo/property-mixins/color-mixin.js';
 import { InputPickerPattern } from '@fooloomanzoo/input-picker-pattern/input-picker-pattern.js';
+import { resetButtonTemplate } from '@fooloomanzoo/input-picker-pattern/form-element-mixin.js';
 import { getBoundingClientRectByRelative } from '@fooloomanzoo/input-picker-pattern/input-pattern.js';
 import { ColorBadgePattern } from '@fooloomanzoo/color-input/color-badge.js';
 import { ColorTextInputPattern, ColorFormMixin } from '@fooloomanzoo/color-input/color-text-input.js';
 import { ColorInputPattern } from '@fooloomanzoo/color-input/color-input.js';
 import { ColorElementPattern } from './color-element.js';
-import '@fooloomanzoo/input-picker-pattern/input-shared-style.js';
-import '@fooloomanzoo/input-picker-pattern/input-picker-shared-style.js';
-import '@fooloomanzoo/input-picker-pattern/dropdown-style.js';
-import '@fooloomanzoo/input-picker-pattern/dropdown-tip-style.js';
+import { style as dropdownStyle } from '@fooloomanzoo/input-picker-pattern/dropdown-style.js';
 
 /**
  * Mixin for color-picker
@@ -22,67 +20,74 @@ import '@fooloomanzoo/input-picker-pattern/dropdown-tip-style.js';
 export const ColorPickerPattern = dedupingMixin(superClass => {
   return class extends superClass {
 
-    static get styleToInclude() {
-      return htmlLiteral`input-shared-style dropdown-tip-style ${super.styleToInclude}`;
+    /**
+     * the expected input type, that should be polyfilled, if not available
+     * @type {string}
+     */
+    static get expectedNativeInputType() {
+      return htmlLiteral`color`;
     }
 
     static get styleTemplate() {
-      return htmlLiteral`
-        ${super.styleTemplate || htmlLiteral``}
-        input.native {
-          --input-background: transparent;
-          --input-focus-background: transparent;
-          border-radius: var(--input-border-radius, var(--color-badge-radius, 0.2em));
-          height: var(--color-badge-height, 100%);
-          width: var(--color-badge-width, 1.5em);
-          padding: 0;
-          margin: 0;
-          box-sizing: border-box;
-          border-width: var(--input-border-width, thin);
-          border-style: solid;
-          border-color: var(--input-border-color, rgba(0,0,0,0.2));
-        }
-        #buttons #colorBadgeContainer {
-          position: relative;
-          display: inline-flex;
-          min-width: var(--color-badge-width, 1.5em);
-          align-self: stretch;
-          flex: 1;
-          margin-right: var(--input-picker-padding);
-          box-sizing: border-box;
-        }
-        #buttons #colorBadge {
-          background-color: rgba(255,255,255,0.8);
-          position: relative;
-          border-radius: var(--input-icon-border-radius);
-          height: 100%;
-          width: 100%;
-          border-bottom-left-radius: inherit;
-        }
-        #buttons #colorBadge:hover {
-          border-color: var(--inner-input-focus-background);
-        }
-        #buttons #formats {
-          font-size: 0.9em;
-          margin-right: var(--input-picker-padding);
-        }
-        #buttons :first-child {
-          border-bottom-left-radius: var(--computed-inner-border-radius);
-        }
-        #buttons :last-child {
-          border-bottom-right-radius: var(--computed-inner-border-radius);
-        }
-        ::-webkit-color-swatch {
-          border-radius: var(--input-border-radius, var(--color-badge-radius, 0.2em));
-          border: none;
-        }
-        ::-webkit-color-swatch-wrapper {
-          padding: 0;
-        }
-        ::-moz-color-swatch {
-          border-radius: var(--input-border-radius, var(--color-badge-radius, 0.2em));
-          border: none;
-        }
+      return html`
+        ${super.styleTemplate || html``}
+        <style>
+          input.native {
+            --input-background: transparent;
+            --input-focus-background: transparent;
+            border-radius: var(--input-border-radius, var(--color-badge-radius, 0.2em));
+            height: var(--color-badge-height, 100%);
+            width: var(--color-badge-width, 1.5em);
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            border-width: var(--input-border-width, thin);
+            border-style: solid;
+            border-color: var(--input-border-color, rgba(0,0,0,0.2));
+          }
+          #buttons #colorBadgeContainer {
+            position: relative;
+            display: inline-flex;
+            min-width: var(--color-badge-width, 1.5em);
+            align-self: stretch;
+            flex: 1;
+            margin-right: var(--input-picker-padding);
+            box-sizing: border-box;
+          }
+          #buttons #colorBadge {
+            background-color: rgba(255,255,255,0.8);
+            position: relative;
+            border-radius: var(--input-icon-border-radius);
+            height: 100%;
+            width: 100%;
+            border-bottom-left-radius: inherit;
+            pointer-events: none;
+          }
+          #buttons #colorBadge:hover {
+            border-color: var(--inner-input-focus-background);
+          }
+          #buttons #formats {
+            font-size: 0.9em;
+            margin-right: var(--input-picker-padding);
+          }
+          #buttons :first-child {
+            border-bottom-left-radius: var(--computed-inner-border-radius);
+          }
+          #buttons :last-child {
+            border-bottom-right-radius: var(--computed-inner-border-radius);
+          }
+          ::-webkit-color-swatch {
+            border-radius: var(--input-border-radius, var(--color-badge-radius, 0.2em));
+            border: none;
+          }
+          ::-webkit-color-swatch-wrapper {
+            padding: 0;
+          }
+          ::-moz-color-swatch {
+            border-radius: var(--input-border-radius, var(--color-badge-radius, 0.2em));
+            border: none;
+          }
+        </style>
       `;
     }
 
@@ -96,7 +101,7 @@ export const ColorPickerPattern = dedupingMixin(superClass => {
           <div id="input">
             <input class="native" type="color" disabled$="[[disabled]]" readonly="[[disabled]]" required="[[required]]" value="{{hex::input}}">
             ${this.textInputTemplate}
-            ${this.resetButtonTemplate}
+            ${resetButtonTemplate}
           </div>
         </template>
       `;
@@ -240,6 +245,10 @@ export const ColorPickerPattern = dedupingMixin(superClass => {
       this.confirm();
     }
 
+    _addClickListenerForBadge() {}
+
+    _removeClickListenerForBadge() {}
+
     _resetValue(e) {
       this._activeProperty = null;
       super._resetValue(e);
@@ -294,8 +303,11 @@ export class ColorPicker extends ColorPickerPattern(ColorElementPattern(ColorInp
     return ColorPicker._hasNative;
   }
 
-  static get styleToInclude() {
-    return htmlLiteral`${super.styleToInclude || htmlLiteral`` } dropdown-style`;
+  static get styleTemplate() {
+    return html`
+      ${super.styleTemplate || html``}
+      ${dropdownStyle}
+    `;
   }
 }
 
