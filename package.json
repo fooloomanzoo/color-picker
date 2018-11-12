@@ -31,8 +31,8 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@fooloomanzoo/color-input": "^3.0.2",
-    "@fooloomanzoo/input-picker-pattern": "^3.0.8",
+    "@fooloomanzoo/color-input": "^3",
+    "@fooloomanzoo/input-picker-pattern": "^3",
     "@polymer/polymer": "^3"
   },
   "devDependencies": {
