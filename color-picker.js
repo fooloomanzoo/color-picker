@@ -311,4 +311,6 @@ export class ColorPicker extends ColorPickerPattern(ColorElementPattern(ColorInp
   }
 }
 
-customElements.define(ColorPicker.is, ColorPicker);
+if (!customElements.get(ColorPicker.is)) {
+  customElements.define(ColorPicker.is, ColorPicker);
+}

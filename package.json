@@ -31,9 +31,9 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@polymer/polymer": "^3",
-    "@fooloomanzoo/input-picker-pattern": "^3",
-    "@fooloomanzoo/color-input": "^3"
+    "@fooloomanzoo/color-input": "^3.0.2",
+    "@fooloomanzoo/input-picker-pattern": "^3.0.8",
+    "@polymer/polymer": "^3"
   },
   "devDependencies": {
     "@polymer/iron-component-page": "^4",

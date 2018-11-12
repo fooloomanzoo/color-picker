@@ -42,4 +42,7 @@ export class OverlayColorPicker extends OverlayPickerMixin(ColorPickerPattern(Co
     return OverlayColorPicker._hasNative;
   }
 }
-customElements.define(OverlayColorPicker.is, OverlayColorPicker);
+
+if (!customElements.get(OverlayColorPicker.is)) {
+  customElements.define(OverlayColorPicker.is, OverlayColorPicker);
+}

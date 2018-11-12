@@ -17,7 +17,6 @@ import { style as transpenrencyPatternStyle } from '@fooloomanzoo/color-input/tr
  * @polymer
  */
 export const ColorElementPattern = dedupingMixin(superClass => {
-
   return class extends superClass {
 
     static get styleTemplate() {
@@ -635,4 +634,7 @@ export class ColorElement extends GestureEventListeners(ColorElementPattern(Colo
     `;
   }
 }
-customElements.define(ColorElement.is, ColorElement);
+
+if (!customElements.get(ColorElement.is)) {
+  customElements.define(ColorElement.is, ColorElement);
+}
