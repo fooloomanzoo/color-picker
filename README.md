@@ -2,7 +2,8 @@
 [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/@fooloomanzoo/color-picker)
 [![Published on Vaadin  Directory](https://img.shields.io/badge/Vaadin%20Directory-published-00b4f0.svg)](https://vaadin.com/directory/component/fooloomanzoocolor-picker)
 
-_[Demo and API docs](https://fooloomanzoo.github.io/color-picker/components/color-picker/)_
+_[API & Demo](https://fooloomanzoo.github.io/color-picker)_
+
 ## &lt;color-picker&gt;
 
 ### What is it for?
